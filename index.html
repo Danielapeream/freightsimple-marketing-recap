@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing Dashboard — 2-Week Recap · FreightSimple</title>
+<title>Marketing Operating Dashboard · FreightSimple</title>
 <meta name="description" content="Marketing strategy recap — insights, funnel, communication pillars, shipped assets, 30-day plan. April 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,6 +220,335 @@
     max-width: 820px;
     line-height: 1.55;
     margin-bottom: 56px;
+  }
+
+  /* ═══════════════════════════════════════════════════════ QUARTER TABS */
+  .quarter-tabs {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 52px;
+    z-index: 90;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.97);
+  }
+  .quarter-tabs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .q-tab {
+    background: none;
+    border: none;
+    padding: 18px 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .q-tab:hover { color: var(--dark); }
+  .q-tab.active { color: var(--dark); }
+  .q-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: var(--blue);
+  }
+  .q-tab .q-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .q-tab .q-status {
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+  .q-tab .q-status.active { background: var(--gold); color: var(--dark); }
+  .q-tab .q-status.pipeline { background: var(--blue-light); color: var(--blue); }
+
+  .quarter-view { display: none; }
+  .quarter-view.active { display: block; }
+
+  /* ═══════════════════════════════════════════════════════ Q3 PIPELINE */
+  .q3-hero {
+    background: var(--off-white);
+    padding: 80px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .q3-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .q3-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    background: var(--blue-light);
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .q3-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+  .q3-hero h1 .accent {
+    color: var(--blue);
+    font-style: italic;
+  }
+  .q3-hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 780px;
+  }
+
+  .q3-section {
+    padding: 80px 32px;
+  }
+  .q3-section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .q3-section-label::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.3;
+  }
+  .q3-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .q3-section-intro {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 760px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+  }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .pipeline-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    padding: 26px 28px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+  .pipeline-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--blue-light);
+    border-left-color: var(--gold);
+  }
+  .pipeline-card.hot { border-left-color: var(--gold); }
+  .pipeline-card.idea { border-left-color: var(--muted-soft); }
+
+  .pipeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .pipeline-kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .pipeline-priority {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .pri-hot { background: var(--gold); color: var(--dark); }
+  .pri-ready { background: rgba(76,98,234,0.15); color: var(--blue); }
+  .pri-idea { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+
+  .pipeline-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  .pipeline-rationale {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .pipeline-signal {
+    padding: 12px 14px;
+    background: var(--off-white);
+    border-left: 3px solid var(--blue);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .pipeline-signal strong {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .pipeline-pillar {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 100px;
+    font-weight: 600;
+    display: inline-block;
+  }
+
+  .add-card {
+    background: var(--white);
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .add-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--off-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--muted-soft);
+    margin-bottom: 4px;
+  }
+  .add-card strong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--dark);
+  }
+
+  /* Archive timeline */
+  .archive-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 80px 32px;
+  }
+  .archive-section .q3-section-label { color: var(--gold); }
+  .archive-section .q3-section-label::after { background: var(--gold); opacity: 0.5; }
+  .archive-section .q3-section-title { color: #fff; }
+  .archive-section .q3-section-intro { color: rgba(255,255,255,0.65); }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  .timeline-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px 22px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .timeline-item.current {
+    border-color: var(--gold);
+    background: rgba(250,204,11,0.06);
+  }
+  .timeline-item.future {
+    opacity: 0.55;
+  }
+  .timeline-quarter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .timeline-item.current .timeline-quarter { color: var(--gold); }
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .timeline-desc {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
   }
 
   /* ═══════════════════════════════════════════════════════ STRATEGIC THESIS */
@@ -1404,6 +1733,8 @@
     .shipped-grid { grid-template-columns: repeat(2, 1fr); }
     .pillar-grid { grid-template-columns: 1fr; }
     .seo-findings { grid-template-columns: 1fr; }
+    .pipeline-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 960px) {
     .hero { padding: 64px 20px 80px; }
@@ -1433,6 +1764,11 @@
     section { padding: 72px 20px; }
     .top-bar { padding: 12px 20px; }
     .top-nav { display: none; }
+    .quarter-tabs { padding: 0 20px; }
+    .q-tab { padding: 14px 14px; font-size: 10px; }
+    .q-tab .q-status { display: none; }
+    .q3-hero, .q3-section, .archive-section { padding: 60px 20px; }
+    .timeline { grid-template-columns: 1fr; gap: 12px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 640px) {
@@ -1451,7 +1787,7 @@
 <div class="top-bar">
   <div class="top-brand">
     <img src="./logo-icon.png" alt="FreightSimple">
-    FreightSimple <span class="slash">/</span> <span class="sub">Marketing Dashboard</span>
+    FreightSimple <span class="slash">/</span> <span class="sub">Marketing Operating Dashboard</span>
   </div>
   <div class="top-nav">
     <a href="#thesis">Thesis</a>
@@ -1465,13 +1801,30 @@
   </div>
 </div>
 
+<!-- QUARTER TABS -->
+<div class="quarter-tabs">
+  <div class="quarter-tabs-inner">
+    <button class="q-tab active" data-tab="q2">
+      <span class="q-label">Q2 2026</span>
+      <span class="q-status active">Active</span>
+    </button>
+    <button class="q-tab" data-tab="q3">
+      <span class="q-label">Q3 2026</span>
+      <span class="q-status pipeline">Pipeline</span>
+    </button>
+  </div>
+</div>
+
+<!-- Q2 VIEW — Active quarter -->
+<div class="quarter-view active" data-quarter="q2">
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <span class="hero-eyebrow">2-Week Recap · Marketing Strategy</span>
+    <span class="hero-eyebrow">Marketing Operating Dashboard · Q2 2026</span>
     <h1>The audit. The funnel. <span class="accent">The plan.</span></h1>
     <p class="hero-sub">Solo planning and execution, 2 weeks in. Here's what the data revealed, the strategy that came out of it, the 3 communication pillars organizing everything, and every asset shipped along the way.</p>
-    <p class="hero-meta">April 7 — April 21, 2026 <span class="sep">·</span> By Daniela Perea</p>
+    <p class="hero-meta">Currently active · Q2 2026 <span class="sep">·</span> Last updated: April 22, 2026 <span class="sep">·</span> By Daniela Perea</p>
 
     <div class="metric-grid">
       <div class="metric-tile reveal d1">
@@ -2465,15 +2818,196 @@
   </div>
 </section>
 
+</div>
+<!-- end Q2 VIEW -->
+
+<!-- Q3 VIEW — Pipeline -->
+<div class="quarter-view" data-quarter="q3">
+
+  <!-- Q3 HERO -->
+  <section class="q3-hero">
+    <div class="q3-hero-inner">
+      <span class="q3-label">Q3 2026 · Pipeline</span>
+      <h1>What's coming <span class="accent">next.</span></h1>
+      <p class="q3-hero-sub">A live space for what's parked, flagged, or queued for Q3 and beyond. Not a commitment — a pipeline. Ideas, opportunities, and deferred initiatives captured here as they surface during Q2 execution, so nothing strategic gets lost. Reviewed at the end of Q2 to shape the real Q3 plan.</p>
+    </div>
+  </section>
+
+  <!-- Q3 OPPORTUNITIES -->
+  <section class="q3-section">
+    <div class="container">
+      <div class="q3-section-label">Opportunities flagged</div>
+      <h2 class="q3-section-title">Surfaced during Q2 · evaluate for Q3.</h2>
+      <p class="q3-section-intro">Things that showed up in the Q2 audit, conversations, or execution that deserve a second look. Sorted by how strong the signal is — "Hot" means the data supports it clearly and is waiting on capacity; "Ready" means it's scoped and ready to plan; "Idea" means worth exploring when we get there.</p>
+
+      <div class="pipeline-grid">
+
+        <div class="pipeline-card hot">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Paid channel · new</span>
+            <span class="pipeline-priority pri-hot">● Hot signal</span>
+          </div>
+          <h3>Microsoft Ads (Bing + Edge)</h3>
+          <p class="pipeline-rationale">Microsoft has its own advertising platform — ads run across Bing, Edge, Yahoo, and the broader MS network. CPCs typically 30-60% lower than Google because of less competition, and the audience skews corporate and adult — a natural match for B2B shippers.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            25% of our traffic already comes from Microsoft Edge — a corporate-user fingerprint that maps directly to our ICP. The same audience is reachable via paid on Bing. Lower CPCs + less broker competition + LinkedIn profile targeting available inside Microsoft Ads = strong complement to Google.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card hot">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Content engine</span>
+            <span class="pipeline-priority pri-hot">● Hot signal</span>
+          </div>
+          <h3>LinkedIn sustained cadence</h3>
+          <p class="pipeline-rationale">LinkedIn setup happens in Q2 (page live, pillars defined, first 4 posts). The sustained weekly cadence — consistent posting, engagement, follower growth, organic amplification — is the Q3 evolution.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            ICP is corporate (Edge 25%), competitors have zero LinkedIn presence (open ground), and LinkedIn is where B2B decision-makers actually live. Starting cadence post-site-launch avoids sending traffic to a broken funnel.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card hot">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Supply-side expansion</span>
+            <span class="pipeline-priority pri-hot">● Hot signal</span>
+          </div>
+          <h3>Partners page — full build &amp; launch</h3>
+          <p class="pipeline-rationale">The discovery and wireframing happens in Q2 (carrier interviews, copy, architecture decision). The actual build, sign-up form, backend integration with Ops, and launch move to Q3.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            Pillar 03 (Carriers) is completely empty today — no landing page, no onboarding, nothing for the supply side. Opens a second acquisition channel for the marketplace. Builds on what's scoped in Q2.
+          </div>
+          <span class="pipeline-pillar pillar-carriers">Carriers</span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Organic content</span>
+            <span class="pipeline-priority pri-ready">Ready to plan</span>
+          </div>
+          <h3>SEO content production</h3>
+          <p class="pipeline-rationale">After the restructure launches and the 179 programmatic pages are cleaned up, the domain is ready to receive real, intentional content. Blog posts, guides, and resource pages targeting queries with actual search volume.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            Backlinks from Crunchbase (DA 91), Craft.co (DA 56) give us real authority. Currently unspent. New content on a cleaned-up site compounds — long-horizon play but biggest long-term upside.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Email lifecycle</span>
+            <span class="pipeline-priority pri-ready">Ready to plan</span>
+          </div>
+          <h3>Full Klaviyo rebuild on 6-stage funnel</h3>
+          <p class="pipeline-rationale">Q2 delivers Retention Sequence + Dormant Reactivation. Q3 builds out the complete lifecycle: Qualified nurture, Activated follow-up, winback for churned accounts. All mapped to the 6-stage funnel from the Funnel section.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            Existing flows perform at ~0% CVR (Booked at 7.3% is the only non-zero). Current flows are built on system states, not journey stages. Q3 completes the rebuild started in Q2.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Measurement tooling</span>
+            <span class="pipeline-priority pri-ready">Ready to plan</span>
+          </div>
+          <h3>Automated KPI dashboard (Metabase / Looker / PostHog)</h3>
+          <p class="pipeline-rationale">Q2 proves the weekly rhythm manually. Q3 automates: connect CRM, Klaviyo, PostHog, Google Ads data into a single live dashboard. Real-time visibility without manual pulling.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            Reporting currently lives across 4+ tools with no consolidated view. A Friday Slack manual update works short-term but doesn't scale. Automation should follow the ritual, not replace a ritual that doesn't exist yet.
+          </div>
+          <span class="pipeline-pillar pillar-internal">Internal</span>
+        </div>
+
+        <div class="pipeline-card idea">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Paid optimization</span>
+            <span class="pipeline-priority pri-idea">Idea / explore</span>
+          </div>
+          <h3>Google Ads deep optimization</h3>
+          <p class="pipeline-rationale">Ads stayed live through Q2 without deep optimization because the bottleneck was the landing page. Once the new site is live and converting, Q3 is when we optimize campaigns seriously — keyword expansion, audience segmentation, bid strategy, A/B on ad copy.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            Campaign 2 at 0% CVR ($772 CAD spent). Not a copy problem — a post-click problem. After the restructure, the same ads should convert materially better without changing anything else.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card idea">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Content amplification</span>
+            <span class="pipeline-priority pri-idea">Idea / explore</span>
+          </div>
+          <h3>Customer case studies program</h3>
+          <p class="pipeline-rationale">Top Regulars (Hemlock Connect $174K, VarroaDestructor $159K, MGC Freight $156K) have real stories worth telling. Turn their journeys into case studies — for the restructured site, sales enablement, and potential PR.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from the audit</strong>
+            95+ Regulars with meaningful revenue. Zero public stories about their experience. Social proof is currently implicit — making it explicit becomes a conversion asset across the funnel.
+          </div>
+          <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="add-card">
+          <div class="add-card-icon">+</div>
+          <strong>Add here as things surface</strong>
+          <span>Ideas, opportunities, and signals caught during Q2 execution get parked here.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE / TIMELINE -->
+  <section class="archive-section">
+    <div class="container">
+      <div class="q3-section-label">Quarter timeline · the living view</div>
+      <h2 class="q3-section-title">This dashboard grows with every quarter.</h2>
+      <p class="q3-section-intro">Each quarter the active view becomes the archive, and the next quarter's pipeline becomes active. By end of year, the sum of quarters becomes the annual report. Nothing strategic gets lost between quarters — it's all here.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-quarter">Q1 2026</div>
+          <div class="timeline-title">Pre-Daniela</div>
+          <div class="timeline-desc">Ads running without strategy. No SEO oversight. Klaviyo underperforming. No funnel definition.</div>
+        </div>
+        <div class="timeline-item current">
+          <div class="timeline-quarter">Q2 2026 · Active</div>
+          <div class="timeline-title">Fix the funnel</div>
+          <div class="timeline-desc">Full audit. Strategic thesis. Website restructure. Retention sequence. Reactivation. KPI rhythm.</div>
+        </div>
+        <div class="timeline-item future">
+          <div class="timeline-quarter">Q3 2026</div>
+          <div class="timeline-title">Scale demand</div>
+          <div class="timeline-desc">New site live. Paid channels optimized. LinkedIn sustained. Content engine. Partners live.</div>
+        </div>
+        <div class="timeline-item future">
+          <div class="timeline-quarter">Q4 2026</div>
+          <div class="timeline-title">Consolidate &amp; brand</div>
+          <div class="timeline-desc">Case studies. Community. Thought leadership. Full KPI automation. Annual report.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- end Q3 VIEW -->
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="./logo-icon.png" alt="FreightSimple">
-      FreightSimple · Marketing Dashboard
+      FreightSimple · Marketing Operating Dashboard
     </div>
     <div class="footer-meta">
-      Prepared by Daniela Perea · Marketing Lead · April 2026 · v2.0
+      By Daniela Perea · Marketing Lead · v3.0 · Living dashboard
     </div>
   </div>
 </footer>
@@ -2525,12 +3059,36 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  document.querySelectorAll('.thesis-ev, .insight-card, .seo-finding, .seo-headline, .seo-takeaway, .funnel-stage, .play-card, .pillar-card, .shipped-item, .initiative, .sprint-block, .decision-card').forEach((el, i) => {
+  document.querySelectorAll('.thesis-ev, .insight-card, .seo-finding, .seo-headline, .seo-takeaway, .funnel-stage, .play-card, .pillar-card, .shipped-item, .initiative, .sprint-block, .decision-card, .pipeline-card, .timeline-item').forEach((el, i) => {
     el.classList.add('reveal');
     if (i % 4 === 1) el.classList.add('d1');
     else if (i % 4 === 2) el.classList.add('d2');
     else if (i % 4 === 3) el.classList.add('d3');
     io.observe(el);
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // Quarter tab switcher
+  // ═══════════════════════════════════════════════════════
+  const qTabs = document.querySelectorAll('.q-tab');
+  const qViews = document.querySelectorAll('.quarter-view');
+
+  qTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      // Update tab active state
+      qTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Switch visible view
+      qViews.forEach(v => {
+        v.classList.toggle('active', v.dataset.quarter === target);
+      });
+
+      // Scroll to top of the newly shown view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   });
 </script>
 
