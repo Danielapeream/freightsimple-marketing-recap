@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -662,6 +662,458 @@
     color: rgba(255,255,255,0.7);
     line-height: 1.5;
   }
+
+  /* ═══════════════════════════════════════════════════════ STRATEGY BASE */
+  .strategy {
+    background: var(--white);
+    position: relative;
+  }
+  .strategy-lead {
+    background: var(--off-white);
+    padding: 28px 32px;
+    border-radius: 14px;
+    border-left: 4px solid var(--gold);
+    margin-bottom: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .strategy-lead-icon {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .strategy-lead-body {
+    font-size: 15.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .strategy-lead-body strong {
+    color: var(--dark);
+    font-weight: 700;
+  }
+  .strategy-lead-body .source {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* Strategy Tabs */
+  .strategy-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .s-tab {
+    background: none;
+    border: none;
+    padding: 18px 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .s-tab:hover { color: var(--dark); }
+  .s-tab.active { color: var(--dark); }
+  .s-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+  .s-tab .s-num {
+    font-size: 9px;
+    padding: 3px 7px;
+    border-radius: 100px;
+    background: var(--off-white);
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .s-tab.active .s-num { background: var(--gold); color: var(--dark); }
+
+  .strategy-view { display: none; }
+  .strategy-view.active { display: block; }
+
+  /* Block A — Voice of Sales */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .voice-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 12px;
+    padding: 26px 28px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .voice-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 rgba(250, 204, 11, 0.12);
+  }
+  .voice-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .voice-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .voice-pill {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+    background: rgba(250, 204, 11, 0.15);
+    color: var(--warning);
+  }
+  .voice-pill.critical { background: rgba(226, 75, 74, 0.12); color: var(--error); }
+  .voice-pill.opportunity { background: var(--blue-light); color: var(--blue); }
+  .voice-card h4 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: var(--dark);
+  }
+  .voice-quote {
+    padding: 14px 16px;
+    background: var(--off-white);
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.55;
+    margin-bottom: 14px;
+    font-style: italic;
+    border-left: 3px solid var(--muted-soft);
+  }
+  .voice-quote::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 0;
+    vertical-align: -8px;
+    margin-right: 4px;
+    font-style: normal;
+    font-weight: 800;
+  }
+  .voice-implication {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .voice-implication strong {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  /* Block B — Expanded Thesis */
+  .expanded-thesis {
+    background: var(--dark);
+    color: #fff;
+    border-radius: 16px;
+    padding: 64px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .expanded-thesis::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(250,204,11,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(76,98,234,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .expanded-thesis-inner { position: relative; z-index: 2; }
+  .expanded-thesis-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .expanded-thesis-label::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--gold); opacity: 0.6;
+  }
+  .expanded-thesis-statement {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.8vw, 50px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 32px;
+    max-width: 960px;
+  }
+  .expanded-thesis-statement .highlight {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .expanded-thesis-defense {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    max-width: 820px;
+    margin-bottom: 36px;
+  }
+  .expanded-thesis-defense strong {
+    color: #fff;
+    font-weight: 600;
+  }
+  .thesis-shift {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .thesis-shift-side h5 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .thesis-shift-side p {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .thesis-shift-side.before p { color: rgba(255,255,255,0.55); }
+  .thesis-shift-arrow {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* Block C — Three Moves */
+  .moves-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .move-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 34px 30px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+  .move-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(26,29,35,0.07);
+  }
+  .move-number {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .move-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .move-card h3 .verb {
+    color: var(--blue);
+    font-style: italic;
+  }
+  .move-desc {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .move-initiatives {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+  .move-initiatives li {
+    font-size: 13.5px;
+    color: var(--dark);
+    padding: 8px 0 8px 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .move-initiatives li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .move-initiatives li .status {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    margin-left: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+  .move-initiatives li .status.live { background: rgba(29,158,117,0.15); color: var(--success); }
+  .move-initiatives li .status.q3 { background: rgba(76,98,234,0.1); color: var(--blue); }
+  .move-initiatives li .status.new { background: rgba(250,204,11,0.18); color: var(--warning); }
+
+  /* Block D — What Changes */
+  .changes-intro {
+    background: var(--blue-light);
+    padding: 22px 26px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    font-size: 14.5px;
+    color: var(--dark);
+    line-height: 1.6;
+    border-left: 4px solid var(--blue);
+  }
+  .changes-intro strong { color: var(--blue); font-weight: 700; }
+
+  .changes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .change-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    padding: 26px 28px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.25s;
+  }
+  .change-row:hover { border-color: var(--blue); }
+  .change-deliverable {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .change-deliverable .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 6px;
+    background: var(--off-white);
+    color: var(--muted);
+  }
+  .change-deliverable .tag.revise { background: rgba(250,204,11,0.18); color: var(--warning); }
+  .change-deliverable .tag.new { background: rgba(29,158,117,0.15); color: var(--success); }
+  .change-deliverable .tag.reframe { background: var(--blue-light); color: var(--blue); }
+  .change-content {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .change-content strong { color: var(--dark); font-weight: 600; }
+  .change-before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .cba-side {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cba-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .cba-side.before .cba-label { color: var(--error); }
+  .cba-side.after .cba-label { color: var(--success); }
+  .cba-side.before p { color: var(--muted-soft); text-decoration: line-through; text-decoration-color: rgba(226,75,74,0.3); }
+  .cba-side.after p { color: var(--dark); font-weight: 500; }
 
   /* ═══════════════════════════════════════════════════════ INSIGHTS */
   .insights { background: var(--off-white); }
@@ -1735,6 +2187,13 @@
     .seo-findings { grid-template-columns: 1fr; }
     .pipeline-grid { grid-template-columns: 1fr; }
     .timeline { grid-template-columns: repeat(2, 1fr); }
+    .voice-grid { grid-template-columns: 1fr; }
+    .moves-grid { grid-template-columns: 1fr; }
+    .change-row { grid-template-columns: 1fr; gap: 12px; }
+    .expanded-thesis { padding: 44px 32px; }
+    .thesis-shift { grid-template-columns: 1fr; gap: 16px; text-align: center; }
+    .thesis-shift-arrow { transform: rotate(90deg); }
+    .change-before-after { grid-template-columns: 1fr; gap: 10px; }
   }
   @media (max-width: 960px) {
     .hero { padding: 64px 20px 80px; }
@@ -1769,6 +2228,11 @@
     .q-tab .q-status { display: none; }
     .q3-hero, .q3-section, .archive-section { padding: 60px 20px; }
     .timeline { grid-template-columns: 1fr; gap: 12px; }
+    .strategy-lead { flex-direction: column; gap: 14px; padding: 22px 22px; }
+    .strategy-tabs { gap: 0; }
+    .s-tab { padding: 14px 12px; font-size: 10px; }
+    .expanded-thesis { padding: 36px 24px; border-radius: 12px; }
+    .change-row { padding: 22px 22px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 640px) {
@@ -1792,6 +2256,7 @@
   <div class="top-nav">
     <a href="#thesis">Thesis</a>
     <a href="#insights">Insights</a>
+    <a href="#strategy">Strategy</a>
     <a href="#seo">SEO</a>
     <a href="#funnel">Funnel</a>
     <a href="#pillars">Pillars</a>
@@ -1857,6 +2322,7 @@
     <div class="thesis-label">The strategic thesis</div>
     <h2 class="thesis-statement">We don't have a <span class="strike">demand</span> problem.<br>We have a <span class="pivot">conversion</span> problem.</h2>
     <p class="thesis-defense">People are already reaching FreightSimple — through ads, direct visits, referrals. The leak isn't at the top of the funnel; it's at every stage after. <strong>68% bounce on the homepage. 100+ companies quoted and never booked. 90+ booked once and never returned.</strong> Investing in more traffic while the funnel leaks is filling a broken bucket. Q2 is about fixing the bucket. Q3 we scale demand — on top of a funnel that actually holds.</p>
+    <p class="thesis-defense" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 15.5px;">Sales shadowing deepened this — see <a href="#strategy" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">Strategy Base · /03</a> for how the thesis expands with qualitative data from the front line.</p>
 
     <div class="thesis-evidence">
       <div class="thesis-ev">
@@ -1901,10 +2367,10 @@
       </div>
 
       <div class="insight-card fix">
-        <div class="insight-kind">▲ Gap closed</div>
+        <div class="insight-kind">▲ Gap closed — being revised</div>
         <div class="insight-stat">0<span class="unit"> / 3</span></div>
         <h4>Post-booking retention flow</h4>
-        <p>Zero emails existed between first booking and becoming a Regular. 90+ accounts sitting in the Converting stage with no nudge back. Retention Sequence built (Day 7 / 14 / 30), ready to load into Klaviyo.</p>
+        <p>Zero emails existed between first booking and becoming a Regular. 90+ accounts sitting in the Converting stage with no nudge back. Retention Sequence built (Day 2 / 14 / 35), <strong>now being revised based on sales shadowing</strong> — shifting from relationship-first ("how was it?") to economics-first ("here's what you saved"). Dollar math is what drives rebooking, not goodwill check-ins.</p>
       </div>
 
       <div class="insight-card flag">
@@ -1931,10 +2397,299 @@
   </div>
 </section>
 
+<!-- STRATEGY BASE -->
+<section class="strategy" id="strategy">
+  <div class="container">
+    <div class="section-label"><span class="num">/03</span>Strategy base · the qualitative layer</div>
+    <h2 class="section-title">What sales shadowing taught us.</h2>
+    <p class="section-intro">The audit gave us numbers. A shadowing session with the sales team gave us context. Combining both reveals a sharper picture of what we're actually fighting — and how to respond. This section captures that thinking, and maps it to what changes across every deliverable.</p>
+
+    <div class="strategy-lead">
+      <div class="strategy-lead-icon">✦</div>
+      <div class="strategy-lead-body">
+        <span class="source">Source · Sales shadowing · April 23, 2026</span>
+        <strong>Our clients aren't loyal to us. They're loyal to the lowest quote.</strong> Sales confirmed what the funnel data was already whispering: customers split shipments across platforms based on price-per-shipment. Each quote is a fresh competition against Freightera, Freightcom, and carrier-direct. That reframes the entire problem — retention isn't "get them to book twice." It's "earn every single shipment, every time."
+      </div>
+    </div>
+
+    <div class="strategy-tabs" role="tablist">
+      <button class="s-tab active" data-stab="voice">
+        <span class="s-num">A</span>
+        <span>Voice of Sales</span>
+      </button>
+      <button class="s-tab" data-stab="thesis">
+        <span class="s-num">B</span>
+        <span>Expanded Thesis</span>
+      </button>
+      <button class="s-tab" data-stab="moves">
+        <span class="s-num">C</span>
+        <span>Three Strategic Moves</span>
+      </button>
+      <button class="s-tab" data-stab="changes">
+        <span class="s-num">D</span>
+        <span>What Changes</span>
+      </button>
+    </div>
+
+    <!-- BLOCK A — Voice of Sales -->
+    <div class="strategy-view active" data-sview="voice">
+      <div class="voice-grid">
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Decision driver</span>
+            <span class="voice-pill critical">● High impact</span>
+          </div>
+          <h4>Price is the #1 decision factor — every time.</h4>
+          <div class="voice-quote">Clients split shipments across platforms based on who offers the best price for that specific shipment. Freightera one day, us the next. They rarely see the value-add — they see the quote.</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Value-add features (bill auditing, anomaly detection, 100+ carriers) aren't being translated to dollars. We need to reframe messaging: not "what we do," but "what it saves you per shipment."
+          </div>
+        </div>
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Audience profile</span>
+            <span class="voice-pill">Confirms ICP</span>
+          </div>
+          <h4>Decision-makers are corporate, time-starved, serious.</h4>
+          <div class="voice-quote">They speak fast. They're serious. They value human contact but want it concise. No fluff. No long sales conversations. Quick, trust-building, done.</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Validates Microsoft Edge signal (24.89% traffic = corporate fingerprint). Copy across the site must be tight, substantive, no fluff. Emails must be short. Long-form content gets skipped.
+          </div>
+        </div>
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Automation gap</span>
+            <span class="voice-pill critical">● Blocks scale</span>
+          </div>
+          <h4>Everything runs on manual CRM templates.</h4>
+          <div class="voice-quote">There's no automated email flow. Follow-ups, surveys, re-engagements — all sent manually from the CRM, template by template. Which means most accounts never get one. Hundreds of quoted clients sit in silence.</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Retention Sequence becomes critical path, not "nice to have." Klaviyo setup is the highest-leverage ops move we can make. One person in sales cannot manually nurture hundreds of accounts.
+          </div>
+        </div>
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Relationship priority</span>
+            <span class="voice-pill critical">● Strategic core</span>
+          </div>
+          <h4>Strengthening relationships is the #1 internal priority.</h4>
+          <div class="voice-quote">Large, frequent shippers are the focus — as they should be. But there's a long tail of mid-volume accounts silently drifting. With one person handling all of sales, most don't get real attention. We need automation to cover them.</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Beyond retention, we need a <em>dormant account reactivation</em> play (already in Sprint 02) plus ongoing low-touch nurture. Goal: every account feels seen, even the small ones.
+          </div>
+        </div>
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Supply-side opportunity</span>
+            <span class="voice-pill opportunity">Marketing lever</span>
+          </div>
+          <h4>No carrier scoring exists — but it should.</h4>
+          <div class="voice-quote">We've considered carrier scoring and decided it wouldn't add value. Marketing sees it differently — a scoring system would let us curate the carrier network, offer better placement to top performers, and build a defensible story ("our carriers average 97% on-time").</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Add Carrier Scoring to Q3 pipeline as a cross-functional initiative (Ops + Marketing). Turns an operational metric into a marketplace differentiator and a marketing narrative.
+          </div>
+        </div>
+
+        <div class="voice-card">
+          <div class="voice-head">
+            <span class="voice-tag">Positioning clarity</span>
+            <span class="voice-pill">Message fix</span>
+          </div>
+          <h4>Clients want parcel + freight. We only do LTL.</h4>
+          <div class="voice-quote">Prospects ask about parcel all the time. It's a completely different business. We need to be explicit and unambiguous: FreightSimple is LTL-only — not because we can't, but because specialization is the value.</div>
+          <div class="voice-implication">
+            <strong>What this means</strong>
+            Homepage and nav need to clarify what we do and don't do, upfront. Turn the limitation into a positioning win: <em>"The LTL specialists for Canadian shippers."</em> Become the category authority.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BLOCK B — Expanded Thesis -->
+    <div class="strategy-view" data-sview="thesis">
+      <div class="expanded-thesis">
+        <div class="expanded-thesis-inner">
+          <div class="expanded-thesis-label">The thesis, expanded</div>
+          <h3 class="expanded-thesis-statement">Clients aren't loyal to a platform. <span class="highlight">They're loyal to the lowest quote.</span><br>We compete for every shipment — not just the first one.</h3>
+          <p class="expanded-thesis-defense">The original thesis ("we have a conversion problem, not a demand problem") still holds — but sales shadowing deepened it. <strong>The funnel doesn't end at first-booking.</strong> It resets with every quote request. A client who books with us today will cross-shop us against Freightera tomorrow. That changes what "retention" actually means, and it changes what we must make visible on every surface: not the logos, not the features — but the <strong>dollar math</strong> of why this quote is better than the alternative.</p>
+
+          <div class="thesis-shift">
+            <div class="thesis-shift-side before">
+              <h5>We thought</h5>
+              <p>Win the first booking, retention follows.</p>
+            </div>
+            <div class="thesis-shift-arrow">→</div>
+            <div class="thesis-shift-side after">
+              <h5>We know now</h5>
+              <p>Every quote is a fresh competition. Retention is per-shipment, not per-client.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK C — Three Moves -->
+    <div class="strategy-view" data-sview="moves">
+      <div class="moves-grid">
+
+        <div class="move-card">
+          <div class="move-number">Move 01</div>
+          <h3><span class="verb">Translate</span> value to dollars, everywhere.</h3>
+          <p class="move-desc">Features don't win the quote — dollar math does. Every touchpoint (site, email, sales call) must make the economic case visible: what the client actually saves shipping with us, not what we do.</p>
+          <ul class="move-initiatives">
+            <li>New home messaging: cost + value together <span class="status new">New</span></li>
+            <li>"What it costs" reframe in the site <span class="status">Planned</span></li>
+            <li>Retention emails in dollar language <span class="status new">Revise</span></li>
+            <li>Case studies with savings math <span class="status q3">Q3</span></li>
+          </ul>
+        </div>
+
+        <div class="move-card">
+          <div class="move-number">Move 02</div>
+          <h3><span class="verb">Automate</span> the lifecycle so no account goes dark.</h3>
+          <p class="move-desc">Sales can't manually nurture hundreds of accounts. Automation becomes the relationship layer — covering the long tail of mid-volume shippers that today drift into silence.</p>
+          <ul class="move-initiatives">
+            <li>Retention Sequence live in Klaviyo <span class="status">Sprint 01</span></li>
+            <li>Dormant account reactivation <span class="status">Sprint 02</span></li>
+            <li>External newsletter rebuild <span class="status new">New</span></li>
+            <li>Full Klaviyo on 6-stage funnel <span class="status q3">Q3</span></li>
+          </ul>
+        </div>
+
+        <div class="move-card">
+          <div class="move-number">Move 03</div>
+          <h3><span class="verb">Differentiate</span> the supply side we curate.</h3>
+          <p class="move-desc">If price is the decider, we need a reason clients choose us at the same price point. A curated, scored, high-performance carrier network becomes the quiet differentiator — and the story we tell.</p>
+          <ul class="move-initiatives">
+            <li>Carrier scoring system (Ops + Marketing) <span class="status q3">Q3</span></li>
+            <li>Top-carrier narrative in site <span class="status q3">Q3</span></li>
+            <li>Partnerships with scored leaders <span class="status q3">Q3</span></li>
+            <li>Partners page build <span class="status q3">Q3</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BLOCK D — What Changes -->
+    <div class="strategy-view" data-sview="changes">
+      <div class="changes-intro">
+        <strong>The Strategy Base isn't a separate plan — it's a lens.</strong> Every deliverable already in flight gets re-read through it. Here's what adjusts, what gets reframed, and what gets added.
+      </div>
+
+      <div class="changes-list">
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Homepage copy
+            <span class="tag reframe">Reframe</span>
+          </div>
+          <div class="change-content">
+            Shift from product-first to economics-first. The hero should name the money savings directly, not lead with features. Features support the dollar claim; they don't replace it.
+            <div class="change-before-after">
+              <div class="cba-side before">
+                <span class="cba-label">Before</span>
+                <p>"Stop Babysitting Shipments."</p>
+              </div>
+              <div class="cba-side after">
+                <span class="cba-label">After</span>
+                <p>"Save $X per shipment. Automatically. No phone calls required."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Retention Sequence
+            <span class="tag revise">Revise</span>
+          </div>
+          <div class="change-content">
+            The 3-email sequence (Day 2 / 14 / 35) was written relationship-first. With sales insight, it becomes dollar-first. Email 1 gets shorter and transactional. Email 2 quantifies savings. Email 3 anchors rebooking in economics, not reminders.
+            <div class="change-before-after">
+              <div class="cba-side before">
+                <span class="cba-label">Before — Email 1</span>
+                <p>"How did it go? Reply with whatever comes to mind..."</p>
+              </div>
+              <div class="cba-side after">
+                <span class="cba-label">After — Email 1</span>
+                <p>"Your {{origin}} → {{dest}} shipment delivered. Here's what it saved you: $X vs. list rate. Bill audit cleared automatically."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Website restructure — "Pricing" tab
+            <span class="tag reframe">Reframe</span>
+          </div>
+          <div class="change-content">
+            Cannot hide price (decision driver). Cannot compete on price alone (loses to Freightera). Tab reframed from SaaS pricing-tiers to economic transparency: <strong>what ships cost, how bill auditing catches overages, why the posted quote is the real price</strong>. "Compare Core vs Premium" CTA removed.
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            External newsletter
+            <span class="tag new">New direction</span>
+          </div>
+          <div class="change-content">
+            Previously "nice-to-have" deferred to Q3. Now critical-path automation. Purpose reframes: not company updates, but <strong>monthly cost intelligence</strong> — industry rate trends, carrier performance benchmarks, accessorial fee insights. Positioned as something shippers read because it saves them money, not because we sent it.
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Positioning line
+            <span class="tag reframe">Reframe</span>
+          </div>
+          <div class="change-content">
+            From <em>"We handle freight so you don't have to"</em> to <strong>"The LTL specialists for Canadian shippers."</strong> Sharper category claim. Turns the "no parcel" limitation into a specialization advantage. Aligns with how sales describes the product to prospects.
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Carrier scoring system
+            <span class="tag new">Add · Q3</span>
+          </div>
+          <div class="change-content">
+            New initiative joining Q3 pipeline. Cross-functional Ops + Marketing project. Purpose: create a scoring rubric (on-time, damage rate, booking responsiveness), rank carriers, surface top performers in quotes, and build a marketing narrative from the aggregate network quality. Not just an internal metric — a differentiation engine.
+          </div>
+        </div>
+
+        <div class="change-row">
+          <div class="change-deliverable">
+            Funnel strategic plays
+            <span class="tag revise">Revise</span>
+          </div>
+          <div class="change-content">
+            Plays at Aware and Interested stages stay. Plays at Qualified, Activated, Converting, Retained need revision: each stage gets an explicit "make the dollar math visible" play. Not additional plays — existing plays re-instrumented with economics language.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- SEO AUDIT -->
 <section class="seo" id="seo">
   <div class="container">
-    <div class="section-label"><span class="num">/03</span>SEO deep-dive · the hidden audit</div>
+    <div class="section-label"><span class="num">/04</span>SEO deep-dive · the hidden audit</div>
     <h2 class="section-title">Not absent. Saturated with content that doesn't work.</h2>
     <p class="section-intro">The site was assumed to have no SEO. A closer look revealed the opposite: 179 indexed pages across four country/language variants, most of them programmatically generated (Book Saia LTL · Book Manitoulin LTL · Yukon LTL Freight Experts, and so on). And yet: zero organic traffic, zero ranking keywords. This changes the entire SEO play — cleanup and consolidation matter more than creation.</p>
 
@@ -2089,7 +2844,7 @@
 <!-- FUNNEL -->
 <section id="funnel">
   <div class="container">
-    <div class="section-label"><span class="num">/04</span>The new funnel · strategic plays</div>
+    <div class="section-label"><span class="num">/05</span>The new funnel · strategic plays</div>
     <h2 class="section-title">Six stages. Priority action per stage.</h2>
     <p class="section-intro">Old model: flows built on CRM system states. New model: 6 stages mapped to the customer journey itself. Each stage has a defined entry criterion and a single priority action — no ambiguity on what happens next. This is the backbone the Klaviyo rebuild, email sequences, and campaign targeting all plug into.</p>
 
@@ -2195,7 +2950,7 @@
 <!-- PILLARS -->
 <section class="pillars" id="pillars">
   <div class="container">
-    <div class="section-label"><span class="num">/05</span>Three communication pillars</div>
+    <div class="section-label"><span class="num">/06</span>Three communication pillars</div>
     <h2 class="section-title">Three audiences, three conversations.</h2>
     <p class="section-intro">Everything we communicate falls into one of three directions — inward to the team, outward to shippers, and outward to carriers. Each audience has different needs and different objectives, so each gets its own strategy. This is the organizing frame for every campaign, asset, and channel decision going forward.</p>
 
@@ -2301,7 +3056,7 @@
 <!-- SHIPPED (by pillar) -->
 <section id="shipped" style="background: var(--off-white);">
   <div class="container">
-    <div class="section-label"><span class="num">/06</span>Everything shipped · by pillar</div>
+    <div class="section-label"><span class="num">/07</span>Everything shipped · by pillar</div>
     <h2 class="section-title">Twenty-plus deliverables. Organized by audience.</h2>
     <p class="section-intro">Grouped by the pillar they serve so it's clear where the output has concentrated — and where it hasn't. Click any item with a link to view it live. Status badges reflect current state: live, ready, in review, or delivered as internal working doc.</p>
 
@@ -2475,7 +3230,7 @@
 <!-- ROADMAP — 30 days -->
 <section class="roadmap" id="roadmap">
   <div class="container">
-    <div class="section-label"><span class="num">/07</span>The next 30 days · honest scope</div>
+    <div class="section-label"><span class="num">/08</span>The next 30 days · honest scope</div>
     <h2 class="section-title">Four initiatives aligned to one thesis: fix the funnel.</h2>
     <p class="section-intro">The original plan was 7 initiatives across 4 pillars. After the full audit, it became clear that scattering effort across paid, SEO, and partners while the conversion funnel leaks is the wrong sequence. This version concentrates Q2 on the conversion and retention machine — and defers demand-side work to Q3, on purpose, so we build on something that holds.</p>
 
@@ -2755,7 +3510,7 @@
 <!-- DECISIONS -->
 <section class="decisions" id="decisions">
   <div class="container">
-    <div class="section-label"><span class="num">/08</span>Pending alignments · decisions to confirm</div>
+    <div class="section-label"><span class="num">/09</span>Pending alignments · decisions to confirm</div>
     <h2 class="section-title">Five items to align on together.</h2>
     <p class="section-intro">These are decisions that shape the next few weeks — the work is scoped and ready on my side, and a quick confirmation from leadership lets us move forward with clarity. Each card is one ask, with context and timing. Roughly ordered by how much downstream work each unlocks.</p>
 
@@ -3059,7 +3814,7 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  document.querySelectorAll('.thesis-ev, .insight-card, .seo-finding, .seo-headline, .seo-takeaway, .funnel-stage, .play-card, .pillar-card, .shipped-item, .initiative, .sprint-block, .decision-card, .pipeline-card, .timeline-item').forEach((el, i) => {
+  document.querySelectorAll('.thesis-ev, .insight-card, .seo-finding, .seo-headline, .seo-takeaway, .funnel-stage, .play-card, .pillar-card, .shipped-item, .initiative, .sprint-block, .decision-card, .pipeline-card, .timeline-item, .voice-card, .move-card, .change-row, .expanded-thesis').forEach((el, i) => {
     el.classList.add('reveal');
     if (i % 4 === 1) el.classList.add('d1');
     else if (i % 4 === 2) el.classList.add('d2');
@@ -3088,6 +3843,23 @@
 
       // Scroll to top of the newly shown view
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // Strategy Base internal tab switcher
+  // ═══════════════════════════════════════════════════════
+  const sTabs = document.querySelectorAll('.s-tab');
+  const sViews = document.querySelectorAll('.strategy-view');
+
+  sTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.stab;
+      sTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      sViews.forEach(v => {
+        v.classList.toggle('active', v.dataset.sview === target);
+      });
     });
   });
 </script>
