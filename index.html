@@ -2405,6 +2405,238 @@
   .reveal.d3 { transition-delay: 0.24s; }
   .reveal.d4 { transition-delay: 0.32s; }
 
+  /* ═══════════════════════════════════════════════════════ RESOURCE LIBRARY (/10) */
+  .library {
+    background: var(--off-white);
+  }
+  .library-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 8px 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    margin-bottom: 48px;
+  }
+  .library-status .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .library-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .lib-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .lib-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 26px 28px 22px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .lib-group-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .lib-group-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .lib-group-title em {
+    color: var(--blue);
+    font-style: italic;
+    font-weight: 700;
+  }
+  .lib-group-pulse {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .lib-group-pulse strong {
+    color: var(--dark);
+    font-weight: 700;
+  }
+
+  .lib-items {
+    display: flex;
+    flex-direction: column;
+  }
+  .lib-item {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.18s ease;
+    position: relative;
+  }
+  .lib-item:last-child {
+    border-bottom: none;
+  }
+  .lib-item.is-link:hover {
+    background: var(--off-white);
+  }
+  .lib-item.is-link:hover .lib-item-name {
+    color: var(--blue);
+  }
+  .lib-item.is-link:hover .lib-item-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+  .lib-item.is-pending {
+    cursor: default;
+  }
+  .lib-item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .lib-item-name {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    transition: color 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lib-item-arrow {
+    display: inline-block;
+    opacity: 0;
+    color: var(--blue);
+    font-weight: 400;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .lib-item-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* Library status badges — reuse system, with one new variant */
+  .lib-status {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .lib-status.live {
+    background: var(--gold);
+    color: var(--dark);
+  }
+  .lib-status.done {
+    background: rgba(29, 158, 117, 0.15);
+    color: var(--success);
+  }
+  .lib-status.review {
+    background: rgba(76, 98, 234, 0.12);
+    color: var(--blue);
+  }
+  .lib-status.pending {
+    background: var(--off-white);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .lib-status.internal {
+    background: var(--off-white);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-style: dashed;
+  }
+
+  .lib-channels {
+    margin-top: 24px;
+    padding: 22px 28px;
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .lib-channels-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .lib-channel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 8px 14px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: all 0.18s ease;
+    letter-spacing: -0.01em;
+  }
+  .lib-channel:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+  .lib-channel-arrow {
+    color: var(--muted-soft);
+    font-weight: 400;
+    transition: color 0.18s ease;
+  }
+  .lib-channel:hover .lib-channel-arrow {
+    color: var(--blue);
+  }
+
   /* ═══════════════════════════════════════════════════════ RESPONSIVE */
   @media (max-width: 1100px) {
     .funnel-strip { grid-template-columns: repeat(3, 1fr); }
@@ -2462,6 +2694,10 @@
     .s-tab { padding: 14px 12px; font-size: 10px; }
     .expanded-thesis { padding: 36px 24px; border-radius: 12px; }
     .change-row { padding: 22px 22px; }
+    .lib-group-head { padding: 22px 22px 18px; }
+    .lib-group-pulse { margin-left: 0; flex-basis: 100%; margin-top: 4px; }
+    .lib-item { padding: 18px 22px; grid-template-columns: 1fr; gap: 10px; }
+    .lib-status { justify-self: start; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 640px) {
@@ -2492,6 +2728,7 @@
     <a href="#shipped">Shipped</a>
     <a href="#roadmap">30-day Plan</a>
     <a href="#decisions">Decisions</a>
+    <a href="#library">Library</a>
   </div>
 </div>
 
@@ -2508,7 +2745,7 @@
     <div class="cover-meta-row">
       <div class="cover-meta-item">
         <div class="cover-meta-label">What's inside</div>
-        <div class="cover-meta-val">9 sections · 2 quarters</div>
+        <div class="cover-meta-val">10 sections · 2 quarters</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Last updated</div>
@@ -3280,7 +3517,7 @@
       </div>
     </div>
 
-    <p class="shipped-fineprint">Want the full list with status, links, and descriptions? It lives in <code>shipped-inventory.md</code> — separate doc to keep this view focused.</p>
+    <p class="shipped-fineprint">Want the full list with status, links, and descriptions? <a href="shipped-inventory.html" style="color: var(--blue); text-decoration: underline; font-weight: 600;">Open the full inventory →</a></p>
 
   </div>
 </section>
@@ -3675,6 +3912,243 @@
   </div>
 </section>
 
+<!-- RESOURCE LIBRARY -->
+<section class="library" id="library">
+  <div class="container">
+    <div class="section-label"><span class="num">/10</span>Resource library · everything in one place</div>
+    <h2 class="section-title">The full body of work, navigable.</h2>
+    <p class="section-intro">The dashboard above is the strategy layer — the <em>why</em> and the <em>what's next</em>. This is the index layer — the <em>where everything lives</em>. Every deliverable shipped or in progress, grouped by area of work, with a direct link when the artifact is hosted and a clear status when it isn't yet. Grows as more is shipped.</p>
+
+    <div class="library-status">
+      <span class="dot"></span>
+      Living index <span style="color: var(--muted-soft)">·</span> updated as work ships
+    </div>
+
+    <div class="library-groups">
+
+      <!-- GROUP 01 · WEBSITE -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">01</span>
+          <span class="lib-group-title">The website <em>work.</em></span>
+          <span class="lib-group-pulse">4 deliverables · <strong>2 live · 2 pending</strong></span>
+        </div>
+        <div class="lib-items">
+
+          <a class="lib-item is-link" href="#" target="_blank" rel="noopener">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Homepage Prototype v2.1 <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Dark hero, 13 sections, brand-compliant. Live on GitHub Pages, awaiting production sign-off.</div>
+            </div>
+            <span class="lib-status live">Live proto</span>
+          </a>
+
+          <a class="lib-item is-link" href="website-restructure-plan.html">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Website Restructure Plan v1.0 <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Architectural blueprint — 240 → 88 pages, 4 root problems, 6 redirect categories, page-by-page decisions.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Restructure Pitch (visual)</div>
+              <div class="lib-item-desc">Brand-aligned pitch deck for the Q2 alignment meeting — 4 problems, before/after, asks.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Redirect Mapping CSV</div>
+              <div class="lib-item-desc">187-row redirect mapping handoff-ready for engineering.</div>
+            </div>
+            <span class="lib-status internal">Internal · CSV</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 02 · EMAIL MARKETING -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">02</span>
+          <span class="lib-group-title">The email <em>machine.</em></span>
+          <span class="lib-group-pulse">4 deliverables · <strong>4 pending</strong></span>
+        </div>
+        <div class="lib-items">
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Retention Sequence v2.0 · Email 1</div>
+              <div class="lib-item-desc">Day 2 post-delivery — dollar-first opener based on sales shadowing. In review with Natasha.</div>
+            </div>
+            <span class="lib-status review">In review</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Retention Sequence v2.0 · Email 2</div>
+              <div class="lib-item-desc">Day 14 — reinforcement, value framing, soft CTA back to platform.</div>
+            </div>
+            <span class="lib-status review">In review</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Retention Sequence v2.0 · Email 3</div>
+              <div class="lib-item-desc">Day 35 — reactivation play with quote-comparison angle.</div>
+            </div>
+            <span class="lib-status review">In review</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Retention Research &amp; Synthesis</div>
+              <div class="lib-item-desc">The reasoning layer behind v2.0 — what shadowing surfaced, why dollar-first, what changed from v1.0.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 03 · BRAND & VISUAL -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">03</span>
+          <span class="lib-group-title">The visual <em>system.</em></span>
+          <span class="lib-group-pulse">3 deliverables · <strong>2 live · 1 pending</strong></span>
+        </div>
+        <div class="lib-items">
+
+          <a class="lib-item is-link" href="visual-system.html">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Visual System Rationale v1.0 <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Eight-section editorial doc — the <em>why</em> behind audience, category, principles, palette, type, and the logo blue.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Brand Book v1.0</div>
+              <div class="lib-item-desc">Voice, visual system, working norms — documented and shareable across the team.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <a class="lib-item is-link" href="#" target="_blank" rel="noopener">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Email Signature Generator <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Self-serve HTML tool — team inputs name + title, gets brand-aligned signature for Gmail/Outlook.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- GROUP 04 · STRATEGY & AUDIT -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">04</span>
+          <span class="lib-group-title">The strategic <em>base.</em></span>
+          <span class="lib-group-pulse">5 deliverables · <strong>1 live · 4 pending</strong></span>
+        </div>
+        <div class="lib-items">
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Marketing Audit</div>
+              <div class="lib-item-desc">Full audit — PostHog, CRM cohort analysis, Google Ads CVR, Klaviyo flows, SEO baseline.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Strategic Thesis · v1 + v2</div>
+              <div class="lib-item-desc">From <em>"we don't have a demand problem"</em> to <em>"clients aren't loyal to platforms, they're loyal to the lowest quote."</em></div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Funnel Re-architecture</div>
+              <div class="lib-item-desc">Old CRM-state funnel → new 6-stage user journey funnel · plays mapped to the Three Moves.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Voice of Sales · Shadowing notes</div>
+              <div class="lib-item-desc">What the April 23 shadowing surfaced — the source material for the expanded thesis and Three Moves.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <a class="lib-item is-link" href="shipped-inventory.html">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Shipped Inventory · full list <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">The complete 17-deliverable inventory with status per item — the inventory layer for this dashboard.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- GROUP 05 · INTERNAL & TEAM -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">05</span>
+          <span class="lib-group-title">The internal <em>layer.</em></span>
+          <span class="lib-group-pulse">3 deliverables · <strong>1 in review · 2 pending</strong></span>
+        </div>
+        <div class="lib-items">
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Team Handbook v1.0</div>
+              <div class="lib-item-desc">Voice, design system, working norms, onboarding. PR open on feature branch — awaiting merge.</div>
+            </div>
+            <span class="lib-status review">In review</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">The Dispatch · sample issue</div>
+              <div class="lib-item-desc">Internal newsletter format — pilot issue showing cadence, structure, voice.</div>
+            </div>
+            <span class="lib-status pending">HTML pending</span>
+          </div>
+
+          <div class="lib-item is-pending">
+            <div class="lib-item-body">
+              <div class="lib-item-name">Menstrual leave proposal</div>
+              <div class="lib-item-desc">Internal policy proposal — context, precedent, recommended structure.</div>
+            </div>
+            <span class="lib-status internal">Internal · doc</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- External channels (not docs, separated intentionally) -->
+    <div class="lib-channels">
+      <span class="lib-channels-label">External channels</span>
+      <a class="lib-channel" href="#" target="_blank" rel="noopener">LinkedIn Page <span class="lib-channel-arrow">↗</span></a>
+    </div>
+
+  </div>
+</section>
+
 </div>
 <!-- end Q2 VIEW -->
 
@@ -3899,11 +4373,7 @@
     <span class="footer-resources-label">Related resources</span>
     <a href="visual-system.html">Visual System Rationale</a>
     <span class="footer-sep">·</span>
-    <a href="shipped-inventory.md">Full Shipped Inventory</a>
-    <span class="footer-sep">·</span>
-    <a href="website-restructure-plan-v1.md">Restructure Plan v1.0</a>
-    <span class="footer-sep">·</span>
-    <a href="retention-sequence-v1.md">Retention Sequence v1.0</a>
+    <a href="shipped-inventory.html">Full Shipped Inventory</a>
   </div>
 </footer>
 
