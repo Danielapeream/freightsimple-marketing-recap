@@ -24,6 +24,7 @@
     --dark-2: #252830;
     --white: #ffffff;
     --off-white: #fafafa;
+    --cream: #FFF8E7;
     --muted: #6b7185;
     --muted-soft: #9ea3b3;
     --border: #e8eaf0;
@@ -83,6 +84,125 @@
     transition: color 0.2s;
   }
   .top-nav a:hover { color: var(--gold); }
+
+  /* ═══════════════════════════════════════════════════════ COVER · hub intro */
+  .cover {
+    background: var(--white);
+    padding: 72px 32px 80px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 30%, transparent 30%, transparent 100%);
+  }
+  .cover-inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .cover-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 28px;
+    padding: 6px 14px 6px 8px;
+    background: rgba(250, 204, 11, 0.15);
+    border-radius: 100px;
+  }
+  .cover-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(250, 204, 11, 0.25);
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 22px;
+    max-width: 800px;
+  }
+  .cover-italic {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .cover-lede {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 680px;
+    margin-bottom: 44px;
+  }
+  .cover-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 56px;
+    padding: 24px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 36px;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .cover-meta-val {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .cover-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 22px;
+    background: var(--dark);
+    color: var(--gold);
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cover-jump:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(26, 29, 35, 0.4);
+  }
+  .cover-jump .arrow {
+    transition: transform 0.3s;
+  }
+  .cover-jump:hover .arrow {
+    transform: translateY(3px);
+  }
 
   /* ═══════════════════════════════════════════════════════ HERO */
   .hero {
@@ -2236,6 +2356,39 @@
     color: rgba(255,255,255,0.4);
     text-transform: uppercase;
   }
+  .footer-resources {
+    max-width: 1280px;
+    margin: 24px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .footer-resources-label {
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-right: 8px;
+  }
+  .footer-resources a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .footer-resources a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .footer-sep { color: rgba(255,255,255,0.25); }
 
   /* ═══════════════════════════════════════════════════════ REVEAL */
   .reveal {
@@ -2270,6 +2423,8 @@
     .change-before-after { grid-template-columns: 1fr; gap: 10px; }
   }
   @media (max-width: 960px) {
+    .cover { padding: 56px 20px 60px; }
+    .cover-meta-row { gap: 20px; flex-direction: column; }
     .hero { padding: 64px 20px 80px; }
     .hero h1 { font-size: clamp(34px, 8vw, 54px); }
     .metric-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -2339,6 +2494,35 @@
     <a href="#decisions">Decisions</a>
   </div>
 </div>
+
+<!-- COVER · hub introduction -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <span class="cover-dot"></span>
+      Marketing Operating Hub
+    </div>
+    <h1 class="cover-title">A working space for <span class="cover-italic">marketing at FreightSimple.</span></h1>
+    <p class="cover-lede">Strategy, decisions, audits, and shipped work — all in one place. Built primarily as a daily working tool, also used to share progress with leadership and the team.</p>
+
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">What's inside</div>
+        <div class="cover-meta-val">9 sections · 2 quarters</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Last updated</div>
+        <div class="cover-meta-val">April 27, 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Maintained by</div>
+        <div class="cover-meta-val">Daniela Perea · Marketing Lead</div>
+      </div>
+    </div>
+
+    <a href="#thesis" class="cover-jump">Jump in <span class="arrow">↓</span></a>
+  </div>
+</section>
 
 <!-- QUARTER TABS -->
 <div class="quarter-tabs">
@@ -3073,14 +3257,14 @@
   <div class="container">
     <div class="section-label"><span class="num">/07</span>Everything shipped · by pillar</div>
     <h2 class="section-title">Output by audience, summarized.</h2>
-    <p class="section-intro">Two weeks, sixteen deliverables across the audiences. Compact view here so we keep the focus on what's next — full inventory available on request.</p>
+    <p class="section-intro">Two weeks, seventeen deliverables across the audiences. Compact view here so we keep the focus on what's next — full inventory available on request.</p>
 
     <div class="shipped-summary">
       <div class="shipped-summary-card">
         <div class="ss-num">01</div>
         <div class="ss-pillar">Internal</div>
-        <div class="ss-count">4 items</div>
-        <p class="ss-desc">Brand book, handbook, dashboard, signature generator. Foundations the team plugs into.</p>
+        <div class="ss-count">5 items</div>
+        <p class="ss-desc">Brand book, handbook, dashboard, signature generator, and the <a href="visual-system.html" style="color: var(--blue); text-decoration: underline; font-weight: 600;">visual system rationale</a>. Foundations the team plugs into.</p>
       </div>
       <div class="shipped-summary-card">
         <div class="ss-num">02</div>
@@ -3710,6 +3894,16 @@
     <div class="footer-meta">
       By Daniela Perea · Marketing Lead · v3.0 · Living dashboard
     </div>
+  </div>
+  <div class="footer-resources">
+    <span class="footer-resources-label">Related resources</span>
+    <a href="visual-system.html">Visual System Rationale</a>
+    <span class="footer-sep">·</span>
+    <a href="shipped-inventory.md">Full Shipped Inventory</a>
+    <span class="footer-sep">·</span>
+    <a href="website-restructure-plan-v1.md">Restructure Plan v1.0</a>
+    <span class="footer-sep">·</span>
+    <a href="retention-sequence-v1.md">Retention Sequence v1.0</a>
   </div>
 </footer>
 
