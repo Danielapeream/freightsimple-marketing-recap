@@ -1780,6 +1780,79 @@
   }
   .shipped-empty p { font-size: 13px; line-height: 1.5; }
 
+  /* COMPACT SHIPPED SUMMARY (replaces the long inventory) */
+  .shipped-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .shipped-summary-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 26px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .shipped-summary-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .shipped-summary-card.empty {
+    background: var(--off-white);
+    border-style: dashed;
+    border-color: var(--muted-soft);
+  }
+  .shipped-summary-card .ss-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .shipped-summary-card.empty .ss-num { color: var(--muted-soft); }
+  .shipped-summary-card .ss-pillar {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .shipped-summary-card .ss-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .shipped-summary-card .ss-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+  .shipped-fineprint {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted-soft);
+    text-align: center;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+  .shipped-fineprint code {
+    background: var(--off-white);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--dark);
+    font-size: 11.5px;
+    border: 1px solid var(--border);
+  }
+
   /* ═══════════════════════════════════════════════════════ ROADMAP (30-day plan) */
   .roadmap { background: var(--white); border-top: 1.5px solid var(--border); }
 
@@ -2183,6 +2256,7 @@
   @media (max-width: 1100px) {
     .funnel-strip { grid-template-columns: repeat(3, 1fr); }
     .shipped-grid { grid-template-columns: repeat(2, 1fr); }
+    .shipped-summary { grid-template-columns: 1fr; }
     .pillar-grid { grid-template-columns: 1fr; }
     .seo-findings { grid-template-columns: 1fr; }
     .pipeline-grid { grid-template-columns: 1fr; }
@@ -2295,7 +2369,7 @@
       <div class="metric-tile reveal d1">
         <div class="metric-label">Deliverables</div>
         <div class="metric-number" data-count="20"><span class="count">20</span><span class="unit">+</span></div>
-        <p class="metric-desc">Strategy docs, audit, brand, website, video, email, funnel — all shipped solo in 2 weeks.</p>
+        <p class="metric-desc">Strategy docs, audit, brand, website, demos, email, funnel — all shipped solo in 2 weeks.</p>
       </div>
       <div class="metric-tile reveal d2">
         <div class="metric-label">KPIs Captured</div>
@@ -2349,7 +2423,7 @@
   <div class="container">
     <div class="section-label"><span class="num">/02</span>Insights we discovered</div>
     <h2 class="section-title">What the data actually said.</h2>
-    <p class="section-intro">The audit pulled numbers from PostHog, the CRM, Google Ads, and Klaviyo. Most of it was healthy or stable. These six surfaced sharply — each one reshaped a decision we'd otherwise have made blind.</p>
+    <p class="section-intro">The audit pulled numbers from PostHog, the CRM, Google Ads, and Klaviyo. Most of it was healthy or stable. <strong>These six surfaced sharply</strong> — each one reshaped a decision we'd otherwise have made blind. They became the quantitative spine for the strategy in /03.</p>
 
     <div class="insight-grid">
       <div class="insight-card flag">
@@ -2370,7 +2444,7 @@
         <div class="insight-kind">▲ Gap closed — being revised</div>
         <div class="insight-stat">0<span class="unit"> / 3</span></div>
         <h4>Post-booking retention flow</h4>
-        <p>Zero emails existed between first booking and becoming a Regular. 90+ accounts sitting in the Converting stage with no nudge back. Retention Sequence built (Day 2 / 14 / 35), <strong>now being revised based on sales shadowing</strong> — shifting from relationship-first ("how was it?") to economics-first ("here's what you saved"). Dollar math is what drives rebooking, not goodwill check-ins.</p>
+        <p>Zero emails existed between first booking and becoming a Regular. 90+ accounts sitting in the Converting stage with no nudge back. Retention Sequence built (Day 2 / 14 / 35), <strong>now being revised based on sales shadowing</strong> — shifting from relationship-first ("how was it?") to economics-first ("here's what you saved"). <strong>Trigger: PostHog → Klaviyo integration</strong> (scoped in Sprint 01) — the audit confirmed PostHog is set up but Klaviyo isn't connected yet. Dollar math drives rebooking, not goodwill check-ins.</p>
       </div>
 
       <div class="insight-card flag">
@@ -2559,10 +2633,11 @@
         <div class="move-card">
           <div class="move-number">Move 02</div>
           <h3><span class="verb">Automate</span> the lifecycle so no account goes dark.</h3>
-          <p class="move-desc">Sales can't manually nurture hundreds of accounts. Automation becomes the relationship layer — covering the long tail of mid-volume shippers that today drift into silence.</p>
+          <p class="move-desc">Sales can't manually nurture hundreds of accounts. Automation becomes the relationship layer — covering the long tail of mid-volume shippers that today drift into silence. Measurement makes the automation intelligent.</p>
           <ul class="move-initiatives">
             <li>Retention Sequence live in Klaviyo <span class="status">Sprint 01</span></li>
             <li>Dormant account reactivation <span class="status">Sprint 02</span></li>
+            <li>PostHog event taxonomy + funnels <span class="status new">Q2 transversal</span></li>
             <li>External newsletter rebuild <span class="status new">New</span></li>
             <li>Full Klaviyo on 6-stage funnel <span class="status q3">Q3</span></li>
           </ul>
@@ -2723,7 +2798,7 @@
     </div>
 
     <!-- CRITICAL FINDINGS -->
-    <div class="seo-subsection-title">Critical findings</div>
+    <div class="seo-subsection-title">What matters most</div>
     <div class="seo-findings">
 
       <div class="seo-finding critical">
@@ -2754,46 +2829,6 @@
         </div>
       </div>
 
-      <div class="seo-finding warning">
-        <div class="seo-finding-header">
-          <span class="seo-finding-tag">Heading hierarchy broken</span>
-          <span class="seo-finding-severity sev-med">Medium severity</span>
-        </div>
-        <h4>Homepage has 50 H3s and 11 H2s</h4>
-        <p>Fifty H3 tags on a single page signals either over-structured content or misused heading tags — Google struggles to understand hierarchy and likely discounts thematic focus. Needs a heading-level audit: what should actually be H2 vs H3 vs regular paragraphs.</p>
-        <div class="seo-finding-data">
-          <span class="k">Homepage</span>: <span class="v warn">H1:1 / H2:11 / H3:50</span><br>
-          <span class="k">Core Features</span>: <span class="v warn">H1:1 / H2:13 / H3:8</span><br>
-          <span class="k">Pricing</span>: <span class="v warn">H1:1 / H2:5 / H3:32</span>
-        </div>
-      </div>
-
-      <div class="seo-finding warning">
-        <div class="seo-finding-header">
-          <span class="seo-finding-tag">Duplicate meta keywords</span>
-          <span class="seo-finding-severity sev-med">Medium severity</span>
-        </div>
-        <h4>Every page uses the same 8 keywords</h4>
-        <p>Identical meta keyword block on every page audited: "LTL freight, freight shipping, freight quotes, less than truckload, shipping platform, freight management, cross-border shipping, Canada USA freight." Google hasn't used meta keywords for ranking since 2009, but the repetition also signals a lack of per-page optimization logic.</p>
-        <div class="seo-finding-data">
-          <span class="k">Per-page uniqueness</span>: <span class="v">none</span><br>
-          <span class="k">Targeting logic</span>: <span class="v">absent</span>
-        </div>
-      </div>
-
-      <div class="seo-finding critical">
-        <div class="seo-finding-header">
-          <span class="seo-finding-tag">Missing meta descriptions</span>
-          <span class="seo-finding-severity sev-high">High severity</span>
-        </div>
-        <h4>Short or missing descriptions on core pages</h4>
-        <p>The meta description is the snippet shown in search results — it's the pitch that earns the click. Case Studies page runs 109 characters (below the 150–160 recommended); several others we haven't audited yet likely have the same issue or missing descriptions entirely.</p>
-        <div class="seo-finding-data">
-          <span class="k">Case Studies</span>: <span class="v">109 chars</span><br>
-          <span class="k">Target</span>: <span class="v ok">150–160 chars</span>
-        </div>
-      </div>
-
       <div class="seo-finding positive">
         <div class="seo-finding-header">
           <span class="seo-finding-tag">Backlink foundation exists</span>
@@ -2808,47 +2843,6 @@
         </div>
       </div>
 
-    </div>
-
-    <!-- META TITLES TABLE -->
-    <div class="seo-subsection-title">Title tag audit · page-by-page</div>
-    <div class="meta-table">
-      <div class="meta-row header">
-        <div>Page URL</div>
-        <div>Title length</div>
-        <div>Meta desc.</div>
-        <div>Status</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-page">/ (Homepage)</div>
-        <div class="meta-val good">45 chars</div>
-        <div class="meta-val good">157 chars</div>
-        <div class="meta-val good">✓ Passing</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-page">/how-it-works</div>
-        <div class="meta-val bad">28 chars</div>
-        <div class="meta-val good">148 chars</div>
-        <div class="meta-val bad">✗ Title too short</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-page">/pricing</div>
-        <div class="meta-val bad">23 chars</div>
-        <div class="meta-val good">154 chars</div>
-        <div class="meta-val bad">✗ Title too short</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-page">/case-studies</div>
-        <div class="meta-val bad">28 chars</div>
-        <div class="meta-val bad">109 chars</div>
-        <div class="meta-val bad">✗ Both below target</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-page">/core-features</div>
-        <div class="meta-val bad">29 chars</div>
-        <div class="meta-val good">149 chars</div>
-        <div class="meta-val bad">✗ Title too short</div>
-      </div>
     </div>
 
     <!-- STRATEGIC TAKEAWAY -->
@@ -2867,7 +2861,7 @@
   <div class="container">
     <div class="section-label"><span class="num">/05</span>The new funnel · strategic plays</div>
     <h2 class="section-title">Six stages. Priority action per stage.</h2>
-    <p class="section-intro">Old model: flows built on CRM system states. New model: 6 stages mapped to the customer journey itself. Each stage has a defined entry criterion and a single priority action — no ambiguity on what happens next. This is the backbone the Klaviyo rebuild, email sequences, and campaign targeting all plug into.</p>
+    <p class="section-intro">Old model: flows built on CRM system states. New model: 6 stages mapped to the customer journey itself. Each stage has a defined entry criterion and a single priority action — no ambiguity on what happens next. <strong>Each play below ladders up to one of the Three Moves in /03.</strong></p>
 
     <div class="funnel-strip">
       <div class="funnel-stage s1">
@@ -2914,10 +2908,10 @@
       <div class="play-card spotlight">
         <div>
           <div class="play-target">Converting <span class="arrow">→</span> Retained</div>
-          <h5>Retention Email Sequence — the biggest gap, closed</h5>
-          <p class="play-detail">Three emails at Day 7, 14, and 30 post-first-shipment. No sequence existed here before; the CRM was losing 90+ accounts to silence. Highest ROI-per-effort play in the funnel. Exit condition: second booking completed.</p>
+          <h5>Retention Email Sequence — biggest gap, being sharpened</h5>
+          <p class="play-detail">Three emails at Day 2, 14, and 35 post-first-shipment. No sequence existed here before; the CRM was losing 90+ accounts to silence. <strong>Now being revised based on sales shadowing</strong> — shifting from relationship-first to economics-first ("here's what you saved"). Trigger: PostHog → Klaviyo (Sprint 01). Aligned to Move 02 (Automate the lifecycle).</p>
         </div>
-        <span class="play-status status-built">Built</span>
+        <span class="play-status status-built">Built · revising</span>
       </div>
 
       <div class="play-card">
@@ -2971,9 +2965,9 @@
 <!-- PILLARS -->
 <section class="pillars" id="pillars">
   <div class="container">
-    <div class="section-label"><span class="num">/06</span>Three communication pillars</div>
+    <div class="section-label"><span class="num">/06</span>Three audiences · who we communicate with</div>
     <h2 class="section-title">Three audiences, three conversations.</h2>
-    <p class="section-intro">Everything we communicate falls into one of three directions — inward to the team, outward to shippers, and outward to carriers. Each audience has different needs and different objectives, so each gets its own strategy. This is the organizing frame for every campaign, asset, and channel decision going forward.</p>
+    <p class="section-intro"><strong>Different from the Three Moves in /03.</strong> Those are <em>what we do</em> strategically. These are <em>who we speak to</em> — inward to the team, outward to shippers, outward to carriers. Each audience has different needs, so each gets its own communication strategy. This is the organizing frame for every campaign, asset, and channel decision.</p>
 
     <div class="pillar-grid">
 
@@ -3036,7 +3030,7 @@
           </ul>
         </div>
 
-        <div class="pillar-shipped-count">14 assets shipped</div>
+        <div class="pillar-shipped-count">12 assets shipped</div>
       </div>
 
       <div class="pillar-card">
@@ -3074,176 +3068,35 @@
   </div>
 </section>
 
-<!-- SHIPPED (by pillar) -->
+<!-- SHIPPED (compact summary — full inventory in separate doc) -->
 <section id="shipped" style="background: var(--off-white);">
   <div class="container">
     <div class="section-label"><span class="num">/07</span>Everything shipped · by pillar</div>
-    <h2 class="section-title">Twenty-plus deliverables. Organized by audience.</h2>
-    <p class="section-intro">Grouped by the pillar they serve so it's clear where the output has concentrated — and where it hasn't. Click any item with a link to view it live. Status badges reflect current state: live, ready, in review, or delivered as internal working doc.</p>
+    <h2 class="section-title">Output by audience, summarized.</h2>
+    <p class="section-intro">Two weeks, sixteen deliverables across the audiences. Compact view here so we keep the focus on what's next — full inventory available on request.</p>
 
-    <!-- INTERNAL -->
-    <div class="shipped-block">
-      <div class="shipped-block-header">
-        <span class="shipped-block-num">01</span>
-        <span class="shipped-block-title">Internal · Team-facing assets</span>
-        <span class="shipped-block-count">4 items</span>
+    <div class="shipped-summary">
+      <div class="shipped-summary-card">
+        <div class="ss-num">01</div>
+        <div class="ss-pillar">Internal</div>
+        <div class="ss-count">4 items</div>
+        <p class="ss-desc">Brand book, handbook, dashboard, signature generator. Foundations the team plugs into.</p>
       </div>
-      <div class="shipped-grid">
-        <a href="https://danielapeream.github.io/freightsimple-brand/brand-book.html" target="_blank" rel="noopener" class="shipped-item has-link">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Brand Book v1.0</span>
-            <span class="shipped-item-status ss-live">Live</span>
-          </div>
-          <p class="shipped-item-desc">13 sections: colors, typography, logo, voice, personas, photography, social, signatures. Source of truth for everything branded.</p>
-          <span class="shipped-item-link">Open Brand Book</span>
-        </a>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Team Handbook v1.0</span>
-            <span class="shipped-item-status ss-review">In review</span>
-          </div>
-          <p class="shipped-item-desc">Internal handbook — voice, working norms, design system, onboarding. PR ready for review + merge to main.</p>
-        </div>
-        <a href="https://danielapeream.github.io/FreightSimple-Email-Signature-Template/" target="_blank" rel="noopener" class="shipped-item has-link">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Email Signature Generator</span>
-            <span class="shipped-item-status ss-live">Live</span>
-          </div>
-          <p class="shipped-item-desc">Self-serve HTML tool — team inputs name + title, gets a brand-aligned signature to paste straight into Gmail/Outlook.</p>
-          <span class="shipped-item-link">Open generator</span>
-        </a>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Marketing Dashboard (this)</span>
-            <span class="shipped-item-status ss-live">Live</span>
-          </div>
-          <p class="shipped-item-desc">The doc you're reading — interactive recap for leadership, structured around insights, funnel, pillars, shipped, decisions.</p>
-        </div>
+      <div class="shipped-summary-card">
+        <div class="ss-num">02</div>
+        <div class="ss-pillar">Users &amp; Clients</div>
+        <div class="ss-count">12 items</div>
+        <p class="ss-desc">Strategy docs, audits, homepage prototype, retention sequence, restructure plan, demo assets brief. The bulk of the work — directly tied to fixing the funnel.</p>
+      </div>
+      <div class="shipped-summary-card empty">
+        <div class="ss-num">03</div>
+        <div class="ss-pillar">Carriers</div>
+        <div class="ss-count">0 items</div>
+        <p class="ss-desc">Under construction · signed, Pillar 03. Biggest strategic gap, scheduled for after the shipper-side homepage launches.</p>
       </div>
     </div>
 
-    <!-- USERS & CLIENTS -->
-    <div class="shipped-block">
-      <div class="shipped-block-header">
-        <span class="shipped-block-num">02</span>
-        <span class="shipped-block-title">Users &amp; Clients · Shipper-facing strategy</span>
-        <span class="shipped-block-count">14 items</span>
-      </div>
-      <div class="shipped-grid">
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Q2 Baseline Report</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Full capture of 30+ KPIs across website, CRM, carriers, operations. The audit that grounded everything else.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Marketing Audit (template)</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Week 1 audit framework — 6 sections covering website, channels, CRM, funnel, competitive, brand.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">ICP &amp; Buyer Personas</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Ideal customer profile, Alex / Sandra / Michael personas with pain points, triggers, and objections.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Funnel Health Report</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">4 CRM groups analyzed with real data — Regulars, Converting gap, Quoted never booked, Unqualified leads.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Funnel Criteria Doc</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Entry/exit criteria by stage + mapping of which email sequence serves which stage. Blueprint for Klaviyo rebuild.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Channel &amp; Competitive Audit</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Competitive landscape (Freightera, Freightcom, uShip) + state of our own channels. Identifies the SEO + LinkedIn gap.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Core Messaging Framework</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Voice, positioning, and the 3 product pillars: Pay less predictably · See problems coming · Ship in minutes.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Retention Email Sequence</span>
-            <span class="shipped-item-status ss-ready">Ready</span>
-          </div>
-          <p class="shipped-item-desc">3 emails (Day 7, 14, 30) post-first-shipment. Closes the Converting → Retained gap. Ready to load in Klaviyo.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Homepage Redesign Proposal</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">Section-by-section audit, new nav structure, 13-section wireframe, hero mockups (dark + light), animation storyboard.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Homepage Copy (v1 complete)</span>
-            <span class="shipped-item-status ss-delivered">Delivered</span>
-          </div>
-          <p class="shipped-item-desc">All 13 sections written. Hero, trust bar, pillars, compare table, testimonials, final CTA. Final version in the prototype.</p>
-        </div>
-        <a href="https://danielapeream.github.io/freightsimple-homepage-prototype/" target="_blank" rel="noopener" class="shipped-item has-link">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Homepage Prototype v2.1</span>
-            <span class="shipped-item-status ss-live">Live</span>
-          </div>
-          <p class="shipped-item-desc">Complete visual prototype, 13 sections, dark hero, full-width video, compare table, brand-compliant. Single-file HTML.</p>
-          <span class="shipped-item-link">Open prototype</span>
-        </a>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Video Explainer Brief</span>
-            <span class="shipped-item-status ss-ready">Ready</span>
-          </div>
-          <p class="shipped-item-desc">3 tonal variants evaluated, locked on "Moon Shipment" concept. Hook surreal → body realistic → close emotional.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Final Video Script · Moon Shipment</span>
-            <span class="shipped-item-status ss-ready">Ready</span>
-          </div>
-          <p class="shipped-item-desc">Locked script. Hero line: "Shipping shouldn't feel like rocket science." Ready for production on greenlight.</p>
-        </div>
-        <div class="shipped-item">
-          <div class="shipped-item-top">
-            <span class="shipped-item-name">Interactive Video Storyboard</span>
-            <span class="shipped-item-status ss-ready">Ready to publish</span>
-          </div>
-          <p class="shipped-item-desc">Scene-by-scene interactive HTML storyboard for Chris to preview end-to-end before production budget releases.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARRIERS -->
-    <div class="shipped-block">
-      <div class="shipped-block-header">
-        <span class="shipped-block-num">03</span>
-        <span class="shipped-block-title">Carriers · Supply-side communication</span>
-        <span class="shipped-block-count">0 items · open ground</span>
-      </div>
-      <div class="shipped-empty">
-        <div class="shipped-empty-title">Nothing shipped yet — honestly.</div>
-        <p>Carrier-facing communication is the biggest strategic gap surfaced by this recap. No carrier-facing landing page, onboarding docs, newsletter, or case studies exist. Flagged openly: this is where marketing would logically invest next once the shipper-side homepage launches and the retention sequence is in Klaviyo.</p>
-      </div>
-    </div>
+    <p class="shipped-fineprint">Want the full list with status, links, and descriptions? It lives in <code>shipped-inventory.md</code> — separate doc to keep this view focused.</p>
 
   </div>
 </section>
@@ -3258,7 +3111,7 @@
     <div class="roadmap-meta">
       <span class="roadmap-chip">April 28 — May 25, 2026</span>
       <span class="roadmap-chip">2 sprints of 2 weeks</span>
-      <span class="roadmap-chip">4 core · 1 transversal</span>
+      <span class="roadmap-chip">4 core · 2 transversals</span>
       <span class="roadmap-chip honest">Website restructure spills into early Q3 — honest on timeline</span>
     </div>
 
@@ -3475,6 +3328,59 @@
       </div>
     </div>
 
+    <!-- TRANSVERSAL 02 — POSTHOG -->
+    <div class="sprint-block">
+      <div class="sprint-header transversal">
+        <span class="sprint-tag">Transversal</span>
+        <div class="sprint-title">PostHog · build the measurement foundation<em>Running in parallel all 4 weeks · sets up what we measure post-launch.</em></div>
+        <span class="sprint-dates">Apr 28 — May 25 · all Q2</span>
+      </div>
+
+      <div class="initiative-grid">
+        <div class="initiative transversal">
+          <div class="transversal-side">
+            <div class="initiative-head">
+              <div class="initiative-title">PostHog Discovery + Event Taxonomy v1</div>
+              <span class="initiative-pillar pillar-internal">Internal</span>
+            </div>
+            <p class="initiative-sub">PostHog is the tool that will validate (or challenge) the Strategy Base empirically. <strong>Audit complete</strong> (April 23): technical foundation is strong — reverse proxy active, session replays and heatmaps running, cross-subdomain tracking working. But only 3 custom events exist and zero business funnels are instrumented. This transversal closes that gap: turning a passive pixel into an active measurement engine before the new site launches.</p>
+
+            <div class="initiative-metric">
+              <strong>Why this matters</strong>
+              Sales shadowing gave us qualitative insights ("price is the decider"). PostHog gives us the continuous quantitative validation. The setup is already paid for and running — what's missing is the instrumentation that makes it useful. Without it, we launch the new site blind to where users actually fall through.
+            </div>
+          </div>
+
+          <div class="transversal-side">
+            <div class="scope-block">
+              <div class="scope-label in"><span class="mark">✓</span> In scope (Q2)</div>
+              <ul class="scope-list">
+                <li><strong>Discovery complete</strong> — audit done. Setup is solid (reverse proxy, session replays, heatmaps, web vitals active), but only 3 custom events and zero real funnels exist.</li>
+                <li><strong>Sprint 01 · Business event spec</strong> — document 10–15 core events to instrument (`quote_requested`, `quote_viewed`, `booking_completed`, `payment_submitted`, etc.) with properties, as a handoff contract to dev</li>
+                <li><strong>Sprint 01 · Klaviyo ↔ PostHog integration</strong> — connect via Destinations (native integration). Critical: this is what will trigger the Retention Sequence emails, not the CRM directly</li>
+                <li><strong>Sprint 02 · Funnel configuration</strong> — define 3-5 canonical funnels (landing → quote → book · traffic-source funnels · repeat-booking funnel)</li>
+                <li><strong>Sprint 02 · Session Replay filters &amp; marketing dashboard v1</strong> — pre-configured segments + first marketing dashboard (CAC per channel, UTMs, CVR by source)</li>
+              </ul>
+            </div>
+            <div class="scope-block">
+              <div class="scope-label out"><span class="mark">✗</span> Not in scope (Q3)</div>
+              <ul class="scope-list out">
+                <li>A/B tests and experiments (wait for baseline data post-launch)</li>
+                <li>In-product surveys triggered by behavior</li>
+                <li>Full dashboards built for leadership reporting</li>
+                <li>Data warehouse sources (BigQuery, Snowflake imports)</li>
+              </ul>
+            </div>
+
+            <div class="initiative-metric">
+              <strong>Success metric</strong>
+              Day of new site launch: core business events instrumented and firing · Klaviyo connected and triggering retention flow · every canonical funnel ready to measure · event taxonomy spec signed off by dev.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Q3 PREVIEW -->
     <div class="sprint-block">
       <div class="sprint-header" style="border-bottom-color: var(--blue);">
@@ -3533,12 +3439,12 @@
 <section class="decisions" id="decisions">
   <div class="container">
     <div class="section-label"><span class="num">/09</span>Pending alignments · decisions to confirm</div>
-    <h2 class="section-title">Three items to align on together.</h2>
+    <h2 class="section-title">Four items to align on together.</h2>
     <p class="section-intro">These are decisions that shape the next few weeks — the work is scoped and ready on my side, and a quick confirmation from leadership lets us move forward with clarity. Each card is one ask, with context and timing. Roughly ordered by how much downstream work each unlocks.</p>
 
     <div class="decisions-status">
       <span class="dot"></span>
-      3 open items <span style="color: var(--muted-soft)">·</span> 1 needed before homepage launch <span style="color: var(--muted-soft)">·</span> 1 for motion design tooling
+      4 open items <span style="color: var(--muted-soft)">·</span> 1 needed before homepage launch <span style="color: var(--muted-soft)">·</span> 2 access requests pending
     </div>
 
     <div class="decision-grid">
@@ -3570,6 +3476,16 @@
         <h3>Motion design tooling access</h3>
         <p>Adobe Creative Suite (After Effects) + Envato (or Lottie Files) needed to produce the Hero Demo + feature gifs scoped in Sprint 02. Also unlocks newsletter design, social assets, and future motion work. Originally requested April 21.</p>
         <span class="decision-ask">Approve subscription <span class="arrow">→</span></span>
+      </div>
+
+      <div class="decision-card">
+        <div class="decision-num">
+          <span>DECISION 04</span>
+          <span class="decision-timing soon">Sprint 01</span>
+        </div>
+        <h3>PostHog admin access</h3>
+        <p>Currently I have <em>member</em> access — sufficient for exploring data, insufficient to create the Klaviyo integration, configure Destinations, or modify project-level settings. Needed to execute the PostHog transversal work in Sprint 01–02. Admin elevation on Project 331792 (US Cloud).</p>
+        <span class="decision-ask">Elevate access <span class="arrow">→</span></span>
       </div>
     </div>
   </div>
@@ -3709,6 +3625,20 @@
             95+ Regulars with meaningful revenue. Zero public stories about their experience. Social proof is currently implicit — making it explicit becomes a conversion asset across the funnel.
           </div>
           <span class="pipeline-pillar pillar-users">Users &amp; Clients</span>
+        </div>
+
+        <div class="pipeline-card hot">
+          <div class="pipeline-header">
+            <span class="pipeline-kind">Measurement &amp; evidence</span>
+            <span class="pipeline-priority pri-hot">● Hot signal</span>
+          </div>
+          <h3>PostHog Phase 2 — experiments &amp; surveys</h3>
+          <p class="pipeline-rationale">Q2 sets the measurement foundation (event taxonomy, funnels, replays). Q3 turns it into an active testing engine: A/B tests on hero copy and CTAs, behavior-triggered in-product surveys, and experiments with statistical significance. Marketing decisions move from opinion to evidence.</p>
+          <div class="pipeline-signal">
+            <strong>Signal from Strategy Base</strong>
+            The tesis ("clients are loyal to price, not platform") is compelling but comes from one sales shadowing session. PostHog experiments let us validate it empirically: do users who see dollar savings convert better? Does pricing transparency increase booking rate? Without Phase 2, we guess. With it, we know.
+          </div>
+          <span class="pipeline-pillar pillar-internal">Internal</span>
         </div>
 
         <div class="pipeline-card hot">
