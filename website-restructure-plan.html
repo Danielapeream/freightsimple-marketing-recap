@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Restructure Plan v1.0 · FreightSimple Marketing</title>
+<meta name="description" content="Architectural blueprint for the FreightSimple website restructure — 240 → 88 pages, redirect logic, page-by-page decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1d23;
+    --dark-2: #2a2d35;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --off-white: #fafafa;
+    --gold: #facc0b;
+    --gold-deep: #8a6b04;
+    --gold-light: rgba(250, 204, 11, 0.15);
+    --blue: #4C62EA;
+    --blue-light: #EEF1FD;
+    --blue-deep: #2c3aa8;
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f0f1f6;
+    --success: #1D9E75;
+    --success-light: rgba(29, 158, 117, 0.12);
+    --warning: #BA7517;
+    --warning-light: rgba(186, 117, 23, 0.12);
+    --error: #C84545;
+    --error-light: rgba(200, 69, 69, 0.10);
+    --ff-display: 'Plus Jakarta Sans', sans-serif;
+    --ff-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ff-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--off-white);
+    font-family: var(--ff-body);
+    color: var(--dark);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 56px 96px;
+    background: var(--white);
+    min-height: 100vh;
+  }
+
+  /* Brand strip */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand img { width: 24px; height: 24px; }
+  .brand-name {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover {
+    border-color: var(--dark);
+    color: var(--dark);
+  }
+
+  /* Header */
+  .doc-meta {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .doc-meta::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: 22px;
+    color: var(--dark);
+  }
+  h1 .accent { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  .lede {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+
+  /* Top stats */
+  .top-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 26px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 56px;
+  }
+  .top-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .top-meta-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .top-meta-val {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .top-meta-val.wide {
+    font-size: 13px;
+  }
+
+  /* Mini TOC */
+  .toc {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 64px;
+    border: 1px solid var(--border-soft);
+  }
+  .toc-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+    list-style: none;
+  }
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.15s;
+  }
+  .toc-list a:hover { color: var(--blue); }
+  .toc-list .toc-num {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted-soft);
+    font-weight: 700;
+    min-width: 22px;
+  }
+  .toc-list .toc-name {
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  /* Section anchors */
+  section { margin-bottom: 72px; scroll-margin-top: 24px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .sec-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.18;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  h2 em { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  .sec-tagline {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 720px;
+  }
+
+  /* Body prose */
+  p {
+    font-size: 15.5px;
+    color: var(--dark);
+    line-height: 1.72;
+    margin-bottom: 16px;
+  }
+  p.prose {
+    color: #2c3038;
+  }
+  strong { font-weight: 700; color: var(--dark); }
+  em { font-style: italic; }
+
+  /* Executive summary callout */
+  .summary {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    border-radius: 14px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 44px; right: 44px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .summary-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .summary p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary strong { color: #fff; }
+  .summary .pivot {
+    display: inline-block;
+    background: rgba(250, 204, 11, 0.12);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* Problem cards */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+  .problem {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px;
+    position: relative;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .problem:hover {
+    border-color: var(--dark);
+  }
+  .problem-num {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .problem-num::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+  .problem h3 {
+    font-family: var(--ff-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  .problem .desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .problem .fix {
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    color: var(--dark);
+  }
+  .problem .fix strong { color: var(--success); font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  /* IA Tree */
+  .ia-block {
+    background: var(--off-white);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-soft);
+  }
+  .ia-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .ia-tree {
+    font-family: var(--ff-mono);
+    font-size: 13.5px;
+    line-height: 2;
+    color: var(--dark);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .ia-tree .top {
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .ia-tree .new {
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 0 6px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .ia-tree .arrow {
+    color: var(--muted-soft);
+  }
+
+  /* Tables */
+  .table-wrap {
+    margin: 24px 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--off-white);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--dark);
+    line-height: 1.55;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--off-white); }
+
+  td code, .url {
+    font-family: var(--ff-mono);
+    font-size: 12.5px;
+    background: var(--off-white);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--blue-deep);
+    font-weight: 500;
+  }
+
+  /* Sitemap totals — feature row */
+  .totals {
+    background: var(--dark);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .totals-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .totals-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+  }
+  .totals-num {
+    font-family: var(--ff-display);
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .totals-num .delta {
+    color: var(--gold);
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  .totals-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* Redirect category headers */
+  .redirect-cat {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin: 36px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .redirect-cat:first-of-type { margin-top: 0; }
+  .redirect-cat .count {
+    color: var(--muted-soft);
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  /* Adaptive solutions ASCII block */
+  .ascii-frame {
+    font-family: var(--ff-mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+    background: var(--dark);
+    color: rgba(255,255,255,0.9);
+    padding: 24px 28px;
+    border-radius: 10px;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 16px 0 24px;
+  }
+  .ascii-frame .accent { color: var(--gold); }
+  .ascii-frame .label { color: var(--blue-light); font-weight: 600; }
+
+  /* Phase grid */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .phase {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 26px;
+  }
+  .phase-num {
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .phase h3 {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+  .phase .when {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .phase ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .phase li {
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.55;
+    padding-left: 18px;
+    position: relative;
+  }
+  .phase li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* Open Questions block */
+  .questions {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 36px 40px;
+    border: 1px solid rgba(250, 204, 11, 0.3);
+  }
+  .questions-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .questions h2 {
+    font-size: 26px;
+    margin-bottom: 22px;
+  }
+  .question {
+    padding: 18px 0;
+    border-bottom: 1px dashed rgba(138, 107, 4, 0.25);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .question:last-child { border-bottom: none; padding-bottom: 0; }
+  .question:first-child { padding-top: 0; }
+  .question-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--gold-deep);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .question-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #3d3d3d;
+  }
+  .question-body strong {
+    display: block;
+    color: var(--dark);
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 15.5px;
+  }
+  .question-body .rec {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    background: rgba(76, 98, 234, 0.1);
+    color: var(--blue-deep);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .question-body .rec::before {
+    content: 'My take · ';
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* Metrics table */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: center;
+    font-size: 14px;
+  }
+  .metrics-row.header {
+    background: var(--off-white);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .metrics-table {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .metrics-row .metric-name {
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .metrics-row .baseline { color: var(--error); font-family: var(--ff-mono); font-size: 13px; font-weight: 600; }
+  .metrics-row .target { color: var(--success); font-family: var(--ff-mono); font-size: 13px; font-weight: 600; }
+  .metrics-row .neutral { color: var(--muted); font-family: var(--ff-mono); font-size: 13px; }
+
+  /* What it is / what it isn't */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 16px 0 12px;
+  }
+  .scope-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+  }
+  .scope-card.is { border-left: 3px solid var(--success); }
+  .scope-card.isnt { border-left: 3px solid var(--error); }
+  .scope-card-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .scope-card.is .scope-card-label { color: var(--success); }
+  .scope-card.isnt .scope-card-label { color: var(--error); }
+  .scope-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--dark);
+    margin-bottom: 0;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .page { padding: 40px 28px 72px; }
+    h1 { font-size: 36px; }
+    .top-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .totals { grid-template-columns: 1fr; gap: 20px; }
+    .phase-grid { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 18px; }
+    .metrics-row.header { display: none; }
+    .metrics-row > div::before {
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .metrics-row .baseline::before { content: 'Baseline · '; }
+    .metrics-row .d30::before { content: 'Day 30 · '; }
+    .metrics-row .d60::before { content: 'Day 60 · '; }
+    .metrics-row .d90::before { content: 'Day 90 · '; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .summary, .questions { padding: 28px 24px; }
+    .summary::before { left: 24px; right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Brand strip -->
+  <div class="brand">
+    <span class="brand-name">FreightSimple <span class="slash">/</span><span class="sub">Marketing</span></span>
+    <a href="./index.html" class="brand-back">← Back to hub</a>
+  </div>
+
+  <!-- Header -->
+  <div class="doc-meta">A working document · v1.0 · pending alignment</div>
+  <h1>The website, <span class="accent">restructured.</span></h1>
+  <p class="lede">An architectural blueprint for collapsing 240 indexable URLs into 88 intentional ones — fixing four root problems, consolidating SEO cannibalization through 301 redirects, and building a taxonomy that grows on purpose instead of by accident.</p>
+
+  <div class="top-meta">
+    <div class="top-meta-item">
+      <div class="top-meta-label">Author</div>
+      <div class="top-meta-val">Daniela Perea · Marketing Lead</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Date</div>
+      <div class="top-meta-val">April 22, 2026</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Status</div>
+      <div class="top-meta-val">Draft · awaiting Chris + Natasha alignment</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Scope</div>
+      <div class="top-meta-val wide">IA redesign + 301 redirect mapping</div>
+    </div>
+  </div>
+
+  <!-- Mini TOC -->
+  <nav class="toc">
+    <div class="toc-label">In this document</div>
+    <ol class="toc-list">
+      <li><a href="#summary"><span class="toc-num">01</span><span class="toc-name">Executive summary</span></a></li>
+      <li><a href="#problems"><span class="toc-num">02</span><span class="toc-name">The 4 problems this solves</span></a></li>
+      <li><a href="#architecture"><span class="toc-num">03</span><span class="toc-name">New information architecture</span></a></li>
+      <li><a href="#sitemap"><span class="toc-num">04</span><span class="toc-name">Complete sitemap proposed</span></a></li>
+      <li><a href="#redirects"><span class="toc-num">05</span><span class="toc-name">Redirect mapping</span></a></li>
+      <li><a href="#solutions"><span class="toc-num">06</span><span class="toc-name">Adaptive Solutions page</span></a></li>
+      <li><a href="#phases"><span class="toc-num">07</span><span class="toc-name">Execution phases</span></a></li>
+      <li><a href="#metrics"><span class="toc-num">08</span><span class="toc-name">Success metrics</span></a></li>
+      <li><a href="#questions"><span class="toc-num">09</span><span class="toc-name">Open decisions needed</span></a></li>
+      <li><a href="#scope"><span class="toc-num">10</span><span class="toc-name">What this is and isn't</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 — EXECUTIVE SUMMARY -->
+  <section id="summary">
+    <span class="sec-label">01 · Executive summary</span>
+    <h2>The argument in <em>one read.</em></h2>
+    <div class="summary">
+      <div class="summary-label">The case for restructuring</div>
+      <p>The current site contains <strong>~240 indexable URLs</strong> across three layers: a core marketing site (22 pages), a valuable blog (37 articles), and a sprawling SEO layer (~170 pages) with massive cannibalization and thin content.</p>
+      <p>The result: <strong>0 organic traffic and 0 ranking keywords</strong>, despite a significant indexed footprint and backlinks from high-authority domains (Crunchbase DA&nbsp;91, Craft.co DA&nbsp;56). Content exists. None of it earns.</p>
+      <p>This plan reduces the site from <span class="pivot">~240 → ~88 pages</span> (63% reduction), fixes four critical architectural problems, consolidates SEO cannibalization through 301 redirects, and establishes a scalable taxonomy that can grow intentionally in Q3+ instead of accidentally. The USA location layer is scoped to states where we have actual customer concentration — not all 50 — staying honest about real footprint (89% Canada, 11% USA).</p>
+    </div>
+  </section>
+
+  <!-- 02 — THE 4 PROBLEMS -->
+  <section id="problems">
+    <span class="sec-label">02 · The 4 problems</span>
+    <h2>What this plan <em>actually solves.</em></h2>
+    <p class="sec-tagline">Four architectural failures the current site has accumulated. Each one is solvable. Together, they're the reason content investment hasn't translated into organic visibility.</p>
+
+    <div class="problem-grid">
+
+      <div class="problem">
+        <div class="problem-num">Problem 01</div>
+        <h3>SEO cannibalization</h3>
+        <p class="desc">Multiple URLs competing for the same intent. Ontario has 5 variants. BC has 6. Generic Canada has 10+. US states duplicated with and without the <code>-ltl</code> suffix. Google can't decide which to rank — so it ranks none.</p>
+        <div class="fix"><strong>Fix</strong>One canonical URL per location/intent. 301 redirects from all variants to the canonical.</div>
+      </div>
+
+      <div class="problem">
+        <div class="problem-num">Problem 02</div>
+        <h3>Offer/content contradiction</h3>
+        <p class="desc">Home states <em>"We don't handle parcel or courier shipping"</em> — yet dedicated pages exist for FedEx and Purolator (brands primarily associated with parcel).</p>
+        <div class="fix"><strong>Fix</strong>Investigate with Jack (Ops) whether FedEx Freight and Purolator Freight (LTL divisions) are active carriers. If yes, rewrite pages to clarify. If no, remove.</div>
+      </div>
+
+      <div class="problem">
+        <div class="problem-num">Problem 03</div>
+        <h3>Broken promises</h3>
+        <p class="desc">Home, FAQ, and HTML sitemap link to "Guides" and "Help Center" — neither exists in the XML sitemap.</p>
+        <div class="fix"><strong>Fix</strong>Create <code>/guides/</code> as a curated hub pulling 5–6 of the best existing blog posts into pillar-page format.</div>
+      </div>
+
+      <div class="problem">
+        <div class="problem-num">Problem 04</div>
+        <h3>Mixed navigation taxonomy</h3>
+        <p class="desc">"Solutions" menu currently mixes three different concepts — by-problem, by-industry, by-role — creating 10+ pages that no decision-maker actually navigates through.</p>
+        <div class="fix"><strong>Fix</strong>Single adaptive <code>/solutions/</code> page that changes content based on user selection (role or industry). One page to maintain, one URL for SEO concentration.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 03 — NEW IA -->
+  <section id="architecture">
+    <span class="sec-label">03 · New information architecture</span>
+    <h2>Five top-level destinations. <em>Everything else, discoverable.</em></h2>
+    <p class="sec-tagline">Top nav stays narrow on purpose — every menu item earns its slot. Locations, carriers, and legal live in the footer where they belong: discoverable when needed, invisible when not.</p>
+
+    <div class="ia-block">
+      <div class="ia-label">Top-level navigation · 5 items</div>
+<pre class="ia-tree"><span class="top">1. PRODUCT</span>
+   ├── How it works
+   ├── Features            <span class="arrow">(merges core-features + premium-features)</span>
+   ├── Integrations
+   └── API
+
+<span class="top">2. SOLUTIONS</span>              <span class="arrow">(adaptive single page)</span>
+
+<span class="top">3. PRICING</span>
+
+<span class="top">4. RESOURCES</span>
+   ├── Blog
+   ├── Guides              <span class="new">NEW — curated from blog</span>
+   ├── Case studies
+   └── FAQ
+
+<span class="top">5. FOR CARRIERS</span>           <span class="arrow">(separate audience — Pillar 03)</span>
+</pre>
+    </div>
+
+    <div class="ia-block">
+      <div class="ia-label">Footer architecture</div>
+<pre class="ia-tree"><span class="top">LOCATIONS</span> <span class="arrow">(discoverable, not in top nav)</span>
+├── /locations/canada/{province}    <span class="arrow">— 10 pages</span>
+└── /locations/usa/{state}          <span class="arrow">— 8 pages (states with real customers)</span>
+
+<span class="top">CARRIERS</span> <span class="arrow">(discoverable)</span>
+└── /carriers/{name}                 <span class="arrow">— 7-9 pages (pending investigation)</span>
+
+<span class="top">COMPANY</span>
+├── About
+├── Contact
+└── Careers
+
+<span class="top">LEGAL</span>
+├── Privacy policy
+├── Terms of service
+└── Cookie policy
+</pre>
+    </div>
+  </section>
+
+  <!-- 04 — SITEMAP -->
+  <section id="sitemap">
+    <span class="sec-label">04 · Complete sitemap proposed</span>
+    <h2>Page-by-page <em>inventory.</em></h2>
+    <p class="sec-tagline">The full list of pages that survive the restructure, grouped by purpose. Every page either keeps, consolidates, or replaces existing content — nothing gets created without a reason.</p>
+
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 28px 0 14px; color: var(--dark);">Core marketing · 8 pages</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>URL</th><th>Purpose</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/</span></td><td>Homepage — conversion focus</td><td>Keep · redesign already scoped</td></tr>
+          <tr><td><span class="url">/how-it-works/</span></td><td>Explain the platform in 3 steps</td><td>Keep + rewrite</td></tr>
+          <tr><td><span class="url">/features/</span></td><td>All features in one structured page</td><td>Consolidate from core-features + premium-features</td></tr>
+          <tr><td><span class="url">/integrations/</span></td><td>List of integrations</td><td>Keep + expand</td></tr>
+          <tr><td><span class="url">/api/</span></td><td>Developer-facing API docs entry</td><td>Keep</td></tr>
+          <tr><td><span class="url">/pricing/</span></td><td>Pricing structure (free + dedicated account)</td><td>Keep + consolidate dedicated-account-pricing</td></tr>
+          <tr><td><span class="url">/compare/</span></td><td>FreightSimple vs alternatives</td><td>Keep + rewrite</td></tr>
+          <tr><td><span class="url">/contact/</span></td><td>Contact form</td><td>Keep</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 36px 0 14px; color: var(--dark);">Solutions · 1 adaptive page</h3>
+    <p class="prose">Replaces 11 separate pages — by-problem (<code>reduce-costs</code>, <code>carrier-options</code>, <code>modernise-processes</code>), by-industry (<code>manufacturing</code>, <code>distribution</code>), and by-role (<code>operations-managers</code>, <code>finance-teams</code>, <code>business-owners</code>, <code>warehouse-managers</code>, <code>multi-location-businesses</code>). One URL serves all variants via parameter-driven content. <strong>11 pages → 1 page.</strong></p>
+
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 36px 0 14px; color: var(--dark);">Resources · 47 pages</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Section</th><th>URL pattern</th><th>Count</th></tr></thead>
+        <tbody>
+          <tr><td>Blog index</td><td><span class="url">/blog/</span></td><td>1</td></tr>
+          <tr><td>Blog posts</td><td><span class="url">/blog/{slug}/</span></td><td>37 (existing, audited individually)</td></tr>
+          <tr><td>Guides hub</td><td><span class="url">/guides/</span></td><td>1 (NEW)</td></tr>
+          <tr><td>Individual guides</td><td><span class="url">/guides/{slug}/</span></td><td>5–6 (NEW, curated from blog)</td></tr>
+          <tr><td>Case studies hub</td><td><span class="url">/case-studies/</span></td><td>1</td></tr>
+          <tr><td>Individual case studies</td><td><span class="url">/case-studies/{slug}/</span></td><td>3 (fabco-plastics, north-keg, terrana-services)</td></tr>
+          <tr><td>FAQ</td><td><span class="url">/faq/</span></td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 36px 0 14px; color: var(--dark);">Locations · 18 pages</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>URL pattern</th><th>Count</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/locations/</span></td><td>1</td><td>Parent hub</td></tr>
+          <tr><td><span class="url">/locations/canada/</span></td><td>1</td><td>Canada index — primary market (89%)</td></tr>
+          <tr><td><span class="url">/locations/canada/{province}/</span></td><td>10</td><td>One per province/territory — no duplicates</td></tr>
+          <tr><td><span class="url">/locations/usa/</span></td><td>1</td><td>USA index — landing for any US state without dedicated page</td></tr>
+          <tr><td><span class="url">/locations/usa/{state}/</span></td><td>5–8</td><td>States with real customer concentration (NC, TX, OR, NJ, SC — validate with CRM)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose"><strong>Why only 5–8 US states instead of all 50:</strong> current customer distribution is 89% Canada / 11% USA. Maintaining 50 fully-written US state pages for a market that accounts for 11% of revenue is premature — and creates the same thin-content risk as the original programmatic layer. We build US state pages only where there's genuine activity, and add more as the business grows into new geographies.</p>
+
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 36px 0 14px; color: var(--dark);">Carriers · 7–9 pages · pending investigation</h3>
+    <p class="prose"><strong>Confirmed LTL carriers to keep:</strong> ABF, Day &amp; Ross, Estes, Manitoulin, Saia, TForce Freight, Vitran, XPO, Roadrunner.<br><strong>Pending investigation:</strong> FedEx Freight, Purolator Freight (may be legitimate LTL services — ask Jack).</p>
+
+    <!-- TOTALS -->
+    <h3 style="font-family: var(--ff-display); font-size: 18px; font-weight: 800; margin: 36px 0 14px; color: var(--dark);">Sitemap totals</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Layer</th><th>Current</th><th>Proposed</th><th>Delta</th></tr></thead>
+        <tbody>
+          <tr><td>Core marketing</td><td>22</td><td>8</td><td style="color: var(--error); font-weight: 600;">−14</td></tr>
+          <tr><td>Solutions / For / Industries</td><td>11</td><td>1</td><td style="color: var(--error); font-weight: 600;">−10</td></tr>
+          <tr><td>Blog + Resources</td><td>40</td><td>47</td><td style="color: var(--success); font-weight: 600;">+7 (new guides hub)</td></tr>
+          <tr><td>Locations <span style="color: var(--muted-soft); font-family: var(--ff-mono); font-size: 11px;">(/content/{location})</span></td><td>~120</td><td>18 (10 CA + 8 US)</td><td style="color: var(--error); font-weight: 600;">−102</td></tr>
+          <tr><td>Carriers <span style="color: var(--muted-soft); font-family: var(--ff-mono); font-size: 11px;">(/content/{carrier})</span></td><td>~13</td><td>9</td><td style="color: var(--error); font-weight: 600;">−4</td></tr>
+          <tr><td>Keyword landings <span style="color: var(--muted-soft); font-family: var(--ff-mono); font-size: 11px;">(/content/{keyword})</span></td><td>~30</td><td>0</td><td style="color: var(--error); font-weight: 600;">−30</td></tr>
+          <tr><td>Case studies</td><td>4</td><td>4</td><td>0</td></tr>
+          <tr><td>For Carriers</td><td>1</td><td>1</td><td>0</td></tr>
+          <tr><td>Legal / Company</td><td>4</td><td>4</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="totals">
+      <div class="totals-item">
+        <div class="totals-label">Pages today</div>
+        <div class="totals-num">~245</div>
+        <div class="totals-sub">Indexable URLs across all layers</div>
+      </div>
+      <div class="totals-item">
+        <div class="totals-label">Pages proposed</div>
+        <div class="totals-num">~92</div>
+        <div class="totals-sub">Each one with a job to do</div>
+      </div>
+      <div class="totals-item">
+        <div class="totals-label">Net reduction</div>
+        <div class="totals-num">−153 <span class="delta">−63%</span></div>
+        <div class="totals-sub">Density up · cannibalization gone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — REDIRECT MAPPING -->
+  <section id="redirects">
+    <span class="sec-label">05 · Redirect mapping</span>
+    <h2>The SEO-critical <em>piece.</em></h2>
+    <p class="sec-tagline">Every old URL must 301 redirect to a new URL — or the authority is lost. The 301 signals "permanent move" to Google and transfers approximately 95% of accumulated SEO value. Six categories follow.</p>
+
+    <div class="redirect-cat">Category 1 · Core site consolidation <span class="count">· 6 redirects</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Old URL</th><th>New URL</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/core-features/</span></td><td><span class="url">/features/</span></td><td>Merged into single features page</td></tr>
+          <tr><td><span class="url">/premium-features/</span></td><td><span class="url">/features/#premium</span></td><td>Merged with anchor to premium section</td></tr>
+          <tr><td><span class="url">/compare-tiers/</span></td><td><span class="url">/pricing/</span></td><td>Tier comparison lives in pricing</td></tr>
+          <tr><td><span class="url">/dedicated-account-pricing/</span></td><td><span class="url">/pricing/#dedicated</span></td><td>Merged into pricing with anchor</td></tr>
+          <tr><td><span class="url">/resources/</span></td><td><span class="url">/blog/</span></td><td>Resources hub becomes blog</td></tr>
+          <tr><td><span class="url">/sitemap/</span></td><td><span class="url">/sitemap-index.xml</span></td><td>HTML sitemap deprecated, XML remains</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="redirect-cat">Category 2 · Solutions / For / Industries consolidation <span class="count">· 11 → 1</span></div>
+    <p class="prose">All eleven Solutions/For/Industries variants redirect to <span class="url">/solutions/</span>, with parameters preserved for adaptive content loading.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Old URL</th><th>New URL</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/solutions/reduce-costs/</span></td><td><span class="url">/solutions/?view=reduce-costs</span></td></tr>
+          <tr><td><span class="url">/solutions/carrier-options/</span></td><td><span class="url">/solutions/?view=carrier-options</span></td></tr>
+          <tr><td><span class="url">/solutions/modernise-processes/</span></td><td><span class="url">/solutions/?view=modernise-processes</span></td></tr>
+          <tr><td><span class="url">/industries/</span></td><td><span class="url">/solutions/</span></td></tr>
+          <tr><td><span class="url">/industries/manufacturing/</span></td><td><span class="url">/solutions/?industry=manufacturing</span></td></tr>
+          <tr><td><span class="url">/industries/distribution/</span></td><td><span class="url">/solutions/?industry=distribution</span></td></tr>
+          <tr><td><span class="url">/for/multi-location-businesses/</span></td><td><span class="url">/solutions/?segment=multi-location</span></td></tr>
+          <tr><td><span class="url">/for/operations-managers/</span></td><td><span class="url">/solutions/?role=operations</span></td></tr>
+          <tr><td><span class="url">/for/finance-teams/</span></td><td><span class="url">/solutions/?role=finance</span></td></tr>
+          <tr><td><span class="url">/for/business-owners/</span></td><td><span class="url">/solutions/?role=business-owner</span></td></tr>
+          <tr><td><span class="url">/for/warehouse-managers/</span></td><td><span class="url">/solutions/?role=warehouse</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="redirect-cat">Category 3 · Canadian provinces consolidation <span class="count">· ~25 → 10</span></div>
+    <p class="prose">Ontario has 5 variants. BC has 6. Other provinces follow the same pattern. All consolidate to a single canonical per province.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Province</th><th>Old URL pattern</th><th>New canonical</th></tr></thead>
+        <tbody>
+          <tr><td>Ontario</td><td>5 variants — <code>/content/ontario/</code>, <code>/content/ontario-ltl/</code>, <code>/content/ltl-shipping-ontario/</code>, <code>/content/ltl-carriers-ontario/</code>, <code>/content/ltl-carriers-in-ontario/</code></td><td><span class="url">/locations/canada/ontario/</span></td></tr>
+          <tr><td>British Columbia</td><td>6 variants — <code>/content/bc/</code>, <code>/content/bc-carriers/</code>, <code>/content/bc-freight-shipping/</code>, <code>/content/bc-ltl/</code>, <code>/content/british-columbia/</code>, <code>/content/british-columbia-ltl/</code></td><td><span class="url">/locations/canada/british-columbia/</span></td></tr>
+          <tr><td>Alberta</td><td><code>/content/alberta*</code></td><td><span class="url">/locations/canada/alberta/</span></td></tr>
+          <tr><td>Manitoba</td><td><code>/content/manitoba*</code></td><td><span class="url">/locations/canada/manitoba/</span></td></tr>
+          <tr><td>New Brunswick</td><td><code>/content/new-brunswick*</code></td><td><span class="url">/locations/canada/new-brunswick/</span></td></tr>
+          <tr><td>Newfoundland</td><td><code>/content/newfoundland*</code></td><td><span class="url">/locations/canada/newfoundland-labrador/</span></td></tr>
+          <tr><td>Nova Scotia</td><td><code>/content/nova-scotia*</code> (3 variants)</td><td><span class="url">/locations/canada/nova-scotia/</span></td></tr>
+          <tr><td>Quebec</td><td><code>/content/quebec*</code></td><td><span class="url">/locations/canada/quebec/</span></td></tr>
+          <tr><td>Saskatchewan</td><td><code>/content/saskatchewan*</code> (3 variants)</td><td><span class="url">/locations/canada/saskatchewan/</span></td></tr>
+          <tr><td>Yukon</td><td><code>/content/yukon*</code> (2 variants)</td><td><span class="url">/locations/canada/yukon/</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="redirect-cat">Category 4 · US states consolidation <span class="count">· ~100 → 5–8 + hub</span></div>
+    <p class="prose">Every US state currently has two URLs (<code>/content/{state}/</code> and <code>/content/{state}-ltl/</code>). The new approach is two-tiered:</p>
+    <p class="prose"><strong>Tier A — states where we have customers (get a dedicated page):</strong> Initial working list based on current geography — North Carolina, Texas, Oregon, New Jersey, South Carolina. To finalize with Ops before Phase 02. Each state's <code>/content/{state}/</code> and <code>/content/{state}-ltl/</code> redirect to <span class="url">/locations/usa/{state}/</span>.</p>
+    <p class="prose"><strong>Tier B — all other states (redirect to USA hub):</strong> States without meaningful customer presence today redirect to <span class="url">/locations/usa/</span> — the parent hub that explains USA coverage without promising localized content we don't have. Avoids thin-content risk while preserving SEO signal. If business grows into specific states later, new pages get added without restructure.</p>
+
+    <div class="redirect-cat">Category 5 · Generic Canada / keyword landings <span class="count">· ~30 → 6–8</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Old URL</th><th>New URL</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/content/canada-freight-shipping/</span></td><td><span class="url">/locations/canada/</span></td><td>Generic Canada → Canada hub</td></tr>
+          <tr><td><span class="url">/content/canada-shipping-company/</span></td><td><span class="url">/locations/canada/</span></td><td>Same intent</td></tr>
+          <tr><td><span class="url">/content/canadian-freight/</span></td><td><span class="url">/locations/canada/</span></td><td>Same intent</td></tr>
+          <tr><td><span class="url">/content/freight-company-canada/</span></td><td><span class="url">/locations/canada/</span></td><td>Same intent</td></tr>
+          <tr><td><span class="url">/content/freight-shipping/</span></td><td><span class="url">/</span></td><td>Too generic — home</td></tr>
+          <tr><td><span class="url">/content/freight/</span></td><td><span class="url">/</span></td><td>Too generic — home</td></tr>
+          <tr><td><span class="url">/content/shipping-company/</span></td><td><span class="url">/</span></td><td>Too generic — home</td></tr>
+          <tr><td><span class="url">/content/cheapest-freight-shipping/</span></td><td><span class="url">/pricing/</span></td><td>Price-intent query</td></tr>
+          <tr><td><span class="url">/content/ltl/</span></td><td><span class="url">/how-it-works/</span></td><td>Educational intent</td></tr>
+          <tr><td><span class="url">/content/less-than-truckload/</span></td><td><span class="url">/how-it-works/</span></td><td>Same</td></tr>
+          <tr><td><span class="url">/content/freight-quote/</span></td><td><span class="url">dashboard.freightsimple.com</span></td><td>Transactional — send to dashboard</td></tr>
+          <tr><td><span class="url">/content/get-started/</span></td><td><span class="url">dashboard.freightsimple.com</span></td><td>CTA — send to signup</td></tr>
+          <tr><td><span class="url">/content/cross-border/</span> <span style="color: var(--muted-soft); font-size: 12px;">(+ 5 variants)</span></td><td><span class="url">/cross-border-shipping/</span></td><td>Cross-border intent</td></tr>
+          <tr><td><span class="url">/content/best-ltl-carriers-in-canada/</span></td><td><span class="url">/carriers/</span></td><td>Carrier intent</td></tr>
+          <tr><td><span class="url">/content/shipping-companies-toronto/</span></td><td><span class="url">/locations/canada/ontario/</span></td><td>City → province</td></tr>
+          <tr><td><span class="url">/content/shipping-companies-vancouver/</span></td><td><span class="url">/locations/canada/british-columbia/</span></td><td>City → province</td></tr>
+          <tr><td><span class="url">/content/shipping-company-montreal/</span></td><td><span class="url">/locations/canada/quebec/</span></td><td>City → province</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="redirect-cat">Category 6 · Carrier pages <span class="count">· 9 confirmed + 2 pending</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Old URL</th><th>New URL</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><span class="url">/content/abf/</span></td><td><span class="url">/carriers/abf/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/day-ross/</span></td><td><span class="url">/carriers/day-ross/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/estes/</span></td><td><span class="url">/carriers/estes/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/manitoulin/</span></td><td><span class="url">/carriers/manitoulin/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/roadrunner/</span></td><td><span class="url">/carriers/roadrunner/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/saia/</span></td><td><span class="url">/carriers/saia/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/tforce-freight/</span></td><td><span class="url">/carriers/tforce-freight/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/vitran/</span></td><td><span class="url">/carriers/vitran/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/xpo/</span></td><td><span class="url">/carriers/xpo/</span></td><td>Confirmed LTL</td></tr>
+          <tr><td><span class="url">/content/fedex/</span></td><td>TBD</td><td><strong>Pending Jack investigation</strong> — if FedEx Freight active, redirect to <code>/carriers/fedex-freight/</code>; if not, to <code>/carriers/</code></td></tr>
+          <tr><td><span class="url">/content/purolator/</span></td><td>TBD</td><td><strong>Pending Jack investigation</strong> — same logic</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 — ADAPTIVE SOLUTIONS -->
+  <section id="solutions">
+    <span class="sec-label">06 · The adaptive solutions page</span>
+    <h2>One URL, <em>many audiences.</em></h2>
+    <p class="sec-tagline">The single biggest IA shift: 11 separate pages — one per role, one per industry, one per problem — collapse into one adaptive page that swaps content based on user selection. Same SEO target, better UX, less to maintain.</p>
+
+<pre class="ascii-frame">┌──────────────────────────────────────────────────┐
+│  HEADER: <span class="accent">"Freight shouldn't be a headache</span>           │
+│           <span class="accent">for [your role / your industry]"</span>          │
+├──────────────────────────────────────────────────┤
+│  <span class="label">SELECTOR BAR:</span>                                    │
+│  I'm a:  [Ops] [Finance] [CEO] [Warehouse]       │
+│  We are: [Manufacturer] [Distributor]            │
+│          [Multi-location]                        │
+├──────────────────────────────────────────────────┤
+│  <span class="label">PAIN SECTION</span> (adapts to selection)               │
+│  <span class="label">FEATURES</span> that matter to you (adapts)             │
+│  <span class="label">CASE STUDY</span> relevant to you (adapts)              │
+│  <span class="label">CTA</span> specific to you (adapts)                     │
+└──────────────────────────────────────────────────┘</pre>
+
+    <p class="prose"><strong>Technical approach:</strong> URL parameters drive the view, but the same HTML serves all versions. Example: <span class="url">/solutions/?role=finance</span> loads the same page but JS swaps the content blocks.</p>
+    <p class="prose"><strong>SEO approach:</strong> the page itself ranks on core terms ("LTL solutions," "freight software for companies"). The variants don't need separate URLs because they serve the same search intent — differentiated by on-page UX, not by separate ranking targets.</p>
+    <p class="prose"><strong>Benefit:</strong> one authoritative page instead of 11 diluted ones.</p>
+  </section>
+
+  <!-- 07 — EXECUTION PHASES -->
+  <section id="phases">
+    <span class="sec-label">07 · Execution phases</span>
+    <h2>Four phases, <em>aligned to Sprint 01/02 + early Q3.</em></h2>
+    <p class="sec-tagline">This plan executes across the restructure phases already in the 30-day roadmap. Discovery and copy in Q2 · build and migration in early Q3.</p>
+
+    <div class="phase-grid">
+
+      <div class="phase">
+        <div class="phase-num">Phase 01 · Discovery &amp; Architecture</div>
+        <h3>Lock the blueprint</h3>
+        <div class="when">Sprint 01 · Apr 28 – May 11</div>
+        <ul>
+          <li>This document — first draft complete</li>
+          <li>Confirm FedEx / Purolator status with Jack (Ops)</li>
+          <li>Chris signs off on the architecture proposed here</li>
+          <li>Complete 301 redirect mapping file (handoff to dev)</li>
+          <li>Request Google Search Console access</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">Phase 02 · Copy &amp; Content</div>
+        <h3>Write everything</h3>
+        <div class="when">Sprint 02 · May 12 – 25</div>
+        <ul>
+          <li>Copy for 8 core marketing pages</li>
+          <li>Adaptive content blocks for <code>/solutions/</code> — 4 roles × 3 industries</li>
+          <li>Curate and format 5–6 guides from existing blog posts</li>
+          <li>Meta titles (50–60 chars) + descriptions (150–160 chars) per page</li>
+          <li>Review rounds with Chris</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">Phase 03 · Build</div>
+        <h3>Ship the design</h3>
+        <div class="when">Early Q3 · May 26 – Jun 15</div>
+        <ul>
+          <li>Visual design for all pages — reuse Homepage prototype v2.1 as baseline</li>
+          <li>Development in Astro (current framework)</li>
+          <li>Responsive QA on 3 device sizes minimum</li>
+          <li>PostHog events on every CTA</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">Phase 04 · Migration &amp; Launch</div>
+        <h3>Cut over without losing SEO</h3>
+        <div class="when">Early Q3 · Jun 16 – Jun 30</div>
+        <ul>
+          <li>Deploy 150+ 301 redirects</li>
+          <li>Update <code>sitemap-index.xml</code> → new sitemap</li>
+          <li>Fix <code>/sitemap.xml</code> 403 error</li>
+          <li>Remove "Stop Claude" line from <code>robots.txt</code></li>
+          <li>Submit new sitemap to Google Search Console</li>
+          <li>Soft launch → monitoring → production</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 08 — METRICS -->
+  <section id="metrics">
+    <span class="sec-label">08 · Success metrics</span>
+    <h2>What we'll measure, <em>and when.</em></h2>
+    <p class="sec-tagline">Five metrics, three checkpoints. Day 30 is reindex period — most metrics still settling. Day 60 is when SEO returns become visible. Day 90 is when the structural decision can be evaluated.</p>
+
+    <div class="metrics-table">
+      <div class="metrics-row header">
+        <div>Metric</div>
+        <div>Baseline</div>
+        <div>Day 30</div>
+        <div>Day 60</div>
+        <div>Day 90</div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-name">Homepage bounce rate</div>
+        <div class="baseline">68%</div>
+        <div class="d30 target">&lt; 60%</div>
+        <div class="d60 target">&lt; 55%</div>
+        <div class="d90 target">&lt; 50%</div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-name">Organic traffic (monthly)</div>
+        <div class="baseline">0</div>
+        <div class="d30 neutral">N/A · reindex</div>
+        <div class="d60 target">50+ visits</div>
+        <div class="d90 target">200+ visits</div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-name">Ranking keywords (top 100)</div>
+        <div class="baseline">0</div>
+        <div class="d30 target">5+</div>
+        <div class="d60 target">15+</div>
+        <div class="d90 target">30+</div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-name">Pages in index</div>
+        <div class="baseline">~240</div>
+        <div class="d30 target">~92</div>
+        <div class="d60 target">~92</div>
+        <div class="d90 target">~92</div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-name">Quote conversion rate</div>
+        <div class="baseline">TBD</div>
+        <div class="d30 neutral">+ measurement</div>
+        <div class="d60 target">+ 10%</div>
+        <div class="d90 target">+ 25%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — OPEN QUESTIONS -->
+  <section id="questions">
+    <div class="questions">
+      <div class="questions-label">09 · The asks</div>
+      <h2>Open decisions <em>I need from you.</em></h2>
+      <p class="prose" style="font-size: 15.5px; margin-bottom: 26px;">Five questions on the table. Each one unblocks a specific piece of the plan. Roughly ordered by how much downstream work each unlocks.</p>
+
+      <div class="question">
+        <span class="question-num">01</span>
+        <div class="question-body">
+          <strong>FedEx Freight + Purolator Freight</strong>
+          Confirm with Jack (Ops) whether they're active LTL carriers in our network. This blocks the carrier page decisions in Category 6.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">02</span>
+        <div class="question-body">
+          <strong>Cross-border shipping page</strong>
+          Create a dedicated <code>/cross-border-shipping/</code> as the destination for 5+ variant redirects, or fold it into the locations hub?
+          <span class="rec">Create dedicated page — cross-border is high-value intent and deserves its own pillar.</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">03</span>
+        <div class="question-body">
+          <strong>Multi-location businesses page</strong>
+          Keep it as a segment under <code>/solutions/</code>, or dedicated page?
+          <span class="rec">Segment within /solutions/ — unless Ops data shows significant multi-location customer concentration.</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">04</span>
+        <div class="question-body">
+          <strong>Archive vs delete old blog posts</strong>
+          All 37 likely stay. A content audit in Q3 may identify posts that don't serve the audience anymore.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">05</span>
+        <div class="question-body">
+          <strong>"Stop Claude" in <code>robots.txt</code></strong>
+          Remove during Phase 04 cleanup. Not blocking anything meaningful — just a weird artifact.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10 — WHAT IT IS -->
+  <section id="scope">
+    <span class="sec-label">10 · Scope</span>
+    <h2>What this document <em>is and isn't.</em></h2>
+
+    <div class="scope-grid">
+      <div class="scope-card is">
+        <div class="scope-card-label">It is</div>
+        <p>The architectural blueprint. Defines what pages exist, how they connect, and how we migrate from old to new without losing SEO value.</p>
+      </div>
+      <div class="scope-card isnt">
+        <div class="scope-card-label">It isn't</div>
+        <p>A copy document. A visual design. A build spec for engineering. Every new page needs copy written (Sprint 02), design applied (Sprint 03), and code shipped — though this is the input for all three.</p>
+      </div>
+    </div>
+
+    <p class="prose" style="margin-top: 24px;"><strong>Next deliverable</strong> · End of Sprint 01: a handoff-ready redirect mapping CSV for engineering, and a copy brief for Sprint 02 execution.</p>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Prepared by Daniela Perea · Marketing Lead · v1.0 · April 22, 2026</span>
+    <span><a href="./index.html">← Back to hub</a></span>
+  </div>
+
+</div>
+
+</body>
+</html>
