@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Audit · FreightSimple Marketing</title>
+<meta name="description" content="What we found in the funnel, the competitive landscape, and the channel mix — consolidated audit of the marketing state at the start of Q2 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1d23;
+    --dark-2: #2a2d35;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --off-white: #fafafa;
+    --gold: #facc0b;
+    --gold-deep: #8a6b04;
+    --gold-light: rgba(250, 204, 11, 0.15);
+    --blue: #4C62EA;
+    --blue-light: #EEF1FD;
+    --blue-deep: #2c3aa8;
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f0f1f6;
+    --success: #1D9E75;
+    --success-light: rgba(29, 158, 117, 0.12);
+    --warning: #BA7517;
+    --warning-light: rgba(186, 117, 23, 0.12);
+    --error: #C84545;
+    --error-light: rgba(200, 69, 69, 0.10);
+    --ff-display: 'Plus Jakarta Sans', sans-serif;
+    --ff-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ff-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--off-white);
+    font-family: var(--ff-body);
+    color: var(--dark);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 56px 96px;
+    background: var(--white);
+    min-height: 100vh;
+  }
+
+  /* Brand strip */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-name {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover {
+    border-color: var(--dark);
+    color: var(--dark);
+  }
+
+  /* Header */
+  .doc-meta {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .doc-meta::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: 22px;
+    color: var(--dark);
+  }
+  h1 .accent { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  .lede {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+
+  /* Top stats */
+  .top-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 26px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 56px;
+  }
+  .top-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .top-meta-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .top-meta-val {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  /* Mini TOC */
+  .toc {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 64px;
+    border: 1px solid var(--border-soft);
+  }
+  .toc-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+    list-style: none;
+  }
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.15s;
+  }
+  .toc-list a:hover { color: var(--blue); }
+  .toc-list .toc-num {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted-soft);
+    font-weight: 700;
+    min-width: 22px;
+  }
+  .toc-list .toc-name {
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  /* Section anchors */
+  section { margin-bottom: 72px; scroll-margin-top: 24px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .sec-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.18;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  h2 em { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  h3 {
+    font-family: var(--ff-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    margin: 32px 0 14px;
+    color: var(--dark);
+  }
+
+  .sec-tagline {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 720px;
+  }
+
+  /* Body prose */
+  p {
+    font-size: 15.5px;
+    color: var(--dark);
+    line-height: 1.72;
+    margin-bottom: 16px;
+  }
+  p.prose { color: #2c3038; }
+  strong { font-weight: 700; color: var(--dark); }
+  em { font-style: italic; }
+
+  code, .url {
+    font-family: var(--ff-mono);
+    font-size: 12.5px;
+    background: var(--off-white);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--blue-deep);
+    font-weight: 500;
+  }
+
+  /* Executive summary callout */
+  .summary {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    border-radius: 14px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 44px; right: 44px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .summary-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .summary p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary strong { color: #fff; }
+  .summary .pivot {
+    display: inline-block;
+    background: rgba(250, 204, 11, 0.12);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* Stat cards (used in funnel groups) */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .stat-num {
+    font-family: var(--ff-display);
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .stat.accent .stat-num { color: var(--blue); }
+  .stat.warn .stat-num { color: var(--warning); }
+  .stat.danger .stat-num { color: var(--error); }
+  .stat.good .stat-num { color: var(--success); }
+
+  /* Funnel group blocks */
+  .group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--blue);
+  }
+  .group.regular { border-left-color: var(--gold); }
+  .group.converting { border-left-color: var(--blue); }
+  .group.activated { border-left-color: var(--warning); }
+  .group.interested { border-left-color: var(--muted); }
+  .group-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .group-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .group.regular .group-label { color: var(--gold-deep); }
+  .group.activated .group-label { color: var(--warning); }
+  .group.interested .group-label { color: var(--muted); }
+  .group-count {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted-soft);
+    font-weight: 600;
+  }
+  .group h3 {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    margin: 0 0 6px;
+    color: var(--dark);
+  }
+  .group .group-tagline {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+  .group .group-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .group-insight {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: var(--off-white);
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
+  }
+  .group-insight-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .group-insight p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* Two-column patterns */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0 8px;
+  }
+  .col {
+    background: var(--off-white);
+    border-radius: 8px;
+    padding: 18px 22px;
+    border: 1px solid var(--border-soft);
+  }
+  .col-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .col.do .col-label { color: var(--success); }
+  .col.dont .col-label { color: var(--error); }
+  .col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .col li {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--dark);
+    padding-left: 16px;
+    position: relative;
+  }
+  .col.do li::before { content: '✓'; color: var(--success); position: absolute; left: 0; font-weight: 700; }
+  .col.dont li::before { content: '✗'; color: var(--error); position: absolute; left: 0; font-weight: 700; }
+
+  /* Competitor cards */
+  .compete-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .compete {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 22px 26px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    align-items: center;
+  }
+  .compete-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .compete-name strong {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.015em;
+  }
+  .compete-name span {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .compete-body {
+    font-size: 14.5px;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .compete-body strong {
+    color: var(--blue);
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  /* Differentiator highlights */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .diff {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 26px;
+    position: relative;
+  }
+  .diff.unique::before {
+    content: '★';
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+  .diff.unique { border: 1.5px solid var(--gold); background: linear-gradient(180deg, rgba(250, 204, 11, 0.04) 0%, transparent 100%); }
+  .diff h4 {
+    font-family: var(--ff-display);
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    margin-bottom: 8px;
+    padding-right: 28px;
+  }
+  .diff .diff-tag {
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .diff.unique .diff-tag { background: var(--gold); color: var(--dark); }
+  .diff:not(.unique) .diff-tag { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+  .diff p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Channel rows */
+  .channel-row {
+    display: grid;
+    grid-template-columns: 180px 100px 1fr 220px;
+    gap: 20px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: start;
+  }
+  .channel-row:last-child { border-bottom: none; }
+  .channel-table {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .channel-row.header {
+    background: var(--off-white);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .channel-name {
+    font-family: var(--ff-display);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.015em;
+  }
+  .channel-status {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .channel-status.active { background: var(--success-light); color: var(--success); }
+  .channel-status.weak { background: var(--warning-light); color: var(--warning); }
+  .channel-status.dead { background: var(--error-light); color: var(--error); }
+  .channel-status.absent { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+  .channel-status.best { background: var(--gold); color: var(--dark); }
+  .channel-finding {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--dark);
+  }
+  .channel-rec {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--blue-deep);
+    background: var(--blue-light);
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  .channel-rec strong {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  /* Priority list */
+  .priority-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .priority-item {
+    display: grid;
+    grid-template-columns: 60px 1fr 130px;
+    gap: 18px;
+    align-items: center;
+    padding: 18px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.18s;
+  }
+  .priority-item:hover {
+    border-color: var(--dark);
+    transform: translateX(2px);
+  }
+  .priority-num {
+    font-family: var(--ff-display);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .priority-item.first .priority-num { color: var(--gold-deep); font-size: 32px; }
+  .priority-body strong {
+    font-family: var(--ff-display);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.012em;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .priority-body span {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .priority-impact {
+    text-align: right;
+  }
+  .priority-impact-tag {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .priority-impact-tag.high { background: var(--success-light); color: var(--success); }
+  .priority-impact-tag.med { background: var(--warning-light); color: var(--warning); }
+  .priority-impact-tag.imm { background: var(--gold); color: var(--dark); }
+
+  /* Highlight callouts (single biggest / fastest win) */
+  .highlight-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .highlight {
+    padding: 28px 30px;
+    border-radius: 14px;
+    color: var(--white);
+  }
+  .highlight.opp {
+    background: var(--blue);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+  }
+  .highlight.win {
+    background: var(--dark);
+  }
+  .highlight-eyebrow {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .highlight.win .highlight-eyebrow { color: var(--gold); }
+  .highlight h4 {
+    font-family: var(--ff-display);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .highlight p {
+    color: rgba(255,255,255,0.82);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .highlight strong { color: var(--white); }
+
+  /* Open questions */
+  .questions {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 36px 40px;
+    border: 1px solid rgba(250, 204, 11, 0.3);
+  }
+  .questions-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .questions h2 { font-size: 26px; margin-bottom: 22px; }
+  .question {
+    padding: 18px 0;
+    border-bottom: 1px dashed rgba(138, 107, 4, 0.25);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .question:last-child { border-bottom: none; padding-bottom: 0; }
+  .question:first-of-type { padding-top: 0; }
+  .question-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--gold-deep);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .question-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #3d3d3d;
+  }
+  .question-body strong {
+    display: block;
+    color: var(--dark);
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 15.5px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .page { padding: 40px 28px 72px; }
+    h1 { font-size: 36px; }
+    .top-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .two-col, .diff-grid, .highlight-pair { grid-template-columns: 1fr; }
+    .compete { grid-template-columns: 1fr; gap: 12px; }
+    .channel-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 22px; }
+    .channel-row.header { display: none; }
+    .channel-row > div::before {
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .channel-row .channel-status { align-self: start; }
+    .priority-item { grid-template-columns: 50px 1fr; gap: 14px; padding: 16px 20px; }
+    .priority-item .priority-impact { grid-column: 2; text-align: left; }
+    .summary, .questions { padding: 28px 24px; }
+    .summary::before { left: 24px; right: 24px; }
+    .group { padding: 26px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Brand strip -->
+  <div class="brand">
+    <span class="brand-name">FreightSimple <span class="slash">/</span><span class="sub">Marketing</span></span>
+    <a href="./index.html" class="brand-back">← Back to hub</a>
+  </div>
+
+  <!-- Header -->
+  <div class="doc-meta">A working document · v1.0 · the consolidated audit</div>
+  <h1>What we found <span class="accent">when we looked.</span></h1>
+  <p class="lede">Three weeks of digging through PostHog, the CRM, Google Ads, Klaviyo, and the competitive landscape — consolidated into a single read. The funnel is healthy. The conversion machine and the retention motion are where the leverage lives. And underneath everything, two product capabilities most of the messaging hasn't claimed yet.</p>
+
+  <div class="top-meta">
+    <div class="top-meta-item">
+      <div class="top-meta-label">Audit window</div>
+      <div class="top-meta-val">Apr 14 – Apr 27, 2026</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Sources</div>
+      <div class="top-meta-val">PostHog · CRM · Klaviyo · Ads · Public</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Author</div>
+      <div class="top-meta-val">Daniela Perea · Marketing Lead</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Status</div>
+      <div class="top-meta-val">Living document · updates as data deepens</div>
+    </div>
+  </div>
+
+  <!-- Mini TOC -->
+  <nav class="toc">
+    <div class="toc-label">In this document</div>
+    <ol class="toc-list">
+      <li><a href="#summary"><span class="toc-num">01</span><span class="toc-name">Executive summary</span></a></li>
+      <li><a href="#funnel"><span class="toc-num">02</span><span class="toc-name">The 4 funnel groups</span></a></li>
+      <li><a href="#competitors"><span class="toc-num">03</span><span class="toc-name">Competitive landscape</span></a></li>
+      <li><a href="#differentiators"><span class="toc-num">04</span><span class="toc-name">Our unique moats</span></a></li>
+      <li><a href="#channels"><span class="toc-num">05</span><span class="toc-name">Channel-by-channel state</span></a></li>
+      <li><a href="#priorities"><span class="toc-num">06</span><span class="toc-name">Priority opportunities</span></a></li>
+      <li><a href="#highlights"><span class="toc-num">07</span><span class="toc-name">The biggest opportunity &amp; fastest win</span></a></li>
+      <li><a href="#openq"><span class="toc-num">08</span><span class="toc-name">What we still don't know</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 — EXECUTIVE SUMMARY -->
+  <section id="summary">
+    <span class="sec-label">01 · Executive summary</span>
+    <h2>The audit in <em>one read.</em></h2>
+    <div class="summary">
+      <div class="summary-label">What the data revealed</div>
+      <p>FreightSimple does <strong>not</strong> have a demand problem. The CRM has 400+ companies across four funnel groups, with 95+ active customers shipping regularly and a top-tier segment generating five- and six-figure revenue per account. Demand is healthy.</p>
+      <p>What the data shows, sharply, is that <span class="pivot">the leverage points are conversion and retention</span>. The homepage bounces 68% of paid traffic — a fix that compounds across every paid and organic channel. There is no follow-up email sequence after a customer's first booking — the platform goes silent at the most critical retention moment, and reactivating that motion is a zero-cost win. SEO is not absent, it's saturated with thin content that ranks for nothing — which means cleanup, not creation, is the first move.</p>
+      <p>And underneath all of it: <strong>two product capabilities — automatic bill auditing and proprietary anomaly detection — that no competitor in the market offers</strong>. They are barely mentioned in current messaging. That's the moat. The audit's job was to surface where to point it first.</p>
+    </div>
+  </section>
+
+  <!-- 02 — THE 4 GROUPS -->
+  <section id="funnel">
+    <span class="sec-label">02 · The 4 funnel groups</span>
+    <h2>Four groups. <em>Four different stories.</em></h2>
+    <p class="sec-tagline">The CRM segments into four populations based on where they got stuck. Each one is a different revenue lever — and a different conversation. Sized roughly from the data, exact thresholds in the Funnel Criteria doc.</p>
+
+    <!-- Group 1 -->
+    <div class="group regular">
+      <div class="group-header">
+        <span class="group-label">Group 01 · Regular customers</span>
+        <span class="group-count">5+ bookings · ~95 accounts</span>
+      </div>
+      <h3>The ones who stuck.</h3>
+      <p class="group-tagline">The ideal customers. They prove the model works.</p>
+      <div class="group-body">
+        <p><strong>Profile:</strong> high quote-to-shipment ratio (50%+), shipping weekly or more, Canadian-based with frequent cross-border lanes, industrial or manufactured goods, located primarily in ON / BC / AB. Long relationships, often active since 2024–2025. Multiple lanes, multiple shipment types, no contact gaps over 90 days.</p>
+        <p><strong>Revenue distribution:</strong> the top accounts in this group generate disproportionate revenue — five- and six-figure relationships built on platform fit and trust. Protecting and growing this segment is the highest-stakes play in the entire funnel: losing even one of the top accounts has material impact.</p>
+      </div>
+      <div class="group-insight">
+        <div class="group-insight-label">What makes them stick · the pattern</div>
+        <p>Consistent contact with the FreightSimple team, multi-lane usage, integration into ops as the primary LTL solution. None of these are accidental — they're the result of a relationship that gets formed early and reinforced through the platform's reliability. The retention motion isn't "send more emails" — it's <strong>protect the depth of integration</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div class="group converting">
+      <div class="group-header">
+        <span class="group-label">Group 02 · Booked 1–4 times</span>
+        <span class="group-count">~90 accounts · 1 most common</span>
+      </div>
+      <h3>The ones who tried us once.</h3>
+      <p class="group-tagline">The fastest path to revenue growth — and the biggest current gap.</p>
+      <div class="group-body">
+        <p>This group proved they trust FreightSimple enough to complete a transaction. Something stopped them from coming back. The most common booking count is <strong>one</strong>. After that first shipment, they go quiet — and so do we.</p>
+        <p><strong>Why they likely didn't come back</strong> — multiple hypotheses, mutually compatible: rates were higher than expected on repeat, shipping was a one-time need, they went back to an existing carrier, the experience was platform-fine but human-cold. Most of these are recoverable with the right outreach. None of them are being addressed today.</p>
+      </div>
+      <div class="group-insight">
+        <div class="group-insight-label">Critical gap · now identified, sequence in build</div>
+        <p>There is currently <strong>no post-first-booking email sequence</strong>. After a customer's first shipment, FreightSimple goes completely silent. A 3-touch nurture sequence at Day 2, Day 14, and Day 35 post-booking has been written (Retention v2.0) and is in review with the CEO before loading into Klaviyo. This is the single zero-cost fix with the highest expected impact in the entire audit. <a href="plays.html#retention" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full mechanic in The Plays →</a></p>
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div class="group activated">
+      <div class="group-header">
+        <span class="group-label">Group 03 · Quoted, never booked</span>
+        <span class="group-count">~100 accounts · split into two sub-groups</span>
+      </div>
+      <h3>The ones who looked and left.</h3>
+      <p class="group-tagline">Two sub-populations hidden inside one bucket. Treat them differently.</p>
+      <div class="group-body">
+        <p>This group ran quotes but never completed a booking. The temptation is to treat them as one cohort — but they split cleanly into two sub-groups with very different signals.</p>
+
+        <div class="two-col">
+          <div class="col do">
+            <div class="col-label">Just browsing · low intent</div>
+            <ul>
+              <li>Most ran 1–3 quotes total</li>
+              <li>Many are individuals (first names only)</li>
+              <li>Platform testing rather than business evaluation</li>
+              <li>Low priority for re-engagement</li>
+            </ul>
+          </div>
+          <div class="col do">
+            <div class="col-label">Almost there · 10+ quotes, no booking</div>
+            <ul>
+              <li>Spent significant time in the platform</li>
+              <li>Clear LTL freight need</li>
+              <li>Something specific stopped them</li>
+              <li>High priority for personalized outreach</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top: 18px;"><strong>Hidden noise in this group:</strong> several entries are logistics brokers — companies shopping rates to resell, not actual shippers. They should be tagged differently in the CRM and removed from sales follow-up. Cleaning this is a data-quality fix, not a marketing one.</p>
+      </div>
+      <div class="group-insight">
+        <div class="group-insight-label">Re-engagement priority</div>
+        <p>Focus on the high-quote Canadian companies first — the "almost there" segment. Their behavior says they have a real need and the platform almost won them. A targeted outreach explaining guaranteed pricing and bill auditing — the two capabilities the platform never communicated to them — could convert a meaningful subset.</p>
+      </div>
+    </div>
+
+    <!-- Group 4 -->
+    <div class="group interested">
+      <div class="group-header">
+        <span class="group-label">Group 04 · Leads never qualified</span>
+        <span class="group-count">~120 accounts · ~30% not ICP at all</span>
+      </div>
+      <h3>The ones who didn't fit.</h3>
+      <p class="group-tagline">A qualification gap at the very top of the funnel.</p>
+      <div class="group-body">
+        <p>Companies added to the CRM — likely via outbound prospecting in Oct–Nov 2025 — that never ran a quote or showed any intent. Roughly half had zero outreach. About 30% of the list isn't ICP at all: enterprise giants (Tesla-scale companies), grocery chains, government agencies, 3PL/fulfillment centers.</p>
+        <p><strong>Root cause:</strong> outbound prospecting without clear ICP criteria. The list reflects effort, not aim.</p>
+        <p><strong>The salvageable ~20%:</strong> Canadian manufacturers and distributors that match ICP but were never contacted. Worth a re-engagement attempt with proper qualification.</p>
+      </div>
+      <div class="group-insight">
+        <div class="group-insight-label">The fix · qualification gate</div>
+        <p>Before any company is added to active pipeline, four checks: (1) ships LTL freight, (2) Canada-based or cross-border CA/US, (3) ships at least weekly or has clear recurring need, (4) is a manufacturer / distributor / importer — not a broker, retailer, or enterprise. This gate alone reduces noise compounding for years. <a href="customer.html#icp" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full ICP definition in The Customer →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — COMPETITIVE LANDSCAPE -->
+  <section id="competitors">
+    <span class="sec-label">03 · Competitive landscape</span>
+    <h2>Five competitors. <em>Same shape, different threats.</em></h2>
+    <p class="sec-tagline">Where FreightSimple actually competes — and where the lines are sharpest. Direct overlap with two LTL platforms in Canada, plus indirect competition from marketplaces, traditional brokers, and TMS software for larger shippers.</p>
+
+    <div class="compete-grid">
+
+      <div class="compete">
+        <div class="compete-name">
+          <strong>Freightera</strong>
+          <span>Online marketplace · Canada + US</span>
+        </div>
+        <div class="compete-body">
+          <p style="margin-bottom: 6px;"><strong>Their strength</strong> Large carrier network, established brand, years of content and SEO authority.</p>
+          <p style="margin-bottom: 0;"><strong>Our edge</strong> LTL-only focus (specialists beat generalists), automatic bill auditing, anomaly detection, modern UX.</p>
+        </div>
+      </div>
+
+      <div class="compete">
+        <div class="compete-name">
+          <strong>Freightcom</strong>
+          <span>Online broker platform · Canada</span>
+        </div>
+        <div class="compete-body">
+          <p style="margin-bottom: 6px;"><strong>Their strength</strong> Brand recognition, volume pricing, established Canadian footprint.</p>
+          <p style="margin-bottom: 0;"><strong>Our edge</strong> LTL specialization, deeper automation on bill auditing and anomaly detection, more modern platform.</p>
+        </div>
+      </div>
+
+      <div class="compete">
+        <div class="compete-name">
+          <strong>uShip</strong>
+          <span>Freight marketplace · US-primary</span>
+        </div>
+        <div class="compete-body">
+          <p style="margin-bottom: 6px;"><strong>Their strength</strong> Large marketplace, auction pricing, scale.</p>
+          <p style="margin-bottom: 0;"><strong>Our edge</strong> Instant guaranteed pricing (no bidding uncertainty), Canadian focus, dedicated LTL specialization.</p>
+        </div>
+      </div>
+
+      <div class="compete">
+        <div class="compete-name">
+          <strong>Traditional brokers</strong>
+          <span>Phone / email · Canada</span>
+        </div>
+        <div class="compete-body">
+          <p style="margin-bottom: 6px;"><strong>Their strength</strong> Relationships, familiarity, the comfort of the known.</p>
+          <p style="margin-bottom: 0;"><strong>Our edge</strong> 24/7 self-serve availability, instant quotes, full visibility, no hold times. Modern infrastructure for an industry that defaults to a phone call.</p>
+        </div>
+      </div>
+
+      <div class="compete">
+        <div class="compete-name">
+          <strong>Tailwind / Cargobase</strong>
+          <span>TMS software · North America</span>
+        </div>
+        <div class="compete-body">
+          <p style="margin-bottom: 6px;"><strong>Their strength</strong> Full control for large shippers with dedicated freight teams and existing carrier contracts.</p>
+          <p style="margin-bottom: 0;"><strong>Our edge</strong> No setup needed, no carrier contracts, no minimums. A much lower barrier to entry for the segment we actually serve.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="group-insight" style="margin-top: 28px; border-left-color: var(--blue);">
+      <div class="group-insight-label" style="color: var(--blue-deep);">The biggest competitive gap to close</div>
+      <p>Freightera and Freightcom have years of content, SEO, and brand recognition. FreightSimple has a superior product but almost no organic presence. <strong>Bill auditing and anomaly detection are completely unique features that no competitor offers</strong> — yet they're barely mentioned in current messaging. These two capabilities alone could differentiate FreightSimple in every channel. The audit's biggest single insight is here.</p>
+    </div>
+  </section>
+
+  <!-- 04 — UNIQUE DIFFERENTIATORS -->
+  <section id="differentiators">
+    <span class="sec-label">04 · Our unique moats</span>
+    <h2>Two capabilities <em>nobody else has.</em></h2>
+    <p class="sec-tagline">Five product features matter to customers. Three of them, competitors have in some form. Two of them are unique to FreightSimple — proprietary, defensible, and currently underused in messaging. They are the entire competitive argument compressed into two sentences.</p>
+
+    <div class="diff-grid">
+
+      <div class="diff unique">
+        <span class="diff-tag">Unique to us</span>
+        <h4>Automatic bill auditing</h4>
+        <p>Carriers overcharge regularly. Our platform catches and disputes incorrect charges automatically — customers recover money without lifting a finger. Not an add-on. Built into the platform on every shipment.</p>
+      </div>
+
+      <div class="diff unique">
+        <span class="diff-tag">Unique to us</span>
+        <h4>Anomaly detection</h4>
+        <p>Proactively catches problems — misrouting, delays, customs friction, damage risk — before the customer knows. No competitor offers this level of proactive monitoring. The phrase "see problems coming" is technically defensible because we built the technology that makes it true.</p>
+      </div>
+
+      <div class="diff">
+        <span class="diff-tag">Partial · sharper than competitors</span>
+        <h4>Guaranteed pricing</h4>
+        <p>The price you see is the price you pay. No surprise accessorials, no hidden charges after delivery. Some competitors offer fixed rates; ours is enforced by the bill-auditing system above.</p>
+      </div>
+
+      <div class="diff">
+        <span class="diff-tag">Partial · category-defining</span>
+        <h4>Automatic document generation</h4>
+        <p>BOL and pickup package generated automatically from the booking. No handwritten documents, no dock errors, no faxed forms. A small operational win that compounds across every shipment.</p>
+      </div>
+
+      <div class="diff">
+        <span class="diff-tag">Specialization</span>
+        <h4>LTL-only focus</h4>
+        <p>Competitors are multi-mode (LTL + parcel + FTL). Specialists always beat generalists in customer trust. LTL-only means deeper carrier relationships, sharper rates, and more relevant features. Not a feature — a posture.</p>
+      </div>
+
+      <div class="diff">
+        <span class="diff-tag">Geography</span>
+        <h4>USA + Canada cross-border, one platform</h4>
+        <p>One login, one bill, one experience for cross-border LTL — a real pain for shippers managing dual-carrier setups today. Geographic moat reinforced by the language of <em>"the LTL specialists for Canadian shippers"</em>.</p>
+      </div>
+
+    </div>
+
+    <p class="prose" style="margin-top: 24px;">These six capabilities are the raw material. <a href="strategy.html#claims" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">How they become messaging claims in The Strategy · Save / Predict / Simplify →</a></p>
+  </section>
+
+  <!-- 05 — CHANNELS -->
+  <section id="channels">
+    <span class="sec-label">05 · Channel-by-channel state</span>
+    <h2>What each channel <em>is telling us.</em></h2>
+    <p class="sec-tagline">Six channels assessed against current performance from PostHog, Google Ads, and CRM data. Some are signaling clearly. Others are quiet — and the quiet has its own message. One channel surfaced an insight worth its own callout.</p>
+
+    <div class="channel-table">
+      <div class="channel-row header">
+        <div>Channel</div>
+        <div>Status</div>
+        <div>Finding</div>
+        <div>Recommendation</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Direct / Google organic</div>
+        <div><span class="channel-status best">Best perf.</span></div>
+        <div class="channel-finding">Highest-quality traffic in the entire mix. Google referrer sign-ins convert at the top of the funnel. <strong>Microsoft Edge users are the standout cohort at 24.89% conversion</strong> — see Microsoft Ads row below.</div>
+        <div class="channel-rec"><strong>Double down</strong>Drive more high-quality traffic via Google + SEO investment.</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Google Ads</div>
+        <div><span class="channel-status weak">In flux</span></div>
+        <div class="channel-finding">Campaign 1: 2% CVR · 4 conversions. Campaign 2: <strong>0% CVR · $772 spent</strong>. Account optimization score 60%. Homepage 68% bounce rate is the upstream blocker — paid traffic lands on a page that doesn't hold attention.</div>
+        <div class="channel-rec"><strong>Fix the destination first</strong>Pause Campaign 2. Realign keywords to ICP. Relaunch when the new homepage is live.</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Email · Klaviyo</div>
+        <div><span class="channel-status weak">Weak</span></div>
+        <div class="channel-finding">Flows exist but conversion approaches 0%. <strong>No post-booking sequence</strong>. Flows built on system states, not user journey.</div>
+        <div class="channel-rec"><strong>Rebuild around 6-stage funnel</strong>Post-first-booking sequence is #1 priority — written, in review.</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Organic SEO</div>
+        <div><span class="channel-status absent">Saturated</span></div>
+        <div class="channel-finding"><strong>0 ranking keywords. 0 organic traffic.</strong> Not absent — saturated with thin programmatic content (~170 pages) that cannibalizes itself. Competitors rank for every major LTL Canada term.</div>
+        <div class="channel-rec"><strong>Restructure first, then content</strong>240 → 88 pages with redirects. Then a real content calendar.</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">LinkedIn</div>
+        <div><span class="channel-status absent">Dormant</span></div>
+        <div class="channel-finding">No followers, no content, no engagement. ICP — operations managers and business owners — is highly active here. <strong>No competitor owns this space.</strong></div>
+        <div class="channel-rec"><strong>Build presence with cadence</strong>3–5 posts/week. Thought leadership + customer stories. (Partially relaunched, scaling up.)</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Referrals</div>
+        <div><span class="channel-status active">Organic</span></div>
+        <div class="channel-finding">Happening naturally but not tracked or incentivized. No formal program, no incentive structure. Free revenue currently invisible to the system.</div>
+        <div class="channel-rec"><strong>Build a referral program</strong>Even simple credit-based incentive could 2–3x this channel.</div>
+      </div>
+
+      <div class="channel-row">
+        <div class="channel-name">Microsoft Ads / Bing</div>
+        <div><span class="channel-status absent">Untapped</span></div>
+        <div class="channel-finding">Microsoft Edge users converting at <strong>24.89% organically</strong> — corporate machines preinstalled with Edge. Bing Ads has lower CPCs and far less competition than Google in B2B logistics. <strong>The audience signal is strong; paid Bing remains a strategic test.</strong></div>
+        <div class="channel-rec"><strong>Pilot Microsoft Ads</strong>Validate paid Edge users mirror the organic conversion pattern. Low-cost test, high-asymmetry upside.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 06 — PRIORITIES -->
+  <section id="priorities">
+    <span class="sec-label">06 · Priority opportunities</span>
+    <h2>Seven actions, <em>ranked.</em></h2>
+    <p class="sec-tagline">Cross-cutting recommendation set. Ranked by expected impact relative to effort. The first one alone affects every other channel — fixing the homepage compounds.</p>
+
+    <div class="priority-list">
+
+      <div class="priority-item first">
+        <div class="priority-num">01</div>
+        <div class="priority-body">
+          <strong>Fix the homepage</strong>
+          <span>68% bounce rate is the upstream blocker for every paid and organic channel. Fixing it compounds everywhere downstream.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag high">Very high</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">02</div>
+        <div class="priority-body">
+          <strong>Build LinkedIn presence</strong>
+          <span>ICP lives there. No competitor owns it. Brand + inbound compounding over 3–6 months.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag high">High</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">03</div>
+        <div class="priority-body">
+          <strong>SEO restructure → content engine</strong>
+          <span>240 → 88 pages first (cleanup), then targeted content for LTL Canada keywords. Compounding over time.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag high">High</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">04</div>
+        <div class="priority-body">
+          <strong>Pilot Microsoft Ads</strong>
+          <span>The 24.89% Edge organic conversion is the strongest cohort signal in the data. Test paid Bing to see if the corporate-machine pattern transfers — low-cost, high-asymmetry experiment.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag imm">Test next</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">05</div>
+        <div class="priority-body">
+          <strong>Build a referral program</strong>
+          <span>Already happening organically — formalize, track, incentivize. Low cost, high trust channel.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag med">Medium</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">06</div>
+        <div class="priority-body">
+          <strong>Re-optimize Google Ads with new messaging</strong>
+          <span>Same budget, much better results. Requires the new homepage as landing destination.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag high">High</span></div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-num">07</div>
+        <div class="priority-body">
+          <strong>Rebuild Klaviyo flows around 6-stage funnel</strong>
+          <span>Post-first-booking is the biggest gap — sequence ready, awaiting load. Other flows follow.</span>
+        </div>
+        <div class="priority-impact"><span class="priority-impact-tag high">High</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 07 — HIGHLIGHTS -->
+  <section id="highlights">
+    <span class="sec-label">07 · The two insights worth their own callout</span>
+    <h2>One play to <em>compound. </em>One signal to <em>act on.</em></h2>
+    <p class="sec-tagline">Two findings stand apart from the rest: one is the largest unowned channel — slow to build, asymmetric at scale. The other is the strongest cohort signal in the data, hidden in plain sight until we looked at the browser dimension.</p>
+
+    <div class="highlight-pair">
+
+      <div class="highlight opp">
+        <div class="highlight-eyebrow">The compounding play</div>
+        <h4>SEO is the largest unowned channel.</h4>
+        <p>Competitors built ranking inventory over years. We have product superiority and audience clarity to start strategically — quality over quantity, intent over volume. A focused content strategy targeting <strong>"LTL freight broker Canada,"</strong> <strong>"LTL shipping rates Ontario,"</strong> and <strong>"how to reduce freight costs"</strong> can generate compounding inbound traffic at near-zero ongoing cost. The compound rate, not the launch rate, is the point.</p>
+      </div>
+
+      <div class="highlight win">
+        <div class="highlight-eyebrow">The signal worth testing</div>
+        <h4>The Microsoft Edge insight.</h4>
+        <p>Microsoft Edge users convert at <strong>24.89%</strong> — roughly 10× the rate of Google Ads campaigns. Edge is the default browser on corporate Windows machines, which is where our ICP works. The cohort signal is structural, not anecdotal. <strong>Bing Ads has lower CPCs and far less competition in B2B logistics</strong> than Google. A small pilot validates whether the paid-Edge audience mirrors the organic-Edge pattern — high-asymmetry test, low downside.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 08 — OPEN QUESTIONS -->
+  <section id="openq">
+    <div class="questions">
+      <div class="questions-label">08 · What we still don't know</div>
+      <h2>Open questions <em>this audit didn't close.</em></h2>
+      <p class="prose" style="font-size: 15.5px; margin-bottom: 26px;">Five threads worth pulling further as more data lands. Each one shapes a future iteration of this document.</p>
+
+      <div class="question">
+        <span class="question-num">01</span>
+        <div class="question-body">
+          <strong>Awareness layer is invisible</strong>
+          We currently can't size the top of the funnel — the population of Canadian shippers exposed to FreightSimple via any channel. PostHog gives us behavior on-site but nothing pre-site. Closing this requires content that compounds plus paid social where the ICP actually is.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">02</span>
+        <div class="question-body">
+          <strong>True churn rate by segment</strong>
+          We know the Weekly segment shows ~40% 90-day churn — but the cause split (price, service, product fit) isn't yet documented. Without that split we can't write the right re-engagement message.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">03</span>
+        <div class="question-body">
+          <strong>Quote-to-booking economics</strong>
+          The "almost there" sub-group (10+ quotes, 0 bookings) needs structured outreach to learn the actual blocker. Hypothesis: rate sensitivity. Validate before scaling the response.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">04</span>
+        <div class="question-body">
+          <strong>FedEx Freight + Purolator Freight</strong>
+          Pages exist for both, but the homepage explicitly says "no parcel/courier." Need to confirm with Ops whether their LTL divisions are active carriers in our network — flagged in the website restructure plan as a blocker.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">05</span>
+        <div class="question-body">
+          <strong>Carrier-side audit</strong>
+          This audit is shipper-side. The supply side of the marketplace has not been audited yet — current carrier count, retention, lane coverage, top performers. That's a separate document, scheduled once the shipper-side restructure ships.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Prepared by Daniela Perea · Marketing Lead · v1.0 · April 2026</span>
+    <span><a href="./index.html">← Back to hub</a></span>
+  </div>
+
+</div>
+
+</body>
+</html>

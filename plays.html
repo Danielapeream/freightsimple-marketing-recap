@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Plays · FreightSimple Marketing</title>
+<meta name="description" content="How the strategy executes — 6-stage funnel, plays per stage, email engine overview, Retention Sequence v2.0 proposal, and the principles behind it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1d23;
+    --dark-2: #2a2d35;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --off-white: #fafafa;
+    --gold: #facc0b;
+    --gold-deep: #8a6b04;
+    --gold-light: rgba(250, 204, 11, 0.15);
+    --blue: #4C62EA;
+    --blue-light: #EEF1FD;
+    --blue-deep: #2c3aa8;
+    --blue-soft: rgba(76, 98, 234, 0.08);
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f0f1f6;
+    --success: #1D9E75;
+    --success-light: rgba(29, 158, 117, 0.12);
+    --warning: #BA7517;
+    --warning-light: rgba(186, 117, 23, 0.12);
+    --error: #C84545;
+    --error-light: rgba(200, 69, 69, 0.10);
+    --ff-display: 'Plus Jakarta Sans', sans-serif;
+    --ff-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ff-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--off-white);
+    font-family: var(--ff-body);
+    color: var(--dark);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 64px 56px 96px;
+    background: var(--white);
+    min-height: 100vh;
+  }
+
+  /* Brand strip */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-name {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover { border-color: var(--dark); color: var(--dark); }
+
+  /* Header */
+  .doc-meta {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .doc-meta::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: 22px;
+    color: var(--dark);
+  }
+  h1 .accent { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  .lede {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 760px;
+  }
+
+  /* Top stats */
+  .top-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 26px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 56px;
+  }
+  .top-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .top-meta-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .top-meta-val {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 64px;
+    border: 1px solid var(--border-soft);
+  }
+  .toc-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 28px;
+    list-style: none;
+  }
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.15s;
+  }
+  .toc-list a:hover { color: var(--blue); }
+  .toc-list .toc-num {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted-soft);
+    font-weight: 700;
+    min-width: 22px;
+  }
+  .toc-list .toc-name { font-weight: 600; letter-spacing: -0.005em; }
+
+  /* Sections */
+  section { margin-bottom: 80px; scroll-margin-top: 24px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .sec-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.18;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  h2 em { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  h3 {
+    font-family: var(--ff-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    margin: 32px 0 14px;
+    color: var(--dark);
+  }
+
+  .sec-tagline {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 760px;
+  }
+
+  /* Body prose */
+  p {
+    font-size: 15.5px;
+    color: var(--dark);
+    line-height: 1.72;
+    margin-bottom: 16px;
+  }
+  p.prose { color: #2c3038; }
+  strong { font-weight: 700; color: var(--dark); }
+  em { font-style: italic; }
+
+  code {
+    font-family: var(--ff-mono);
+    font-size: 12.5px;
+    background: var(--off-white);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--blue-deep);
+    font-weight: 500;
+  }
+  /* Tokens like {origin} get a slightly different treatment */
+  .token {
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    background: var(--gold-light);
+    color: var(--gold-deep);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* Executive summary */
+  .summary {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    border-radius: 14px;
+    padding: 42px 46px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 46px; right: 46px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .summary-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .summary p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary strong { color: #fff; }
+  .summary .pivot {
+    display: inline-block;
+    background: rgba(250, 204, 11, 0.12);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* FUNNEL AT A GLANCE — horizontal stages */
+  .funnel-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  .stage-cell {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage-cell::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .stage-cell.s1::before { background: var(--muted-soft); }
+  .stage-cell.s2::before { background: var(--blue-soft); }
+  .stage-cell.s3::before { background: var(--blue); }
+  .stage-cell.s4::before { background: var(--gold); }
+  .stage-cell.s5::before { background: var(--success); }
+  .stage-cell.s6::before { background: var(--gold-deep); }
+
+  .stage-num {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .stage-name {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.012em;
+  }
+  .stage-size {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .stage-status {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .stage-status.built { background: var(--success-light); color: var(--success); }
+  .stage-status.review { background: var(--blue-light); color: var(--blue); }
+  .stage-status.tobuild { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+  .stage-status.rebuild { background: var(--warning-light); color: var(--warning); }
+  .stage-status.none { background: rgba(200, 69, 69, 0.08); color: var(--error); }
+
+  .funnel-legend {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 12px;
+  }
+
+  /* STAGE BLOCKS — deep dive per stage */
+  .stage-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 18px;
+    border-left: 4px solid var(--blue);
+  }
+  .stage-block.s1 { border-left-color: var(--muted-soft); }
+  .stage-block.s2 { border-left-color: var(--muted); }
+  .stage-block.s3 { border-left-color: var(--blue); }
+  .stage-block.s4 { border-left-color: var(--gold); }
+  .stage-block.s5 { border-left-color: var(--success); }
+  .stage-block.s6 { border-left-color: var(--gold-deep); }
+
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .stage-tag {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .stage-block.s1 .stage-tag, .stage-block.s2 .stage-tag { color: var(--muted); }
+  .stage-block.s4 .stage-tag { color: var(--gold-deep); }
+  .stage-block.s5 .stage-tag { color: var(--success); }
+  .stage-block.s6 .stage-tag { color: var(--gold-deep); }
+
+  .move-mapping {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+  }
+  .stage-block h3 {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    margin: 8px 0 8px;
+    line-height: 1.3;
+  }
+  .stage-tagline {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+
+  .stage-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .stage-col {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .stage-col-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .stage-col.entry .stage-col-label { color: var(--blue); }
+  .stage-col.exit .stage-col-label { color: var(--success); }
+  .stage-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stage-col li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--dark);
+    padding-left: 14px;
+    position: relative;
+  }
+  .stage-col.entry li::before { content: '·'; color: var(--blue); position: absolute; left: 4px; font-weight: 700; }
+  .stage-col.exit li::before { content: '→'; color: var(--success); position: absolute; left: 0; font-weight: 700; font-size: 11px; }
+
+  .play-block {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    padding: 22px 26px;
+  }
+  .play-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .play-block p {
+    color: rgba(255,255,255,0.88);
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+  .play-block strong { color: #fff; }
+  .play-block em { color: var(--gold); font-style: italic; }
+
+  /* EMAIL ENGINE TABLE */
+  .engine-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .engine-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 200px 130px;
+    gap: 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: center;
+  }
+  .engine-row:last-child { border-bottom: none; }
+  .engine-row.header {
+    background: var(--off-white);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .engine-cell {
+    padding: 14px 18px;
+  }
+  .engine-cell.stage {
+    font-family: var(--ff-display);
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.012em;
+  }
+  .engine-cell.stage span {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 2px;
+    letter-spacing: 0.06em;
+  }
+  .engine-cell.flow {
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.55;
+  }
+  .engine-cell.touch {
+    font-family: var(--ff-mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .engine-cell.status {
+    text-align: right;
+  }
+  .engine-status-pill {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .engine-status-pill.built { background: var(--success-light); color: var(--success); }
+  .engine-status-pill.review { background: var(--blue-light); color: var(--blue); }
+  .engine-status-pill.tobuild { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+  .engine-status-pill.rebuild { background: var(--warning-light); color: var(--warning); }
+  .engine-status-pill.none { background: rgba(200, 69, 69, 0.08); color: var(--error); }
+
+  /* RETENTION SEQUENCE — email cards */
+  .retention-banner {
+    background: var(--blue);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+  }
+  .retention-banner-eyebrow {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .retention-banner h3 {
+    font-family: var(--ff-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 14px;
+    letter-spacing: -0.022em;
+    line-height: 1.3;
+  }
+  .retention-banner p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0;
+  }
+  .retention-banner strong { color: var(--gold); }
+  .retention-banner em { color: #fff; font-style: italic; }
+
+  .email-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 16px;
+    border-top: 4px solid var(--blue);
+  }
+  .email-card.e2 { border-top-color: var(--gold); }
+  .email-card.e3 { border-top-color: var(--success); }
+
+  .email-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .email-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .email-card.e2 .email-num { color: var(--gold-deep); }
+  .email-card.e3 .email-num { color: var(--success); }
+
+  .email-day {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    background: var(--off-white);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+  }
+  .email-status {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+    margin-left: auto;
+  }
+
+  .email-card h4 {
+    font-family: var(--ff-display);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+  .email-goal {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-style: italic;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .email-spec {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px 20px;
+    margin-bottom: 22px;
+  }
+  .email-spec-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .email-spec-val {
+    font-size: 14.5px;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .email-spec-val.subject {
+    font-family: var(--ff-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.012em;
+  }
+  .email-spec-val.alt {
+    font-size: 13.5px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 4px;
+  }
+  .email-spec-val.from {
+    font-family: var(--ff-mono);
+    font-size: 13.5px;
+    color: var(--blue-deep);
+    font-weight: 600;
+  }
+
+  .email-body {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-top: 8px;
+  }
+  .email-body-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .email-body-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--dark);
+    font-family: var(--ff-mono);
+  }
+  .email-body-text p {
+    font-family: var(--ff-mono);
+    font-size: 13.5px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  .email-body-text p:last-child { margin-bottom: 0; }
+  .email-body-text .signature {
+    color: var(--muted);
+    margin-top: 16px;
+  }
+
+  /* PRINCIPLES */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .principle {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .principle-num {
+    font-family: var(--ff-display);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--blue);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 10px;
+  }
+  .principle h4 {
+    font-family: var(--ff-display);
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.018em;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .principle p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .companies-bar {
+    margin-top: 24px;
+    padding: 22px 28px;
+    background: var(--off-white);
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+  }
+  .companies-bar-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .companies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .company-pill {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 5px 11px;
+    border-radius: 100px;
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .companies-mix {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.55;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    margin-top: 4px;
+  }
+  .companies-mix strong { color: var(--blue); }
+
+  /* STATUS BOARD */
+  .status-board {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .status-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 130px;
+    gap: 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: center;
+    padding: 14px 22px;
+  }
+  .status-row:last-child { border-bottom: none; }
+  .status-row.header {
+    background: var(--off-white);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .status-row .deliv {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.012em;
+  }
+  .status-row .deliv span {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .status-row .blocker {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .status-row .pill-cell {
+    text-align: right;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .page { padding: 40px 28px 72px; max-width: 100%; }
+    h1 { font-size: 38px; }
+    .top-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .funnel-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stage-cols { grid-template-columns: 1fr; }
+    .engine-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 18px; }
+    .engine-row.header { display: none; }
+    .engine-cell { padding: 4px 0; }
+    .engine-cell.status { text-align: left; }
+    .principles { grid-template-columns: 1fr; }
+    .status-row { grid-template-columns: 1fr; gap: 6px; }
+    .status-row.header { display: none; }
+    .status-row .pill-cell { text-align: left; }
+    .email-spec { grid-template-columns: 1fr; gap: 4px 0; }
+    .email-spec-label { padding-top: 0; }
+    .summary, .retention-banner { padding: 28px 24px; }
+    .summary::before { left: 24px; right: 24px; }
+    .stage-block, .email-card { padding: 26px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Brand strip -->
+  <div class="brand">
+    <span class="brand-name">FreightSimple <span class="slash">/</span><span class="sub">Marketing</span></span>
+    <a href="./index.html" class="brand-back">← Back to hub</a>
+  </div>
+
+  <!-- Header -->
+  <div class="doc-meta">A working document · v1.0 · the execution layer</div>
+  <h1>How the strategy <span class="accent">executes.</span></h1>
+  <p class="lede">The strategy in <a href="strategy.html" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue);">The Strategy</a> is the <em>what</em>. This is the <em>how</em>. Six funnel stages, one play per stage, the email engine that powers them, the Retention Sequence v2.0 dollar-first proposal, and the principles behind every email decision. Where strategy becomes infrastructure.</p>
+
+  <div class="top-meta">
+    <div class="top-meta-item">
+      <div class="top-meta-label">Funnel</div>
+      <div class="top-meta-val">6 stages · journey-based</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Email engine</div>
+      <div class="top-meta-val">5 sequences · 1 built · 4 to build</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Author</div>
+      <div class="top-meta-val">Daniela Perea · Marketing Lead</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Status</div>
+      <div class="top-meta-val">Living document · evolves with each launch</div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-label">In this document</div>
+    <ol class="toc-list">
+      <li><a href="#summary"><span class="toc-num">01</span><span class="toc-name">Executive summary</span></a></li>
+      <li><a href="#funnel"><span class="toc-num">02</span><span class="toc-name">The 6-stage funnel · at a glance</span></a></li>
+      <li><a href="#plays"><span class="toc-num">03</span><span class="toc-name">The plays per stage</span></a></li>
+      <li><a href="#engine"><span class="toc-num">04</span><span class="toc-name">The email engine</span></a></li>
+      <li><a href="#retention"><span class="toc-num">05</span><span class="toc-name">Retention Sequence v2.0 · dollar-first</span></a></li>
+      <li><a href="#principles"><span class="toc-num">06</span><span class="toc-name">The 8 principles behind v2.0</span></a></li>
+      <li><a href="#status"><span class="toc-num">07</span><span class="toc-name">What's built · what's pending</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 — EXECUTIVE SUMMARY -->
+  <section id="summary">
+    <span class="sec-label">01 · Executive summary</span>
+    <h2>Strategy meets <em>infrastructure.</em></h2>
+    <div class="summary">
+      <div class="summary-label">The execution layer</div>
+      <p>Six funnel stages — Aware, Interested, Qualified, Activated, Converting, Retained — replace the previous CRM-state model. Each stage has a clear entry criterion, a clear exit criterion, and one priority play. Each play maps to one of the <span class="pivot">Three Moves</span> in The Strategy.</p>
+      <p>The email engine sits inside the funnel as the connective tissue. Of the five sequences the funnel needs, <strong>one is built and in review</strong> (Retention v2.0), <strong>three are scoped</strong> (Welcome, Qualification nurture, Post-quote nurture), and <strong>one needs rebuild</strong> (Regular shipper sequence). Without these flows, the platform goes silent at every critical retention moment — which is exactly what's happening today.</p>
+      <p>The Retention Sequence is the highest-leverage build. It addresses the funnel's biggest gap (no post-first-booking touch), it's already written, and it's where the dollar-first thesis becomes a concrete product. Three emails — Day 2, Day 14, Day 35 — each with real shipment data, real savings math, and the warmly-competent voice the sales calls validated.</p>
+    </div>
+  </section>
+
+  <!-- 02 — FUNNEL AT A GLANCE -->
+  <section id="funnel">
+    <span class="sec-label">02 · The 6-stage funnel · at a glance</span>
+    <h2>Six stages. <em>Six conversations.</em></h2>
+    <p class="sec-tagline">A horizontal scan of the entire funnel. Each cell shows the stage, its current size, and the build status of its email sequence. Stages 5 and 6 are where most current revenue lives. Stage 3 → 4 is where the biggest leak sits.</p>
+
+    <div class="funnel-strip">
+
+      <div class="stage-cell s1">
+        <div class="stage-num">Stage 01</div>
+        <div class="stage-name">Aware</div>
+        <div class="stage-size">Unknown · pre-CRM</div>
+        <span class="stage-status none">No flow</span>
+      </div>
+
+      <div class="stage-cell s2">
+        <div class="stage-num">Stage 02</div>
+        <div class="stage-name">Interested</div>
+        <div class="stage-size">120+ companies</div>
+        <span class="stage-status tobuild">To build</span>
+      </div>
+
+      <div class="stage-cell s3">
+        <div class="stage-num">Stage 03</div>
+        <div class="stage-name">Qualified</div>
+        <div class="stage-size">TBD · DB pull</div>
+        <span class="stage-status rebuild">Rebuild</span>
+      </div>
+
+      <div class="stage-cell s4">
+        <div class="stage-num">Stage 04</div>
+        <div class="stage-name">Activated</div>
+        <div class="stage-size">100+ companies</div>
+        <span class="stage-status tobuild">To build</span>
+      </div>
+
+      <div class="stage-cell s5">
+        <div class="stage-num">Stage 05</div>
+        <div class="stage-name">Converting</div>
+        <div class="stage-size">90+ companies</div>
+        <span class="stage-status review">In review</span>
+      </div>
+
+      <div class="stage-cell s6">
+        <div class="stage-num">Stage 06</div>
+        <div class="stage-name">Retained</div>
+        <div class="stage-size">95+ companies</div>
+        <span class="stage-status rebuild">Rebuild</span>
+      </div>
+
+    </div>
+
+    <p class="funnel-legend"><strong>Reading the strip:</strong> Stage 01 (Aware) sits outside the CRM — driven by content, ads, and LinkedIn, not email. Stages 02 → 04 are where the volume drops sharpest in the funnel. Stages 05 → 06 are where the relationship lives. The Retention Sequence v2.0 sits at Stage 05 because that's where the platform currently goes silent.</p>
+  </section>
+
+  <!-- 03 — PLAYS PER STAGE -->
+  <section id="plays">
+    <span class="sec-label">03 · The plays per stage</span>
+    <h2>One stage. <em>One priority play.</em></h2>
+    <p class="sec-tagline">For every stage: how a company enters, how it exits, and the single play that moves them forward. Each play maps to one of the Three Moves in The Strategy — so every action ladders up to the bigger plan.</p>
+
+    <!-- STAGE 1 -->
+    <div class="stage-block s1">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 01 · Aware</span>
+        <span class="move-mapping">→ Move 01 · Translate</span>
+      </div>
+      <h3>Reach the canadian shipper before they're searching.</h3>
+      <p class="stage-tagline">Pre-CRM stage. The company exists in the world and could benefit from FreightSimple but hasn't interacted with the brand yet. Awareness is driven by content, ads, LinkedIn — not email.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria</div>
+          <ul>
+            <li>Canadian company shipping LTL freight at least weekly</li>
+            <li>Based in ON, BC, AB, QC, or SK (primary)</li>
+            <li>Ships manufactured, distributed, or imported goods</li>
+            <li>5–500 employees, not enterprise or retail</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → Interested</div>
+          <ul>
+            <li>Visits freightsimple.com</li>
+            <li>Clicks a Google or Microsoft ad, or LinkedIn post</li>
+            <li>Signs up for the platform</li>
+            <li>Added to CRM via outbound prospecting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · drive awareness through compounding channels</div>
+        <p>SEO restructure first (240 → 88 pages), then a content engine targeting <em>"LTL freight broker Canada"</em> and adjacent terms. LinkedIn cadence (3–5 posts/week) targeting ops managers and business owners. <strong>Microsoft Ads pilot</strong> to validate whether the paid-Edge audience mirrors the 24.89% organic conversion. No email — awareness is upstream of the inbox.</p>
+      </div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <div class="stage-block s2">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 02 · Interested</span>
+        <span class="move-mapping">→ Move 02 · Automate</span>
+      </div>
+      <h3>Qualify or remove within 48 hours.</h3>
+      <p class="stage-tagline">A holding stage. Companies should move through it fast — either confirmed as ICP or removed from the active pipeline. The qualification gate is what keeps the funnel clean over time.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria</div>
+          <ul>
+            <li>Has signed up on freightsimple.com, OR</li>
+            <li>Has been added to CRM by sales team</li>
+            <li>No quote run yet</li>
+            <li>ICP fit not yet confirmed</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → Qualified</div>
+          <ul>
+            <li><code>controls_ltl_freight = true</code> confirmed</li>
+            <li>Ships LTL freight at least occasionally</li>
+            <li>Canadian or cross-border shipper</li>
+            <li>Manufacturer / distributor / importer (not broker, retailer, enterprise)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · welcome flow + qualification gate</div>
+        <p>One welcome email immediately on signup. Goal: confirm they ship LTL, explain what FreightSimple does, invite them to run their first quote. Pair with a <strong>qualification gate</strong> at the data level — before any company joins active pipeline, four checks must pass. <em>Today: companies signing up get silence. The flow does not exist yet.</em></p>
+      </div>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="stage-block s3">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 03 · Qualified</span>
+        <span class="move-mapping">→ Move 02 · Automate</span>
+      </div>
+      <h3>First quote within 7 days.</h3>
+      <p class="stage-tagline">The company has been confirmed as an ICP-fit LTL shipper. They're in the platform but haven't run a quote yet. This is the activation moment.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria · all must be true</div>
+          <ul>
+            <li><code>controls_ltl_freight = true</code></li>
+            <li>Ships LTL freight at least weekly (confirmed)</li>
+            <li>Canada-based or cross-border CA/US</li>
+            <li>Manufacturer, distributor, or importer</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → Activated</div>
+          <ul>
+            <li>Runs at least 1 quote in the platform</li>
+            <li>OR requests a quote via phone/email</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · qualification nurture · 2–3 emails over 7 days</div>
+        <p>Show how easy it is to get a quote. Address the two most common objections — <em>"are your rates competitive?"</em> and <em>"how does it work?"</em> — with concrete proof, not platitudes. Invite to run a first quote with a clear CTA. <strong>Existing Klaviyo flow needs rebuild</strong> — current version triggers on system state, not journey, so it sends the wrong message at the wrong time.</p>
+      </div>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage-block s4">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 04 · Activated</span>
+        <span class="move-mapping">→ Move 01 · Translate</span>
+      </div>
+      <h3>Turn the quote into a booking within 14 days.</h3>
+      <p class="stage-tagline">The platform's biggest conversion gap. The "almost there" companies — the ones running 10+ quotes without ever booking — live here. Something specific stops them, and we don't have a flow that addresses it.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria</div>
+          <ul>
+            <li>Has run at least 1 quote in the platform</li>
+            <li>Has not yet completed a booking</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → Converting</div>
+          <ul>
+            <li>Completes first booking</li>
+            <li>Shipment confirmed with a carrier</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · post-quote nurture · address the price-uncertainty objection head-on</div>
+        <p>The #1 reason people don't book is uncertainty about whether the quote is what they'll actually pay. The flow should explain <strong>guaranteed pricing</strong> and <strong>automatic bill auditing</strong> in dollar terms — show the math that makes a first booking zero-risk. <em>Maps to the audit insight: the "almost there" cohort needs a dollar-first reassurance, not a feature list.</em></p>
+      </div>
+    </div>
+
+    <!-- STAGE 5 -->
+    <div class="stage-block s5">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 05 · Converting</span>
+        <span class="move-mapping">→ Move 01 · Translate</span>
+      </div>
+      <h3>From first booking to fifth · the retention motion.</h3>
+      <p class="stage-tagline">The most critical retention stage. Companies have proven they trust FreightSimple enough to ship with us. Without nurture, most stop here — one and done. This is where Retention Sequence v2.0 lives.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria</div>
+          <ul>
+            <li>Has completed at least 1 booking</li>
+            <li>Shipment status = Delivered or Completed</li>
+            <li>Total bookings = 1–4</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → Retained</div>
+          <ul>
+            <li>Completes 5th booking → becomes a Regular customer</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · Retention Sequence v2.0 · dollar-first across 35 days</div>
+        <p>Three emails — Day 2, Day 14, Day 35 post-shipment — built around <strong>real shipment data and concrete savings math</strong>, not generic check-ins. Every email translates the platform's unique capabilities (bill auditing, anomaly detection, guaranteed pricing) into per-shipment dollars. <em>Status: written, in review with the CEO before loading into Klaviyo.</em> Full deep dive in section 05 below.</p>
+      </div>
+    </div>
+
+    <!-- STAGE 6 -->
+    <div class="stage-block s6">
+      <div class="stage-head">
+        <span class="stage-tag">Stage 06 · Retained</span>
+        <span class="move-mapping">→ Move 03 · Differentiate</span>
+      </div>
+      <h3>Protect the depth of integration.</h3>
+      <p class="stage-tagline">Regular customers — 5+ bookings completed, established cadence. The highest-value segment. The retention motion here isn't about getting more bookings — it's about protecting the relationship that already produces them.</p>
+
+      <div class="stage-cols">
+        <div class="stage-col entry">
+          <div class="stage-col-label">Entry criteria</div>
+          <ul>
+            <li>Has completed 5+ bookings</li>
+            <li>Active in the last 90 days</li>
+            <li>Established shipping cadence (weekly+)</li>
+          </ul>
+        </div>
+        <div class="stage-col exit">
+          <div class="stage-col-label">Exit criteria → At Risk</div>
+          <ul>
+            <li>No booking in 90+ days</li>
+            <li>Significant drop in quote volume</li>
+            <li>Direct complaint or unresolved service issue</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play-block">
+        <div class="play-label">The play · Regular shipper sequence + relationship layer</div>
+        <p>Monthly check-in with shipping insights. Quarterly savings summary (how much they saved via bill auditing — actual dollars). Feature updates and new carrier availability. Referral program invitation when ready. <strong>Top accounts get human outreach</strong> — automation should never replace personal contact at this tier. <em>Existing Klaviyo flow needs full rebuild — current version is generic and segment-blind.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — EMAIL ENGINE -->
+  <section id="engine">
+    <span class="sec-label">04 · The email engine</span>
+    <h2>Five sequences, <em>one engine.</em></h2>
+    <p class="sec-tagline">A consolidated view of every email flow the funnel needs. Frequency restrained — fewer emails, each one earned. Sequences mapped to stages, with current build status. The first column is where you are; the last is what's next.</p>
+
+    <div class="engine-wrap">
+      <div class="engine-row header">
+        <div class="engine-cell">Stage</div>
+        <div class="engine-cell">Sequence</div>
+        <div class="engine-cell">Cadence</div>
+        <div class="engine-cell">Status</div>
+      </div>
+
+      <div class="engine-row">
+        <div class="engine-cell stage">
+          Stage 02
+          <span>Interested</span>
+        </div>
+        <div class="engine-cell flow">
+          <strong>Welcome flow</strong> · 1–2 emails. Confirm ICP fit, explain platform, invite first quote.
+        </div>
+        <div class="engine-cell touch">Day 0 · Day 3</div>
+        <div class="engine-cell status">
+          <span class="engine-status-pill tobuild">To build</span>
+        </div>
+      </div>
+
+      <div class="engine-row">
+        <div class="engine-cell stage">
+          Stage 03
+          <span>Qualified</span>
+        </div>
+        <div class="engine-cell flow">
+          <strong>Qualification nurture</strong> · 2–3 emails. Address rate &amp; how-it-works objections, drive to first quote.
+        </div>
+        <div class="engine-cell touch">Day 1 · 4 · 7</div>
+        <div class="engine-cell status">
+          <span class="engine-status-pill rebuild">Rebuild</span>
+        </div>
+      </div>
+
+      <div class="engine-row">
+        <div class="engine-cell stage">
+          Stage 04
+          <span>Activated</span>
+        </div>
+        <div class="engine-cell flow">
+          <strong>Post-quote nurture</strong> · 2–3 emails. Address price-uncertainty, explain guaranteed pricing + bill auditing.
+        </div>
+        <div class="engine-cell touch">Day 1 · 7 · 14</div>
+        <div class="engine-cell status">
+          <span class="engine-status-pill tobuild">To build</span>
+        </div>
+      </div>
+
+      <div class="engine-row" style="background: var(--blue-soft);">
+        <div class="engine-cell stage">
+          Stage 05
+          <span>Converting</span>
+        </div>
+        <div class="engine-cell flow">
+          <strong>Retention Sequence v2.0 · dollar-first</strong>. Real shipment data, concrete savings math, three touches.
+        </div>
+        <div class="engine-cell touch">Day 2 · 14 · 35</div>
+        <div class="engine-cell status">
+          <span class="engine-status-pill review">In review</span>
+        </div>
+      </div>
+
+      <div class="engine-row">
+        <div class="engine-cell stage">
+          Stage 06
+          <span>Retained</span>
+        </div>
+        <div class="engine-cell flow">
+          <strong>Regular shipper sequence</strong> · monthly check-in, quarterly savings summary, feature updates.
+        </div>
+        <div class="engine-cell touch">Monthly</div>
+        <div class="engine-cell status">
+          <span class="engine-status-pill rebuild">Rebuild</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="prose"><strong>The execution principle:</strong> the Retention Sequence (Stage 05) is the highest-leverage build because it addresses the single biggest gap in the funnel — and because it's already written. Welcome and Post-quote come next as the flows that compound earliest in the journey. Qualification and Regular rebuilds happen after, since both currently exist (badly) and the rebuild is incremental rather than from-scratch.</p>
+  </section>
+
+  <!-- 05 — RETENTION SEQUENCE V2.0 -->
+  <section id="retention">
+    <span class="sec-label">05 · Retention Sequence v2.0</span>
+    <h2>Three emails. <em>Dollar-first across 35 days.</em></h2>
+    <p class="sec-tagline">The flagship sequence. Each email shows real shipment data, real savings math, and the warmly-competent voice the sales calls validated. Restrained cadence — 3 emails over 35 days is the right amount for a B2B audience that gets too much email.</p>
+
+    <div class="retention-banner">
+      <div class="retention-banner-eyebrow">Status · v2 proposal pending Natasha review</div>
+      <h3>From <em>"how did it go?"</em> to <em>"here's what you saved."</em></h3>
+      <p>The v1 sequence asked generic check-in questions. <strong>The v2 sequence shows the dollar math</strong>. Sales shadowing made it clear: customers see the quote, not the value-add. Every email translates platform capability into per-shipment savings. Tokens like <span style="background: rgba(250,204,11,0.2); color: var(--gold); padding: 1px 6px; border-radius: 3px; font-family: var(--ff-mono); font-size: 12px;">{origin}</span> and <span style="background: rgba(250,204,11,0.2); color: var(--gold); padding: 1px 6px; border-radius: 3px; font-family: var(--ff-mono); font-size: 12px;">{savings}</span> populate from Klaviyo at send.</p>
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="email-card">
+      <div class="email-head">
+        <span class="email-num">Email 01</span>
+        <span class="email-day">Day 2 post-shipment</span>
+        <span class="email-status">v2 proposal</span>
+      </div>
+      <h4>Concrete savings on this specific shipment.</h4>
+      <p class="email-goal">Goal: surface the dollars saved on the first shipment, before the customer cross-shops their next one. Plain text — feels like a person, not marketing.</p>
+
+      <div class="email-spec">
+        <div class="email-spec-label">Subject</div>
+        <div>
+          <div class="email-spec-val subject">Your <span class="token">{origin}</span> → <span class="token">{destination}</span> shipment saved you <span class="token">{savings}</span></div>
+          <div class="email-spec-val alt">Alt: About that <span class="token">{pallet_count}</span>-pallet booking…</div>
+        </div>
+
+        <div class="email-spec-label">From</div>
+        <div class="email-spec-val from">Daniela from FreightSimple</div>
+
+        <div class="email-spec-label">Format</div>
+        <div class="email-spec-val">Plain text · feels like a personal note, not a campaign</div>
+
+        <div class="email-spec-label">CTA</div>
+        <div class="email-spec-val">Single link → <em>"Quote your next shipment"</em> (back to dashboard)</div>
+      </div>
+
+      <div class="email-body">
+        <div class="email-body-label">Body sketch</div>
+        <div class="email-body-text">
+          <p>Hi <span class="token">{first_name}</span>,</p>
+          <p>Just checking in — your shipment from <span class="token">{origin}</span> to <span class="token">{destination}</span> delivered on <span class="token">{delivery_date}</span>. We did the math: vs. the average market rate for that lane, you saved <span class="token">{savings}</span> on this booking.</p>
+          <p>One quiet thing that happened in the background: we audited the carrier invoice and found <span class="token">{audit_findings}</span>. That's $X you didn't have to dispute, $Y you didn't have to chase. Just paid what we quoted.</p>
+          <p>If your next shipment is coming up, <span style="text-decoration: underline; color: var(--blue);">quote it here</span> — takes about 30 seconds.</p>
+          <p class="signature">— Daniela<br>Marketing, FreightSimple</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 2 -->
+    <div class="email-card e2">
+      <div class="email-head">
+        <span class="email-num">Email 02</span>
+        <span class="email-day">Day 14 post-shipment</span>
+        <span class="email-status">v2 proposal</span>
+      </div>
+      <h4>Total savings across the first weeks + one freight tip.</h4>
+      <p class="email-goal">Goal: deepen the value framing with cumulative numbers. Light HTML — structured but not heavy. Educate without being a sales pitch.</p>
+
+      <div class="email-spec">
+        <div class="email-spec-label">Subject</div>
+        <div>
+          <div class="email-spec-val subject">Two weeks in. Here's what we caught for you.</div>
+          <div class="email-spec-val alt">Alt: <span class="token">{savings_to_date}</span> saved · plus one thing most shippers miss</div>
+        </div>
+
+        <div class="email-spec-label">From</div>
+        <div class="email-spec-val from">Daniela from FreightSimple</div>
+
+        <div class="email-spec-label">Format</div>
+        <div class="email-spec-val">Light HTML · structured savings block + one short freight tip</div>
+
+        <div class="email-spec-label">CTA</div>
+        <div class="email-spec-val">Two CTAs · <em>"See your savings dashboard"</em> + <em>"Quote a new lane"</em></div>
+      </div>
+
+      <div class="email-body">
+        <div class="email-body-label">Body sketch</div>
+        <div class="email-body-text">
+          <p>Hi <span class="token">{first_name}</span>,</p>
+          <p>Quick update — two weeks since your shipment. Here's what's happened on your account so far:</p>
+          <p><strong>SHIPMENTS:</strong> <span class="token">{shipment_count}</span> &nbsp; · &nbsp; <strong>SAVINGS:</strong> <span class="token">{savings_to_date}</span> &nbsp; · &nbsp; <strong>BILL AUDITS:</strong> <span class="token">{audits_run}</span></p>
+          <p>One thing most shippers don't know: fuel surcharges are calculated weekly and almost always have anomalies in the carrier invoice. Our system flags those automatically — last week alone, we caught <span class="token">{recent_audit_count}</span> across the network.</p>
+          <p>Your savings dashboard <span style="text-decoration: underline; color: var(--blue);">is here</span> if you want the breakdown by lane.</p>
+          <p class="signature">— Daniela</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 3 -->
+    <div class="email-card e3">
+      <div class="email-head">
+        <span class="email-num">Email 03</span>
+        <span class="email-day">Day 35 post-shipment</span>
+        <span class="email-status">v2 proposal</span>
+      </div>
+      <h4>The pattern of value · clear CTA to book again.</h4>
+      <p class="email-goal">Goal: pattern recognition + reactivation. By Day 35, the customer has either booked again (in which case they exit the sequence) or hasn't (in which case we ask why, with leverage). Most designed of the three — feels like a real recap.</p>
+
+      <div class="email-spec">
+        <div class="email-spec-label">Subject</div>
+        <div>
+          <div class="email-spec-val subject">A month in. Here's the freight math.</div>
+          <div class="email-spec-val alt">Alt: How does our quote compare to your last one?</div>
+        </div>
+
+        <div class="email-spec-label">From</div>
+        <div class="email-spec-val from">Daniela from FreightSimple</div>
+
+        <div class="email-spec-label">Format</div>
+        <div class="email-spec-val">Structured HTML · savings block, mini case study, comparison frame</div>
+
+        <div class="email-spec-label">CTA</div>
+        <div class="email-spec-val">Primary <em>"Quote your next lane"</em> · secondary <em>"Reply if something's stopping you"</em></div>
+      </div>
+
+      <div class="email-body">
+        <div class="email-body-label">Body sketch</div>
+        <div class="email-body-text">
+          <p>Hi <span class="token">{first_name}</span>,</p>
+          <p>It's been about a month since you shipped with us. Here's the recap:</p>
+          <p><strong>YOUR LAST SHIPMENT:</strong> <span class="token">{origin}</span> → <span class="token">{destination}</span><br><strong>SAVED VS MARKET:</strong> <span class="token">{savings}</span><br><strong>ANOMALIES CAUGHT:</strong> <span class="token">{anomaly_count}</span></p>
+          <p>Most freight platforms wait for a problem before showing up. Our job is to make sure most problems never reach you — and the math holds even on the boring days.</p>
+          <p>If you have another lane coming up, <span style="text-decoration: underline; color: var(--blue);">quote it here</span> — should take less time than the first one did.</p>
+          <p>And if something stopped you from booking again, <strong>just reply</strong>. Real human, not a bot, will read it.</p>
+          <p class="signature">— Daniela</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="prose" style="margin-top: 24px;"><strong>Exit condition:</strong> if the customer books a second shipment at any point during the 35 days, they exit the sequence immediately and move to Stage 06 (Retained). No customer should receive Email 02 or Email 03 if they've already booked again — that violates the "less is more" principle.</p>
+  </section>
+
+  <!-- 06 — PRINCIPLES -->
+  <section id="principles">
+    <span class="sec-label">06 · The 8 principles behind v2.0</span>
+    <h2>The patterns that <em>shaped these emails.</em></h2>
+    <p class="sec-tagline">A pattern analysis across 9 reference companies — B2B SaaS leaders, freight and logistics players, and strong-voice consumer brands — distilled into 8 principles. These shape every decision in v2.0 and every flow that comes after.</p>
+
+    <div class="principles">
+
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <h4>Restrain to earn opens.</h4>
+        <p>Successful B2B emails are <em>less</em> frequent than people fear. 3 emails over 35 days is fine. Don't add more.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <h4>The subject line is half the battle.</h4>
+        <p>Subject lines should be either clear about value inside, or curiosity-inducing in a way that's honest. Never clickbait.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <h4>Send from a person, not a brand.</h4>
+        <p><em>"Daniela from FreightSimple"</em> outperforms <em>"FreightSimple Team"</em> significantly. People reply to people.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">04</div>
+        <h4>Use real customer data.</h4>
+        <p>The customer's actual shipments, routes, savings vs. average. Not generic <em>("we hope you had a great experience")</em>. Specificity equals open rate.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">05</div>
+        <h4>Voice lives in microcopy.</h4>
+        <p>The main message stays clear and useful. The personality lives in the subject line, the P.S., the button label, the footer signature.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">06</div>
+        <h4>Plain text wins for retention.</h4>
+        <p>A simple, well-written plain text email feels personal. A heavily designed one feels marketing. Email 1 is plain text on purpose.</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">07</div>
+        <h4>Educate, don't just transact.</h4>
+        <p>The most-opened B2B emails teach something. Even a retention email can include one liner: <em>"did you know we automatically dispute fuel surcharge anomalies?"</em></p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">08</div>
+        <h4>Forwardable beats personal.</h4>
+        <p>The highest-value B2B email is one the recipient forwards to their boss. Write so that's possible.</p>
+      </div>
+
+    </div>
+
+    <div class="companies-bar">
+      <div class="companies-bar-label">Reference companies analyzed</div>
+      <div class="companies-list">
+        <span class="company-pill">Linear</span>
+        <span class="company-pill">Stripe</span>
+        <span class="company-pill">Notion</span>
+        <span class="company-pill">Flexport</span>
+        <span class="company-pill">Convoy</span>
+        <span class="company-pill">Project44</span>
+        <span class="company-pill">Mailchimp</span>
+        <span class="company-pill">Cleo</span>
+        <span class="company-pill">Liquid Death</span>
+      </div>
+      <p class="companies-mix"><strong>The voice mix for FreightSimple:</strong> 80% Stripe (precise, useful, respectful of time) · 15% Linear (calm, restrained, opinionated) · 5% Mailchimp (microcopy with personality). That mix lives in subject lines, button labels, and the occasional P.S. — never in the main body.</p>
+    </div>
+  </section>
+
+  <!-- 07 — STATUS BOARD -->
+  <section id="status">
+    <span class="sec-label">07 · What's built · what's pending</span>
+    <h2>The execution <em>map.</em></h2>
+    <p class="sec-tagline">The honest current state of every email flow in the engine. What exists, what doesn't, and what blocks each one. Updated as builds ship.</p>
+
+    <div class="status-board">
+
+      <div class="status-row header">
+        <div>Deliverable</div>
+        <div>Current blocker</div>
+        <div>Status</div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Retention Sequence v2.0
+          <span>Stage 05 · Converting</span>
+        </div>
+        <div class="blocker">Awaiting CEO review before Klaviyo load. Tokens require Klaviyo data integration.</div>
+        <div class="pill-cell"><span class="engine-status-pill review">In review</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Welcome flow
+          <span>Stage 02 · Interested</span>
+        </div>
+        <div class="blocker">Not yet written. Depends on qualification gate logic being defined first.</div>
+        <div class="pill-cell"><span class="engine-status-pill tobuild">To build</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Qualification nurture
+          <span>Stage 03 · Qualified</span>
+        </div>
+        <div class="blocker">Existing flow rebuilds around journey, not system state. Klaviyo trigger logic to redo.</div>
+        <div class="pill-cell"><span class="engine-status-pill rebuild">Rebuild</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Post-quote nurture
+          <span>Stage 04 · Activated</span>
+        </div>
+        <div class="blocker">Not yet written. Highest-impact build after Retention v2.0 ships.</div>
+        <div class="pill-cell"><span class="engine-status-pill tobuild">To build</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Regular shipper sequence
+          <span>Stage 06 · Retained</span>
+        </div>
+        <div class="blocker">Existing flow needs full rebuild. Top accounts need human layer separated from automation.</div>
+        <div class="pill-cell"><span class="engine-status-pill rebuild">Rebuild</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          PostHog event taxonomy
+          <span>Cross-stage · transversal</span>
+        </div>
+        <div class="blocker">Required for Klaviyo integration. Admin access on Project 331792 pending.</div>
+        <div class="pill-cell"><span class="engine-status-pill tobuild">To build</span></div>
+      </div>
+
+      <div class="status-row">
+        <div class="deliv">
+          Dormant account reactivation
+          <span>Cross-stage · win-back</span>
+        </div>
+        <div class="blocker">Sprint 02 scope. Targets the "almost there" cohort + Stage 05/06 churners.</div>
+        <div class="pill-cell"><span class="engine-status-pill tobuild">To build</span></div>
+      </div>
+
+    </div>
+
+    <p class="prose" style="margin-top: 24px;"><strong>Build order:</strong> Retention v2.0 ships first (already written, in review). Welcome flow second (compounds earliest in journey, low complexity). Post-quote nurture third (highest dollar impact after Retention). Qualification + Regular rebuilds fourth (incremental on existing flows). PostHog taxonomy is the transversal blocker — without it, Klaviyo flows fire on incomplete data.</p>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Prepared by Daniela Perea · Marketing Lead · v1.0 · April 2026</span>
+    <span><a href="./index.html">← Back to hub</a></span>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Customer · FreightSimple Marketing</title>
+<meta name="description" content="Who we serve — ICP definition, three buyer personas, and what sales shadowing taught us. The customer layer of the strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1d23;
+    --dark-2: #2a2d35;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --off-white: #fafafa;
+    --gold: #facc0b;
+    --gold-deep: #8a6b04;
+    --gold-light: rgba(250, 204, 11, 0.15);
+    --blue: #4C62EA;
+    --blue-light: #EEF1FD;
+    --blue-deep: #2c3aa8;
+    --blue-soft: rgba(76, 98, 234, 0.08);
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f0f1f6;
+    --success: #1D9E75;
+    --success-light: rgba(29, 158, 117, 0.12);
+    --warning: #BA7517;
+    --warning-light: rgba(186, 117, 23, 0.12);
+    --error: #C84545;
+    --error-light: rgba(200, 69, 69, 0.10);
+    --ff-display: 'Plus Jakarta Sans', sans-serif;
+    --ff-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ff-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--off-white);
+    font-family: var(--ff-body);
+    color: var(--dark);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 56px 96px;
+    background: var(--white);
+    min-height: 100vh;
+  }
+
+  /* Brand strip */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-name {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover { border-color: var(--dark); color: var(--dark); }
+
+  /* Header */
+  .doc-meta {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .doc-meta::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: 22px;
+    color: var(--dark);
+  }
+  h1 .accent { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  .lede {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+
+  /* Top stats */
+  .top-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 26px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 56px;
+  }
+  .top-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .top-meta-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .top-meta-val {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  /* Mini TOC */
+  .toc {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 64px;
+    border: 1px solid var(--border-soft);
+  }
+  .toc-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+    list-style: none;
+  }
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.15s;
+  }
+  .toc-list a:hover { color: var(--blue); }
+  .toc-list .toc-num {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted-soft);
+    font-weight: 700;
+    min-width: 22px;
+  }
+  .toc-list .toc-name { font-weight: 600; letter-spacing: -0.005em; }
+
+  /* Section anchors */
+  section { margin-bottom: 72px; scroll-margin-top: 24px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .sec-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: var(--gold-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.18;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  h2 em { color: var(--blue); font-style: italic; font-weight: 700; }
+
+  h3 {
+    font-family: var(--ff-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    margin: 32px 0 14px;
+    color: var(--dark);
+  }
+
+  .sec-tagline {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 720px;
+  }
+
+  /* Body prose */
+  p {
+    font-size: 15.5px;
+    color: var(--dark);
+    line-height: 1.72;
+    margin-bottom: 16px;
+  }
+  p.prose { color: #2c3038; }
+  strong { font-weight: 700; color: var(--dark); }
+  em { font-style: italic; }
+
+  /* Executive summary callout */
+  .summary {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    border-radius: 14px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 44px; right: 44px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .summary-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .summary p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary strong { color: #fff; }
+  .summary .pivot {
+    display: inline-block;
+    background: rgba(250, 204, 11, 0.12);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* ICP at-a-glance card */
+  .icp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .icp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .icp-cell {
+    padding: 28px 32px;
+    border-right: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .icp-cell:nth-child(2n) { border-right: none; }
+  .icp-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .icp-cell-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .icp-cell-val {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.018em;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .icp-cell-detail {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* Persona overview grid */
+  .personas-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .persona-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .persona-card:hover {
+    border-color: var(--dark);
+  }
+  .persona-card.alex { border-top: 4px solid var(--blue); }
+  .persona-card.sandra { border-top: 4px solid var(--gold); }
+  .persona-card.michael { border-top: 4px solid var(--success); }
+
+  .persona-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .persona-init {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-display);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+  .persona-card.alex .persona-init { background: var(--blue-light); color: var(--blue-deep); }
+  .persona-card.sandra .persona-init { background: var(--gold-light); color: var(--gold-deep); }
+  .persona-card.michael .persona-init { background: var(--success-light); color: var(--success); }
+
+  .persona-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .persona-meta strong {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.018em;
+    line-height: 1.2;
+  }
+  .persona-meta span {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .persona-quote {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.6;
+    font-style: italic;
+    padding: 14px 16px;
+    background: var(--off-white);
+    border-radius: 8px;
+    border-left: 3px solid var(--border);
+  }
+  .persona-card.alex .persona-quote { border-left-color: var(--blue); }
+  .persona-card.sandra .persona-quote { border-left-color: var(--gold); }
+  .persona-card.michael .persona-quote { border-left-color: var(--success); }
+
+  .persona-quick {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .persona-quick-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .persona-quick-label {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .persona-quick-val {
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.5;
+  }
+
+  /* Persona deep dive */
+  .deep-dive {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--blue);
+  }
+  .deep-dive.alex { border-left-color: var(--blue); }
+  .deep-dive.sandra { border-left-color: var(--gold); }
+  .deep-dive.michael { border-left-color: var(--success); }
+
+  .deep-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .deep-init-tag {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .deep-dive.alex .deep-init-tag { color: var(--blue); }
+  .deep-dive.sandra .deep-init-tag { color: var(--gold-deep); }
+  .deep-dive.michael .deep-init-tag { color: var(--success); }
+
+  .deep-role {
+    margin-left: auto;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted-soft);
+    font-weight: 600;
+  }
+  .deep-dive h3 {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    margin: 8px 0 6px;
+    color: var(--dark);
+  }
+  .deep-tagline {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .deep-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .deep-col {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .deep-col-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .deep-col.pain .deep-col-label { color: var(--error); }
+  .deep-col.goals .deep-col-label { color: var(--success); }
+  .deep-col.triggers .deep-col-label { color: var(--blue); }
+  .deep-col.objections .deep-col-label { color: var(--warning); }
+
+  .deep-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .deep-col li {
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+  .deep-col.pain li::before { content: '·'; color: var(--error); position: absolute; left: 4px; font-weight: 700; }
+  .deep-col.goals li::before { content: '·'; color: var(--success); position: absolute; left: 4px; font-weight: 700; }
+  .deep-col.triggers li::before { content: '·'; color: var(--blue); position: absolute; left: 4px; font-weight: 700; }
+  .deep-col.objections li::before { content: '·'; color: var(--warning); position: absolute; left: 4px; font-weight: 700; }
+
+  .talk-block {
+    margin-top: 8px;
+    padding: 22px 26px;
+    background: var(--dark);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.85);
+  }
+  .talk-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .talk-block p {
+    color: rgba(255,255,255,0.85);
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+  .talk-block strong { color: #fff; }
+  .talk-block em { color: rgba(255,255,255,0.95); }
+
+  /* Geography & industries */
+  .geo-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+  }
+  .geo-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 30px;
+  }
+  .geo-block h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 17px;
+  }
+  .geo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .geo-list li {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.55;
+    padding-left: 18px;
+    position: relative;
+  }
+  .geo-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .geo-list li strong { display: inline-block; min-width: 120px; }
+
+  .industries-block {
+    background: var(--off-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 26px 30px;
+  }
+  .industries-block h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 17px;
+  }
+  .industries-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .industry-pill {
+    font-size: 12.5px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 100px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  /* High-value signals · split do/dont */
+  .signals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .signals-col {
+    border-radius: 12px;
+    padding: 26px 30px;
+  }
+  .signals-col.priority {
+    background: var(--blue-soft);
+    border: 1px solid rgba(76, 98, 234, 0.2);
+  }
+  .signals-col.deprioritize {
+    background: var(--off-white);
+    border: 1px dashed var(--border);
+  }
+  .signals-col-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .signals-col.priority .signals-col-label { color: var(--blue); }
+  .signals-col.deprioritize .signals-col-label { color: var(--muted); }
+  .signals-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .signals-col li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--dark);
+    padding-left: 22px;
+    position: relative;
+  }
+  .signals-col.priority li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .signals-col.deprioritize li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+
+  /* Voice of Sales · the synthesis layer */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .voice-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .voice-card.critical {
+    border-color: rgba(76, 98, 234, 0.3);
+    background: linear-gradient(180deg, var(--blue-soft) 0%, transparent 80%);
+  }
+  .voice-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .voice-tag {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--muted);
+    background: var(--off-white);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .voice-pill {
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-left: auto;
+  }
+  .voice-pill.critical {
+    background: var(--blue);
+    color: #fff;
+  }
+  .voice-pill.confirm {
+    background: var(--success-light);
+    color: var(--success);
+  }
+  .voice-pill.opp {
+    background: var(--gold-light);
+    color: var(--gold-deep);
+  }
+  .voice-pill.fix {
+    background: var(--warning-light);
+    color: var(--warning);
+  }
+  .voice-card h4 {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    line-height: 1.3;
+    color: var(--dark);
+    margin: 0;
+  }
+  .voice-quote {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--dark);
+    background: var(--off-white);
+    padding: 14px 18px;
+    border-radius: 8px;
+    border-left: 3px solid var(--blue);
+    font-style: italic;
+  }
+  .voice-implication {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .voice-implication strong {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  /* Open questions */
+  .questions {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 36px 40px;
+    border: 1px solid rgba(250, 204, 11, 0.3);
+  }
+  .questions-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .questions h2 { font-size: 26px; margin-bottom: 22px; }
+  .question {
+    padding: 18px 0;
+    border-bottom: 1px dashed rgba(138, 107, 4, 0.25);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .question:last-child { border-bottom: none; padding-bottom: 0; }
+  .question:first-of-type { padding-top: 0; }
+  .question-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--gold-deep);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .question-body { font-size: 15px; line-height: 1.65; color: #3d3d3d; }
+  .question-body strong {
+    display: block;
+    color: var(--dark);
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 15.5px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .page { padding: 40px 28px 72px; }
+    h1 { font-size: 36px; }
+    .top-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .icp-grid { grid-template-columns: 1fr; }
+    .icp-cell { border-right: none; }
+    .icp-cell:nth-child(2n) { border-right: none; }
+    .personas-row { grid-template-columns: 1fr; }
+    .deep-cols { grid-template-columns: 1fr; }
+    .geo-grid { grid-template-columns: 1fr; }
+    .signals-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .summary, .questions { padding: 28px 24px; }
+    .summary::before { left: 24px; right: 24px; }
+    .deep-dive { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Brand strip -->
+  <div class="brand">
+    <span class="brand-name">FreightSimple <span class="slash">/</span><span class="sub">Marketing</span></span>
+    <a href="./index.html" class="brand-back">← Back to hub</a>
+  </div>
+
+  <!-- Header -->
+  <div class="doc-meta">A working document · v1.0 · the customer layer</div>
+  <h1>Who we serve, <span class="accent">in their own words.</span></h1>
+  <p class="lede">Three weeks of CRM analysis plus a sales shadowing session, consolidated into one read. The ICP we should be targeting, the three buyer personas inside every deal, and what sales conversations told us about how they actually decide.</p>
+
+  <div class="top-meta">
+    <div class="top-meta-item">
+      <div class="top-meta-label">Sources</div>
+      <div class="top-meta-val">CRM cohort · sales shadowing · public</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Sample size</div>
+      <div class="top-meta-val">95+ active accounts analyzed</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Author</div>
+      <div class="top-meta-val">Daniela Perea · Marketing Lead</div>
+    </div>
+    <div class="top-meta-item">
+      <div class="top-meta-label">Status</div>
+      <div class="top-meta-val">Living document · validates with each interview</div>
+    </div>
+  </div>
+
+  <!-- Mini TOC -->
+  <nav class="toc">
+    <div class="toc-label">In this document</div>
+    <ol class="toc-list">
+      <li><a href="#summary"><span class="toc-num">01</span><span class="toc-name">Executive summary</span></a></li>
+      <li><a href="#icp"><span class="toc-num">02</span><span class="toc-name">The ICP at a glance</span></a></li>
+      <li><a href="#personas-overview"><span class="toc-num">03</span><span class="toc-name">The three personas</span></a></li>
+      <li><a href="#alex"><span class="toc-num">04</span><span class="toc-name">Alex · Ops Manager</span></a></li>
+      <li><a href="#sandra"><span class="toc-num">05</span><span class="toc-name">Sandra · Business Owner</span></a></li>
+      <li><a href="#michael"><span class="toc-num">06</span><span class="toc-name">Michael · Finance / Controller</span></a></li>
+      <li><a href="#geo"><span class="toc-num">07</span><span class="toc-name">Where they live · signals</span></a></li>
+      <li><a href="#voice"><span class="toc-num">08</span><span class="toc-name">What sales taught us</span></a></li>
+      <li><a href="#openq"><span class="toc-num">09</span><span class="toc-name">Open questions</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 — EXECUTIVE SUMMARY -->
+  <section id="summary">
+    <span class="sec-label">01 · Executive summary</span>
+    <h2>The customer in <em>one read.</em></h2>
+    <div class="summary">
+      <div class="summary-label">Who we serve</div>
+      <p>Our customer is a <strong>small-to-mid-sized Canadian manufacturer, distributor, or importer</strong> shipping LTL freight at least weekly — often multiple times per week. They are based primarily in Ontario or BC, with growing presence in Alberta and Quebec. Their goods are physical, industrial, and often cross-border. Shipping is mission-critical to their business but isn't their core competency.</p>
+      <p>Inside every account live <span class="pivot">three buyer personas</span>: Alex the Operations Manager (the primary user, books daily), Sandra the Business Owner (the decision-maker, cares about reputation), and Michael the Finance Controller (the budget approver, cares about predictability). The same FreightSimple capabilities matter to all three — but the language, the emphasis, and the proof points are different per role.</p>
+      <p>Underneath the cohort: <strong>they're time-starved, price-sensitive on a per-shipment basis, and they cross-shop us against Freightera and carrier-direct on every quote</strong>. Sales shadowing made this concrete in ways CRM data alone couldn't surface — and it's the layer that reshapes the messaging across every channel.</p>
+    </div>
+  </section>
+
+  <!-- 02 — ICP AT A GLANCE -->
+  <section id="icp">
+    <span class="sec-label">02 · The ICP at a glance</span>
+    <h2>The ideal customer, <em>specified.</em></h2>
+    <p class="sec-tagline">Derived from analysis of 95+ active customer accounts in the CRM. This is the company we should be targeting, the company we already serve well, and the company most likely to become a Regular.</p>
+
+    <div class="icp-card">
+      <div class="icp-grid">
+
+        <div class="icp-cell">
+          <div class="icp-cell-label">Who they are</div>
+          <div class="icp-cell-val">Canadian manufacturer, distributor, or importer</div>
+          <div class="icp-cell-detail">5–500 employees. Revenue driven by physical goods movement. Shipping is critical but not their core competency.</div>
+        </div>
+
+        <div class="icp-cell">
+          <div class="icp-cell-label">Shipping pattern</div>
+          <div class="icp-cell-val">Weekly LTL freight, often more</div>
+          <div class="icp-cell-detail">High quote-to-shipment ratio (50%+). Industrial, manufactured, or distributed goods. Often cross-border CA/US lanes.</div>
+        </div>
+
+        <div class="icp-cell">
+          <div class="icp-cell-label">Geography</div>
+          <div class="icp-cell-val">Ontario · BC · Alberta · Quebec</div>
+          <div class="icp-cell-detail">Toronto / Mississauga / Vancouver / Calgary belts dominate. Growing presence in QC and SK. Cross-border into NC, TX, OR, NJ, SC.</div>
+        </div>
+
+        <div class="icp-cell">
+          <div class="icp-cell-label">Posture toward technology</div>
+          <div class="icp-cell-val">Open if it saves time and reduces errors</div>
+          <div class="icp-cell-detail">Frustrated with manual quoting and limited carrier options. Values reliability and predictability over lowest price.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — PERSONAS OVERVIEW -->
+  <section id="personas-overview">
+    <span class="sec-label">03 · The three personas</span>
+    <h2>Three roles, <em>three conversations.</em></h2>
+    <p class="sec-tagline">Inside every target account, three decision-making roles overlap. Each one needs a different message and a different proof point. Same product capabilities, different language. The overview here, the deep dives in the following sections. <a href="strategy.html#persona-msg" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Persona-specific headlines and messaging in The Strategy →</a></p>
+
+    <div class="personas-row">
+
+      <div class="persona-card alex">
+        <div class="persona-head">
+          <div class="persona-init">OM</div>
+          <div class="persona-meta">
+            <strong>Alex</strong>
+            <span>Operations / Logistics Manager · Primary user · Books daily</span>
+          </div>
+        </div>
+        <div class="persona-quote">"I need to get freight out the door on time, every time. I don't have hours to spend chasing quotes and tracking down carriers — I just need it to work."</div>
+        <div class="persona-quick">
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Top pain</span>
+            <span class="persona-quick-val">Hours wasted on phone/email quoting; finds out about problems last</span>
+          </div>
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Lead with</span>
+            <span class="persona-quick-val">Time savings + anomaly detection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card sandra">
+        <div class="persona-head">
+          <div class="persona-init">BO</div>
+          <div class="persona-meta">
+            <strong>Sandra</strong>
+            <span>Business Owner · Decision maker · Cares about growth</span>
+          </div>
+        </div>
+        <div class="persona-quote">"Shipping isn't my core business — but when it goes wrong, it's my problem. I need something I can trust and not think about."</div>
+        <div class="persona-quick">
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Top pain</span>
+            <span class="persona-quick-val">Freight problems cost customers; shipping issues consume her time</span>
+          </div>
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Lead with</span>
+            <span class="persona-quick-val">Reputation protection + total cost savings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card michael">
+        <div class="persona-head">
+          <div class="persona-init">FA</div>
+          <div class="persona-meta">
+            <strong>Michael</strong>
+            <span>Finance / Accounting Manager · Budget approver</span>
+          </div>
+        </div>
+        <div class="persona-quote">"I need to know exactly what we're spending on freight, why, and that we're not getting overcharged. The bills I get right now are impossible to decipher."</div>
+        <div class="persona-quick">
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Top pain</span>
+            <span class="persona-quick-val">Opaque bills, incorrect charges, unpredictable costs</span>
+          </div>
+          <div class="persona-quick-row">
+            <span class="persona-quick-label">Lead with</span>
+            <span class="persona-quick-val">Guaranteed pricing + automatic bill auditing</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 — ALEX -->
+  <section id="alex">
+    <span class="sec-label">04 · Persona deep dive</span>
+
+    <div class="deep-dive alex">
+      <div class="deep-head">
+        <span class="deep-init-tag">OM · Operations Manager</span>
+        <span class="deep-role">Mid-sized manufacturer or distributor · ON or BC · 5–15 yrs experience</span>
+      </div>
+      <h3>Alex · the daily operator.</h3>
+      <p class="deep-tagline">Alex books shipments every day. He becomes a hero when ops runs quietly. He becomes a firefighter when it doesn't.</p>
+
+      <div class="deep-cols">
+        <div class="deep-col pain">
+          <div class="deep-col-label">Pain points</div>
+          <ul>
+            <li>Wastes hours every week quoting via phone and email</li>
+            <li>Handwritten BOLs cause errors at the dock</li>
+            <li>Hard to track shipments across multiple carriers</li>
+            <li>Finds out about problems too late to prevent them</li>
+            <li>Carrier account reps change constantly</li>
+          </ul>
+        </div>
+
+        <div class="deep-col goals">
+          <div class="deep-col-label">Goals</div>
+          <ul>
+            <li>Get quotes instantly without picking up the phone</li>
+            <li>Book pickups electronically — no mix-ups</li>
+            <li>Know where every shipment is at all times</li>
+            <li>Catch problems before they escalate</li>
+            <li>Spend less time on freight admin</li>
+          </ul>
+        </div>
+
+        <div class="deep-col triggers">
+          <div class="deep-col-label">Triggers</div>
+          <ul>
+            <li>A shipment gets lost or seriously delayed</li>
+            <li>Their carrier rep leaves and service drops</li>
+            <li>Boss asks why freight costs are unpredictable</li>
+            <li>Team grows and the manual process can't keep up</li>
+          </ul>
+        </div>
+
+        <div class="deep-col objections">
+          <div class="deep-col-label">Objections</div>
+          <ul>
+            <li>"We already have a carrier we work with"</li>
+            <li>"Setup takes too long, we don't have time"</li>
+            <li>"I don't want to learn a new system"</li>
+            <li>"What if rates are higher than what we have?"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="talk-block">
+        <div class="talk-label">How to talk to Alex</div>
+        <p>Lead with <strong>time savings</strong> and <strong>reliability</strong>. Show the platform in action — instant quotes, electronic booking, automatic tracking. The <em>anomaly detection</em> feature is a huge differentiator: <em>"we catch problems before you even know they exist."</em> Instant setup (minutes, not weeks) is also key — Alex doesn't have time for an onboarding marathon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — SANDRA -->
+  <section id="sandra">
+    <span class="sec-label">05 · Persona deep dive</span>
+
+    <div class="deep-dive sandra">
+      <div class="deep-head">
+        <span class="deep-init-tag">BO · Business Owner</span>
+        <span class="deep-role">Small manufacturer or importer · 10–100 employees · Wears many hats</span>
+      </div>
+      <h3>Sandra · the buck-stops-here decision-maker.</h3>
+      <p class="deep-tagline">Sandra wears five hats. Shipping shouldn't be one of them — but when freight goes wrong, the customer call lands on her desk.</p>
+
+      <div class="deep-cols">
+        <div class="deep-col pain">
+          <div class="deep-col-label">Pain points</div>
+          <ul>
+            <li>Freight costs feel unpredictable and hard to control</li>
+            <li>Too much of her time spent managing shipping issues personally</li>
+            <li>Surprised by extra charges on freight bills</li>
+            <li>Can't easily see what shipping is costing the business</li>
+            <li>Customers complain when deliveries are late</li>
+          </ul>
+        </div>
+
+        <div class="deep-col goals">
+          <div class="deep-col-label">Goals</div>
+          <ul>
+            <li>Reduce total freight spend without sacrificing service</li>
+            <li>Free up time — let someone else handle shipping</li>
+            <li>No surprise charges or hidden fees</li>
+            <li>Scale shipping operations as the business grows</li>
+            <li>Keep customers happy with on-time deliveries</li>
+          </ul>
+        </div>
+
+        <div class="deep-col triggers">
+          <div class="deep-col-label">Triggers</div>
+          <ul>
+            <li>A big surprise charge on a freight bill</li>
+            <li>A customer lost due to a late shipment</li>
+            <li>Referral from another business owner she trusts</li>
+            <li>Business is growing and current process can't scale</li>
+          </ul>
+        </div>
+
+        <div class="deep-col objections">
+          <div class="deep-col-label">Objections</div>
+          <ul>
+            <li>"Is FreightSimple actually cheaper than what we use?"</li>
+            <li>"We're too small — is this for companies like us?"</li>
+            <li>"I don't want to sign a long-term contract"</li>
+            <li>"We've had bad experiences with brokers before"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="talk-block">
+        <div class="talk-label">How to talk to Sandra</div>
+        <p>Lead with <strong>total cost savings</strong> and <strong>peace of mind</strong>. Guaranteed pricing, automatic bill auditing, and real humans who answer the phone are huge for Sandra. She wants to hand off the headache — position FreightSimple as <em>an extension of her team</em>. Case studies and referrals from similar companies will close her faster than any feature list.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — MICHAEL -->
+  <section id="michael">
+    <span class="sec-label">06 · Persona deep dive</span>
+
+    <div class="deep-dive michael">
+      <div class="deep-head">
+        <span class="deep-init-tag">FA · Finance / Controller</span>
+        <span class="deep-role">Mid-sized company · Reports to owner or CFO · Controls the purse strings</span>
+      </div>
+      <h3>Michael · the reconciliation and predictability gatekeeper.</h3>
+      <p class="deep-tagline">Michael spends part of every month disputing charges that shouldn't be there in the first place. The bills he gets are opaque. He just wants the math to be simple.</p>
+
+      <div class="deep-cols">
+        <div class="deep-col pain">
+          <div class="deep-col-label">Pain points</div>
+          <ul>
+            <li>Freight bills are opaque and hard to reconcile</li>
+            <li>Incorrect charges go unnoticed and cost real money</li>
+            <li>No easy way to report on freight spend by period</li>
+            <li>Unpredictable costs make budgeting very difficult</li>
+            <li>Payment terms don't always match cash flow needs</li>
+          </ul>
+        </div>
+
+        <div class="deep-col goals">
+          <div class="deep-col-label">Goals</div>
+          <ul>
+            <li>Predictable, guaranteed freight costs every month</li>
+            <li>Never pay an incorrect charge again</li>
+            <li>Clean reporting to track freight spend over time</li>
+            <li>Flexible payment terms that match cash flow</li>
+            <li>One invoice, one place — not chasing multiple carriers</li>
+          </ul>
+        </div>
+
+        <div class="deep-col triggers">
+          <div class="deep-col-label">Triggers</div>
+          <ul>
+            <li>Discovers they've been overcharged repeatedly</li>
+            <li>Ops team requests a better freight solution</li>
+            <li>Year-end audit reveals messy freight accounting</li>
+            <li>CFO asks for a freight cost reduction plan</li>
+          </ul>
+        </div>
+
+        <div class="deep-col objections">
+          <div class="deep-col-label">Objections</div>
+          <ul>
+            <li>"Can you integrate with our accounting system?"</li>
+            <li>"What are the payment terms?"</li>
+            <li>"How do we know we're actually saving money?"</li>
+            <li>"Who handles billing disputes if something goes wrong?"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="talk-block">
+        <div class="talk-label">How to talk to Michael</div>
+        <p>Lead with <strong>guaranteed pricing</strong>, <strong>automatic bill auditing</strong>, and <strong>clean reporting</strong>. The fact that FreightSimple handles all AP and challenges incorrect charges automatically is a massive selling point. Show the Insights feature — graphs, Excel reports, spend by period. Mention <em>credit terms</em> for larger accounts and <em>flexible payment options</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — GEOGRAPHY · INDUSTRIES · SIGNALS -->
+  <section id="geo">
+    <span class="sec-label">07 · Where they live · what to prioritize</span>
+    <h2>Geography, industries, <em>and the signals worth chasing.</em></h2>
+    <p class="sec-tagline">The CRM cohort is geographically concentrated and industrially diverse. Below: where the customers actually live, what industries dominate, and which behavioral signals separate "worth chasing" from "worth letting go."</p>
+
+    <div class="geo-grid">
+
+      <div class="geo-block">
+        <h3>Geography · primary markets</h3>
+        <ul class="geo-list">
+          <li><strong>Ontario</strong> Toronto, Mississauga, Brampton, Scarborough, Ancaster</li>
+          <li><strong>British Columbia</strong> Vancouver, Surrey, Richmond, Langley, Delta</li>
+          <li><strong>Alberta</strong> Calgary, Edmonton, Taber</li>
+          <li><strong>Quebec</strong> Montreal, Saint-Laurent, Dieppe NB</li>
+          <li><strong>Saskatchewan</strong> Saskatoon</li>
+          <li><strong>US cross-border</strong> NC, TX, OR, NJ, SC, CA, FL, WA</li>
+        </ul>
+      </div>
+
+      <div class="industries-block">
+        <h3>Top industries from data</h3>
+        <div class="industries-list">
+          <span class="industry-pill">Industrial equipment</span>
+          <span class="industry-pill">Auto parts &amp; truck</span>
+          <span class="industry-pill">Electronics &amp; tech</span>
+          <span class="industry-pill">Building materials</span>
+          <span class="industry-pill">Food &amp; beverage</span>
+          <span class="industry-pill">Health &amp; medical</span>
+          <span class="industry-pill">Hardware &amp; supply</span>
+          <span class="industry-pill">Agriculture</span>
+          <span class="industry-pill">Consumer goods &amp; apparel</span>
+          <span class="industry-pill">Robotics &amp; manufacturing</span>
+          <span class="industry-pill">Pool &amp; spa</span>
+          <span class="industry-pill">Specialty goods</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="signals-grid">
+
+      <div class="signals-col priority">
+        <div class="signals-col-label">High-value signals · prioritize</div>
+        <ul>
+          <li>High quote-to-shipment ratio (50%+)</li>
+          <li>Shipping weekly or more frequently</li>
+          <li>Cross-border Canada / US routes</li>
+          <li>Located in ON / BC / AB</li>
+          <li>Industrial or manufactured goods</li>
+        </ul>
+      </div>
+
+      <div class="signals-col deprioritize">
+        <div class="signals-col-label">Low-fit signals · deprioritize</div>
+        <ul>
+          <li>High quotes, very few shipments (often rate-shopping)</li>
+          <li>No contact in 90+ days</li>
+          <li>Logistics brokers (not actual shippers)</li>
+          <li>US-only with no Canada connection</li>
+          <li>Very low revenue per shipment</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 08 — VOICE OF SALES -->
+  <section id="voice">
+    <span class="sec-label">08 · What sales taught us</span>
+    <h2>The shadowing layer. <em>Six insights that changed everything.</em></h2>
+    <p class="sec-tagline">A shadowing session with the sales team on April 23 surfaced things the CRM data couldn't. Six insights below — each one with the actual quote from the conversation and what it means for marketing. This is the layer that reshaped the strategic thesis.</p>
+
+    <div class="voice-grid">
+
+      <div class="voice-card critical">
+        <div class="voice-head">
+          <span class="voice-tag">Decision driver</span>
+          <span class="voice-pill critical">● High impact</span>
+        </div>
+        <h4>Price is the #1 decision factor — every time.</h4>
+        <div class="voice-quote">Clients split shipments across platforms based on who offers the best price for that specific shipment. Freightera one day, us the next. They rarely see the value-add — they see the quote.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          Value-add features (bill auditing, anomaly detection, 100+ carriers) aren't being translated to dollars. We need to reframe messaging — not "what we do," but <em>what it saves you per shipment</em>. <a href="strategy.html#moves" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">This insight became Move 01 in The Strategy →</a>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-head">
+          <span class="voice-tag">Audience profile</span>
+          <span class="voice-pill confirm">Confirms ICP</span>
+        </div>
+        <h4>Decision-makers are corporate, time-starved, serious.</h4>
+        <div class="voice-quote">They speak fast. They're serious. They value human contact but want it concise. No fluff. No long sales conversations. Quick, trust-building, done.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          Validates the Microsoft Edge signal — 24.89% conversion is a corporate fingerprint. Copy across the site must be tight, substantive, no fluff. Emails must be short. Long-form content gets skipped.
+        </div>
+      </div>
+
+      <div class="voice-card critical">
+        <div class="voice-head">
+          <span class="voice-tag">Automation gap</span>
+          <span class="voice-pill critical">● Blocks scale</span>
+        </div>
+        <h4>Everything runs on manual CRM templates.</h4>
+        <div class="voice-quote">There's no automated email flow. Follow-ups, surveys, re-engagements — all sent manually from the CRM, template by template. Which means most accounts never get one. Hundreds of quoted clients sit in silence.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          The Retention Sequence becomes critical path, not "nice to have." Klaviyo setup is the highest-leverage ops move available. One person in sales cannot manually nurture hundreds of accounts.
+        </div>
+      </div>
+
+      <div class="voice-card critical">
+        <div class="voice-head">
+          <span class="voice-tag">Relationship priority</span>
+          <span class="voice-pill critical">● Strategic core</span>
+        </div>
+        <h4>Strengthening relationships is the #1 internal priority.</h4>
+        <div class="voice-quote">Large, frequent shippers are the focus — as they should be. But there's a long tail of mid-volume accounts silently drifting. With one person handling all of sales, most don't get real attention. We need automation to cover them.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          Beyond retention, we need a <em>dormant account reactivation</em> play (already in Sprint 02) plus ongoing low-touch nurture. Goal: every account feels seen, even the small ones.
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-head">
+          <span class="voice-tag">Supply-side opportunity</span>
+          <span class="voice-pill opp">Marketing lever</span>
+        </div>
+        <h4>No carrier scoring exists — but it should.</h4>
+        <div class="voice-quote">We've considered carrier scoring and decided it wouldn't add value. Marketing sees it differently — a scoring system would let us curate the carrier network, offer better placement to top performers, and build a defensible story.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          Add Carrier Scoring to Q3 pipeline as a cross-functional initiative (Ops + Marketing). Turns an operational metric into a marketplace differentiator and a marketing narrative — <em>"our carriers average 97% on-time"</em>. <a href="strategy.html#moves" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Mapped to Move 03 in The Strategy →</a>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-head">
+          <span class="voice-tag">Positioning clarity</span>
+          <span class="voice-pill fix">Message fix</span>
+        </div>
+        <h4>Clients want parcel + freight. We only do LTL.</h4>
+        <div class="voice-quote">Prospects ask about parcel all the time. It's a completely different business. We need to be explicit and unambiguous: FreightSimple is LTL-only — not because we can't, but because specialization is the value.</div>
+        <div class="voice-implication">
+          <strong>What this means</strong>
+          Homepage and nav need to clarify what we do and don't do, upfront. Turn the limitation into a positioning win — <em>"the LTL specialists for Canadian shippers."</em> Become the category authority.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 09 — OPEN QUESTIONS -->
+  <section id="openq">
+    <div class="questions">
+      <div class="questions-label">09 · What we still need to validate</div>
+      <h2>Open questions <em>this layer didn't close.</em></h2>
+      <p class="prose" style="font-size: 15.5px; margin-bottom: 26px;">Five threads to pull as more customer interviews land. Each one refines the personas and tightens the messaging.</p>
+
+      <div class="question">
+        <span class="question-num">01</span>
+        <div class="question-body">
+          <strong>The decision-making sequence inside an account</strong>
+          We assume Alex finds us, Sandra approves us, Michael reconciles us. The actual sequence varies by company size — and we haven't validated which persona drives the buy decision in companies of different sizes. A handful of customer interviews would lock this.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">02</span>
+        <div class="question-body">
+          <strong>Persona-specific objection prioritization</strong>
+          Each persona has 4 documented objections. We've ordered them by intuition. The actual order — which objection most often kills a deal per persona — needs sales call logs to validate.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">03</span>
+        <div class="question-body">
+          <strong>Trigger event timing</strong>
+          We know what triggers a search. We don't yet know how long after the trigger they actually buy — days, weeks, or months. That window shapes the entire content cadence and ad strategy.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">04</span>
+        <div class="question-body">
+          <strong>The "almost there" sub-segment from the audit</strong>
+          The companies running 10+ quotes without booking — which persona is doing the quoting? Probably Alex testing the platform, but if it's Michael price-checking, the response is different. Worth a targeted outreach to learn.
+        </div>
+      </div>
+
+      <div class="question">
+        <span class="question-num">05</span>
+        <div class="question-body">
+          <strong>Carrier-side personas</strong>
+          This document is shipper-side only. The supply side of the marketplace has no documented personas yet. That's a separate doc, scheduled once Pillar 03 (carrier-facing communication) kicks off.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Prepared by Daniela Perea · Marketing Lead · v1.0 · April 2026</span>
+    <span><a href="./index.html">← Back to hub</a></span>
+  </div>
+
+</div>
+
+</body>
+</html>
