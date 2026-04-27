@@ -2844,7 +2844,7 @@
   <div class="container">
     <div class="section-label"><span class="num">/02</span>Insights we discovered</div>
     <h2 class="section-title">What the data actually said.</h2>
-    <p class="section-intro">The audit pulled numbers from PostHog, the CRM, Google Ads, and Klaviyo. Most of it was healthy or stable. <strong>These six surfaced sharply</strong> — each one reshaped a decision we'd otherwise have made blind. They became the quantitative spine for the strategy in /03.</p>
+    <p class="section-intro">The audit pulled numbers from PostHog, the CRM, Google Ads, and Klaviyo. Most of it was healthy or stable. <strong>These five surfaced sharply</strong> — each one reshaped a decision we'd otherwise have made blind. They became the quantitative spine for the strategy in /03. <a href="audit.html" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full diagnostic in The Audit →</a></p>
 
     <div class="insight-grid">
       <div class="insight-card flag">
@@ -2855,10 +2855,10 @@
       </div>
 
       <div class="insight-card signal">
-        <div class="insight-kind">◆ Audience signal</div>
+        <div class="insight-kind">◆ The signal worth testing</div>
         <div class="insight-stat">24.89<span class="unit">%</span></div>
-        <h4>Microsoft Edge traffic share</h4>
-        <p>Edge at nearly a quarter of traffic is a corporate-user fingerprint — our exact ICP. Validates B2B positioning and points at LinkedIn as the priority channel (where the buyer actually lives).</p>
+        <h4>Microsoft Edge users converting at 24.89%</h4>
+        <p>Edge is the default browser on corporate Windows machines — exactly where the ICP works. The cohort signal is structural, not anecdotal. <strong>Microsoft Ads / Bing has lower CPCs and far less competition</strong> in B2B logistics than Google. A small pilot validates whether the paid-Edge audience mirrors the organic-Edge pattern.</p>
       </div>
 
       <div class="insight-card fix">
@@ -2873,13 +2873,6 @@
         <div class="insight-stat">$772<span class="unit"> / 0%</span></div>
         <h4>Google Ads Campaign 2 CVR</h4>
         <p>$772 CAD spent, 0 conversions. The copy is strong ("Stop Babysitting Shipments") — the leak is post-click, on the homepage. Ads stay live through Q2; deeper optimization waits until the conversion foundation (new site) is in place. No point optimizing traffic into a broken funnel.</p>
-      </div>
-
-      <div class="insight-card gap">
-        <div class="insight-kind">○ Reallocate</div>
-        <div class="insight-stat">0<span class="unit">%</span></div>
-        <h4>Facebook Mobile conversion</h4>
-        <p>Zero conversions from Facebook Mobile traffic. The ICP doesn't live there. Budget redirects to LinkedIn — where corporate shippers are active and competitors have no presence.</p>
       </div>
 
       <div class="insight-card flag">
@@ -2907,180 +2900,23 @@
       </div>
     </div>
 
-    <div class="strategy-tabs" role="tablist">
-      <button class="s-tab active" data-stab="voice">
-        <span class="s-num">A</span>
-        <span>Voice of Sales</span>
-      </button>
-      <button class="s-tab" data-stab="thesis">
-        <span class="s-num">B</span>
-        <span>Expanded Thesis</span>
-      </button>
-      <button class="s-tab" data-stab="moves">
-        <span class="s-num">C</span>
-        <span>Three Strategic Moves</span>
-      </button>
-      <button class="s-tab" data-stab="changes">
-        <span class="s-num">D</span>
-        <span>What Changes</span>
-      </button>
+    <div class="cross-links" style="display: flex; gap: 14px; flex-wrap: wrap; margin: 32px 0 28px;">
+      <a href="customer.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 20px; background: var(--off-white); border: 1px solid var(--border); border-radius: 100px; text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 600; transition: all 0.18s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--dark)'">
+        <span style="font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-soft); font-weight: 700;">Voice of Sales</span>
+        <span>Six insights from shadowing →</span>
+      </a>
+      <a href="strategy.html#thesis" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 20px; background: var(--off-white); border: 1px solid var(--border); border-radius: 100px; text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 600; transition: all 0.18s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--dark)'">
+        <span style="font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-soft); font-weight: 700;">Thesis v1 → v2</span>
+        <span>The shift in detail →</span>
+      </a>
+      <a href="strategy.html#moves" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 20px; background: var(--off-white); border: 1px solid var(--border); border-radius: 100px; text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 600; transition: all 0.18s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--dark)'">
+        <span style="font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-soft); font-weight: 700;">Three Moves</span>
+        <span>What we do strategically →</span>
+      </a>
     </div>
 
-    <!-- BLOCK A — Voice of Sales -->
-    <div class="strategy-view active" data-sview="voice">
-      <div class="voice-grid">
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Decision driver</span>
-            <span class="voice-pill critical">● High impact</span>
-          </div>
-          <h4>Price is the #1 decision factor — every time.</h4>
-          <div class="voice-quote">Clients split shipments across platforms based on who offers the best price for that specific shipment. Freightera one day, us the next. They rarely see the value-add — they see the quote.</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Value-add features (bill auditing, anomaly detection, 100+ carriers) aren't being translated to dollars. We need to reframe messaging: not "what we do," but "what it saves you per shipment."
-          </div>
-        </div>
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Audience profile</span>
-            <span class="voice-pill">Confirms ICP</span>
-          </div>
-          <h4>Decision-makers are corporate, time-starved, serious.</h4>
-          <div class="voice-quote">They speak fast. They're serious. They value human contact but want it concise. No fluff. No long sales conversations. Quick, trust-building, done.</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Validates Microsoft Edge signal (24.89% traffic = corporate fingerprint). Copy across the site must be tight, substantive, no fluff. Emails must be short. Long-form content gets skipped.
-          </div>
-        </div>
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Automation gap</span>
-            <span class="voice-pill critical">● Blocks scale</span>
-          </div>
-          <h4>Everything runs on manual CRM templates.</h4>
-          <div class="voice-quote">There's no automated email flow. Follow-ups, surveys, re-engagements — all sent manually from the CRM, template by template. Which means most accounts never get one. Hundreds of quoted clients sit in silence.</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Retention Sequence becomes critical path, not "nice to have." Klaviyo setup is the highest-leverage ops move we can make. One person in sales cannot manually nurture hundreds of accounts.
-          </div>
-        </div>
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Relationship priority</span>
-            <span class="voice-pill critical">● Strategic core</span>
-          </div>
-          <h4>Strengthening relationships is the #1 internal priority.</h4>
-          <div class="voice-quote">Large, frequent shippers are the focus — as they should be. But there's a long tail of mid-volume accounts silently drifting. With one person handling all of sales, most don't get real attention. We need automation to cover them.</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Beyond retention, we need a <em>dormant account reactivation</em> play (already in Sprint 02) plus ongoing low-touch nurture. Goal: every account feels seen, even the small ones.
-          </div>
-        </div>
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Supply-side opportunity</span>
-            <span class="voice-pill opportunity">Marketing lever</span>
-          </div>
-          <h4>No carrier scoring exists — but it should.</h4>
-          <div class="voice-quote">We've considered carrier scoring and decided it wouldn't add value. Marketing sees it differently — a scoring system would let us curate the carrier network, offer better placement to top performers, and build a defensible story ("our carriers average 97% on-time").</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Add Carrier Scoring to Q3 pipeline as a cross-functional initiative (Ops + Marketing). Turns an operational metric into a marketplace differentiator and a marketing narrative.
-          </div>
-        </div>
-
-        <div class="voice-card">
-          <div class="voice-head">
-            <span class="voice-tag">Positioning clarity</span>
-            <span class="voice-pill">Message fix</span>
-          </div>
-          <h4>Clients want parcel + freight. We only do LTL.</h4>
-          <div class="voice-quote">Prospects ask about parcel all the time. It's a completely different business. We need to be explicit and unambiguous: FreightSimple is LTL-only — not because we can't, but because specialization is the value.</div>
-          <div class="voice-implication">
-            <strong>What this means</strong>
-            Homepage and nav need to clarify what we do and don't do, upfront. Turn the limitation into a positioning win: <em>"The LTL specialists for Canadian shippers."</em> Become the category authority.
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- BLOCK B — Expanded Thesis -->
-    <div class="strategy-view" data-sview="thesis">
-      <div class="expanded-thesis">
-        <div class="expanded-thesis-inner">
-          <div class="expanded-thesis-label">The thesis, expanded</div>
-          <h3 class="expanded-thesis-statement">Clients aren't loyal to a platform. <span class="highlight">They're loyal to the lowest quote.</span><br>We compete for every shipment — not just the first one.</h3>
-          <p class="expanded-thesis-defense">The original thesis ("we have a conversion problem, not a demand problem") still holds — but sales shadowing deepened it. <strong>The funnel doesn't end at first-booking.</strong> It resets with every quote request. A client who books with us today will cross-shop us against Freightera tomorrow. That changes what "retention" actually means, and it changes what we must make visible on every surface: not the logos, not the features — but the <strong>dollar math</strong> of why this quote is better than the alternative.</p>
-
-          <div class="thesis-shift">
-            <div class="thesis-shift-side before">
-              <h5>We thought</h5>
-              <p>Win the first booking, retention follows.</p>
-            </div>
-            <div class="thesis-shift-arrow">→</div>
-            <div class="thesis-shift-side after">
-              <h5>We know now</h5>
-              <p>Every quote is a fresh competition. Retention is per-shipment, not per-client.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BLOCK C — Three Moves -->
-    <div class="strategy-view" data-sview="moves">
-      <div class="moves-grid">
-
-        <div class="move-card">
-          <div class="move-number">Move 01</div>
-          <h3><span class="verb">Translate</span> value to dollars, everywhere.</h3>
-          <p class="move-desc">Features don't win the quote — dollar math does. Every touchpoint (site, email, sales call, animated demo) must make the economic case visible: what the client actually saves shipping with us, not what we do.</p>
-          <ul class="move-initiatives">
-            <li>New home messaging: cost + value together <span class="status new">New</span></li>
-            <li>Hero Demo + 3 feature gifs (Codex/GitHub style) <span class="status new">Sprint 02</span></li>
-            <li>"What it costs" reframe in the site <span class="status">Planned</span></li>
-            <li>Retention emails in dollar language <span class="status new">Revise</span></li>
-            <li>Case studies with savings math <span class="status q3">Q3</span></li>
-          </ul>
-        </div>
-
-        <div class="move-card">
-          <div class="move-number">Move 02</div>
-          <h3><span class="verb">Automate</span> the lifecycle so no account goes dark.</h3>
-          <p class="move-desc">Sales can't manually nurture hundreds of accounts. Automation becomes the relationship layer — covering the long tail of mid-volume shippers that today drift into silence. Measurement makes the automation intelligent.</p>
-          <ul class="move-initiatives">
-            <li>Retention Sequence live in Klaviyo <span class="status">Sprint 01</span></li>
-            <li>Dormant account reactivation <span class="status">Sprint 02</span></li>
-            <li>PostHog event taxonomy + funnels <span class="status new">Q2 transversal</span></li>
-            <li>External newsletter rebuild <span class="status new">New</span></li>
-            <li>Full Klaviyo on 6-stage funnel <span class="status q3">Q3</span></li>
-          </ul>
-        </div>
-
-        <div class="move-card">
-          <div class="move-number">Move 03</div>
-          <h3><span class="verb">Differentiate</span> the supply side we curate.</h3>
-          <p class="move-desc">If price is the decider, we need a reason clients choose us at the same price point. A curated, scored, high-performance carrier network becomes the quiet differentiator — and the story we tell.</p>
-          <ul class="move-initiatives">
-            <li>Carrier scoring system (Ops + Marketing) <span class="status q3">Q3</span></li>
-            <li>Top-carrier narrative in site <span class="status q3">Q3</span></li>
-            <li>Partnerships with scored leaders <span class="status q3">Q3</span></li>
-            <li>Partners page build <span class="status q3">Q3</span></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- BLOCK D — What Changes -->
-    <div class="strategy-view" data-sview="changes">
+        <!-- BLOCK D — What Changes -->
+    <h3 style="font-family: var(--ff-display); font-size: 22px; font-weight: 800; letter-spacing: -0.022em; margin: 16px 0 12px; color: var(--dark);">What this <em style="color: var(--blue); font-style: italic;">changes</em> across deliverables.</h3>
       <div class="changes-intro">
         <strong>The Strategy Base isn't a separate plan — it's a lens.</strong> Every deliverable already in flight gets re-read through it. Here's what adjusts, what gets reframed, and what gets added.
       </div>
@@ -3198,7 +3034,6 @@
         </div>
 
       </div>
-    </div>
 
   </div>
 </section>
@@ -3270,8 +3105,7 @@
     <div class="seo-takeaway">
       <div class="seo-takeaway-label">◆ The strategic reframe</div>
       <h4>Cleanup and consolidation before new content creation.</h4>
-      <p>The original read was "FreightSimple has zero SEO presence — build content from scratch." The real picture is different: FreightSimple has a 179-page SEO footprint that isn't working. Before investing in new content, the existing footprint needs a decision — keep, consolidate, or deprecate — and the core pages need on-page fixes (titles, descriptions, heading hierarchy).</p>
-      <p>This is actually a faster path to organic growth than starting from zero. The domain is already indexed. The backlink foundation exists. Fix what's there first; then add new, intentional content that targets queries with real search volume.</p>
+      <p>FreightSimple has a 179-page SEO footprint that isn't working — not "no SEO." Cleanup of the programmatic bloat plus on-page fixes on core pages is faster than starting from scratch. The domain is already indexed; the backlink foundation exists. <a href="website-restructure-plan.html" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full restructure plan in The Website Plan →</a></p>
     </div>
 
   </div>
@@ -3281,8 +3115,8 @@
 <section id="funnel">
   <div class="container">
     <div class="section-label"><span class="num">/05</span>The new funnel · strategic plays</div>
-    <h2 class="section-title">Six stages. Priority action per stage.</h2>
-    <p class="section-intro">Old model: flows built on CRM system states. New model: 6 stages mapped to the customer journey itself. Each stage has a defined entry criterion and a single priority action — no ambiguity on what happens next. <strong>Each play below ladders up to one of the Three Moves in /03.</strong></p>
+    <h2 class="section-title">Six stages. One priority play per stage.</h2>
+    <p class="section-intro">Old model: flows built on CRM system states. New model: 6 stages mapped to the customer journey itself. Each stage has a defined entry criterion and a single priority play — every action ladders up to one of the Three Moves. <a href="plays.html" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full mechanic in The Plays →</a></p>
 
     <div class="funnel-strip">
       <div class="funnel-stage s1">
@@ -3323,63 +3157,16 @@
       </div>
     </div>
 
-    <div class="plays-heading">Strategic plays against the funnel</div>
-
-    <div class="plays-grid">
-      <div class="play-card spotlight">
-        <div>
-          <div class="play-target">Converting <span class="arrow">→</span> Retained</div>
-          <h5>Retention Email Sequence — biggest gap, being sharpened</h5>
-          <p class="play-detail">Three emails at Day 2, 14, and 35 post-first-shipment. No sequence existed here before; the CRM was losing 90+ accounts to silence. <strong>Now being revised based on sales shadowing</strong> — shifting from relationship-first to economics-first ("here's what you saved"). Trigger: PostHog → Klaviyo (Sprint 01). Aligned to Move 02 (Automate the lifecycle).</p>
-        </div>
-        <span class="play-status status-built">Built · revising</span>
+    <div style="margin-top: 32px; padding: 26px 32px; background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 280px;">
+        <div style="font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-soft); font-weight: 700; margin-bottom: 6px;">The execution layer</div>
+        <p style="font-size: 14.5px; line-height: 1.6; color: var(--dark); margin: 0;">Each stage has entry criteria, exit criteria, and a single priority play mapped to one of the Three Moves. The full email engine, the Retention Sequence v2.0 dollar-first proposal, and the 8 principles behind every email decision live in the dedicated execution doc.</p>
       </div>
-
-      <div class="play-card">
-        <div>
-          <div class="play-target">Aware <span class="arrow">→</span> Interested</div>
-          <h5>Homepage redesign</h5>
-          <p class="play-detail">Fixes the 68% bounce directly. Prototype v2.1 live on GitHub Pages. Waiting on approval to move to production.</p>
-        </div>
-        <span class="play-status status-live">Live proto</span>
-      </div>
-
-      <div class="play-card">
-        <div>
-          <div class="play-target">All post-Aware stages</div>
-          <h5>Klaviyo rebuild on the 6-stage funnel</h5>
-          <p class="play-detail">Current flows are built on CRM system states (Booked 7.3% CVR, rest ~0%). Rebuild on user-journey stages, plug in retention sequence, measure per-stage conversion.</p>
-        </div>
-        <span class="play-status status-planned">Next up</span>
-      </div>
-
-      <div class="play-card">
-        <div>
-          <div class="play-target">Aware</div>
-          <h5>LinkedIn relaunch + SEO start</h5>
-          <p class="play-detail">Where the ICP is, where competitors aren't. LinkedIn: weekly cadence with brand-aligned content pillars. SEO: long-horizon compounding, starts after homepage ships.</p>
-        </div>
-        <span class="play-status status-planned">Next up</span>
-      </div>
-
-      <div class="play-card">
-        <div>
-          <div class="play-target">Aware</div>
-          <h5>Google Ads optimization</h5>
-          <p class="play-detail">Campaign 2 at 0% CVR — not copy, the homepage. Optimize budget split across campaigns, not pause; re-evaluate once landing experience is fixed.</p>
-        </div>
-        <span class="play-status status-progress">In progress</span>
-      </div>
-
-      <div class="play-card">
-        <div>
-          <div class="play-target">Interested</div>
-          <h5>CRM lead hygiene pass</h5>
-          <p class="play-detail">~30% of CRM leads are wrong-ICP (Tesla, Microsoft, Suncor) — legacy from unfiltered outbound. Tag brokers separately (M2, Ilco, B Real, TQR) — not the ICP either.</p>
-        </div>
-        <span class="play-status status-planned">Planned</span>
-      </div>
+      <a href="plays.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; background: var(--dark); color: #fff; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: -0.005em; white-space: nowrap;">
+        Open The Plays <span style="margin-left: 4px;">→</span>
+      </a>
     </div>
+
   </div>
 </section>
 
@@ -3388,7 +3175,7 @@
   <div class="container">
     <div class="section-label"><span class="num">/06</span>Three audiences · who we communicate with</div>
     <h2 class="section-title">Three audiences, three conversations.</h2>
-    <p class="section-intro"><strong>Different from the Three Moves in /03.</strong> Those are <em>what we do</em> strategically. These are <em>who we speak to</em> — inward to the team, outward to shippers, outward to carriers. Each audience has different needs, so each gets its own communication strategy. This is the organizing frame for every campaign, asset, and channel decision.</p>
+    <p class="section-intro"><strong>Different from the Three Moves in /03.</strong> Those are <em>what we do</em> strategically. These are <em>who we speak to</em> — inward to the team, outward to shippers, outward to carriers. The organizing frame for every campaign decision below — and the structure for everything shipped in /07. <a href="strategy.html#pillars" style="color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); font-weight: 600;">Full pillar detail in The Strategy →</a></p>
 
     <div class="pillar-grid">
 
@@ -3398,29 +3185,8 @@
         </div>
         <div class="pillar-num">Pillar 01</div>
         <h3>Internal</h3>
-        <p class="pillar-audience">The FreightSimple team (20 people, LATAM remote), leadership, and future hires. Anyone shipping work under the brand.</p>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Their needs</div>
-          <ul class="pillar-list">
-            <li>Shared brand language</li>
-            <li>Onboarding infrastructure</li>
-            <li>Clarity on strategy &amp; priorities</li>
-            <li>Consistent visual vocabulary</li>
-          </ul>
-        </div>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Our objectives</div>
-          <ul class="pillar-list">
-            <li>Scale the brand voice across everything shipped</li>
-            <li>Cut rework and inconsistency</li>
-            <li>Cascade strategy clearly</li>
-            <li>Make joining &amp; executing easy</li>
-          </ul>
-        </div>
-
-        <div class="pillar-shipped-count">4 assets shipped</div>
+        <p class="pillar-audience">The FreightSimple team (~20 people, LATAM remote), leadership, and future hires. Anyone shipping work under the brand.</p>
+        <div class="pillar-shipped-count">5 assets shipped</div>
       </div>
 
       <div class="pillar-card">
@@ -3429,28 +3195,7 @@
         </div>
         <div class="pillar-num">Pillar 02</div>
         <h3>Users &amp; Clients</h3>
-        <p class="pillar-audience">Alex (Ops), Sandra (CEO), Michael (Finance) — plus the four CRM groups: Regulars, Converting, Quoted-never-booked, Unqualified.</p>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Their needs</div>
-          <ul class="pillar-list">
-            <li>Save time, fewer phone calls</li>
-            <li>Peace of mind when things go wrong</li>
-            <li>Predictable costs &amp; clear billing</li>
-            <li>Problem prevention, not reaction</li>
-          </ul>
-        </div>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Our objectives</div>
-          <ul class="pillar-list">
-            <li>Bounce rate 68% → &lt;50%</li>
-            <li>Activate unqualified leads, convert quoters</li>
-            <li>Retain bookers, grow Regulars</li>
-            <li>Build the content engine (LinkedIn, SEO, newsletter)</li>
-          </ul>
-        </div>
-
+        <p class="pillar-audience">Alex (Ops), Sandra (Owner), Michael (Finance) — plus the four CRM groups: Regulars, Converting, Quoted-never-booked, Unqualified.</p>
         <div class="pillar-shipped-count">12 assets shipped</div>
       </div>
 
@@ -3461,27 +3206,6 @@
         <div class="pillar-num">Pillar 03</div>
         <h3>Carriers</h3>
         <p class="pillar-audience">112 carriers (93 active) providing capacity to the marketplace. The supply side — and the side the brand has barely spoken to yet.</p>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Their needs</div>
-          <ul class="pillar-list">
-            <li>Steady, predictable load volume</li>
-            <li>Fast, transparent payment</li>
-            <li>Simple onboarding and dispute resolution</li>
-            <li>Feeling valued by the marketplace</li>
-          </ul>
-        </div>
-
-        <div class="pillar-section">
-          <div class="pillar-section-label">Our objectives</div>
-          <ul class="pillar-list">
-            <li>Retain active carriers</li>
-            <li>Reactivate dormant ones</li>
-            <li>Recruit strategic new carriers in underserved lanes</li>
-            <li>Build trust with consistent communication</li>
-          </ul>
-        </div>
-
         <div class="pillar-shipped-count empty">Open ground — nothing yet</div>
       </div>
 
@@ -4050,46 +3774,58 @@
         </div>
       </div>
 
-      <!-- GROUP 04 · STRATEGY & AUDIT -->
+      <!-- GROUP 04 · THE CUSTOMER -->
       <div class="lib-group">
         <div class="lib-group-head">
           <span class="lib-group-num">04</span>
-          <span class="lib-group-title">The strategic <em>base.</em></span>
-          <span class="lib-group-pulse">5 deliverables · <strong>1 live · 4 pending</strong></span>
+          <span class="lib-group-title">The <em>customer.</em></span>
+          <span class="lib-group-pulse">1 deliverable · <strong>1 live</strong></span>
         </div>
         <div class="lib-items">
 
-          <div class="lib-item is-pending">
+          <a class="lib-item is-link" href="customer.html">
             <div class="lib-item-body">
-              <div class="lib-item-name">Marketing Audit</div>
-              <div class="lib-item-desc">Full audit — PostHog, CRM cohort analysis, Google Ads CVR, Klaviyo flows, SEO baseline.</div>
+              <div class="lib-item-name">The Customer · who we serve <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Consolidated customer layer — the ICP, the three buyer personas (Alex / Sandra / Michael), geography, signals, and the six insights from sales shadowing that reshaped the strategy.</div>
             </div>
-            <span class="lib-status pending">HTML pending</span>
-          </div>
+            <span class="lib-status live">Live</span>
+          </a>
 
-          <div class="lib-item is-pending">
-            <div class="lib-item-body">
-              <div class="lib-item-name">Strategic Thesis · v1 + v2</div>
-              <div class="lib-item-desc">From <em>"we don't have a demand problem"</em> to <em>"clients aren't loyal to platforms, they're loyal to the lowest quote."</em></div>
-            </div>
-            <span class="lib-status pending">HTML pending</span>
-          </div>
+        </div>
+      </div>
 
-          <div class="lib-item is-pending">
-            <div class="lib-item-body">
-              <div class="lib-item-name">Funnel Re-architecture</div>
-              <div class="lib-item-desc">Old CRM-state funnel → new 6-stage user journey funnel · plays mapped to the Three Moves.</div>
-            </div>
-            <span class="lib-status pending">HTML pending</span>
-          </div>
+      <!-- GROUP 05 · STRATEGY & AUDIT -->
+      <div class="lib-group">
+        <div class="lib-group-head">
+          <span class="lib-group-num">05</span>
+          <span class="lib-group-title">The strategic <em>base.</em></span>
+          <span class="lib-group-pulse">4 deliverables · <strong>4 live</strong></span>
+        </div>
+        <div class="lib-items">
 
-          <div class="lib-item is-pending">
+          <a class="lib-item is-link" href="audit.html">
             <div class="lib-item-body">
-              <div class="lib-item-name">Voice of Sales · Shadowing notes</div>
-              <div class="lib-item-desc">What the April 23 shadowing surfaced — the source material for the expanded thesis and Three Moves.</div>
+              <div class="lib-item-name">The Audit · what we found <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">Consolidated audit — funnel groups, competitive landscape, unique moats, channel-by-channel state, priority opportunities. The full diagnostic in one read.</div>
             </div>
-            <span class="lib-status pending">HTML pending</span>
-          </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+          <a class="lib-item is-link" href="strategy.html">
+            <div class="lib-item-body">
+              <div class="lib-item-name">The Strategy · what we do <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">The strategy tree — thesis (v1 → v2), Three Moves, Three Pillars, Moves×Pillars matrix, tagline, voice, three claims, persona messaging, objection handling, proof points. The full strategy in one read.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
+
+          <a class="lib-item is-link" href="plays.html">
+            <div class="lib-item-body">
+              <div class="lib-item-name">The Plays · how it executes <span class="lib-item-arrow">→</span></div>
+              <div class="lib-item-desc">The execution layer — 6-stage funnel with entry/exit/play per stage, the email engine, Retention Sequence v2.0 dollar-first proposal, the 8 principles behind it. Where strategy becomes infrastructure.</div>
+            </div>
+            <span class="lib-status live">Live</span>
+          </a>
 
           <a class="lib-item is-link" href="shipped-inventory.html">
             <div class="lib-item-body">
@@ -4102,10 +3838,10 @@
         </div>
       </div>
 
-      <!-- GROUP 05 · INTERNAL & TEAM -->
+      <!-- GROUP 06 · INTERNAL & TEAM -->
       <div class="lib-group">
         <div class="lib-group-head">
-          <span class="lib-group-num">05</span>
+          <span class="lib-group-num">06</span>
           <span class="lib-group-title">The internal <em>layer.</em></span>
           <span class="lib-group-pulse">3 deliverables · <strong>1 in review · 2 pending</strong></span>
         </div>
@@ -4457,21 +4193,8 @@
   });
 
   // ═══════════════════════════════════════════════════════
-  // Strategy Base internal tab switcher
+  // (Strategy tab switcher removed — section /03 simplified to direct content)
   // ═══════════════════════════════════════════════════════
-  const sTabs = document.querySelectorAll('.s-tab');
-  const sViews = document.querySelectorAll('.strategy-view');
-
-  sTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.stab;
-      sTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      sViews.forEach(v => {
-        v.classList.toggle('active', v.dataset.sview === target);
-      });
-    });
-  });
 </script>
 
 </body>
