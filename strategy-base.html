@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Base · Marketing Operating Hub · FreightSimple</title>
+<meta name="description" content="The connective layer, North Star, 3 Pillars, Funnel, Channel Map translation, Q2 rationale, KPI tree, and operating cadences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #4C62EA;
+    --blue-soft: #6B7EEE;
+    --blue-light: #EEF1FD;
+    --blue-periwinkle: #a8b3f0;
+    --gold: #facc0b;
+    --gold-soft: #fde26d;
+    --gold-light: #fef5c7;
+    --dark: #1a1d23;
+    --dark-2: #252830;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --cream: #FFF8E7;
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f1f2f6;
+    --success: #1D9E75;
+    --error: #E24B4A;
+    --warning: #BA7517;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--gold);
+    width: 0%; z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  /* ═══ BRAND STRIP ═══ */
+  .brand-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+  }
+  .brand-strip-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover {
+    border-color: var(--dark);
+    color: var(--dark);
+  }
+
+  /* ═══ STICKY SUB NAV ═══ */
+  .sub-nav {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
+  .sub-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sub-nav-inner::-webkit-scrollbar { display: none; }
+  .sub-nav a {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 14px;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .sub-nav a:hover { color: var(--dark); }
+  .sub-nav a.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .sub-nav a .num { color: var(--muted-soft); margin-right: 6px; }
+
+  /* ═══ COVER ═══ */
+  .cover {
+    background: var(--white);
+    padding: 72px 32px 80px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 30%, transparent 30%, transparent 100%);
+  }
+  .cover-inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .cover-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 28px;
+    padding: 6px 14px 6px 8px;
+    background: rgba(250, 204, 11, 0.15);
+    border-radius: 100px;
+  }
+  .cover-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(250, 204, 11, 0.25);
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 22px;
+    max-width: 820px;
+  }
+  .cover-italic {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .cover-lede {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 680px;
+    margin-bottom: 44px;
+  }
+  .cover-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 56px;
+    padding: 24px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 36px;
+  }
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .cover-meta-val {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  /* ═══ SECTIONS ═══ */
+  section {
+    padding: 90px 32px;
+    position: relative;
+  }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label .num { color: var(--muted); font-weight: 500; }
+  .section-label::after {
+    content: '';
+    width: 48px; height: 1px;
+    background: var(--blue); opacity: 0.3;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+    margin-bottom: 18px;
+    max-width: 900px;
+  }
+  .section-intro {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 820px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+  .section-intro strong { color: var(--dark); font-weight: 600; }
+  section.dark { background: var(--dark); color: #fff; }
+  section.dark .section-label { color: var(--gold); }
+  section.dark .section-label::after { background: var(--gold); opacity: 0.4; }
+  section.dark .section-title { color: #fff; }
+  section.dark .section-intro { color: rgba(255,255,255,0.7); }
+  section.dark .section-intro strong { color: #fff; }
+  section.gray { background: var(--off-white); }
+
+  /* ═══ THESIS BANNER (after cover) ═══ */
+  .thesis-banner {
+    background: var(--dark);
+    color: #fff;
+    padding: 64px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .thesis-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 15% 40%, rgba(76,98,234,0.18) 0%, transparent 45%),
+      radial-gradient(circle at 85% 60%, rgba(250,204,11,0.08) 0%, transparent 45%);
+    pointer-events: none;
+  }
+  .thesis-inner {
+    max-width: 920px; margin: 0 auto; position: relative; z-index: 2;
+  }
+  .thesis-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .thesis-quote {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.2vw, 38px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .thesis-quote em { color: var(--gold); font-style: italic; }
+  .thesis-attr {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══ RULE CARDS (3 questions) ═══ */
+  .rule-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .rule-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .rule-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -12px rgba(26,29,35,0.15);
+    border-color: var(--blue);
+  }
+  .rule-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-soft);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  .rule-q {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  .rule-q .accent { color: var(--blue); }
+  .rule-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ═══ CALLOUT (the rule) ═══ */
+  .callout {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    padding: 24px 28px;
+    border-radius: 8px;
+    margin: 32px 0;
+  }
+  .callout.gold {
+    background: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+  .callout.dark {
+    background: var(--dark);
+    border-left-color: var(--gold);
+    color: #fff;
+  }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .callout.gold .callout-label { color: var(--warning); }
+  .callout.dark .callout-label { color: var(--gold); }
+  .callout-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark);
+  }
+  .callout.dark .callout-text { color: rgba(255,255,255,0.9); }
+
+  /* ═══ NORTH STAR ═══ */
+  .northstar-quote {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    padding: 40px 0 36px;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 48px;
+    max-width: 980px;
+  }
+  .northstar-quote .accent { color: var(--blue); }
+
+  .commitments {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .commitment {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .commitment:hover {
+    transform: translateY(-3px);
+    border-color: var(--blue);
+  }
+  .commitment-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .commitment-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+  .commitment-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ═══ PILLARS ═══ */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .pillar {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -16px rgba(26,29,35,0.2);
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .pillar.p1::before { background: var(--blue); }
+  .pillar.p2::before { background: var(--gold); }
+  .pillar.p3::before { background: var(--dark); }
+  .pillar-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .pillar.p1 .pillar-num { color: var(--blue); }
+  .pillar.p2 .pillar-num { color: var(--warning); }
+  .pillar.p3 .pillar-num { color: var(--dark); }
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+  .pillar-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+  }
+  .pillar-rows { display: flex; flex-direction: column; gap: 14px; }
+  .pillar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .pillar-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .pillar-row-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 700;
+  }
+  .pillar-row-val {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.5;
+  }
+  .pillar-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .status-open { background: rgba(76,98,234,0.12); color: var(--blue); }
+  .status-built { background: rgba(29,158,117,0.12); color: var(--success); }
+  .status-started { background: rgba(250,204,11,0.18); color: var(--warning); }
+
+  /* ═══ FUNNEL ═══ */
+  .funnel-table {
+    display: grid;
+    grid-template-columns: 80px 1.2fr 1.4fr 2fr 1.4fr 1.6fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .funnel-head {
+    background: var(--dark);
+    color: #fff;
+    padding: 16px 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .funnel-row {
+    padding: 22px 18px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+  .funnel-row.stage-cell {
+    background: var(--blue-light);
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue);
+    justify-content: center;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+  .funnel-row strong { color: var(--dark); font-weight: 600; }
+  .funnel-row .kpi-tag {
+    display: inline-block;
+    background: var(--gold-light);
+    color: var(--warning);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* ═══ CHANNEL MAP, interactive filter ═══ */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--off-white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .filter-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .filter-chip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .filter-chip.active {
+    background: var(--dark);
+    color: var(--gold);
+    border-color: var(--dark);
+  }
+  .filter-divider {
+    width: 1px;
+    background: var(--border);
+    margin: 0 8px;
+    align-self: stretch;
+  }
+
+  .channel-table {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .channel-table-head {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1.6fr 2fr;
+    background: var(--dark);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .channel-table-head > div { padding: 16px 18px; }
+  .channel-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1.6fr 2fr;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  .channel-row:hover { background: var(--off-white); }
+  .channel-row > div { padding: 18px; line-height: 1.5; }
+  .channel-row .ch-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 15px;
+  }
+  .pillar-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pillar-pill.carriers { background: var(--blue-light); color: var(--blue); }
+  .pillar-pill.customers { background: var(--gold-light); color: var(--warning); }
+  .pillar-pill.internal { background: rgba(26,29,35,0.08); color: var(--dark); }
+  .pillar-pill.all { background: rgba(107,113,133,0.1); color: var(--muted); }
+  .pillar-pill.mixed { background: linear-gradient(90deg, var(--gold-light) 50%, var(--blue-light) 50%); color: var(--dark); }
+  .stage-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .kpi-text { color: var(--dark); font-weight: 500; }
+  .note-text { color: var(--muted); font-size: 13px; }
+
+  /* ═══ Q2 PROJECTS, expandable cards ═══ */
+  .project-list { display: flex; flex-direction: column; gap: 12px; }
+  .project {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .project:hover { border-color: var(--blue); }
+  .project[open] { border-color: var(--blue); box-shadow: 0 8px 24px -10px rgba(76,98,234,0.2); }
+  .project summary {
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .project summary::-webkit-details-marker { display: none; }
+  .project-num {
+    background: var(--blue);
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .project-summary-text { flex: 1; }
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .project-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .project-chevron {
+    font-size: 14px;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+  .project[open] .project-chevron { transform: rotate(180deg); }
+  .project-body {
+    padding: 0 28px 28px 84px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 6px;
+    padding-top: 22px;
+  }
+  .project-body p { font-size: 15px; color: var(--dark); line-height: 1.65; margin-bottom: 16px; }
+  .project-body .kpi-line {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .project-body .kpi-line .lbl {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ═══ KPI TREE ═══ */
+  .kpi-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+  .kpi-north {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+    padding: 32px 48px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 12px 32px -12px rgba(250,204,11,0.4);
+    max-width: 540px;
+  }
+  .kpi-north-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .kpi-north-metric {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .kpi-north-desc {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.5;
+  }
+  .tree-line {
+    width: 2px;
+    height: 32px;
+    background: var(--border);
+  }
+  .kpi-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  .kpi-pillar-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .kpi-pillar-card.p1 { border-top: 4px solid var(--blue); }
+  .kpi-pillar-card.p2 { border-top: 4px solid var(--gold); }
+  .kpi-pillar-card.p3 { border-top: 4px solid var(--dark); }
+  .kpi-pillar-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .kpi-pillar-metric {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .kpi-pillar-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ═══ KPI ops table ═══ */
+  .ops-kpi-table {
+    margin-top: 60px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .ops-kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    border-top: 1px solid var(--border);
+  }
+  .ops-kpi-row:first-child { border-top: none; }
+  .ops-kpi-row.head {
+    background: var(--dark);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .ops-kpi-row > div { padding: 18px 20px; line-height: 1.5; font-size: 14px; }
+  .ops-kpi-row .stage-name {
+    background: var(--blue-light);
+    color: var(--blue);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    display: flex; align-items: center;
+  }
+
+  /* ═══ ROLES MODELS ═══ */
+  .models-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .model-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .model-card:hover { transform: translateY(-3px); border-color: var(--blue); }
+  .model-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .model-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .model-desc { font-size: 15px; color: var(--dark); line-height: 1.6; margin-bottom: 14px; }
+  .model-fit {
+    background: var(--off-white);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ═══ CADENCE ═══ */
+  .cadence-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cadence-row {
+    display: grid;
+    grid-template-columns: 200px 200px 1fr;
+    gap: 24px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  .cadence-row:hover { border-color: var(--blue); }
+  .cadence-when {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .cadence-when .duration {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+  .cadence-what {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 15px;
+  }
+  .cadence-purpose {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ═══ 30-DAY PLAN ═══ */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .week-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .week-card:hover { transform: translateY(-3px); border-color: var(--blue); }
+  .week-tag {
+    display: inline-block;
+    background: var(--dark);
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .week-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .week-list { list-style: none; }
+  .week-list li {
+    padding: 10px 0 10px 24px;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.5;
+    position: relative;
+  }
+  .week-list li:last-child { border-bottom: none; }
+  .week-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ═══ LIBRARY ═══ */
+  .library-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .lib-item {
+    display: flex;
+    gap: 14px;
+    padding: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .lib-item:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(250,204,11,0.3);
+  }
+  .lib-icon {
+    width: 32px; height: 32px;
+    background: rgba(250,204,11,0.15);
+    color: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .lib-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .lib-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ═══ FOOTER ═══ */
+  .doc-footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 48px 32px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .doc-footer .tag {
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 1024px) {
+    .rule-grid, .commitments, .pillars-grid, .kpi-pillars, .week-grid, .library-grid, .models-grid {
+      grid-template-columns: 1fr;
+    }
+    .funnel-table { grid-template-columns: 60px 1fr 1fr; font-size: 13px; }
+    .funnel-table > div:nth-child(n+7):nth-child(-n+30) { padding: 14px; }
+    .channel-table-head, .channel-row { grid-template-columns: 1fr 1fr; }
+    .channel-table-head > div:nth-child(n+3), .channel-row > div:nth-child(n+3) { display: none; }
+    .ops-kpi-row { grid-template-columns: 1fr; }
+    .cadence-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 720px) {
+    section { padding: 64px 20px; }
+    .cover { padding: 56px 20px 64px; }
+    .project-body { padding-left: 28px; }
+    .brand-strip { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <span class="brand-name">FreightSimple <span class="slash">/</span><span class="sub">Marketing · Strategy Base</span></span>
+    <a href="./index.html" class="brand-back">← Back to hub</a>
+  </div>
+</div>
+
+<!-- SUB NAV -->
+<nav class="sub-nav">
+  <div class="sub-nav-inner" id="subNav">
+    <a href="#why"><span class="num">/01</span>Why this exists</a>
+    <a href="#northstar"><span class="num">/02</span>North Star</a>
+    <a href="#pillars"><span class="num">/03</span>Three Pillars</a>
+    <a href="#funnel"><span class="num">/04</span>Funnel</a>
+    <a href="#channelmap"><span class="num">/05</span>Channel Map</a>
+    <a href="#q2"><span class="num">/06</span>Q2 Rationale</a>
+    <a href="#kpis"><span class="num">/07</span>KPI Tree</a>
+    <a href="#cadence"><span class="num">/08</span>How We Work</a>
+    <a href="#thirtyday"><span class="num">/09</span>Q2 Phasing</a>
+    <a href="#library"><span class="num">/10</span>Library</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <span class="cover-dot"></span>
+      Marketing Operating Hub · Strategy Base
+    </div>
+    <h1 class="cover-title">
+      The <span class="cover-italic">connective</span> layer between strategy and channel map.
+    </h1>
+    <p class="cover-lede">
+      How every channel, project, and tactic ties back to one strategy, North Star, three pillars,
+      a six-stage funnel, and a measurable KPI for each play. Built as the operating layer for the marketing team.
+    </p>
+
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Version</span>
+        <span class="cover-meta-val">1.0</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Date</span>
+        <span class="cover-meta-val">May 19, 2026</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Status</span>
+        <span class="cover-meta-val">Living document</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Audience</span>
+        <span class="cover-meta-val">Marketing team + leadership</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Cadence</span>
+        <span class="cover-meta-val">Updated monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS BANNER -->
+<div class="thesis-banner">
+  <div class="thesis-inner">
+    <div class="thesis-eyebrow">↳ Thesis</div>
+    <p class="thesis-quote">
+      Marketing's job is not <em>to do more things</em>.<br>
+      It is to make sure every thing we do <em>moves a number</em> that ladders up to bookings.
+    </p>
+    <p class="thesis-attr">↳ Strategy Base v1.0 · May 2026</p>
+  </div>
+</div>
+
+<!-- /01 WHY THIS DOC EXISTS -->
+<section id="why">
+  <div class="container">
+    <div class="section-label"><span class="num">/01</span>Why this document exists</div>
+    <h2 class="section-title">The foundation is built. The connective layer is what compounds it.</h2>
+    <p class="section-intro">
+      In <strong>April 2026</strong> we shipped the foundations: 3 strategic pillars, a 6-stage funnel, ICP and personas,
+      brand book, handbook, customer journey, strategy tree, content plan, retention sequences, and ~30 baseline KPIs.
+      The next layer is the one that connects those foundations to the day-to-day channel work, the place where every new tactic
+      gets placed inside a strategy <em>before</em> anyone starts building it.<br><br>
+      This document is that layer. From here forward, every new tactic answers three questions before it ships.
+    </p>
+
+    <div class="rule-grid">
+      <div class="rule-card">
+        <div class="rule-num">/ Q1</div>
+        <div class="rule-q">Who is this <span class="accent">for?</span></div>
+        <p class="rule-desc">Carriers, Customers, or Internal team. If the audience isn't named, the tactic has no owner.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">/ Q2</div>
+        <div class="rule-q">Where in <span class="accent">the funnel?</span></div>
+        <p class="rule-desc">Aware → Interested → Qualified → Activated → Converting → Retained. Each stage has its own job.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">/ Q3</div>
+        <div class="rule-q">How do we <span class="accent">know it worked?</span></div>
+        <p class="rule-desc">A specific, named KPI. Not "engagement" or "awareness", a number with a unit.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The rule</div>
+      <div class="callout-text">
+        If a tactic cannot answer all three questions, it does not get on the roadmap.
+        That is the discipline this document enforces, for us, and for every future hire.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /02 NORTH STAR -->
+<section class="gray" id="northstar">
+  <div class="container">
+    <div class="section-label"><span class="num">/02</span>North Star</div>
+    <h2 class="section-title">One sentence the whole team can recite.</h2>
+
+    <p class="northstar-quote">
+      Marketing exists to grow FreightSimple's marketplace by <span class="accent">acquiring, activating, and retaining</span>
+      LTL shippers, while strengthening the supply side that makes the marketplace work, and the culture that makes the company executable.
+    </p>
+
+    <p class="section-intro" style="margin-bottom: 32px;">
+      Three commitments behind the North Star. Every campaign, asset, post, and email must serve at least one of these. If it doesn't, we don't ship it.
+    </p>
+
+    <div class="commitments">
+      <div class="commitment">
+        <div class="commitment-num">/ Commitment 01</div>
+        <div class="commitment-title">Save Money.</div>
+        <p class="commitment-desc">Make the economic case visible. Show, don't tell, that FreightSimple shippers pay less than they would through a traditional broker.</p>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">/ Commitment 02</div>
+        <div class="commitment-title">Prevent Problems.</div>
+        <p class="commitment-desc">Reduce friction at every touchpoint: clearer landing pages, faster quote tool, fewer questions before booking, faster issue resolution after.</p>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">/ Commitment 03</div>
+        <div class="commitment-title">Automate Everything.</div>
+        <p class="commitment-desc">Marketing operations themselves are a product. Repeatable plays, instrumented funnels, behavior-triggered emails. We scale by building systems, not by adding hands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /03 THREE PILLARS -->
+<section id="pillars">
+  <div class="container">
+    <div class="section-label"><span class="num">/03</span>The Three Pillars</div>
+    <h2 class="section-title">A marketplace has three sides. Marketing serves all three.</h2>
+    <p class="section-intro">
+      FreightSimple is a marketplace. Value flows in two directions, and the company is held together by a third.
+      Each pillar has its own goal, audience, time horizon, and current build state.
+    </p>
+
+    <div class="pillars-grid">
+
+      <div class="pillar p1">
+        <div class="pillar-num">Pillar 01 · Supply side</div>
+        <div class="pillar-title">Carriers</div>
+        <div class="pillar-sub">// the partners that make the product real</div>
+        <div class="pillar-rows">
+          <div class="pillar-row">
+            <span class="pillar-row-label">Goal</span>
+            <span class="pillar-row-val">Strong, durable carrier relationships → better rates, more reliability, growth moat.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Audience</span>
+            <span class="pillar-row-val">Canadian LTL carriers, account managers, ops contacts, leadership.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Horizon</span>
+            <span class="pillar-row-val">Mid–long term · relationship-driven, not campaign-driven.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Status</span>
+            <span class="pillar-row-val"><span class="pillar-status status-open">● 0% built · open opportunity</span></span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Why it matters</span>
+            <span class="pillar-row-val">Without strong carriers we have no product. Marketing's job here is to make FreightSimple the most pleasant marketplace to partner with.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar p2">
+        <div class="pillar-num">Pillar 02 · Demand side</div>
+        <div class="pillar-title">Customers</div>
+        <div class="pillar-sub">// the revenue engine</div>
+        <div class="pillar-rows">
+          <div class="pillar-row">
+            <span class="pillar-row-label">Goal</span>
+            <span class="pillar-row-val">Acquire, activate, and retain paying shippers.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Audience</span>
+            <span class="pillar-row-val">Alex (Ops), Sandra (Owner), Michael (Finance), Canadian SMB to mid-market LTL shippers.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Horizon</span>
+            <span class="pillar-row-val">Short–mid term · revenue impact within the quarter.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Status</span>
+            <span class="pillar-row-val"><span class="pillar-status status-built">● ~80% built · execution is the work</span></span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Why it matters</span>
+            <span class="pillar-row-val">This is where revenue lives. Most of the channel map sits here, organized by the 6-stage funnel.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar p3">
+        <div class="pillar-num">Pillar 03 · Culture & alignment</div>
+        <div class="pillar-title">Internal team</div>
+        <div class="pillar-sub">// the people who execute everything</div>
+        <div class="pillar-rows">
+          <div class="pillar-row">
+            <span class="pillar-row-label">Goal</span>
+            <span class="pillar-row-val">Cohesive team, shared vision, strong culture. Marketing builds employer brand.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Audience</span>
+            <span class="pillar-row-val">All FreightSimple employees, current and future hires.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Horizon</span>
+            <span class="pillar-row-val">Ongoing · compounds over months and years.</span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Status</span>
+            <span class="pillar-row-val"><span class="pillar-status status-started">● Started · handbook live</span></span>
+          </div>
+          <div class="pillar-row">
+            <span class="pillar-row-label">Why it matters</span>
+            <span class="pillar-row-val">In logistics, talent is scarce. Great internal brand wins recruiting without head hunters, and reduces churn.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- /04 FUNNEL -->
+<section class="gray" id="funnel">
+  <div class="container">
+    <div class="section-label"><span class="num">/04</span>The Funnel · operating system for Pillar 02</div>
+    <h2 class="section-title">Six stages. Each one has a job and a number.</h2>
+    <p class="section-intro">
+      Every tactic in the Customers pillar is assigned to one or more funnel stages. This is how we know if a campaign is doing its job:
+      a homepage doesn't compete with an email, they live at different stages, with different KPIs.
+    </p>
+
+    <div class="funnel-table">
+      <div class="funnel-head">Stage</div>
+      <div class="funnel-head">Definition</div>
+      <div class="funnel-head">Goal at this stage</div>
+      <div class="funnel-head">Primary KPI</div>
+      <div class="funnel-head">Owner channels</div>
+      <div class="funnel-head">Drop-off risk</div>
+
+      <div class="funnel-row stage-cell">01<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">AWARE</span></div>
+      <div class="funnel-row">Doesn't know FreightSimple exists yet.</div>
+      <div class="funnel-row">Make the brand discoverable to LTL shippers in Canada.</div>
+      <div class="funnel-row"><span class="kpi-tag">Impressions · branded search · reach</span></div>
+      <div class="funnel-row">Paid ads, SEO, Reddit, Podcasts, Conferences, Billboard</div>
+      <div class="funnel-row">Spending without measuring brand lift.</div>
+
+      <div class="funnel-row stage-cell">02<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">INTERESTED</span></div>
+      <div class="funnel-row">Clicked through, on the website.</div>
+      <div class="funnel-row">Reduce homepage bounce. Move them to the quote tool.</div>
+      <div class="funnel-row"><span class="kpi-tag">Bounce rate · Page 2 reach</span></div>
+      <div class="funnel-row">Landing pages, Main Explainer Video, Help Center</div>
+      <div class="funnel-row"><strong style="color: var(--error);">68% bounce, the #1 lift opportunity.</strong></div>
+
+      <div class="funnel-row stage-cell">03<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">QUALIFIED</span></div>
+      <div class="funnel-row">controls_ltl_freight = true</div>
+      <div class="funnel-row">Build trust. Make economics visible.</div>
+      <div class="funnel-row"><span class="kpi-tag">Qualified → Activated rate</span></div>
+      <div class="funnel-row">Email nurture, Case studies, G2 / Trust Pilot, Calculator</div>
+      <div class="funnel-row">No social proof = stalled deals.</div>
+
+      <div class="funnel-row stage-cell">04<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">ACTIVATED</span></div>
+      <div class="funnel-row">Generated 1+ quote.</div>
+      <div class="funnel-row">Convert quote into first booking.</div>
+      <div class="funnel-row"><span class="kpi-tag">Quote-to-booking rate</span></div>
+      <div class="funnel-row">Activation email sequence (Klaviyo), Sales follow-up</div>
+      <div class="funnel-row">Quote generated, conversion still open.</div>
+
+      <div class="funnel-row stage-cell">05<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">CONVERTING</span></div>
+      <div class="funnel-row">1–4 bookings.</div>
+      <div class="funnel-row">Prevent early churn. Cross to booking 5.</div>
+      <div class="funnel-row"><span class="kpi-tag">Bookings / customer / month</span></div>
+      <div class="funnel-row">Retention emails (D7/D14/D30), Support, Review request</div>
+      <div class="funnel-row">Unresolved first issue.</div>
+
+      <div class="funnel-row stage-cell">06<br><span style="font-size:11px; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--blue); opacity: 0.7;">RETAINED</span></div>
+      <div class="funnel-row">5+ bookings.</div>
+      <div class="funnel-row">Maximize LTV, generate referrals & advocacy.</div>
+      <div class="funnel-row"><span class="kpi-tag">LTV · NPS · referral rate</span></div>
+      <div class="funnel-row">Account check-ins, Referral program, NPS, Newsletter</div>
+      <div class="funnel-row">No proactive expansion outreach.</div>
+    </div>
+
+    <div class="callout gold" style="margin-top: 40px;">
+      <div class="callout-label">Insight from the audit</div>
+      <div class="callout-text">
+        The largest lift opportunity in the funnel sits between <strong>Interested → Qualified</strong>: <strong>68% homepage bounce rate</strong>,
+        only 31.58% reach Page 2. This is the single biggest conversion lever in Q2. Any project that improves this number
+        deserves priority over projects that touch other stages.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /05 CHANNEL MAP TRANSLATION -->
+<section id="channelmap">
+  <div class="container">
+    <div class="section-label"><span class="num">/05</span>Translating the channel map</div>
+    <h2 class="section-title">No channel removed. Every channel placed.</h2>
+    <p class="section-intro">
+      <strong>This is the most important section of this document.</strong> The leadership channel map lists every place we could show up.
+      Here, each channel is placed inside the strategy: which pillar it serves, which funnel stage it influences, and what KPI proves it's working.
+      Use the filters to slice by pillar or by stage.
+    </p>
+
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Pillar</span>
+        <button class="filter-chip active" data-filter="pillar" data-val="all">All</button>
+        <button class="filter-chip" data-filter="pillar" data-val="carriers">Carriers</button>
+        <button class="filter-chip" data-filter="pillar" data-val="customers">Customers</button>
+        <button class="filter-chip" data-filter="pillar" data-val="internal">Internal</button>
+      </div>
+      <div class="filter-divider"></div>
+      <div class="filter-group">
+        <span class="filter-label">Stage</span>
+        <button class="filter-chip active" data-filter="stage" data-val="all">All</button>
+        <button class="filter-chip" data-filter="stage" data-val="aware">Aware</button>
+        <button class="filter-chip" data-filter="stage" data-val="interested">Interested</button>
+        <button class="filter-chip" data-filter="stage" data-val="qualified">Qualified</button>
+        <button class="filter-chip" data-filter="stage" data-val="activated">Activated</button>
+        <button class="filter-chip" data-filter="stage" data-val="converting">Converting</button>
+        <button class="filter-chip" data-filter="stage" data-val="retained">Retained</button>
+      </div>
+    </div>
+
+    <div class="channel-table">
+      <div class="channel-table-head">
+        <div>Channel</div>
+        <div>Pillar</div>
+        <div>Funnel stage</div>
+        <div>Primary KPI</div>
+        <div>Strategic note</div>
+      </div>
+
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">Google Ads</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">CAC, click-through to quote tool</div>
+        <div class="note-text">Already running ($150/day, 2 campaigns). Audit ROI before scaling.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">Bing Ads</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">CAC vs Google benchmark</div>
+        <div class="note-text">Low priority until Google ROI is proven. Park for Q3.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">LinkedIn Ads</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">CPL, qualified lead rate</div>
+        <div class="note-text">Best for Sandra (Owner) and Michael (Finance). Test mid-quarter.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware">
+        <div class="ch-name">YouTube Ads</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware</div>
+        <div class="kpi-text">View-through, branded search lift</div>
+        <div class="note-text">Only viable once we have the Main Explainer Video. Q3 candidate.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="qualified activated">
+        <div class="ch-name">Trust Pilot</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Qualified → Activated</div>
+        <div class="kpi-text">Review count, average rating</div>
+        <div class="note-text">Social proof for buyers researching. Trigger after booking #2.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">Google Business Profile</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">Local search visibility</div>
+        <div class="note-text">Quick win. Set up + optimize once. Maintenance after.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="qualified">
+        <div class="ch-name">G2</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Qualified</div>
+        <div class="kpi-text">Listing presence, review count</div>
+        <div class="note-text">Buyers in research mode compare here. Set up + ask retained customers.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware">
+        <div class="ch-name">Reddit</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware</div>
+        <div class="kpi-text">Helpful comment count, branded mentions</div>
+        <div class="note-text">r/logistics, r/smallbusiness. Be useful first. Not promotional.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">SEO / Blog Posts</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">Organic traffic, ranking keywords</div>
+        <div class="note-text">4 keyword pillars defined. 2 posts/month cadence.</div>
+      </div>
+      <div class="channel-row" data-pillar="internal carriers" data-stage="all">
+        <div class="ch-name">Swag</div>
+        <div><span class="pillar-pill mixed">Internal + Carriers</span></div>
+        <div class="stage-tag">N/A</div>
+        <div class="kpi-text">Distribution events, team NPS</div>
+        <div class="note-text">Use strategically: onboarding kits, carrier recognition, conferences.</div>
+      </div>
+      <div class="channel-row" data-pillar="carriers" data-stage="all">
+        <div class="ch-name">Carrier Marketing</div>
+        <div><span class="pillar-pill carriers">Carriers</span></div>
+        <div class="stage-tag">N/A</div>
+        <div class="kpi-text">Carrier NPS, partnership growth, retention</div>
+        <div class="note-text"><strong style="color: var(--blue);">This is an entire pillar, not a tactic.</strong> Needs its own sub-strategy.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers internal" data-stage="aware interested">
+        <div class="ch-name">LinkedIn (organic)</div>
+        <div><span class="pillar-pill mixed">Customers + Internal</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">Followers, engagement, profile clicks</div>
+        <div class="note-text">Highest-leverage social. Company page + leadership profiles + team voices, posting consistently.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="interested qualified">
+        <div class="ch-name">YouTube (organic)</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Interested → Qualified</div>
+        <div class="kpi-text">Video views, watch time</div>
+        <div class="note-text">Host the Main Explainer + Help Center videos. SEO benefit.</div>
+      </div>
+      <div class="channel-row" data-pillar="internal" data-stage="all">
+        <div class="ch-name">Instagram</div>
+        <div><span class="pillar-pill internal">Internal</span></div>
+        <div class="stage-tag">N/A</div>
+        <div class="kpi-text">Employer brand engagement</div>
+        <div class="note-text">Culture-first, not sales. Park as employer brand asset.</div>
+      </div>
+      <div class="channel-row" data-pillar="internal" data-stage="all">
+        <div class="ch-name">Handbook</div>
+        <div><span class="pillar-pill internal">Internal</span></div>
+        <div class="stage-tag">N/A</div>
+        <div class="kpi-text">Team adoption, onboarding speed</div>
+        <div class="note-text">Live. Becomes the single source of truth for the team.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="interested activated converting">
+        <div class="ch-name">Help Center</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Interested → Converting</div>
+        <div class="kpi-text">Self-serve rate, ticket deflection</div>
+        <div class="note-text">Revamp planned Q2. Reduces support load + improves activation.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="interested qualified">
+        <div class="ch-name">Main Explainer Video</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Interested → Qualified</div>
+        <div class="kpi-text">Homepage bounce rate impact</div>
+        <div class="note-text"><strong>Highest-leverage video.</strong> Lives on homepage. Q2 priority.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="activated converting">
+        <div class="ch-name">Help Center Videos</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Activated → Converting</div>
+        <div class="kpi-text">Activation rate, ticket deflection</div>
+        <div class="note-text">Short product demos. Pair with Help Center revamp.</div>
+      </div>
+      <div class="channel-row" data-pillar="all" data-stage="all">
+        <div class="ch-name">Analytics / Reporting</div>
+        <div><span class="pillar-pill all">All pillars</span></div>
+        <div class="stage-tag">All stages</div>
+        <div class="kpi-text">KPI dashboard health</div>
+        <div class="note-text">Not a channel, it's how we measure all channels. PostHog + Klaviyo + CRM.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers carriers" data-stage="aware qualified">
+        <div class="ch-name">Conferences</div>
+        <div><span class="pillar-pill mixed">Customers + Carriers</span></div>
+        <div class="stage-tag">Aware → Qualified</div>
+        <div class="kpi-text">Leads gathered, branded reach</div>
+        <div class="note-text">High cost, high signal. Pick 2-3/year, not a calendar of them.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="qualified activated">
+        <div class="ch-name">Webinars</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Qualified → Activated</div>
+        <div class="kpi-text">Registrants, attend rate, quote rate post-event</div>
+        <div class="note-text">Educational format for Alex (Ops). Quarterly cadence max.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers carriers" data-stage="interested retained">
+        <div class="ch-name">FreightSimple University</div>
+        <div><span class="pillar-pill mixed">Customers + Carriers</span></div>
+        <div class="stage-tag">Interested → Retained</div>
+        <div class="kpi-text">Course completions, return visits</div>
+        <div class="note-text">Big content bet. Needs scoping before commitment. Q3+ project.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="interested qualified">
+        <div class="ch-name">Guides / White Papers</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Interested → Qualified</div>
+        <div class="kpi-text">Downloads, email captures</div>
+        <div class="note-text">Gated content. One strong asset > five weak ones.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware">
+        <div class="ch-name">Billboard / Physical</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware</div>
+        <div class="kpi-text">Branded search lift in geography</div>
+        <div class="note-text">Expensive, hard to measure. Park unless tied to a specific geo launch.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">Podcasts (guesting)</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">Referral traffic, branded mentions</div>
+        <div class="note-text">CEO-fronted. Logistics & SMB podcasts. Pitch 5, land 2 per quarter.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="interested qualified">
+        <div class="ch-name">Landing Pages</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Interested → Qualified</div>
+        <div class="kpi-text">Conversion rate by source</div>
+        <div class="note-text">Campaign-specific. Each paid campaign deserves its own LP, not the homepage.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="qualified activated converting retained">
+        <div class="ch-name">Email Marketing</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Qualified → Retained</div>
+        <div class="kpi-text">Open, click, attributed bookings</div>
+        <div class="note-text"><strong>Underrated in the channel map.</strong> Retention sequence already written. Load Klaviyo first.</div>
+      </div>
+      <div class="channel-row" data-pillar="customers" data-stage="aware interested">
+        <div class="ch-name">Newsletter Sponsorships</div>
+        <div><span class="pillar-pill customers">Customers</span></div>
+        <div class="stage-tag">Aware → Interested</div>
+        <div class="kpi-text">CAC vs paid benchmark</div>
+        <div class="note-text">Test with 1-2 logistics/SMB newsletters. Cheaper than ads if niche fits.</div>
+      </div>
+    </div>
+
+    <div class="callout dark" style="margin-top: 40px;">
+      <div class="callout-label">Read this before the next leadership review</div>
+      <div class="callout-text">
+        The point of this table is not to drop any channel from the leadership map. Every channel is here.
+        The point is that each one now has <em style="color: var(--gold);">a job, an audience, and a number it has to move</em>.
+        That's the strategy that ties it all together. When a new channel idea appears next month,
+        this is the page where it gets placed <em>before</em> anyone starts building.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /06 Q2 RATIONALE -->
+<section class="gray" id="q2">
+  <div class="container">
+    <div class="section-label"><span class="num">/06</span>Q2 2026 · strategic rationale</div>
+    <h2 class="section-title">Eight projects. Each one earns its slot.</h2>
+    <p class="section-intro">
+      The Q2 roadmap lists 8 projects. This section makes the strategic case for each one: what stage it moves,
+      which KPI it should affect, and why it was prioritized. Click each to expand.
+    </p>
+
+    <div class="project-list">
+
+      <details class="project" open>
+        <summary>
+          <div class="project-num">1</div>
+          <div class="project-summary-text">
+            <div class="project-name">Google Ads · audit + scale</div>
+            <div class="project-meta">Customers · Aware → Interested</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Already running. Before scaling, audit which keywords convert to quotes vs which only generate clicks. Then double down on what works. The temptation will be to add budget, the discipline is to add <em>signal</em> first.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>CAC, quote-to-spend ratio, % conversions from top-10 keywords</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">2</div>
+          <div class="project-summary-text">
+            <div class="project-name">G2 / Trust Pilot</div>
+            <div class="project-meta">Customers · Qualified → Activated</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Buyers in research mode compare on these platforms. Zero presence here = lost deals to competitors that show up. Quick foundational fix, set up the listings, then build a flow to invite retained customers to review.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Review count, average rating, mentions in sales calls</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">3</div>
+          <div class="project-summary-text">
+            <div class="project-name">More Case Studies & Testimonials</div>
+            <div class="project-meta">Customers · Qualified → Activated</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Specific dollar-savings stories from real customers are the single most persuasive asset for Michael (Finance) and Sandra (Owner). One per vertical, with the actual numbers, by name where possible.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Case study page views, attribution in deal close, sales rep usage rate</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">4</div>
+          <div class="project-summary-text">
+            <div class="project-name">Main Explainer Video</div>
+            <div class="project-meta">Customers · Interested → Qualified · ⚡ HIGHEST LEVERAGE</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Lives on the homepage. The 68% bounce rate marks the highest-leverage stage in the funnel. A 60-second video showing the quote tool in action is the highest-leverage asset of the quarter. If we ship one video this year, it's this one.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Homepage bounce rate, Page 2 reach, video completion rate, time-on-site</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">5</div>
+          <div class="project-summary-text">
+            <div class="project-name">SEO</div>
+            <div class="project-meta">Customers · Aware → Interested</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Compounds over time. Editorial calendar already defined. The next lever is execution cadence — 2 posts/month, with a clear owner on the team. Also: clean up the existing 179 indexed pages with zero traffic.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Organic sessions, keyword rankings in 4 pillars, pages with traffic / total indexed</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">6</div>
+          <div class="project-summary-text">
+            <div class="project-name">Analytics / Reporting</div>
+            <div class="project-meta">All pillars · All stages · 🔒 NON-NEGOTIABLE</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Marked with '(?)' in the original map, but this is non-negotiable. A KPI dashboard multiplies the impact of every other project. Build the dashboard once, automate the weekly report. This is the project that makes every other project measurable.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Time-to-insight, % decisions backed by data, dashboard adoption by team</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">7</div>
+          <div class="project-summary-text">
+            <div class="project-name">Help Center Revamp</div>
+            <div class="project-meta">Customers · Activated → Converting</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Activation drop-off is partly self-serve friction. A better Help Center increases activation AND reduces support ticket load, double impact. Pair with short demo videos so customers can self-serve through the most common questions.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Self-serve rate, ticket deflection, time-to-first-booking</div>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <div class="project-num">8</div>
+          <div class="project-summary-text">
+            <div class="project-name">LinkedIn</div>
+            <div class="project-meta">Customers + Internal · Aware → Interested</div>
+          </div>
+          <div class="project-chevron">▼</div>
+        </summary>
+        <div class="project-body">
+          <p>Highest-leverage social for B2B logistics. Three-pronged: company page (brand), leadership voice (thought leadership), team voices (employer brand). Free distribution if executed well. Cadence beats brilliance, 3 posts/week, consistently.</p>
+          <div class="kpi-line"><span class="lbl">Measure with</span>Followers, post engagement, profile-to-homepage clicks, inbound DMs</div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- /07 KPI TREE -->
+<section id="kpis">
+  <div class="container">
+    <div class="section-label"><span class="num">/07</span>KPI Tree · how we measure</div>
+    <h2 class="section-title">One North Star. Three pillar metrics. Operational KPIs that ladder up.</h2>
+    <p class="section-intro">
+      Every KPI in this document ladders up to one of three pillar-level metrics, which ladder up to the company's North Star.
+      If a tactic moves a leaf KPI but doesn't ladder up, <strong>it's vanity</strong>. If a tactic doesn't have a leaf KPI, <strong>it doesn't ship</strong>.
+    </p>
+
+    <div class="kpi-tree">
+      <div class="kpi-north">
+        <div class="kpi-north-label">⭐ North Star Metric</div>
+        <div class="kpi-north-metric">Monthly Bookings</div>
+        <div class="kpi-north-desc">Total bookings generated through the FreightSimple marketplace each month. Every other metric exists to move this one.</div>
+      </div>
+
+      <div class="tree-line"></div>
+
+      <div class="kpi-pillars">
+        <div class="kpi-pillar-card p1">
+          <div class="kpi-pillar-name">Pillar 01 · Carriers</div>
+          <div class="kpi-pillar-metric">Carrier NPS + active carrier count</div>
+          <div class="kpi-pillar-desc">Healthy supply enables every demand-side metric. If carriers churn, customers can't get rates.</div>
+        </div>
+        <div class="kpi-pillar-card p2">
+          <div class="kpi-pillar-name">Pillar 02 · Customers</div>
+          <div class="kpi-pillar-metric">Funnel conversion rates per stage</div>
+          <div class="kpi-pillar-desc">North Star (bookings) is the output of how well each stage transitions to the next.</div>
+        </div>
+        <div class="kpi-pillar-card p3">
+          <div class="kpi-pillar-name">Pillar 03 · Internal</div>
+          <div class="kpi-pillar-metric">eNPS + handbook adoption + recruiting pipeline</div>
+          <div class="kpi-pillar-desc">A misaligned team can't execute. Internal health is the leading indicator of external performance.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 64px 0 16px; letter-spacing: -0.02em;">Operational KPIs by funnel stage <span style="color: var(--muted); font-weight: 500;">· Customers pillar</span></h3>
+
+    <div class="ops-kpi-table">
+      <div class="ops-kpi-row head">
+        <div>Stage</div>
+        <div>Leading KPIs</div>
+        <div>Lagging KPIs (transitions)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Aware</div>
+        <div>Impressions, reach, branded search, organic sessions, ad spend, podcast guest count</div>
+        <div><strong>Aware → Interested rate</strong> (% of impressions that click)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Interested</div>
+        <div>Sessions, bounce rate, Page 2 reach, time-on-site, scroll depth, video completion rate</div>
+        <div><strong>Interested → Qualified rate</strong> (% that match controls_ltl_freight)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Qualified</div>
+        <div>Email open rate, case study views, calculator completions, G2/Trust Pilot mentions in calls</div>
+        <div><strong>Qualified → Activated rate</strong> (% who generate first quote)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Activated</div>
+        <div>Quote tool usage, post-quote email engagement, sales response time</div>
+        <div><strong>Activated → Converting rate</strong> (quote-to-booking conversion)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Converting</div>
+        <div>Bookings per customer / month, retention email open rate, support ticket sentiment</div>
+        <div><strong>Converting → Retained rate</strong> (% who reach 5+ bookings)</div>
+      </div>
+      <div class="ops-kpi-row">
+        <div class="stage-name">Retained</div>
+        <div>NPS, referral count, expansion revenue, account check-in cadence</div>
+        <div><strong>LTV</strong>, churn rate, referral-driven new bookings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /08 HOW WE WORK -->
+<section class="gray" id="cadence">
+  <div class="container">
+    <div class="section-label"><span class="num">/08</span>How we work · operating cadences</div>
+    <h2 class="section-title">Clear ownership. No ambiguity about who owns what.</h2>
+    <p class="section-intro">
+      Ambiguity about ownership is the fastest way to stall everything. This section defines how the marketing team divides work,
+      when we sync, and how we measure ourselves. The role labels below are functional, not titles.
+    </p>
+
+    <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 12px 0 24px; letter-spacing: -0.02em;">Two operating models · pick the one that fits the team's shape</h3>
+
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-tag">Model A</div>
+        <div class="model-title">Strategy + Execution split</div>
+        <p class="model-desc">
+          <strong>Strategy role owns:</strong> planning, brand, cross-pillar coordination, leadership communication, KPI dashboard, hiring.
+          <br><br><strong>Execution role owns:</strong> content production, email setup in Klaviyo, social posting, paid ad management, asset shipping.
+        </p>
+        <div class="model-fit">Best fit when the team has one strategic role and one execution-shaped role.</div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-tag">Model B</div>
+        <div class="model-title">Pillar split</div>
+        <p class="model-desc">
+          <strong>Role 1 owns:</strong> Pillars 02 + 03 (Customers + Internal) end-to-end.
+          <br><br><strong>Role 2 owns:</strong> Pillar 01 (Carriers) end-to-end, plus selected execution support on Pillar 02.
+        </p>
+        <div class="model-fit">Best fit when both roles are senior enough to own a pillar with its own stakeholders.</div>
+      </div>
+    </div>
+
+    <div class="callout gold" style="margin: 36px 0 48px;">
+      <div class="callout-label">How to choose</div>
+      <div class="callout-text">
+        Pick the model that matches the actual shape of the team today, not the org chart you wish you had. Models can evolve as the team grows.
+        What cannot evolve is the principle: <strong>every pillar, every funnel stage, and every channel must have one named owner</strong>.
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 12px 0 24px; letter-spacing: -0.02em;">Weekly cadence</h3>
+
+    <div class="cadence-list">
+      <div class="cadence-row">
+        <div class="cadence-when">Monday<span class="duration">30 min</span></div>
+        <div class="cadence-what">Weekly priorities</div>
+        <div class="cadence-purpose">Team reviews the KPI dashboard together. Each role picks 3 priorities for the week, tied to the Q2 roadmap.</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Wednesday<span class="duration">15 min</span></div>
+        <div class="cadence-what">Mid-week unblock</div>
+        <div class="cadence-purpose">Quick standup. What's stuck? Hand off or pair on whatever's blocking.</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Friday<span class="duration">45 min</span></div>
+        <div class="cadence-what">EOW review + leadership update</div>
+        <div class="cadence-purpose">Wins, blockers, what shipped. End-of-week update sent to leadership with the team's contributions.</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Bi-weekly<span class="duration">60 min</span></div>
+        <div class="cadence-what">Strategy review</div>
+        <div class="cadence-purpose">Step back. Are we moving the funnel KPIs we said we'd move? What gets cut, what gets doubled down on?</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Monthly<span class="duration">90 min</span></div>
+        <div class="cadence-what">Pillar deep-dive</div>
+        <div class="cadence-purpose">One pillar per month rotation. Audit health, refresh tactics, decide next month's investments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /09 Q2 PHASING -->
+<section id="thirtyday">
+  <div class="container">
+    <div class="section-label"><span class="num">/09</span>Q2 phasing · how the quarter plays out</div>
+    <h2 class="section-title">Foundations first. Then leverage. Then measurement. Then iterate.</h2>
+    <p class="section-intro">
+      The Q2 projects from /06 don't ship in parallel, they ship in a sequence that makes each one possible.
+      The dashboard must be live before we can credibly cut anything; case studies must exist before G2/Trust Pilot have anything to point to;
+      the Explainer Video pairs with the homepage work to actually move the 68%.
+    </p>
+
+    <div class="week-grid">
+
+      <div class="week-card">
+        <div class="week-tag">Phase 01 · Foundations</div>
+        <div class="week-title">Build the floor under everything else</div>
+        <ul class="week-list">
+          <li>Stand up the KPI dashboard (PostHog + Klaviyo + CRM). It multiplies the impact of every other project on the list.</li>
+          <li>Audit Google Ads: identify which keywords convert vs which only spend. Reallocate before scaling.</li>
+          <li>Set up G2 + Trust Pilot listings. Quick foundational win that pays out across the rest of the quarter.</li>
+          <li>Load the retention email sequence into Klaviyo (already written, ready to deploy).</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-tag">Phase 02 · The 68%</div>
+        <div class="week-title">Activate the single biggest lift point in the funnel</div>
+        <ul class="week-list">
+          <li>Kick off the Main Explainer Video, script, vendor or in-house production decision, storyboard.</li>
+          <li>Pair the Explainer Video with a homepage refresh: both target the Interested → Qualified transition.</li>
+          <li>Lock the Help Center revamp scope. Activation friction lives here too.</li>
+          <li>Launch consistent LinkedIn cadence: 3 posts/week across company page + leadership + team voices.</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-tag">Phase 03 · Proof</div>
+        <div class="week-title">Make the dollar math impossible to miss</div>
+        <ul class="week-list">
+          <li>Case study #1: pick the strongest retained customer with the most quantifiable savings story.</li>
+          <li>Case study #2: a second vertical, so prospects in different industries see themselves.</li>
+          <li>Build the review-request flow that triggers after booking #2, feed G2 and Trust Pilot with real signal.</li>
+          <li>First Help Center demo videos shipped, short, product-led, paired with the revamp.</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-tag">Phase 04 · Read the data</div>
+        <div class="week-title">Decide what stays, cuts, and scales</div>
+        <ul class="week-list">
+          <li>Dashboard now has 6+ weeks of baseline data, pull the first real read on funnel-stage transitions.</li>
+          <li>First monthly Pillar deep-dive (start with Customers, the most built pillar).</li>
+          <li>Strategy Base v1.1: incorporate the quarter's learnings. The doc evolves with the team.</li>
+          <li>Quarterly review with leadership: what shipped, what's working, what gets cut from Q3.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout" style="margin-top: 48px;">
+      <div class="callout-label">The metric that matters most this quarter</div>
+      <div class="callout-text">
+        <strong>Homepage bounce rate.</strong> If we move it from 68% to anything below 55% by end of Q2,
+        we will have unlocked the single biggest growth lever in the funnel. Everything else is supporting cast.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /10 LIBRARY -->
+<section class="dark" id="library">
+  <div class="container">
+    <div class="section-label"><span class="num">/10</span>Library · reference materials</div>
+    <h2 class="section-title">This document does not stand alone.</h2>
+    <p class="section-intro">
+      It points to the foundational work already built. Anyone joining the marketing team should be walked through each of these in sequence during their first week.
+    </p>
+
+    <div class="library-grid">
+      <div class="lib-item"><div class="lib-icon">◈</div><div><div class="lib-name">Marketing Hub (handbook)</div><div class="lib-desc">Internal source of truth. 3-pillar architecture with all sub-pages.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">↳</div><div><div class="lib-name">Customer Journey Map</div><div class="lib-desc">6 stages, touchpoints, emotional journey, drop-off risks.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">⊕</div><div><div class="lib-name">ICP & Personas</div><div class="lib-desc">Alex (Ops), Sandra (Owner), Michael (Finance).</div></div></div>
+      <div class="lib-item"><div class="lib-icon">≡</div><div><div class="lib-name">Funnel Criteria doc</div><div class="lib-desc">Entry/exit criteria per stage, definition of qualified, etc.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">⌥</div><div><div class="lib-name">Strategy Tree</div><div class="lib-desc">6 branches under Pillar 2 with tactics and KPIs per branch.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">◐</div><div><div class="lib-name">Brand Book</div><div class="lib-desc">13 sections. Public-facing version on GitHub Pages.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">✉</div><div><div class="lib-name">Email Sequences</div><div class="lib-desc">Retention (D7, D14, D30) written and ready for Klaviyo.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">⌗</div><div><div class="lib-name">Content & SEO Strategy</div><div class="lib-desc">4 keyword pillars, editorial calendar, workflow.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">⚐</div><div><div class="lib-name">Channel & Competitive Audit</div><div class="lib-desc">Freightera, Freightcom benchmarking.</div></div></div>
+      <div class="lib-item"><div class="lib-icon">⚡</div><div><div class="lib-name">Funnel Health Report</div><div class="lib-desc">4 groups analyzed with real CRM data, including the 68% bounce finding.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span class="tag">// END OF STRATEGY BASE v1.0 //</span>
+  This is a living document. Update monthly during the Pillar deep-dive.<br>
+  The day it stops being updated is the day it stops being useful.
+</div>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const winH = window.innerHeight;
+    const docH = document.documentElement.scrollHeight - winH;
+    const pct = (window.scrollY / docH) * 100;
+    document.getElementById('scrollProgress').style.width = pct + '%';
+  });
+
+  // Sub-nav active state on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.sub-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.offsetTop - 120;
+      if (window.scrollY >= top) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Channel filter
+  const chips = document.querySelectorAll('.filter-chip');
+  const rows = document.querySelectorAll('.channel-row');
+  const activeFilters = { pillar: 'all', stage: 'all' };
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      const val = chip.dataset.val;
+      document.querySelectorAll(`.filter-chip[data-filter="${filter}"]`).forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilters[filter] = val;
+      applyFilters();
+    });
+  });
+
+  function applyFilters() {
+    rows.forEach(row => {
+      const pillars = row.dataset.pillar.split(' ');
+      const stages = row.dataset.stage.split(' ');
+      const pillarMatch = activeFilters.pillar === 'all' || pillars.includes(activeFilters.pillar) || pillars.includes('all');
+      const stageMatch = activeFilters.stage === 'all' || stages.includes(activeFilters.stage) || stages.includes('all');
+      row.style.display = (pillarMatch && stageMatch) ? '' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

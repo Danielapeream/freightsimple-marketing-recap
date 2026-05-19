@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid Media Plan · Q2 2026 · FreightSimple</title>
+<meta name="description" content="The Q2 2026 paid media plan for FreightSimple. Strategy, budget framework, channel-by-channel execution plans, testing agenda, and KPIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #4C62EA;
+    --blue-soft: #6B7EEE;
+    --blue-light: #EEF1FD;
+    --blue-periwinkle: #a8b3f0;
+    --gold: #facc0b;
+    --gold-soft: #fde26d;
+    --gold-light: #fef5c7;
+    --dark: #1a1d23;
+    --dark-2: #252830;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --cream: #FFF8E7;
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f1f2f6;
+    --success: #1D9E75;
+    --error: #E24B4A;
+    --warning: #BA7517;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--gold);
+    width: 0%; z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  /* ═══ BRAND STRIP ═══ */
+  .brand-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+  }
+  .brand-strip-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover { border-color: var(--dark); color: var(--dark); }
+
+  /* ═══ STICKY SUB NAV ═══ */
+  .sub-nav {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
+  .sub-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sub-nav-inner::-webkit-scrollbar { display: none; }
+  .sub-nav a {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 14px;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .sub-nav a:hover { color: var(--dark); }
+  .sub-nav a.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .sub-nav a .num { color: var(--muted-soft); margin-right: 6px; }
+
+  /* ═══ COVER ═══ */
+  .cover {
+    background: var(--white);
+    padding: 72px 32px 80px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 35%, transparent 35%, transparent 100%);
+  }
+  .cover-inner { max-width: 1180px; margin: 0 auto; }
+  .cover-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dark); font-weight: 700;
+    margin-bottom: 28px;
+    padding: 6px 14px 6px 8px;
+    background: rgba(250, 204, 11, 0.15);
+    border-radius: 100px;
+  }
+  .cover-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(250, 204, 11, 0.25);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5.4vw, 60px);
+    line-height: 1.02; letter-spacing: -0.035em;
+    font-weight: 800; color: var(--dark);
+    margin-bottom: 24px; max-width: 940px;
+  }
+  .cover-italic { font-style: italic; font-weight: 700; color: var(--blue); }
+  .cover-lede {
+    font-size: 18px; line-height: 1.6;
+    color: var(--muted); max-width: 720px; margin-bottom: 40px;
+  }
+  .cover-meta-row {
+    display: flex; flex-wrap: wrap;
+    gap: 32px 56px;
+    padding: 22px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 36px;
+  }
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted-soft); font-weight: 700;
+  }
+  .cover-meta-val {
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700;
+    color: var(--dark); letter-spacing: -0.01em;
+  }
+
+  /* ═══ SECTIONS ═══ */
+  section { padding: 88px 32px; position: relative; }
+  .container { max-width: 1180px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label .num { color: var(--muted); font-weight: 500; }
+  .section-label::after {
+    content: ''; width: 48px; height: 1px;
+    background: var(--blue); opacity: 0.3;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.8vw, 44px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.06;
+    margin-bottom: 18px; max-width: 900px;
+  }
+  .section-intro {
+    font-size: 17px; color: var(--muted);
+    max-width: 820px; line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .section-intro strong { color: var(--dark); font-weight: 600; }
+  .section-intro em { color: var(--blue); font-style: italic; }
+  section.gray { background: var(--off-white); }
+  section.dark {
+    background: var(--dark); color: #fff;
+    position: relative; overflow: hidden;
+  }
+  section.dark::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 18% 30%, rgba(76,98,234,0.16) 0%, transparent 45%),
+      radial-gradient(circle at 82% 65%, rgba(250,204,11,0.08) 0%, transparent 45%);
+    pointer-events: none;
+  }
+  section.dark .container { position: relative; z-index: 2; }
+  section.dark .section-label { color: var(--gold); }
+  section.dark .section-label::after { background: var(--gold); opacity: 0.4; }
+  section.dark .section-title { color: #fff; }
+  section.dark .section-intro { color: rgba(255,255,255,0.72); }
+  section.dark .section-intro strong { color: #fff; }
+  section.dark .section-intro em { color: var(--gold); font-style: italic; }
+
+  h3.block-title {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 36px 0 18px;
+    color: var(--dark);
+  }
+  section.dark h3.block-title { color: #fff; }
+
+  p.prose {
+    font-size: 15.5px; color: var(--dark);
+    line-height: 1.65;
+    margin-bottom: 16px;
+    max-width: 820px;
+  }
+  p.prose strong { color: var(--dark); font-weight: 600; }
+  p.prose em { color: var(--blue); font-style: italic; }
+  section.dark p.prose { color: rgba(255,255,255,0.85); }
+  section.dark p.prose strong { color: #fff; }
+  section.dark p.prose em { color: var(--gold); font-style: italic; }
+
+  /* ═══ INFO CARDS ═══ */
+  .info-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 28px 0;
+  }
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .info-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  section.dark .info-card {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(255,255,255,0.1);
+  }
+  section.dark .info-card:hover {
+    border-color: rgba(250,204,11,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted-soft); font-weight: 700;
+    margin-bottom: 10px;
+  }
+  section.dark .info-label { color: var(--gold); }
+  .info-val {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  section.dark .info-val { color: #fff; }
+  .info-val.small { font-size: 18px; }
+  .info-desc {
+    font-size: 13.5px; color: var(--muted);
+    line-height: 1.5;
+  }
+  section.dark .info-desc { color: rgba(255,255,255,0.6); }
+
+  /* ═══ CALLOUTS ═══ */
+  .callout {
+    border-left: 3px solid var(--blue);
+    background: var(--blue-light);
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    margin: 24px 0;
+  }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 14.5px; color: var(--dark);
+    line-height: 1.6; margin-bottom: 0;
+  }
+  .callout.warning { border-left-color: var(--warning); background: var(--cream); }
+  .callout.warning .callout-label { color: var(--warning); }
+  .callout.success { border-left-color: var(--success); background: rgba(29,158,117,0.08); }
+  .callout.success .callout-label { color: var(--success); }
+  .callout.dark { border-left-color: var(--gold); background: rgba(26,29,35,0.95); }
+  .callout.dark .callout-label { color: var(--gold); }
+  .callout.dark p { color: rgba(255,255,255,0.9); }
+  section.dark .callout {
+    background: rgba(76,98,234,0.12);
+  }
+  section.dark .callout p { color: rgba(255,255,255,0.92); }
+
+  /* ═══ MODEL CTA ═══ */
+  .model-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--dark);
+    border-radius: 14px;
+    padding: 24px 32px;
+    margin: 28px 0 8px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .model-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px -16px rgba(76,98,234,0.5);
+  }
+  .model-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 30%, rgba(250,204,11,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .model-cta-body { position: relative; z-index: 2; flex: 1; }
+  .model-cta-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .model-cta-title {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .model-cta-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+  .model-cta-arrow {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    padding: 10px 16px;
+    background: rgba(250,204,11,0.12);
+    border-radius: 100px;
+    transition: background 0.2s;
+  }
+  .model-cta:hover .model-cta-arrow { background: rgba(250,204,11,0.22); }
+  .model-cta-arrow .arr { transition: transform 0.2s; }
+  .model-cta:hover .model-cta-arrow .arr { transform: translate(2px, -2px); }
+
+  /* ═══ PHASE TIMELINE ═══ */
+  .phase-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 14px; margin: 32px 0;
+  }
+  .phase-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .phase-block:hover { border-color: var(--blue); }
+  .phase-block.active { border-color: var(--gold); background: var(--gold-light); }
+  .phase-tag {
+    display: inline-block;
+    background: var(--dark); color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .phase-block.active .phase-tag { background: var(--gold); color: var(--dark); }
+  .phase-name {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px; color: var(--dark);
+  }
+  .phase-when {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+  }
+  .phase-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .phase-list li {
+    font-size: 13px; color: var(--dark);
+    padding-left: 14px;
+    position: relative; line-height: 1.5;
+  }
+  .phase-list li::before {
+    content: ''; position: absolute;
+    left: 0; top: 8px;
+    width: 5px; height: 5px;
+    border-radius: 50%; background: var(--blue);
+  }
+  .phase-block.active .phase-list li::before { background: var(--warning); }
+
+  /* ═══ TIER TABLE (conversion taxonomy) ═══ */
+  .tier-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .tier {
+    display: grid;
+    grid-template-columns: 80px 200px 1fr 140px;
+    gap: 20px;
+    padding: 22px 26px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    align-items: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .tier:hover { border-color: var(--blue); transform: translateX(4px); }
+  .tier.tier-1 { border-left: 4px solid var(--gold); }
+  .tier.tier-2 { border-left: 4px solid var(--blue); }
+  .tier.tier-3 { border-left: 4px solid var(--muted-soft); }
+  .tier.tier-4 { border-left: 4px solid var(--border); }
+  .tier-num {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    color: var(--dark); letter-spacing: -0.01em;
+  }
+  .tier-event {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-soft);
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+  .tier-desc {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.55;
+  }
+  .tier-weight {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+    color: var(--blue);
+  }
+  .tier-weight .label {
+    display: block;
+    font-size: 10px;
+    color: var(--muted-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  /* ═══ BUDGET BREAKDOWN ═══ */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .budget-bars { display: flex; flex-direction: column; gap: 18px; }
+  .budget-bar {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    transition: border-color 0.2s;
+  }
+  .budget-bar:hover { border-color: var(--blue); }
+  .budget-bar-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .budget-channel {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 16px;
+    color: var(--dark); letter-spacing: -0.01em;
+  }
+  .budget-amount {
+    font-family: var(--font-mono);
+    font-weight: 700; font-size: 15px;
+    color: var(--blue);
+  }
+  .budget-amount .pct {
+    font-size: 11px; color: var(--muted-soft);
+    margin-left: 6px;
+    font-weight: 500;
+  }
+  .budget-bar-track {
+    height: 8px;
+    background: var(--border-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .budget-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-soft));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+  .budget-bar-fill.gold { background: linear-gradient(90deg, var(--gold), var(--gold-soft)); }
+  .budget-bar-fill.muted { background: linear-gradient(90deg, var(--muted-soft), var(--muted)); }
+  .budget-bar-fill.dim { background: var(--border); }
+  .budget-bar-note {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .budget-total {
+    background: var(--dark); color: #fff;
+    border-radius: 14px;
+    padding: 28px 26px;
+    height: fit-content;
+    position: sticky; top: 80px;
+  }
+  .budget-total-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .budget-total-amount {
+    font-family: var(--font-display);
+    font-size: 42px; font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1; color: #fff;
+    margin-bottom: 6px;
+  }
+  .budget-total-period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    margin-bottom: 22px;
+  }
+  .budget-total-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255,255,255,0.15);
+  }
+  .budget-total-list li {
+    display: flex; justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  .budget-total-list li span:last-child {
+    font-family: var(--font-mono);
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ═══ CHANNEL DETAIL BLOCKS ═══ */
+  .channel-detail {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin: 28px 0;
+    position: relative;
+  }
+  section.gray .channel-detail { background: var(--white); }
+  .channel-head {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 28px;
+  }
+  .channel-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 22px;
+    color: #fff;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .channel-icon.google { background: linear-gradient(135deg, #4285F4, #4C62EA); }
+  .channel-icon.linkedin { background: linear-gradient(135deg, #0A66C2, #4C62EA); }
+  .channel-icon.bing { background: linear-gradient(135deg, #008373, #1D9E75); }
+  .channel-icon.programmatic { background: linear-gradient(135deg, var(--muted), var(--dark-2)); }
+  .channel-head-body { flex: 1; }
+  .channel-name {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    line-height: 1.1; margin-bottom: 8px;
+  }
+  .channel-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; flex-wrap: wrap; gap: 18px;
+  }
+  .channel-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .channel-meta .dot {
+    width: 6px; height: 6px;
+    background: var(--blue); border-radius: 50%;
+  }
+  .channel-pill {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .pill-active { background: rgba(29,158,117,0.15); color: var(--success); }
+  .pill-launch { background: var(--gold-light); color: var(--warning); }
+  .pill-quickwin { background: rgba(76,98,234,0.12); color: var(--blue); }
+  .pill-defer { background: rgba(107,113,133,0.12); color: var(--muted); }
+
+  .channel-block { margin-bottom: 28px; }
+  .channel-block:last-child { margin-bottom: 0; }
+  .channel-block-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .channel-block h4 {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .channel-block p {
+    font-size: 14.5px; color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* ═══ CAMPAIGN STRUCTURE TABLE ═══ */
+  .campaign-table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 18px 0;
+  }
+  .campaign-row {
+    display: grid;
+    grid-template-columns: 60px 220px 1fr 140px;
+    gap: 20px;
+    padding: 16px 20px;
+    background: var(--off-white);
+    border-radius: 10px;
+    align-items: center;
+    border-left: 3px solid var(--blue);
+  }
+  .campaign-row.priority { border-left-color: var(--gold); background: var(--gold-light); }
+  .campaign-num {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; letter-spacing: 0.12em;
+  }
+  .campaign-name {
+    font-family: var(--font-display);
+    font-size: 14.5px; font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .campaign-purpose {
+    font-size: 13.5px; color: var(--muted);
+    line-height: 1.5;
+  }
+  .campaign-budget {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  /* ═══ CHECKLIST ═══ */
+  .checklist {
+    display: flex; flex-direction: column; gap: 8px;
+    margin: 16px 0;
+  }
+  .checklist-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 12px 16px;
+    background: var(--off-white);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.55;
+  }
+  .checklist-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--blue);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .checklist-item strong { color: var(--dark); font-weight: 600; }
+  .checklist-item em { color: var(--blue); font-style: italic; }
+
+  /* ═══ TEST CARDS ═══ */
+  .test-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+  .test {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .test:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .test-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 14px;
+  }
+  .test-num {
+    background: var(--blue); color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .test-title {
+    font-family: var(--font-display);
+    font-size: 16.5px; font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+  .test-when {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .test-body p {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .test-meta {
+    display: flex; gap: 22px;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    flex-wrap: wrap;
+  }
+  .test-meta-item {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .test-meta-item strong {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* ═══ KPI TREE ═══ */
+  .kpi-tree { margin: 24px 0; }
+  .kpi-tier {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .kpi-tier.north {
+    background: var(--dark); color: #fff;
+    border: none;
+  }
+  .kpi-tier.north .kpi-tier-label { color: var(--gold); }
+  .kpi-tier.north .kpi-tier-metric { color: #fff; }
+  .kpi-tier-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .kpi-tier-metric {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .kpi-tier-detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .kpi-tier.north .kpi-tier-detail { border-top-color: rgba(255,255,255,0.15); }
+  .kpi-detail-item {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .kpi-detail-label {
+    font-family: var(--font-mono);
+    font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted-soft);
+    font-weight: 600;
+  }
+  .kpi-tier.north .kpi-detail-label { color: rgba(255,255,255,0.5); }
+  .kpi-detail-val {
+    font-family: var(--font-mono);
+    font-size: 13px; color: var(--dark);
+    font-weight: 600;
+  }
+  .kpi-tier.north .kpi-detail-val { color: var(--gold); }
+
+  /* ═══ CADENCE TABLE ═══ */
+  .cadence-list {
+    display: flex; flex-direction: column; gap: 10px;
+    margin: 24px 0;
+  }
+  .cadence-row {
+    display: grid;
+    grid-template-columns: 160px 200px 1fr 180px;
+    gap: 22px;
+    padding: 18px 22px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  .cadence-row:hover { border-color: var(--blue); }
+  .cadence-when {
+    font-family: var(--font-display);
+    font-weight: 700; color: var(--blue);
+    font-size: 14.5px; letter-spacing: -0.01em;
+  }
+  .cadence-when .duration {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    font-weight: 500; margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+  .cadence-what { font-weight: 600; color: var(--dark); font-size: 14.5px; }
+  .cadence-purpose {
+    color: var(--muted);
+    font-size: 13.5px; line-height: 1.5;
+  }
+  .cadence-owner {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* ═══ OPEN QUESTIONS ═══ */
+  .open-q-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+  .open-q-item {
+    background: var(--cream);
+    border: 1px solid rgba(250, 204, 11, 0.4);
+    border-radius: 12px;
+    padding: 22px 26px;
+  }
+  .open-q-num {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warning); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .open-q-title {
+    font-family: var(--font-display);
+    font-size: 16.5px; font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .open-q-body {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .open-q-decision {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--warning);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══ DOC FOOTER ═══ */
+  .doc-footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 56px 32px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .doc-footer .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 1024px) {
+    .info-row, .phase-row { grid-template-columns: 1fr 1fr; }
+    .tier { grid-template-columns: 60px 1fr; gap: 12px; }
+    .tier .tier-event, .tier .tier-desc, .tier .tier-weight {
+      grid-column: 1 / -1;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+    .budget-grid { grid-template-columns: 1fr; }
+    .budget-total { position: static; }
+    .campaign-row { grid-template-columns: 50px 1fr; gap: 10px; }
+    .campaign-row .campaign-purpose,
+    .campaign-row .campaign-budget {
+      grid-column: 1 / -1;
+      padding-left: 70px;
+    }
+    .kpi-tier-detail { grid-template-columns: 1fr 1fr; }
+    .cadence-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 720px) {
+    .brand-strip { padding: 16px 20px; }
+    section { padding: 56px 20px; }
+    .cover { padding: 48px 20px 56px; }
+    .info-row, .phase-row { grid-template-columns: 1fr; }
+    .channel-detail { padding: 28px 22px; }
+    .channel-head { flex-direction: column; gap: 14px; }
+    .kpi-tier-detail { grid-template-columns: 1fr; }
+    .model-cta { flex-direction: column; align-items: flex-start; padding: 22px 24px; }
+    .model-cta-arrow { align-self: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <span class="brand-name">FreightSimple <span class="slash">/</span> <span class="sub">Marketing Hub</span></span>
+    <a href="index.html" class="brand-back">← Back to hub</a>
+  </div>
+</div>
+
+<!-- STICKY SUB NAV -->
+<nav class="sub-nav">
+  <div class="sub-nav-inner" id="subNav">
+    <a href="#context"><span class="num">/01</span>Context</a>
+    <a href="#strategy"><span class="num">/02</span>Strategy</a>
+    <a href="#conversion"><span class="num">/03</span>Conversion</a>
+    <a href="#budget"><span class="num">/04</span>Budget</a>
+    <a href="#google"><span class="num">/05</span>Google Ads</a>
+    <a href="#linkedin"><span class="num">/06</span>LinkedIn</a>
+    <a href="#bing"><span class="num">/07</span>Bing</a>
+    <a href="#programmatic"><span class="num">/08</span>Programmatic</a>
+    <a href="#testing"><span class="num">/09</span>Testing</a>
+    <a href="#kpis"><span class="num">/10</span>KPIs</a>
+    <a href="#cadence"><span class="num">/11</span>Cadence</a>
+    <a href="#open"><span class="num">/12</span>Open questions</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <span class="cover-dot"></span>
+      Paid Media Plan · Q2 2026 · v1.0
+    </div>
+    <h1 class="cover-title">
+      How we'll spend paid this quarter, <span class="cover-italic">with reasons attached to every dollar.</span>
+    </h1>
+    <p class="cover-lede">
+      The Q2 2026 paid media plan for FreightSimple. What paid is for us, what it isn't, what we'll measure, how the budget breaks down, channel-by-channel execution plans, the testing agenda, and the questions still open. Living document, updated monthly.
+    </p>
+
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Version</div>
+        <div class="cover-meta-val">v1.0 · Proposal</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Quarter</div>
+        <div class="cover-meta-val">Q2 2026 · Apr–Jun</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Status / Cadence</div>
+        <div class="cover-meta-val">Living · Monthly review</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Companion docs</div>
+        <div class="cover-meta-val">Strategy Base · Customer · Audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /01 CONTEXT -->
+<section id="context">
+  <div class="container">
+    <div class="section-label"><span class="num">/01</span>Context · where we are today</div>
+    <h2 class="section-title">Paid is running. The next move is making it legible.</h2>
+    <p class="section-intro">
+      Before deciding where the next dollar goes, we map the starting line. Google Ads is live and generating signal. <strong>The next step is connecting that signal to outcomes</strong>, and this plan structures exactly that.
+    </p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-label">Current channel</div>
+        <div class="info-val small">Google Ads only</div>
+        <div class="info-desc">Active. The only paid channel running today.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Current spend</div>
+        <div class="info-val">$150<span style="font-size:16px;color:var(--muted);font-weight:500;">/day</span></div>
+        <div class="info-desc">~$4,500/month · ~$13,500/quarter at current run-rate.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Current ops</div>
+        <div class="info-val small">CEO + AI</div>
+        <div class="info-desc">Managed by Chris with AI assistance. Transferring to marketing team this quarter.</div>
+      </div>
+    </div>
+
+    <h3 class="block-title">What we know, and what we don't</h3>
+
+    <p class="prose">
+      A clear inventory matters. A paid plan built on validated assumptions compounds faster than one built on unstated ones.
+    </p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-label">✓ We know</div>
+        <div class="info-val small">Money is moving</div>
+        <div class="info-desc">$150/day flowing into Google Ads. Some clicks, some traffic, some quotes. The machine is on.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">✗ We don't know</div>
+        <div class="info-val small">What's working</div>
+        <div class="info-desc">Which keywords convert vs which only generate clicks. CAC per channel. Quote-to-booking attribution.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">✗ We don't know</div>
+        <div class="info-val small">CAC baseline</div>
+        <div class="info-desc">No current target for what a customer should cost. <strong>First measurement priority of Q2.</strong></div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-label">★ The first leverage we capture</div>
+      <p>
+        Paid with a measurement layer unlocks compounding returns. Before we scale anything, we connect the spend to outcomes. This plan structures the first 3 weeks around closing that loop, and only then opens the doors to spending more.
+      </p>
+    </div>
+
+    <h3 class="block-title">The transition: CEO ops → marketing team ops</h3>
+
+    <p class="prose">
+      Chris has been managing Google Ads with AI assistance, a sensible bridge while marketing was still a single role with strategic priorities elsewhere. As Sofia onboards, paid execution transitions to the marketing team. This handoff is one of the structural moves of Q2.
+    </p>
+
+    <div class="checklist">
+      <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Week 1–2:</strong> Sofia gets admin access to Google Ads. Chris walks through current campaign structure, what he's seeing, what feels uncertain.</span></div>
+      <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Week 2–3:</strong> Audit phase begins. Sofia owns daily monitoring. Daniela owns strategic decisions and reporting frame.</span></div>
+      <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Week 4 onwards:</strong> Full ownership inside marketing. Chris receives the monthly business review, no longer in daily operations.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- /02 STRATEGY -->
+<section class="dark" id="strategy">
+  <div class="container">
+    <div class="section-label"><span class="num">/02</span>Strategy · what paid IS and ISN'T for us</div>
+    <h2 class="section-title">For FreightSimple at this stage, <em>paid is performance, not awareness.</em></h2>
+    <p class="section-intro">
+      Google Search Ads sit at bottom-funnel by definition. Someone typing <em>"LTL freight quote Canada"</em> is already in market, already comparing. We're not building awareness with that spend; we're capturing intent that already exists. Framing paid this way makes every other downstream decision clearer.
+    </p>
+
+    <h3 class="block-title">Paid in the funnel, where each channel actually plays</h3>
+
+    <p class="prose">
+      Channels behave differently. Treating them as interchangeable is the most expensive mistake in paid. Here's how we position each one for Q2:
+    </p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-label">⚐ Bottom-funnel</div>
+        <div class="info-val small">Google Search · Bing</div>
+        <div class="info-desc">Search intent. People already looking. Optimize hard for conversion. Measure quote-to-spend.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">⚐ Mid-funnel</div>
+        <div class="info-val small">LinkedIn Ads</div>
+        <div class="info-desc">Audience-targeted, not intent-targeted. Right people, before they've decided to compare. Measure assisted conversions and engagement.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">⚐ Top-funnel</div>
+        <div class="info-val small">Retargeting · Display</div>
+        <div class="info-desc">Bring back visitors who didn't convert. Lower CPM, secondary touchpoints. Measure return visits and assisted conversions.</div>
+      </div>
+    </div>
+
+    <h3 class="block-title">How paid connects to the three pillars</h3>
+
+    <p class="prose">
+      Strategy Base defined three pillars. Paid lives mostly inside Pillar 02 (Customers), with controlled spend on Pillar 03 (Internal) for recruiting only. Pillar 01 (Carriers) is parked this quarter.
+    </p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-label">Pillar 02 · Customers</div>
+        <div class="info-val small">~95% of paid budget</div>
+        <div class="info-desc">Google Ads, Bing, LinkedIn Ads. Goal: drive qualified quote requests from Alex Ops, Sandra Owner, Michael Finance.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Pillar 03 · Internal</div>
+        <div class="info-val small">~5% of paid budget</div>
+        <div class="info-desc">LinkedIn Jobs only, when active openings exist. Recruiting spend, not brand spend.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Pillar 01 · Carriers</div>
+        <div class="info-val small">$0 this quarter</div>
+        <div class="info-desc">Parked. No paid investment until ownership is decided in Q3 planning.</div>
+      </div>
+    </div>
+
+    <div class="callout dark">
+      <div class="callout-label">★ The principle that holds this together</div>
+      <p>
+        Every dollar of paid spend must have a named <strong>persona</strong>, a named <strong>funnel stage</strong>, and a named <strong>conversion event</strong>. If we can't fill those three blanks for a campaign, the campaign doesn't run. This is the same rule Strategy Base enforces for tactics, applied to paid at the campaign level.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- /03 CONVERSION TAXONOMY -->
+<section class="gray" id="conversion">
+  <div class="container">
+    <div class="section-label"><span class="num">/03</span>Conversion · the events we'll measure</div>
+    <h2 class="section-title">Four tiers. One primary. Clear weights.</h2>
+    <p class="section-intro">
+      Smart Bidding algorithms need a clear signal hierarchy. We don't have one yet, and without it, Google's algorithm optimizes to whatever it can find, which is rarely what we'd choose. This taxonomy fixes that.
+    </p>
+
+    <h3 class="block-title">The four-tier event structure</h3>
+
+    <div class="tier-list">
+      <div class="tier tier-1">
+        <div class="tier-num">Tier 1</div>
+        <div>
+          <div class="tier-name">Quote-to-booking</div>
+          <div class="tier-event">event: booking_completed · value: $$</div>
+        </div>
+        <div class="tier-desc">The conversion that pays the business. The dollar number actually moves the model. Eventually the optimization target.</div>
+        <div class="tier-weight"><span class="label">Weight</span>1.0</div>
+      </div>
+      <div class="tier tier-2">
+        <div class="tier-num">Tier 2</div>
+        <div>
+          <div class="tier-name">Quote request</div>
+          <div class="tier-event">event: quote_submitted</div>
+        </div>
+        <div class="tier-desc">Strongest pre-purchase signal. <strong>Our optimization target for Q2</strong>, high enough volume to teach Smart Bidding.</div>
+        <div class="tier-weight"><span class="label">Weight</span>0.4</div>
+      </div>
+      <div class="tier tier-3">
+        <div class="tier-num">Tier 3</div>
+        <div>
+          <div class="tier-name">Account signup</div>
+          <div class="tier-event">event: signup_completed</div>
+        </div>
+        <div class="tier-desc">Micro-conversion. Adds shape to the model but isn't a real buying signal on its own.</div>
+        <div class="tier-weight"><span class="label">Weight</span>0.1</div>
+      </div>
+      <div class="tier tier-4">
+        <div class="tier-num">Tier 4</div>
+        <div>
+          <div class="tier-name">Engaged sessions</div>
+          <div class="tier-event">event: engaged_session_3min · pricing_page_view</div>
+        </div>
+        <div class="tier-desc">Awareness-adjacent. Reported for context. Never used as the primary optimization target for Search.</div>
+        <div class="tier-weight"><span class="label">Weight</span>0.02</div>
+      </div>
+    </div>
+
+    <h3 class="block-title">Why Tier 2 first, not Tier 1</h3>
+
+    <p class="prose">
+      Google's Smart Bidding needs <strong>~30–50 conversions per month minimum</strong> per campaign to learn properly. Below that threshold, the algorithm doesn't have enough signal and bids erratically. <em>Quote-to-booking</em> volume is probably below that threshold right now, we'd be starving the model.
+    </p>
+
+    <p class="prose">
+      <em>Quote requests</em>, by contrast, happen at roughly 5–10× the rate of bookings. Optimizing to Tier 2 gives Smart Bidding the signal density it needs. Once Tier 2 volume is stable and we have reliable quote→booking conversion rates measured (Week 6–8), we graduate to Tier 1 optimization.
+    </p>
+
+    <div class="callout">
+      <div class="callout-label">↳ The threshold rule</div>
+      <p>
+        We graduate from Tier 2 to Tier 1 optimization when: <strong>(a)</strong> any single campaign generates ≥40 bookings/month consistently, and <strong>(b)</strong> we have ≥8 weeks of quote→booking data to calibrate value. Below those thresholds, we stay on Tier 2.
+      </p>
+    </div>
+
+    <h3 class="block-title">What needs to happen on our side first</h3>
+
+    <p class="prose">
+      Conversion tracking is only as good as the events firing. Before we touch bidding strategies, we close these gaps:
+    </p>
+
+    <div class="checklist">
+      <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Verify all 4 events fire correctly</strong> in Google Ads and PostHog. Sofia tests every event end-to-end Week 1.</span></div>
+      <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Add booking value</strong> to the booking event payload. Without value, Google can't run value-based bidding properly.</span></div>
+      <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Connect Google Ads to PostHog and CRM.</strong> Today they're not joined, we have to manually match. Build the integration once, save hours every week.</span></div>
+      <div class="checklist-item"><span class="checklist-num">04</span><span><strong>Mark quote_submitted and booking_completed as "primary"</strong> in Google Ads. The other two stay secondary.</span></div>
+      <div class="checklist-item"><span class="checklist-num">05</span><span><strong>Set the lookback window</strong> to 30 days for booking, 7 days for quote, matches the actual buying journey.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- /04 BUDGET -->
+<section id="budget">
+  <div class="container">
+    <div class="section-label"><span class="num">/04</span>Budget · framework for Q2</div>
+    <h2 class="section-title">Audit first. Reallocate next. Scale last.</h2>
+    <p class="section-intro">
+      Scaling before auditing is the most common way to lose money in paid. We don't fall for it. The Q2 budget plan sequences three phases, and the size of the bet grows as confidence grows.
+    </p>
+
+    <h3 class="block-title">The three-phase sequence</h3>
+
+    <div class="phase-row">
+      <div class="phase-block active">
+        <span class="phase-tag">Phase 01</span>
+        <div class="phase-name">Audit</div>
+        <div class="phase-when">Weeks 1–3 · ~$13.5K spend</div>
+        <ul class="phase-list">
+          <li>Maintain current $150/day Google Ads</li>
+          <li>Map which keywords actually convert</li>
+          <li>Measure baseline CAC, CTR, CVR by campaign</li>
+          <li>Build the CRM ↔ Ads attribution link</li>
+          <li>Identify the bottom 30% to reallocate</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <span class="phase-tag">Phase 02</span>
+        <div class="phase-name">Reallocate</div>
+        <div class="phase-when">Weeks 4–6 · ~$13.5K spend</div>
+        <ul class="phase-list">
+          <li>Cut bottom 30% (negative keywords, paused campaigns)</li>
+          <li>Redirect freed budget to top-converting keywords</li>
+          <li>Launch Bing mirror campaigns (low-cost test)</li>
+          <li>Launch LinkedIn Ads pilot ($1.5K)</li>
+          <li>Expected: ~25% lift in quotes at same spend</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <span class="phase-tag">Phase 03</span>
+        <div class="phase-name">Scale</div>
+        <div class="phase-when">Weeks 7–13 · ~$20K–$28K spend</div>
+        <ul class="phase-list">
+          <li>Increase budget only on proven campaigns</li>
+          <li>LinkedIn full rollout if pilot validated</li>
+          <li>Bing scale-up if CPC stays favorable</li>
+          <li>End-of-quarter review and Q3 planning</li>
+          <li>Decision point: programmatic for Q3?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-label">⚠ The discipline this protects</div>
+      <p>
+        Each phase has a <strong>go/no-go gate</strong>. If Audit doesn't surface enough signal by Week 3, Reallocate gets a one-week extension so we move on solid data. If Reallocate doesn't lift quotes by Week 6, we recalibrate Scale against fresh signal. <strong>Phases follow data, not the calendar.</strong>
+      </p>
+    </div>
+
+    <h3 class="block-title">Proposed channel allocation · Q2 total</h3>
+
+    <p class="prose">
+      Numbers below are <em>proposed v1, to be validated</em>. They blend current Google spend trajectory, typical B2B logistics CPC benchmarks for North America, and a measured pilot for new channels. Sofia validates these in Weeks 1–3 against real-world numbers and we revise before Phase 02 starts.
+    </p>
+
+    <div class="budget-grid">
+      <div class="budget-bars">
+        <div class="budget-bar">
+          <div class="budget-bar-head">
+            <span class="budget-channel">Google Ads · Search</span>
+            <span class="budget-amount">$36,000<span class="pct">~64%</span></span>
+          </div>
+          <div class="budget-bar-track"><div class="budget-bar-fill" style="width: 64%;"></div></div>
+          <p class="budget-bar-note">Core channel. ~$150/day Phase 01, ~$180/day Phase 02 (post-reallocation), ~$280/day Phase 03 if signal holds.</p>
+        </div>
+        <div class="budget-bar">
+          <div class="budget-bar-head">
+            <span class="budget-channel">LinkedIn Ads</span>
+            <span class="budget-amount">$9,000<span class="pct">~16%</span></span>
+          </div>
+          <div class="budget-bar-track"><div class="budget-bar-fill gold" style="width: 16%;"></div></div>
+          <p class="budget-bar-note">$1.5K pilot Weeks 4–6 + $7.5K scale-up Weeks 7–13 if CPL stays under target. Sponsored Content + Document Ads.</p>
+        </div>
+        <div class="budget-bar">
+          <div class="budget-bar-head">
+            <span class="budget-channel">Bing / Microsoft Ads</span>
+            <span class="budget-amount">$5,000<span class="pct">~9%</span></span>
+          </div>
+          <div class="budget-bar-track"><div class="budget-bar-fill muted" style="width: 9%;"></div></div>
+          <p class="budget-bar-note">Mirror top Google Search campaigns at lower CPC. Low-risk, low-effort. Start Week 3, scale on signal.</p>
+        </div>
+        <div class="budget-bar">
+          <div class="budget-bar-head">
+            <span class="budget-channel">Retargeting · Display</span>
+            <span class="budget-amount">$3,500<span class="pct">~6%</span></span>
+          </div>
+          <div class="budget-bar-track"><div class="budget-bar-fill dim" style="width: 6%;"></div></div>
+          <p class="budget-bar-note">Google Display retargeting for site visitors who didn't convert. Lower CPM, secondary touchpoint.</p>
+        </div>
+        <div class="budget-bar">
+          <div class="budget-bar-head">
+            <span class="budget-channel">Reserve / Test budget</span>
+            <span class="budget-amount">$2,500<span class="pct">~5%</span></span>
+          </div>
+          <div class="budget-bar-track"><div class="budget-bar-fill dim" style="width: 5%;"></div></div>
+          <p class="budget-bar-note">Held back for A/B tests, new audience experiments, opportunistic spend. Sofia + Daniela approve releases.</p>
+        </div>
+      </div>
+
+      <div class="budget-total">
+        <div class="budget-total-label">Total Q2 budget · proposed</div>
+        <div class="budget-total-amount">$56K</div>
+        <div class="budget-total-period">~$4.3K/wk avg · ~$18.7K/mo avg</div>
+        <ul class="budget-total-list">
+          <li><span>Google Ads</span><span>$36,000</span></li>
+          <li><span>LinkedIn</span><span>$9,000</span></li>
+          <li><span>Bing</span><span>$5,000</span></li>
+          <li><span>Retargeting</span><span>$3,500</span></li>
+          <li><span>Reserve</span><span>$2,500</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ vs current run-rate</div>
+      <p>
+        Current pace is ~$13.5K/quarter on Google alone. The proposal is ~$56K/quarter across 4 channels, a ~4× increase total, but driven by <strong>new channels and proven scaling</strong>, not by uniformly raising Google spend. If Phase 01 audit reveals low signal density, this number gets revised down before commitments are made.
+      </p>
+    </div>
+
+    <a href="https://freightsimple-my.sharepoint.com/:x:/p/daniela_perea/IQDYwIUbT2NCSaKCx53N5929AaRgdjSGPyTvW_TAZgBryzk?e=X8Jpu9" class="model-cta" target="_blank" rel="noopener">
+      <div class="model-cta-body">
+        <div class="model-cta-eyebrow">★ Companion model · live in OneDrive</div>
+        <div class="model-cta-title">Paid Media Forecast Model · v1.0</div>
+        <div class="model-cta-desc">The numbers behind this plan. 3 scenarios (Conservative · Base · Optimistic), channel P&amp;L, breakeven analysis. Edit assumptions, watch outputs recalculate.</div>
+      </div>
+      <span class="model-cta-arrow">
+        Open model <span class="arr">↗</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- /05 GOOGLE ADS -->
+<section class="gray" id="google">
+  <div class="container">
+    <div class="section-label"><span class="num">/05</span>Channel plan · Google Ads</div>
+    <h2 class="section-title">The active channel. The audit comes first.</h2>
+    <p class="section-intro">
+      Google Ads is the only live paid channel today. It accounts for ~64% of proposed Q2 budget. The plan here is detailed because <em>this is where the most money flows</em> and where the most learning happens this quarter.
+    </p>
+
+    <div class="channel-detail">
+      <div class="channel-head">
+        <div class="channel-icon google">G</div>
+        <div class="channel-head-body">
+          <div class="channel-name">Google Ads · Search + Display</div>
+          <div class="channel-meta">
+            <span><span class="dot"></span>Status · Active, in audit</span>
+            <span><span class="dot"></span>Owner · Sofia (ops) + Daniela (strategy)</span>
+            <span><span class="dot"></span>Q2 spend · ~$36K proposed</span>
+          </div>
+        </div>
+        <span class="channel-pill pill-active">Active</span>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Audit framework · weeks 1–3</div>
+        <h4>What we measure before we change anything</h4>
+        <p>Before any structural change, we map the existing account. The audit builds the baseline against which every later decision is judged.</p>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Keyword-level performance.</strong> Pull all keywords with ≥30 days of data. Bucket by quote conversion rate. Top quintile, bottom quintile.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Match-type performance.</strong> Exact vs Phrase vs Broad. In B2B niche markets, Broad often costs more without lifting quality.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Search-term report.</strong> What people actually typed. Build the negative keyword list from here.</span></div>
+          <div class="checklist-item"><span class="checklist-num">04</span><span><strong>Geo performance.</strong> Province-by-province CTR and CVR. Identify high-converting metros vs low-performing ones.</span></div>
+          <div class="checklist-item"><span class="checklist-num">05</span><span><strong>Ad copy performance.</strong> Which headlines and descriptions get clicks that convert vs clicks that bounce.</span></div>
+          <div class="checklist-item"><span class="checklist-num">06</span><span><strong>Landing page performance.</strong> Which destinations convert. Surface this back to the homepage refresh project.</span></div>
+          <div class="checklist-item"><span class="checklist-num">07</span><span><strong>Device performance.</strong> Mobile vs desktop conversion gap. In LTL B2B, desktop usually dominates.</span></div>
+          <div class="checklist-item"><span class="checklist-num">08</span><span><strong>Time-of-day / day-of-week.</strong> Business-hours bias for B2B is typical, but worth confirming for Canadian LTL specifically.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Campaign structure · proposed</div>
+        <h4>Four campaign types, clear separation of intent</h4>
+        <p>Clear campaign separation is where B2B Google Ads accounts capture the most leverage. Each campaign here serves one purpose and one funnel stage. This is the structure we migrate <em>toward</em> during reallocation.</p>
+
+        <div class="campaign-table">
+          <div class="campaign-row priority">
+            <div class="campaign-num">/ 01</div>
+            <div class="campaign-name">Search · Brand</div>
+            <div class="campaign-purpose">Defend the FreightSimple brand search. Low CPC, high CVR. Protects against competitors bidding on our name.</div>
+            <div class="campaign-budget">~$2K / qtr</div>
+          </div>
+          <div class="campaign-row priority">
+            <div class="campaign-num">/ 02</div>
+            <div class="campaign-name">Search · Non-brand · High-intent</div>
+            <div class="campaign-purpose">"LTL freight quote Canada," "freight broker Toronto," etc. Highest-converting non-brand category. Maximize budget here.</div>
+            <div class="campaign-budget">~$22K / qtr</div>
+          </div>
+          <div class="campaign-row">
+            <div class="campaign-num">/ 03</div>
+            <div class="campaign-name">Search · Non-brand · Educational</div>
+            <div class="campaign-purpose">"What is LTL freight," "LTL vs FTL," etc. Top-of-funnel. Lower CVR. Measure with caution, pair with strong remarketing.</div>
+            <div class="campaign-budget">~$6K / qtr</div>
+          </div>
+          <div class="campaign-row">
+            <div class="campaign-num">/ 04</div>
+            <div class="campaign-name">Display · Retargeting</div>
+            <div class="campaign-purpose">Site visitors who didn't convert. Booking-page abandoners get a different creative than blog readers.</div>
+            <div class="campaign-budget">~$3.5K / qtr</div>
+          </div>
+          <div class="campaign-row">
+            <div class="campaign-num">/ 05</div>
+            <div class="campaign-name">Performance Max · Evaluate later</div>
+            <div class="campaign-purpose">Google's mixed-channel campaign. Powerful when feeds and assets are ready. We don't launch until Phase 03, when audit signal is solid.</div>
+            <div class="campaign-budget">Reserve · Q3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Keyword universe · framework</div>
+        <h4>Categories now, keywords filled in Week 1</h4>
+        <p>Sofia builds the full keyword list in her first week using these category buckets. Each bucket maps to a persona and a funnel stage. The actual phrases get researched in Google Keyword Planner + competitor SERPs + Search Term Reports.</p>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">A</span><span><strong>Brand defense:</strong> "FreightSimple," variations and misspellings.</span></div>
+          <div class="checklist-item"><span class="checklist-num">B</span><span><strong>High-intent transactional:</strong> "LTL quote," "freight quote [city]," "LTL shipping rates Canada."</span></div>
+          <div class="checklist-item"><span class="checklist-num">C</span><span><strong>Comparative:</strong> "[competitor] alternative," "[competitor] vs freight broker," "best LTL broker Canada."</span></div>
+          <div class="checklist-item"><span class="checklist-num">D</span><span><strong>Lane-specific:</strong> "Toronto Montreal LTL," "Vancouver Calgary freight," cross-province lane searches.</span></div>
+          <div class="checklist-item"><span class="checklist-num">E</span><span><strong>Use-case specific:</strong> "ecommerce freight shipping," "manufacturing LTL," persona-led intent.</span></div>
+          <div class="checklist-item"><span class="checklist-num">F</span><span><strong>Educational top-funnel:</strong> "what is LTL," "LTL vs FTL," "how to ship freight." Run separately, low budget.</span></div>
+          <div class="checklist-item"><span class="checklist-num">G</span><span><strong>Negative keyword categories:</strong> "jobs," "career," "trucking school," "international ocean freight," "courier", anything that's not LTL freight buyer intent.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Geography strategy</div>
+        <h4>Canada core now · US fronterizo evaluated in Q3</h4>
+        <p>We have a real contact advantage in Canada and the data to optimize there. US expansion is on the strategic horizon, but expanding paid spend into a market without a contact base risks ~3× higher CAC and dilutes the Q2 learning agenda.</p>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">Q2</span><span><strong>Canada-only paid.</strong> Focus the audit and reallocation on the geography we already know best. Province-level bid adjustments based on CVR.</span></div>
+          <div class="checklist-item"><span class="checklist-num">Q3</span><span><strong>US cross-border test.</strong> Border states first (NY, MI, WA, ND, MN). Cross-border LTL lanes are a natural extension. ~$2–3K pilot.</span></div>
+          <div class="checklist-item"><span class="checklist-num">Q4</span><span><strong>Decision point.</strong> Scale US or hold based on Q3 cross-border CAC vs Canada CAC. Strategic call by leadership.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Bidding strategy by campaign type</div>
+        <h4>What we use, why, and when we change it</h4>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Search · Brand:</strong> Manual CPC. Cheap clicks, no need to over-engineer.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Search · Non-brand high-intent:</strong> <strong>Maximize Conversions</strong> Phase 01 (need data) → <strong>Target CPA</strong> Phase 02 (once Sofia knows the cost per quote) → <strong>Target ROAS</strong> Phase 03 (once booking value attribution is reliable).</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Search · Educational:</strong> Manual CPC with low max bids. Volume-controlled, not optimization-controlled.</span></div>
+          <div class="checklist-item"><span class="checklist-num">04</span><span><strong>Display · Retargeting:</strong> Target CPA from the start, retargeting audiences are small, defined, and signal-rich.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Naming conventions</div>
+        <h4>Consistent names = trivial reporting</h4>
+        <p>Naming is one of those things that costs nothing on day one and costs hours every week if you skip it. The format below is what every campaign, ad group, and ad gets in Q2.</p>
+        <div class="callout">
+          <div class="callout-label">Naming pattern</div>
+          <p style="font-family: var(--font-mono); font-size: 13px;"><strong>Campaign:</strong> [Channel]_[Type]_[Geo]_[Quarter] · e.g. <em>GA_Search-NB-HI_CA_Q2-26</em><br><strong>Ad group:</strong> [Persona]_[Intent-cluster] · e.g. <em>AlexOps_FreightQuote</em><br><strong>Ad:</strong> [Headline-theme]_[Variant] · e.g. <em>SaveMoney_v1</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /06 LINKEDIN -->
+<section id="linkedin">
+  <div class="container">
+    <div class="section-label"><span class="num">/06</span>Channel plan · LinkedIn Ads</div>
+    <h2 class="section-title">The new channel that maps cleanly to our personas.</h2>
+    <p class="section-intro">
+      LinkedIn is the B2B platform where Alex Ops, Sandra Owner, and Michael Finance live professionally. Audience targeting here is more precise than anywhere else, and the CPC is higher because the audience is more valuable, not because the platform is wasteful.
+    </p>
+
+    <div class="channel-detail">
+      <div class="channel-head">
+        <div class="channel-icon linkedin">in</div>
+        <div class="channel-head-body">
+          <div class="channel-name">LinkedIn Ads · pilot then scale</div>
+          <div class="channel-meta">
+            <span><span class="dot"></span>Status · Not launched · Week 4–6 pilot</span>
+            <span><span class="dot"></span>Owner · Sofia (ops) + Daniela (creative)</span>
+            <span><span class="dot"></span>Q2 spend · ~$9K proposed</span>
+          </div>
+        </div>
+        <span class="channel-pill pill-launch">Launching Phase 02</span>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Why LinkedIn, why now</div>
+        <h4>The audience targeting is what we're paying for</h4>
+        <p>Google Search reaches people already searching for freight. LinkedIn reaches people <em>before</em> they search, when they're complaining about their current provider on a Tuesday afternoon, or hiring for the role that will own freight, or sharing a logistics article. That's the funnel position Strategy Base names as mid-funnel.</p>
+        <p>The CPC runs higher than Google ($8–$15 vs $3–$6 typical). What matters is whether the conversion math works at that CPC. We pilot small for 3 weeks before deciding.</p>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Audience targeting · the three pilot audiences</div>
+        <h4>One audience per persona, measure each separately</h4>
+        <div class="campaign-table">
+          <div class="campaign-row priority">
+            <div class="campaign-num">/ A</div>
+            <div class="campaign-name">Alex Ops · Operations Managers in logistics</div>
+            <div class="campaign-purpose">Job titles: Logistics Manager, Operations Manager, Supply Chain Manager. Industries: Manufacturing, E-commerce, Wholesale. Company size: 20–500. Geography: Canada.</div>
+            <div class="campaign-budget">~$3K</div>
+          </div>
+          <div class="campaign-row priority">
+            <div class="campaign-num">/ B</div>
+            <div class="campaign-name">Sandra Owner · Small-business owners shipping freight</div>
+            <div class="campaign-purpose">Job titles: Founder, Owner, President. Industries: Manufacturing, Consumer Goods, Industrial Equipment. Company size: 5–100. Geography: Canada.</div>
+            <div class="campaign-budget">~$3K</div>
+          </div>
+          <div class="campaign-row">
+            <div class="campaign-num">/ C</div>
+            <div class="campaign-name">Michael Finance · Finance leads with freight in their P&amp;L</div>
+            <div class="campaign-purpose">Job titles: CFO, VP Finance, Controller, Finance Manager. Industries: Manufacturing, Distribution, Wholesale. Company size: 50–500. Geography: Canada.</div>
+            <div class="campaign-budget">~$3K</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Ad formats · priority order</div>
+        <h4>Two formats for the pilot, expand only on signal</h4>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Sponsored Content (single image).</strong> Highest familiarity, lowest production cost. Tests message-market fit first.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Document Ads.</strong> Mid-funnel asset (case study, comparison guide). Higher engagement among B2B buyers. Use the Q2 case studies as fuel.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Video Ads.</strong> Defer until the Main Explainer Video ships. Then test as a high-leverage format.</span></div>
+          <div class="checklist-item"><span class="checklist-num">04</span><span><strong>Conversation Ads / Message Ads.</strong> Skip Q2. High effort, niche use case.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Content requirements · what we need before launch</div>
+        <h4>Sofia + Daniela produce these in Weeks 3–4</h4>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>3 distinct ad creatives</strong>, one per persona, matching tone and visual. Brand book applied.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>3 headline variations per ad</strong> for in-platform A/B testing of message angles.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>1 Document Ad asset</strong> per persona, either a case study (Sandra/Michael) or a comparison guide (Alex).</span></div>
+          <div class="checklist-item"><span class="checklist-num">04</span><span><strong>3 landing pages</strong> aligned to each persona's pain point and conversion goal.</span></div>
+          <div class="checklist-item"><span class="checklist-num">05</span><span><strong>UTM scheme</strong> consistent with Google Ads, distinguishable in PostHog and the CRM.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Pilot success criteria</div>
+        <h4>When to scale, when to hold, when to kill</h4>
+        <div class="callout success">
+          <div class="callout-label">↑ Scale to $7.5K Phase 03</div>
+          <p>Cost per quote request ≤ $250 on any single audience after 3 weeks of pilot. CTR ≥ 0.5%. Any audience that hits the threshold gets scaled; the others get iterated on or killed.</p>
+        </div>
+        <div class="callout warning">
+          <div class="callout-label">⚠ Hold and iterate</div>
+          <p>Cost per quote request $250–$500. Engagement above baseline but conversions soft. Iterate on creative for 2 more weeks before deciding scale or kill.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-label">↓ Pause and reallocate</div>
+          <p>Cost per quote request &gt; $500 after 4 weeks of iteration. Pause the audience. Redirect budget to Google Search where the conversion math is proven.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /07 BING -->
+<section class="gray" id="bing">
+  <div class="container">
+    <div class="section-label"><span class="num">/07</span>Channel plan · Bing / Microsoft Ads</div>
+    <h2 class="section-title">The cheap, fast, mostly-overlooked B2B channel.</h2>
+    <p class="section-intro">
+      Bing in B2B is the channel everyone underestimates. CPC is typically 30–50% lower than Google with audiences skewing older, more corporate, more locked into Microsoft 365 / Edge / Outlook environments, which describes most logistics buyers in Canada surprisingly well.
+    </p>
+
+    <div class="channel-detail">
+      <div class="channel-head">
+        <div class="channel-icon bing">B</div>
+        <div class="channel-head-body">
+          <div class="channel-name">Bing / Microsoft Ads · mirror &amp; monitor</div>
+          <div class="channel-meta">
+            <span><span class="dot"></span>Status · Not launched · Week 3 quick-win</span>
+            <span><span class="dot"></span>Owner · Sofia</span>
+            <span><span class="dot"></span>Q2 spend · ~$5K proposed</span>
+          </div>
+        </div>
+        <span class="channel-pill pill-quickwin">Quick win</span>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Strategy · why this is the lowest-risk channel to test</div>
+        <h4>Copy what works on Google, run it cheaper</h4>
+        <p>Bing has a one-click import from Google Ads. We take our top 5–8 highest-converting Google campaigns (identified during audit), import them into Bing, set a modest daily budget, and let them run for 4 weeks before evaluating.</p>
+        <p>The bet: <em>same intent at lower CPC.</em> If it works, we have a third proven channel at minimal effort. If it doesn't, we pause and we've lost ~$2–3K learning that B2B logistics isn't a Bing audience in Canada, useful intel either way.</p>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Launch checklist</div>
+        <h4>What ships in Week 3</h4>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Set up Microsoft Advertising account</strong> linked to the FreightSimple corporate identity. UEC tag installed on site.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Conversion tracking</strong> mirrored to match the 4-tier event taxonomy. Same lookback windows.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Import top Google campaigns</strong> via the Microsoft Ads Import tool. Audit imports, Bing's match types behave slightly differently.</span></div>
+          <div class="checklist-item"><span class="checklist-num">04</span><span><strong>Daily budget cap</strong> set to ~$50/day = ~$1.5K/month for the pilot phase. Scale only after 4 weeks of signal.</span></div>
+          <div class="checklist-item"><span class="checklist-num">05</span><span><strong>Negative keywords mirrored</strong> from Google's running list.</span></div>
+          <div class="checklist-item"><span class="checklist-num">06</span><span><strong>UTM scheme distinct from Google</strong> (utm_source=bing) so attribution is clean.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Success criteria</div>
+        <h4>Bing's job is to be cheaper at comparable quality</h4>
+        <div class="callout success">
+          <div class="callout-label">↑ Scale</div>
+          <p>Bing CPL ≤ 70% of Google CPL after 4 weeks. Quality (quote→booking rate) within 15% of Google. Scale to $2.5K/month.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-label">↓ Pause</div>
+          <p>Bing CPL ≥ Google CPL or quality drops &gt; 30%. Pause campaigns. Document the learning. Reattempt in Q3 with different campaigns if anything has changed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /08 PROGRAMMATIC -->
+<section id="programmatic">
+  <div class="container">
+    <div class="section-label"><span class="num">/08</span>Channel plan · Programmatic</div>
+    <h2 class="section-title">Defer to Q3. Here's why, and the conditions to revisit.</h2>
+    <p class="section-intro">
+      Programmatic display is on the team's radar, and that's the right instinct, at scale, it can be a powerful retargeting and prospecting layer. At <em>our current scale</em>, the math doesn't work yet. This section documents why we wait and what would change our minds.
+    </p>
+
+    <div class="channel-detail">
+      <div class="channel-head">
+        <div class="channel-icon programmatic">P</div>
+        <div class="channel-head-body">
+          <div class="channel-name">Programmatic Display · evaluated, deferred</div>
+          <div class="channel-meta">
+            <span><span class="dot"></span>Status · Deferred to Q3 evaluation</span>
+            <span><span class="dot"></span>Owner · Daniela (decision point)</span>
+            <span><span class="dot"></span>Q2 spend · $0</span>
+          </div>
+        </div>
+        <span class="channel-pill pill-defer">Defer · Q3 decision</span>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Why not Q2 · the math we're solving for</div>
+        <h4>Three constraints that don't yet clear</h4>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Audience size.</strong> Programmatic retargeting needs ~5,000+ monthly site visitors minimum to be efficient. Below that, the algorithm runs out of impressions and CPM spikes.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>Creative production cost.</strong> Programmatic typically requires 8–12 creative sizes / variations to perform. With current team capacity and motion design still pending, the production cost is the real cost.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Attribution noise.</strong> Programmatic is famously hard to attribute cleanly. We need PostHog + CRM integration solid first, otherwise we'd be reporting programmatic performance with no way to verify it.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Interim approach · what fills the gap</div>
+        <h4>The retargeting work we do without programmatic</h4>
+        <p>The retargeting job that programmatic would do at scale is handled at smaller scale through:</p>
+        <div class="checklist">
+          <div class="checklist-item"><span class="checklist-num">01</span><span><strong>Google Display retargeting</strong> ($3.5K Q2). Lower scale, but signal-rich and attribution-clean.</span></div>
+          <div class="checklist-item"><span class="checklist-num">02</span><span><strong>LinkedIn retargeting audiences</strong> ($1K of the LinkedIn budget). Mid-funnel touchpoints.</span></div>
+          <div class="checklist-item"><span class="checklist-num">03</span><span><strong>Klaviyo retention sequence</strong> for owned-channel reactivation, not paid but plays a similar role.</span></div>
+        </div>
+      </div>
+
+      <div class="channel-block">
+        <div class="channel-block-label">Q3 revisit · the conditions that unlock it</div>
+        <h4>If three things are true at end of Q2, we test in Q3</h4>
+        <div class="callout">
+          <div class="callout-label">Conditions to revisit</div>
+          <p>
+            <strong>(a)</strong> Site traffic ≥ 5,000 monthly visitors.<br>
+            <strong>(b)</strong> Motion design tooling approved and producing in-house assets.<br>
+            <strong>(c)</strong> PostHog + CRM joined, attribution working cleanly.<br>
+            If all three are true at end of Q2, we evaluate 1–2 programmatic platforms (StackAdapt, AdRoll, or similar) for a Q3 pilot.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /09 TESTING -->
+<section class="gray" id="testing">
+  <div class="container">
+    <div class="section-label"><span class="num">/09</span>Testing &amp; learning agenda</div>
+    <h2 class="section-title">Five tests. One at a time. Real significance thresholds.</h2>
+    <p class="section-intro">
+      Parallel A/B tests in paid are the most common way to learn nothing. Different tests interfere, traffic gets split too thin, and results land in the "directional but inconclusive" zone. We run <strong>one test at a time per channel</strong>, define significance up front, and don't pull the plug or the trigger early.
+    </p>
+
+    <h3 class="block-title">The five priority tests for Q2</h3>
+
+    <div class="test-list">
+      <div class="test">
+        <div class="test-head">
+          <div class="test-num">1</div>
+          <div class="test-title">Headline angle, "Save Money" vs "Prevent Problems" vs "Automate"</div>
+          <div class="test-when">Weeks 2–4 · Google</div>
+        </div>
+        <div class="test-body">
+          <p>Three message angles map directly to the three brand pillars. We don't know which one converts hardest at the ad layer. Run as Responsive Search Ads with the three angles as pinned headlines, measure quote-rate per angle.</p>
+          <div class="test-meta">
+            <span class="test-meta-item"><strong>Hypothesis</strong> · "Save Money" wins for Sandra/Michael; "Prevent Problems" wins for Alex Ops.</span>
+            <span class="test-meta-item"><strong>Significance</strong> · 95%, ≥150 conversions per arm</span>
+            <span class="test-meta-item"><strong>Outcome</strong> · Wins become the default for that audience.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <div class="test-num">2</div>
+          <div class="test-title">Landing page, Current homepage vs persona-specific landing</div>
+          <div class="test-when">Weeks 4–7 · Google + LinkedIn</div>
+        </div>
+        <div class="test-body">
+          <p>Hypothesis behind the homepage refresh project: a generic homepage is the wrong destination for paid traffic. Build 2 persona-specific landings (Sandra and Michael first), split 50/50 with current homepage, measure bounce and quote rate.</p>
+          <div class="test-meta">
+            <span class="test-meta-item"><strong>Hypothesis</strong> · Persona-specific landings lift quote rate ≥ 20%.</span>
+            <span class="test-meta-item"><strong>Significance</strong> · 95%, ≥200 conversions per arm</span>
+            <span class="test-meta-item"><strong>Outcome</strong> · Feeds the homepage refresh decision.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <div class="test-num">3</div>
+          <div class="test-title">Bidding strategy, Maximize Conversions vs Target CPA</div>
+          <div class="test-when">Weeks 5–8 · Google</div>
+        </div>
+        <div class="test-body">
+          <p>Once Sofia knows the cost-per-quote baseline (end of Audit), we test switching the top non-brand campaign from Maximize Conversions to Target CPA at a value 10% above baseline. Standard Google Ads experiment, 50/50 traffic split.</p>
+          <div class="test-meta">
+            <span class="test-meta-item"><strong>Hypothesis</strong> · Target CPA lifts efficiency ≥ 15% at flat or higher volume.</span>
+            <span class="test-meta-item"><strong>Significance</strong> · 90%, 4 weeks minimum</span>
+            <span class="test-meta-item"><strong>Outcome</strong> · Defines bidding strategy for Phase 03 scale.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <div class="test-num">4</div>
+          <div class="test-title">LinkedIn audience, Job-title-led vs Industry-led targeting</div>
+          <div class="test-when">Weeks 4–6 · LinkedIn pilot</div>
+        </div>
+        <div class="test-body">
+          <p>For Alex Ops, two audience definitions are plausible: (a) Job titles regardless of industry, (b) Industry-led with broader title list. Cost and quality may differ meaningfully. Run two audiences, ~$1.5K each, measure CPL and quality.</p>
+          <div class="test-meta">
+            <span class="test-meta-item"><strong>Hypothesis</strong> · Industry-led wins on cost; title-led wins on quality.</span>
+            <span class="test-meta-item"><strong>Significance</strong> · 90%, ≥50 leads per arm</span>
+            <span class="test-meta-item"><strong>Outcome</strong> · Defines LinkedIn targeting approach for scale.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <div class="test-num">5</div>
+          <div class="test-title">Geo bid adjustment, Urban metros vs rural Canada</div>
+          <div class="test-when">Weeks 6–9 · Google</div>
+        </div>
+        <div class="test-body">
+          <p>Audit will likely show GTA, Montreal, Vancouver Metro converting at much higher rates than rural geographies. Test bid adjustments of +30% for top metros and –50% for the lowest-converting regions. Standard A/B with the geo bid modifier as the variable.</p>
+          <div class="test-meta">
+            <span class="test-meta-item"><strong>Hypothesis</strong> · Geo bid tuning lifts overall efficiency ≥ 10%.</span>
+            <span class="test-meta-item"><strong>Significance</strong> · 90%, 4 weeks minimum</span>
+            <span class="test-meta-item"><strong>Outcome</strong> · Locked into Phase 03 scale plan.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-label">⚠ The discipline that makes this work</div>
+      <p>
+        <strong>One test per channel at a time.</strong> Tests are pre-registered: hypothesis, sample size, significance threshold, and decision rule written down <em>before</em> the test starts. Results documented even when they're inconclusive. The point of the testing agenda isn't to win every test, it's to stop guessing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- /10 KPIs -->
+<section id="kpis">
+  <div class="container">
+    <div class="section-label"><span class="num">/10</span>KPIs · what we measure, what we report</div>
+    <h2 class="section-title">From the dollar spent up to the dollar booked.</h2>
+    <p class="section-intro">
+      Paid generates a flood of numbers. Most of them are vanity. The KPI tree below traces the path from impression to revenue with one named metric per level, and names which numbers Sofia tracks weekly versus which numbers Daniela reports to leadership monthly.
+    </p>
+
+    <h3 class="block-title">The KPI tree</h3>
+
+    <div class="kpi-tree">
+      <div class="kpi-tier north">
+        <div class="kpi-tier-label">North Star · paid contribution to revenue</div>
+        <div class="kpi-tier-metric">Paid CAC · Cost per booked customer</div>
+        <div class="kpi-tier-detail">
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Q2 target</span><span class="kpi-detail-val">TBD, baseline in Week 4</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Reported by</span><span class="kpi-detail-val">Daniela · monthly</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Read with</span><span class="kpi-detail-val">LTV/CAC ratio</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-tier">
+        <div class="kpi-tier-label">Tier 1 · funnel-level performance</div>
+        <div class="kpi-tier-metric">Cost per quote · Quote-to-booking rate · Paid traffic share of bookings</div>
+        <div class="kpi-tier-detail">
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Cost per quote target</span><span class="kpi-detail-val">$80–$120 · proposed</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Quote-to-booking rate</span><span class="kpi-detail-val">≥ 15% · benchmark</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Reported by</span><span class="kpi-detail-val">Daniela · monthly</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-tier">
+        <div class="kpi-tier-label">Tier 2 · channel-level performance</div>
+        <div class="kpi-tier-metric">Channel CPL · CTR · CVR · ROAS by channel</div>
+        <div class="kpi-tier-detail">
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Google CPL target</span><span class="kpi-detail-val">$80–$110</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">LinkedIn CPL target</span><span class="kpi-detail-val">$150–$250</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Bing CPL target</span><span class="kpi-detail-val">≤ 70% of Google CPL</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-tier">
+        <div class="kpi-tier-label">Tier 3 · operational health</div>
+        <div class="kpi-tier-metric">Daily spend pacing · Impression share · Quality Score · Avg position</div>
+        <div class="kpi-tier-detail">
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Impression share floor</span><span class="kpi-detail-val">≥ 60% for brand</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Quality Score floor</span><span class="kpi-detail-val">≥ 7 on priority terms</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Reported by</span><span class="kpi-detail-val">Sofia · weekly</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-tier">
+        <div class="kpi-tier-label">Tier 4 · diagnostic / experiment</div>
+        <div class="kpi-tier-metric">Test results · ad-level CTR · landing page conversion rate · audience-level CVR</div>
+        <div class="kpi-tier-detail">
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Reported by</span><span class="kpi-detail-val">Sofia · weekly</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Surfaced when</span><span class="kpi-detail-val">Test concludes</span></div>
+          <div class="kpi-detail-item"><span class="kpi-detail-label">Decision rule</span><span class="kpi-detail-val">Pre-registered</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ The reporting principle</div>
+      <p>
+        Different levels go to different audiences. <strong>Leadership reviews North Star and Tier 1 only.</strong> If Chris ever wants Tier 3 detail, it's available, but the default monthly report is two numbers: paid CAC and quote-to-booking rate, with a one-paragraph commentary on why they moved.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- /11 CADENCE -->
+<section class="gray" id="cadence">
+  <div class="container">
+    <div class="section-label"><span class="num">/11</span>Operating cadence · how we run this</div>
+    <h2 class="section-title">Daily, weekly, monthly. Each tier has a job.</h2>
+    <p class="section-intro">
+      Paid compounds on rhythm. Daily ops surfaces anomalies fast; weekly review surfaces trends; monthly review surfaces strategy drift. <strong>Each tier multiplies the value of the others.</strong> The cadence below is the minimum that keeps the channel honest and the team coordinated.
+    </p>
+
+    <div class="cadence-list">
+      <div class="cadence-row">
+        <div class="cadence-when">Daily<span class="duration">15 min</span></div>
+        <div class="cadence-what">Spend pacing &amp; anomalies</div>
+        <div class="cadence-purpose">Check daily spend vs budget. Spot anomalies (CPC spike, conversion drop, disapproved ads). Flag anything outside expected bands.</div>
+        <div class="cadence-owner">Sofia · solo</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Weekly Mon<span class="duration">45 min</span></div>
+        <div class="cadence-what">Weekly review &amp; priorities</div>
+        <div class="cadence-purpose">Review CTR, CVR, CPL by campaign. Pause obvious losers. Identify tests to launch. Set the week's paid focus.</div>
+        <div class="cadence-owner">Sofia + Daniela</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Weekly Fri<span class="duration">30 min</span></div>
+        <div class="cadence-what">Numbers update for the EOW</div>
+        <div class="cadence-purpose">Sofia compiles the week's paid numbers and feeds them into the broader EOW marketing update to leadership.</div>
+        <div class="cadence-owner">Sofia · solo</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Bi-weekly<span class="duration">60 min</span></div>
+        <div class="cadence-what">Test review &amp; experiment design</div>
+        <div class="cadence-purpose">Review active and concluded tests. Decide what to ship and what to drop. Design next test. Pre-register hypothesis and significance.</div>
+        <div class="cadence-owner">Sofia + Daniela</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">Monthly<span class="duration">90 min</span></div>
+        <div class="cadence-what">Paid business review</div>
+        <div class="cadence-purpose">Channel-by-channel performance. Phase gate review (audit/reallocate/scale). Budget reallocation decision. Surface to leadership.</div>
+        <div class="cadence-owner">Daniela leads · Sofia + leadership</div>
+      </div>
+      <div class="cadence-row">
+        <div class="cadence-when">End-of-quarter<span class="duration">2.5 hrs</span></div>
+        <div class="cadence-what">QBR &amp; Q3 paid plan</div>
+        <div class="cadence-purpose">Full Q2 paid retrospective. Plan v2.0 of this document for Q3. Programmatic decision. US expansion decision. Budget envelope.</div>
+        <div class="cadence-owner">Daniela leads · with leadership</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ The principle behind the cadence</div>
+      <p>
+        Daily catches anomalies. Weekly catches trends. Monthly catches strategy drift. Quarterly catches whether the strategy itself is right. <strong>None of those tiers can substitute for the others.</strong> Skipping any one of them costs more than the time it saves.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- /12 OPEN QUESTIONS -->
+<section id="open">
+  <div class="container">
+    <div class="section-label"><span class="num">/12</span>Open questions · what's still TBD</div>
+    <h2 class="section-title">Decisions we'll know how to make, but don't yet.</h2>
+    <p class="section-intro">
+      A plan with no open questions is a plan that's pretending. This section lists the decisions we'll need to make during Q2 that we don't have enough data to make today, and names the trigger that resolves each one.
+    </p>
+
+    <div class="open-q-list">
+      <div class="open-q-item">
+        <div class="open-q-num">Question 01</div>
+        <div class="open-q-title">What's our CAC target, and what's our LTV/CAC?</div>
+        <p class="open-q-body">We don't have a CAC baseline yet. Without it, every "is this campaign working?" question is unanswerable. The Audit phase establishes the baseline. The strategic question of <em>what it should be</em> needs leadership input on LTV and unit economics.</p>
+        <div class="open-q-decision">↳ Trigger · End of Week 4 · Daniela + Chris in monthly review</div>
+      </div>
+
+      <div class="open-q-item">
+        <div class="open-q-num">Question 02</div>
+        <div class="open-q-title">Do we expand paid into US fronterizo states in Q3?</div>
+        <p class="open-q-body">US expansion is on the strategic horizon. Cross-border lanes are a natural foothold. But Q2 paid focuses on Canada because that's where the contact-data advantage lives. The decision: do we commit to a US fronterizo pilot in Q3 with ~$2–3K, or hold until Q4?</p>
+        <div class="open-q-decision">↳ Trigger · End-of-quarter QBR · based on Canada CAC stability</div>
+      </div>
+
+      <div class="open-q-item">
+        <div class="open-q-num">Question 03</div>
+        <div class="open-q-title">Does LinkedIn justify scaling to $7.5K Phase 03?</div>
+        <p class="open-q-body">LinkedIn pilot success criteria are defined in /06. The decision rule is pre-registered. The open question is the call itself, and the secondary question of <em>which</em> audience scales, since the three pilot audiences will perform differently.</p>
+        <div class="open-q-decision">↳ Trigger · End of Week 6 · Sofia + Daniela review of pilot data</div>
+      </div>
+
+      <div class="open-q-item">
+        <div class="open-q-num">Question 04</div>
+        <div class="open-q-title">Are the three conditions for programmatic met by end of Q2?</div>
+        <p class="open-q-body">Conditions: ≥5K monthly visitors, motion tooling producing assets, PostHog+CRM attribution working. If all three are true by end of Q2, programmatic enters Q3 planning as a real pilot candidate. If any are false, it stays deferred.</p>
+        <div class="open-q-decision">↳ Trigger · End-of-quarter QBR</div>
+      </div>
+
+      <div class="open-q-item">
+        <div class="open-q-num">Question 05</div>
+        <div class="open-q-title">Compliance &amp; messaging, anything we can't say in ads?</div>
+        <p class="open-q-body">Initial read is that we're low-risk: no pricing claims, no guaranteed delivery times, no comparative claims requiring verification. But before we scale messaging across channels and audiences, a 30-min legal review of headline templates is worth doing, protects against an avoidable Google policy strike later.</p>
+        <div class="open-q-decision">↳ Trigger · Before Phase 02 launch · ~30 min review</div>
+      </div>
+
+      <div class="open-q-item">
+        <div class="open-q-num">Question 06</div>
+        <div class="open-q-title">When does the homepage actually refresh?</div>
+        <p class="open-q-body">Half the paid spend lands on the homepage. A refreshed homepage compounds every paid dollar that lands there. The homepage refresh is on the Pending list of the hub, this is the paid plan's vote that it's the single highest-leverage Q2 dependency.</p>
+        <div class="open-q-decision">↳ Trigger · Decision lives in the hub /06 Pending, paid plan tracks alongside</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOC FOOTER -->
+<div class="doc-footer">
+  <span class="tag">// END OF PAID MEDIA PLAN v1.0 //</span>
+  This is a living document. Update monthly during the Paid Business Review.<br>
+  Read alongside: Strategy Base · The Audit · Customer · Plays · Marketing Hub.
+</div>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const winH = window.innerHeight;
+    const docH = document.documentElement.scrollHeight - winH;
+    const pct = (window.scrollY / docH) * 100;
+    document.getElementById('scrollProgress').style.width = pct + '%';
+  });
+
+  // Sub-nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sub-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.offsetTop - 120;
+      if (window.scrollY >= top) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Animate budget bars on viewport entry
+  const bars = document.querySelectorAll('.budget-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target.style.width;
+        entry.target.style.width = '0%';
+        setTimeout(() => { entry.target.style.width = target; }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(bar => observer.observe(bar));
+</script>
+
+</body>
+</html>
