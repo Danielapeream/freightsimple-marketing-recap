@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid Performance · Monthly Tracking · FreightSimple</title>
+<meta name="description" content="Monthly Google Ads performance tracking. Last 30 days: $6,217 spend, 18 signups, 3 first bookings. Headline: account is optimizing for signups, not bookings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #4C62EA;
+    --blue-soft: #6B7EEE;
+    --blue-light: #EEF1FD;
+    --blue-periwinkle: #a8b3f0;
+    --gold: #facc0b;
+    --gold-soft: #fde26d;
+    --gold-light: #fef5c7;
+    --dark: #1a1d23;
+    --dark-2: #252830;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --cream: #FFF8E7;
+    --muted: #6b7185;
+    --muted-soft: #9ea3b3;
+    --border: #e8eaf0;
+    --border-soft: #f1f2f6;
+    --success: #1D9E75;
+    --success-light: #E8F5EF;
+    --warning: #BA7517;
+    --warning-light: #FEF3D6;
+    --error: #E24B4A;
+    --error-light: #FCE9E9;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background: var(--off-white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* BRAND STRIP */
+  .brand-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .brand-strip-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 15px;
+    letter-spacing: -0.01em; color: var(--dark);
+  }
+  .brand-name .slash { color: var(--muted-soft); font-weight: 400; margin: 0 6px; }
+  .brand-name .sub { color: var(--muted); font-weight: 500; }
+  .brand-back {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .brand-back:hover { border-color: var(--dark); color: var(--dark); }
+
+  /* COVER */
+  .cover {
+    background: var(--white);
+    padding: 56px 32px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover-inner { max-width: 1280px; margin: 0 auto; }
+  .cover-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dark); font-weight: 700;
+    margin-bottom: 20px;
+    padding: 6px 14px 6px 8px;
+    background: rgba(250, 204, 11, 0.15);
+    border-radius: 100px;
+  }
+  .cover-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(250, 204, 11, 0.25);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.05; letter-spacing: -0.03em;
+    font-weight: 800; color: var(--dark);
+    margin-bottom: 16px; max-width: 900px;
+  }
+  .cover-italic { font-style: italic; color: var(--blue); }
+  .cover-lede {
+    font-size: 16px; line-height: 1.6;
+    color: var(--muted); max-width: 760px;
+  }
+  .cover-lede strong { color: var(--dark); font-weight: 600; }
+  .cover-meta {
+    margin-top: 24px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .cover-meta strong { color: var(--dark); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; }
+
+  /* SECTION */
+  section {
+    padding: 64px 32px;
+  }
+  section.alt { background: var(--white); }
+  section.dark { background: var(--dark); color: var(--white); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .section-label .num {
+    color: var(--blue);
+    font-weight: 700;
+  }
+  section.dark .section-label { color: var(--gold); }
+  section.dark .section-label .num { color: var(--gold); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 920px;
+  }
+  section.dark .section-title { color: var(--white); }
+  .section-intro {
+    font-size: 15.5px; line-height: 1.65;
+    color: var(--muted);
+    max-width: 760px;
+    margin-bottom: 36px;
+  }
+  section.dark .section-intro { color: var(--blue-periwinkle); }
+  .section-intro strong { color: var(--dark); font-weight: 600; }
+  section.dark .section-intro strong { color: var(--white); }
+
+  /* STAT CARDS — top section */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    position: relative;
+  }
+  .stat-card.accent { border-top: 3px solid var(--gold); }
+  .stat-card.warning-accent { border-top: 3px solid var(--warning); }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 24px; font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    line-height: 1.1;
+  }
+  .stat-value .currency { font-size: 16px; color: var(--muted); font-weight: 600; }
+  .stat-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.03em;
+  }
+  .stat-sub.alert { color: var(--warning); font-weight: 600; }
+  .stat-sub.good { color: var(--success); font-weight: 600; }
+
+  /* WHAT WE'RE MEASURING — conversion definition table */
+  .measuring-table {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .measuring-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 140px 120px;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 13.5px;
+  }
+  .measuring-row:last-child { border-bottom: none; }
+  .measuring-row.head {
+    background: var(--off-white);
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+  .measuring-row.primary {
+    background: var(--gold-light);
+  }
+  .measuring-row.secondary {
+    background: var(--warning-light);
+  }
+  .measuring-action {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+  .measuring-action .source-tag {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+  .role-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .role-pill.primary { background: var(--gold); color: var(--dark); }
+  .role-pill.secondary { background: var(--warning); color: var(--white); }
+  .role-pill.inactive { background: var(--border); color: var(--muted); }
+  .measuring-counts {
+    font-family: var(--font-mono);
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .measuring-counts .label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 500;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--cream);
+    border: 1px solid rgba(250, 204, 11, 0.4);
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 24px;
+  }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warning); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .callout-text { font-size: 14.5px; color: var(--dark); line-height: 1.6; }
+  .callout-text strong { color: var(--dark); font-weight: 600; }
+
+  section.dark .callout {
+    background: rgba(76,98,234,0.12);
+    border: 1px solid rgba(250, 204, 11, 0.3);
+    border-left: 4px solid var(--gold);
+  }
+  section.dark .callout-text { color: rgba(255,255,255,0.92); }
+  section.dark .callout-text strong { color: var(--white); font-weight: 700; }
+
+  /* HEADLINE FINDING (dark section) */
+  .headline-block {
+    background: rgba(250, 204, 11, 0.08);
+    border: 1px solid rgba(250, 204, 11, 0.25);
+    border-radius: 18px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .headline-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 20%, rgba(250,204,11,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .headline-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 12px;
+    position: relative; z-index: 1;
+  }
+  .headline-statement {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .headline-statement .em { color: var(--gold); font-style: italic; }
+  .headline-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--blue-periwinkle);
+    max-width: 720px;
+    margin-bottom: 30px;
+    position: relative; z-index: 1;
+  }
+  .headline-body strong { color: var(--white); font-weight: 600; }
+
+  /* FUNNEL VIZ */
+  .funnel-viz {
+    display: grid;
+    grid-template-columns: 1fr 0.05fr 1fr 0.05fr 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-top: 30px;
+    position: relative; z-index: 1;
+  }
+  .funnel-step {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-align: left;
+  }
+  .funnel-step.optimized {
+    border-color: var(--gold);
+    background: rgba(250, 204, 11, 0.10);
+  }
+  .funnel-step.real-revenue {
+    border-color: var(--blue);
+    background: rgba(76, 98, 234, 0.10);
+  }
+  .funnel-step-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted-soft); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .funnel-step.optimized .funnel-step-label { color: var(--gold); }
+  .funnel-step.real-revenue .funnel-step-label { color: var(--blue-periwinkle); }
+  .funnel-step-val {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .funnel-step-name {
+    font-size: 13px;
+    color: var(--blue-periwinkle);
+    font-weight: 500;
+  }
+  .funnel-arrow {
+    font-family: var(--font-mono);
+    color: var(--muted-soft);
+    text-align: center;
+    font-size: 18px;
+  }
+
+  /* COMPARISON SIDE-BY-SIDE */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .compare-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 28px;
+  }
+  .compare-card.us { border-left: 4px solid var(--muted-soft); }
+  .compare-card.ca { border-left: 4px solid var(--success); }
+  .compare-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .compare-flag {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+  }
+  .compare-flag .country {
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 6px;
+    font-size: 13px;
+  }
+  .compare-metric-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 8px 0;
+    font-size: 13.5px;
+    border-bottom: 1px solid var(--border-soft);
+    gap: 12px;
+  }
+  .compare-metric-row:last-child { border-bottom: none; }
+  .compare-metric-label {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    align-self: center;
+  }
+  .compare-metric-val {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .compare-metric-val.standout {
+    color: var(--success);
+  }
+  .compare-metric-val.weak {
+    color: var(--warning);
+  }
+
+  /* KEYWORDS TABLE */
+  .kw-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .kw-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .kw-block.workhorses { border-top: 3px solid var(--success); }
+  .kw-block.review { border-top: 3px solid var(--warning); }
+  .kw-block-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .kw-block-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .kw-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    align-items: center;
+  }
+  .kw-row:last-child { border-bottom: none; }
+  .kw-name {
+    font-family: var(--font-mono);
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .kw-value {
+    font-family: var(--font-mono);
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+  .kw-value strong { color: var(--dark); font-weight: 700; }
+  .kw-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .kw-badge.good { background: var(--success-light); color: var(--success); }
+  .kw-badge.warn { background: var(--warning-light); color: var(--warning); }
+  .kw-badge.low { background: var(--error-light); color: var(--error); }
+
+  /* CAMPAIGN TABLE — full breakdown */
+  .group-table {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .group-table-head {
+    background: var(--off-white);
+    padding: 14px 20px;
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--border);
+  }
+  .group-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    align-items: center;
+  }
+  .group-row:last-child { border-bottom: none; }
+  .group-row.thead {
+    background: var(--off-white);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .group-row.thead > * { text-align: right; }
+  .group-row.thead > *:first-child { text-align: left; }
+  .group-row > * { text-align: right; }
+  .group-row > *:first-child { text-align: left; }
+  .group-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.005em;
+  }
+  .group-row .num {
+    font-family: var(--font-mono);
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .group-row.zero-conv .group-name { color: var(--warning); }
+  .group-row.zero-conv .num { color: var(--warning); }
+  .group-row.workhorse .num.cpa { color: var(--success); font-weight: 700; }
+  .group-row.workhorse .group-name { font-weight: 700; }
+
+  /* WHAT WE'RE ADJUSTING */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .week-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .week-block.now { border-color: var(--gold); background: var(--gold-light); }
+  .week-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--dark);
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .week-block.now .week-tag { background: var(--gold); color: var(--dark); }
+  .week-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .week-items {
+    list-style: none;
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .week-items li {
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .week-items li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  /* OPEN QUESTIONS */
+  .open-q-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .open-q-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .open-q-card.priority { border-left-color: var(--gold); }
+  .open-q-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .open-q-card.priority .open-q-title::before {
+    content: '★ ';
+    color: var(--gold);
+  }
+  .open-q-body {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 40px 32px;
+    font-size: 13px;
+  }
+  .doc-footer .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .stat-grid { grid-template-columns: repeat(3, 1fr); }
+    .funnel-viz { grid-template-columns: 1fr; }
+    .funnel-arrow { display: none; }
+    .compare-grid, .kw-section, .week-grid { grid-template-columns: 1fr; }
+    .group-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    .group-row > *:nth-child(5), .group-row > *:nth-child(6) { display: none; }
+    .measuring-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 720px) {
+    .brand-strip, section { padding-left: 20px; padding-right: 20px; }
+    .cover { padding: 40px 20px 32px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .doc-footer { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <span class="brand-name">FreightSimple <span class="slash">/</span> <span class="sub">Paid Performance</span></span>
+    <a href="index.html" class="brand-back">← Back to hub</a>
+  </div>
+</div>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <span class="cover-dot"></span>
+      Google Ads · Monthly Tracking · v1.0
+    </div>
+    <h1 class="cover-title">
+      Last 30 days at a glance, and <span class="cover-italic">what they're telling us.</span>
+    </h1>
+    <p class="cover-lede">
+      A monthly view of how Google Ads is performing. Each refresh keeps the visibility live, so the conversation is always grounded in the latest numbers. This first edition surfaces <strong>one configuration finding that explains a lot</strong> of what we've been seeing, and lays out what we're adjusting before any budget reallocation.
+    </p>
+    <div class="cover-meta">
+      <span><strong>Period</strong> · Apr 19 → May 18, 2026</span>
+      <span><strong>Refresh cadence</strong> · monthly</span>
+      <span><strong>Next update</strong> · mid-June 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- /01 SNAPSHOT -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/01</span>Snapshot · last 30 days</div>
+    <h2 class="section-title">Six numbers to ground the conversation.</h2>
+    <p class="section-intro">
+      The headline numbers. Notice the split: <strong>account signups</strong> (the metric Google Ads is currently optimizing toward) versus <strong>first bookings</strong> (the metric that maps to revenue). They tell different stories, that's exactly what Section /03 unpacks.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total spend</div>
+        <div class="stat-value"><span class="currency">CAD</span> $6,217</div>
+        <div class="stat-sub">2 campaigns · $300/day cap</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Clicks</div>
+        <div class="stat-value">1,709</div>
+        <div class="stat-sub">61,680 impressions · 2.77% CTR</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg CPC</div>
+        <div class="stat-value"><span class="currency">CAD</span> $3.64</div>
+        <div class="stat-sub">in line with B2B logistics benchmarks</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-label">Account signups</div>
+        <div class="stat-value">18</div>
+        <div class="stat-sub alert">★ what Google Ads optimizes for</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-label">Cost / signup</div>
+        <div class="stat-value"><span class="currency">CAD</span> $345</div>
+        <div class="stat-sub">blended across both campaigns</div>
+      </div>
+      <div class="stat-card warning-accent">
+        <div class="stat-label">First bookings</div>
+        <div class="stat-value">3</div>
+        <div class="stat-sub alert">~$2,072 cost / first booking</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ Why two conversion numbers</div>
+      <div class="callout-text">
+        Google Ads counts <strong>Account Created</strong> as the primary conversion (signup). <strong>First Booking</strong> is also tracked but configured as secondary, which means Smart Bidding and reporting default to signups. Throughout this page we report both, and Section /02 explains what each one is and why the split matters.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /02 WHAT WE'RE MEASURING -->
+<section>
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/02</span>What we're measuring</div>
+    <h2 class="section-title">Three conversion actions are configured. Only one is being optimized for.</h2>
+    <p class="section-intro">
+      Before any analysis, the definition of "conversion" matters. There are three actions set up in the account. Their role (primary vs secondary vs inactive) shapes what Google Ads optimizes toward and how reporting reads. Below is exactly how each one is configured today.
+    </p>
+
+    <div class="measuring-table">
+      <div class="measuring-row head">
+        <div>Action</div>
+        <div>Category</div>
+        <div>Window · source</div>
+        <div>Role in account</div>
+        <div>Last 30 days</div>
+      </div>
+      <div class="measuring-row primary">
+        <div class="measuring-action">
+          Account Created
+          <span class="source-tag">user creates account on website</span>
+        </div>
+        <div>Sign-ups</div>
+        <div>90-day · Website (Google Tag)</div>
+        <div><span class="role-pill primary">Primary</span></div>
+        <div class="measuring-counts">18<span class="label">signups</span></div>
+      </div>
+      <div class="measuring-row secondary">
+        <div class="measuring-action">
+          First Booking
+          <span class="source-tag">user completes first shipment booking</span>
+        </div>
+        <div>Purchase</div>
+        <div>90-day · Website (Google Tag)</div>
+        <div><span class="role-pill secondary">Secondary</span></div>
+        <div class="measuring-counts">3<span class="label">bookings</span></div>
+      </div>
+      <div class="measuring-row">
+        <div class="measuring-action">
+          Calls from Smart Ads
+          <span class="source-tag">phone call from Smart Campaign ads</span>
+        </div>
+        <div>Phone lead</div>
+        <div>30-day · Call from ad</div>
+        <div><span class="role-pill inactive">Inactive</span></div>
+        <div class="measuring-counts">0<span class="label">calls</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ The configuration detail that drives everything below</div>
+      <div class="callout-text">
+        <strong>First Booking is configured as secondary, which excludes it from Smart Bidding optimization and from the default "Conversions" reporting column.</strong> The account is set up so Google Ads learns from signups, not from bookings. That's the configuration choice we examine in Section /03. There is also an alert in the account that says "Compra (Purchase) · configuration error, 0 campaigns associated", which suggests this setup may not be intentional. Worth resolving before any other change.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /03 THE HEADLINE FINDING (DARK) -->
+<section class="dark">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/03</span>The headline finding</div>
+
+    <div class="headline-block">
+      <div class="headline-eyebrow">★ What explains a lot of what we've been seeing</div>
+      <h2 class="headline-statement">
+        The account is optimizing for <span class="em">signups</span>, not for <span class="em">first bookings</span>.
+      </h2>
+      <p class="headline-body">
+        Smart Bidding is learning from the 18 signup events, not from the 3 first booking events. That means every algorithmic decision (which auctions to bid on, which audiences to favor, which placements to push) is tuned to a proxy of revenue, not to revenue itself. <strong>Before reallocating budget or changing bid strategies, the configuration needs to be aligned with what we actually want to grow.</strong>
+      </p>
+
+      <div class="funnel-viz">
+        <div class="funnel-step optimized">
+          <div class="funnel-step-label">Where money is spent</div>
+          <div class="funnel-step-val">1,709</div>
+          <div class="funnel-step-name">clicks · 30 days</div>
+        </div>
+        <div class="funnel-arrow">→</div>
+        <div class="funnel-step optimized">
+          <div class="funnel-step-label">★ What Google Ads optimizes for</div>
+          <div class="funnel-step-val">18</div>
+          <div class="funnel-step-name">account signups (primary)</div>
+        </div>
+        <div class="funnel-arrow">→</div>
+        <div class="funnel-step real-revenue">
+          <div class="funnel-step-label">Where revenue actually starts</div>
+          <div class="funnel-step-val">3</div>
+          <div class="funnel-step-name">first bookings (secondary)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ What this means in plain terms</div>
+      <div class="callout-text">
+        Of every 100 clicks paid for, about 1 becomes a signup, and about 1 in 6 signups becomes a first booking. If the account were optimized for first bookings, the algorithm would be making different bid decisions, possibly favoring keywords and audiences that signal serious buying intent over those that simply convert to signup. <strong>This is the highest-leverage adjustment for Phase 01 of the Paid Media Plan, and it can be made before any budget change.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /04 CAMPAIGN BREAKDOWN -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/04</span>Campaign breakdown · US vs CA</div>
+    <h2 class="section-title">Two campaigns, similar spend, very different signup volume.</h2>
+    <p class="section-intro">
+      Same setup, same daily cap, almost the same spend over the period. CA generated <strong>5× the signups</strong> of US at the same spend. The next question is whether that pattern holds at the booking level too. <em>Until First Booking is properly tracked by campaign, we can't say yet.</em>
+    </p>
+
+    <div class="compare-grid">
+      <div class="compare-card us">
+        <div class="compare-head">
+          <span class="compare-flag">US · FS2026.US.Search.Core <span class="country">United States</span></span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Spend</span>
+          <span class="compare-metric-val">CAD $3,158</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Impressions</span>
+          <span class="compare-metric-val">39,267</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Clicks</span>
+          <span class="compare-metric-val">880</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">CTR</span>
+          <span class="compare-metric-val weak">2.24%</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Account signups</span>
+          <span class="compare-metric-val weak">3</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Click → signup rate</span>
+          <span class="compare-metric-val weak">0.34%</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Cost / signup</span>
+          <span class="compare-metric-val weak">CAD $1,053</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Bid strategy</span>
+          <span class="compare-metric-val">Maximize clicks</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Optimization score</span>
+          <span class="compare-metric-val">68.7%</span>
+        </div>
+      </div>
+
+      <div class="compare-card ca">
+        <div class="compare-head">
+          <span class="compare-flag">CA · FS2026.CA.Search.Core <span class="country">Canada</span></span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Spend</span>
+          <span class="compare-metric-val">CAD $3,059</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Impressions</span>
+          <span class="compare-metric-val">22,413</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Clicks</span>
+          <span class="compare-metric-val">829</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">CTR</span>
+          <span class="compare-metric-val standout">3.70%</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Account signups</span>
+          <span class="compare-metric-val standout">15</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Click → signup rate</span>
+          <span class="compare-metric-val standout">1.81%</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Cost / signup</span>
+          <span class="compare-metric-val standout">CAD $204</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Bid strategy</span>
+          <span class="compare-metric-val">Maximize clicks</span>
+        </div>
+        <div class="compare-metric-row">
+          <span class="compare-metric-label">Optimization score</span>
+          <span class="compare-metric-val">59.1%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ Read this with care</div>
+      <div class="callout-text">
+        The 5× gap is at the <strong>signup level</strong>. We don't yet know which of the 3 first bookings came from US versus CA, that requires cross-referencing the CRM. If the 3 bookings all came from the 15 CA signups, the gap is real and budget reallocation toward CA is justified. If they came from the 3 US signups (proportionally a much higher conversion rate), the picture inverts. <strong>This is one of the data gaps Section /07 is built to close.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /05 GROUP-LEVEL PERFORMANCE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/05</span>Ad group performance</div>
+    <h2 class="section-title">Where the spend is working, and where it's currently quiet.</h2>
+    <p class="section-intro">
+      Each campaign breaks into multiple ad groups by carrier or keyword family. Some are generating signups efficiently, others have spent meaningful budget with zero signups in the last 30 days. These zero-signup groups are candidates for pause-and-reallocate in Phase 01.
+    </p>
+
+    <div class="group-table">
+      <div class="group-table-head">FS2026.US.Search.Core · by ad group</div>
+      <div class="group-row thead">
+        <div>Ad group</div>
+        <div>Impressions</div>
+        <div>CTR</div>
+        <div>Cost</div>
+        <div>Signups</div>
+        <div>Cost / signup</div>
+      </div>
+      <div class="group-row">
+        <div class="group-name">Carriers · TForce</div>
+        <div class="num">11,162</div>
+        <div class="num">2.80%</div>
+        <div class="num">$1,128.50</div>
+        <div class="num">1</div>
+        <div class="num cpa">$1,128.50</div>
+      </div>
+      <div class="group-row zero-conv">
+        <div class="group-name">USA (generic)</div>
+        <div class="num">8,341</div>
+        <div class="num">2.13%</div>
+        <div class="num">$616.12</div>
+        <div class="num">0</div>
+        <div class="num cpa">n/a</div>
+      </div>
+      <div class="group-row">
+        <div class="group-name">Generic LTL</div>
+        <div class="num">4,504</div>
+        <div class="num">2.58%</div>
+        <div class="num">$423.77</div>
+        <div class="num">1</div>
+        <div class="num cpa">$423.77</div>
+      </div>
+      <div class="group-row">
+        <div class="group-name">Carriers · ABF</div>
+        <div class="num">4,336</div>
+        <div class="num">2.49%</div>
+        <div class="num">$390.50</div>
+        <div class="num">1</div>
+        <div class="num cpa">$390.50</div>
+      </div>
+      <div class="group-row zero-conv">
+        <div class="group-name">Carriers · SAIA</div>
+        <div class="num">4,165</div>
+        <div class="num">1.63%</div>
+        <div class="num">$248.86</div>
+        <div class="num">0</div>
+        <div class="num cpa">n/a</div>
+      </div>
+      <div class="group-row zero-conv">
+        <div class="group-name">Carriers · XPO</div>
+        <div class="num">3,055</div>
+        <div class="num">1.47%</div>
+        <div class="num">$160.72</div>
+        <div class="num">0</div>
+        <div class="num cpa">n/a</div>
+      </div>
+      <div class="group-row zero-conv">
+        <div class="group-name">Carriers · Roadrunner</div>
+        <div class="num">1,006</div>
+        <div class="num">2.68%</div>
+        <div class="num">$91.62</div>
+        <div class="num">0</div>
+        <div class="num cpa">n/a</div>
+      </div>
+    </div>
+
+    <div class="group-table">
+      <div class="group-table-head">FS2026.CA.Search.Core · by ad group</div>
+      <div class="group-row thead">
+        <div>Ad group</div>
+        <div>Impressions</div>
+        <div>CTR</div>
+        <div>Cost</div>
+        <div>Signups</div>
+        <div>Cost / signup</div>
+      </div>
+      <div class="group-row">
+        <div class="group-name">Canada (generic)</div>
+        <div class="num">6,943</div>
+        <div class="num">4.16%</div>
+        <div class="num">$1,066.38</div>
+        <div class="num">3</div>
+        <div class="num cpa">$355.46</div>
+      </div>
+      <div class="group-row workhorse">
+        <div class="group-name">Carriers · Day Ross</div>
+        <div class="num">5,418</div>
+        <div class="num">3.77%</div>
+        <div class="num">$757.38</div>
+        <div class="num">7</div>
+        <div class="num cpa">$108.20</div>
+      </div>
+      <div class="group-row workhorse">
+        <div class="group-name">Carriers · Manitoulin</div>
+        <div class="num">1,813</div>
+        <div class="num">4.19%</div>
+        <div class="num">$279.79</div>
+        <div class="num">2</div>
+        <div class="num cpa">$139.89</div>
+      </div>
+      <div class="group-row">
+        <div class="group-name">Generic LTL</div>
+        <div class="num">2,038</div>
+        <div class="num">3.48%</div>
+        <div class="num">$255.09</div>
+        <div class="num">1</div>
+        <div class="num cpa">$255.09</div>
+      </div>
+      <div class="group-row zero-conv">
+        <div class="group-name">Carriers · TForce CA</div>
+        <div class="num">2,031</div>
+        <div class="num">3.15%</div>
+        <div class="num">$229.76</div>
+        <div class="num">0</div>
+        <div class="num cpa">n/a</div>
+      </div>
+      <div class="group-row workhorse">
+        <div class="group-name">Cross-Border</div>
+        <div class="num">644</div>
+        <div class="num">4.50%</div>
+        <div class="num">$108.66</div>
+        <div class="num">1</div>
+        <div class="num cpa">$108.66</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ Pattern worth noticing</div>
+      <div class="callout-text">
+        Carrier-specific groups in CA (Day Ross, Manitoulin) generate signups at <strong>$108–$140 cost per signup</strong>. Carrier-specific groups in US (TForce, SAIA, XPO, Roadrunner) generate either no signups or much costlier ones. Same playbook, very different output. Once First Booking is in the Smart Bidding loop, these patterns may shift, that's why the configuration fix comes before any reallocation.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /06 KEYWORDS -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/06</span>Keyword insights</div>
+    <h2 class="section-title">Three buckets: workhorses, scale candidates, and signal to revisit.</h2>
+    <p class="section-intro">
+      Looking at keywords with meaningful click volume, three patterns emerge. Carrier-named CA keywords are the workhorses. A handful of US carrier and generic terms are spending without generating signups, which usually means either landing-page mismatch or audience-quality drift.
+    </p>
+
+    <div class="kw-section">
+      <div class="kw-block workhorses">
+        <div class="kw-block-title">Workhorses · CA</div>
+        <div class="kw-block-sub">CA carrier-named keywords pulling weight at the signup level.</div>
+        <div class="kw-row">
+          <span class="kw-name">"canadian freight"</span>
+          <span class="kw-value">213 clicks · 2 signups · $391/sup</span>
+          <span class="kw-badge good">good</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"day and ross freight"</span>
+          <span class="kw-value">166 clicks · 2 signups · $307/sup</span>
+          <span class="kw-badge warn">low QS</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"ltl carriers"</span>
+          <span class="kw-value">78 clicks · 1 signup · $286/sup</span>
+          <span class="kw-badge good">good</span>
+        </div>
+      </div>
+      <div class="kw-block review">
+        <div class="kw-block-title">Spending without signups · last 30 days</div>
+        <div class="kw-block-sub">US-skewed. Candidates for pause or landing-page revision in Phase 01.</div>
+        <div class="kw-row">
+          <span class="kw-name">"tforce freight"</span>
+          <span class="kw-value">89 clicks · 0 signups · $X spent</span>
+          <span class="kw-badge warn">review</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"saia freight"</span>
+          <span class="kw-value">62 clicks · 0 signups</span>
+          <span class="kw-badge warn">review</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"us freight shipping"</span>
+          <span class="kw-value">89 clicks · 0 signups</span>
+          <span class="kw-badge warn">review</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"freight company usa"</span>
+          <span class="kw-value">64 clicks · 0 signups</span>
+          <span class="kw-badge warn">review</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">"xpo freight"</span>
+          <span class="kw-value">28 clicks · 0 signups</span>
+          <span class="kw-badge low">low QS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ Two keywords flagged with low Quality Score</div>
+      <div class="callout-text">
+        <strong>"day and ross freight"</strong> and <strong>"abf freight"</strong> are showing as "Eligible (limited) · rarely served". Low QS limits visibility and raises CPC. Usually solved by tightening ad relevance and landing page experience (carrier name needs to be prominent in URL, headline, and copy). Quick fix candidate for Phase 01.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /07 WHAT WE'RE ADJUSTING -->
+<section>
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/07</span>What we're adjusting</div>
+    <h2 class="section-title">Three weeks, in sequence. Configuration first. Then read the data. Then move budget.</h2>
+    <p class="section-intro">
+      The Paid Media Plan structures the next 90 days into Audit · Reallocate · Scale. The first three weeks (Audit) line up with what this report surfaces. Each step depends on the previous one. Skipping ahead, especially moving budget before the configuration is corrected, would mean reallocating based on a signal that's about to change.
+    </p>
+
+    <div class="week-grid">
+      <div class="week-block now">
+        <span class="week-tag">★ This week</span>
+        <div class="week-title">Configuration fixes</div>
+        <ul class="week-items">
+          <li>Promote First Booking from secondary to primary objective</li>
+          <li>Resolve the "Compra" misconfiguration alert</li>
+          <li>Investigate the Google Tag warning (estimated +1.7% lift)</li>
+          <li>Resolve the conflicting negative keyword in both campaigns</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-tag">Week 2</span>
+        <div class="week-title">Bid strategy assessment</div>
+        <ul class="week-items">
+          <li>Once Smart Bidding is learning from bookings, evaluate Maximize Conversions vs current Maximize Clicks</li>
+          <li>CA has 15 signups/month, near the threshold for Smart Bidding stability</li>
+          <li>US needs more conversion volume before any Smart Bidding switch</li>
+          <li>Pull search term reports to identify negative keyword candidates</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-tag">Week 3</span>
+        <div class="week-title">Reallocation read</div>
+        <ul class="week-items">
+          <li>Cross-reference CRM: which of the 3 first bookings are US vs CA</li>
+          <li>If CA confirms efficiency at booking level, propose budget shift toward CA</li>
+          <li>Pause or restructure ad groups with zero signups over 30 days</li>
+          <li>Document baseline cost-per-first-booking by campaign for Phase 02 comparison</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">↳ Why sequence matters</div>
+      <div class="callout-text">
+        If we shift budget from US to CA today, we'd be doing it based on signup data from a misconfigured optimization. Three weeks of sequenced cleanup gives the next budget decision a clean baseline to stand on. The total spend in the meantime stays at the current ~$300/day cap, no extra commitment needed to do this work.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /08 OPEN QUESTIONS -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/08</span>Open questions · data gaps</div>
+    <h2 class="section-title">What we don't know yet, and what closes each gap.</h2>
+    <p class="section-intro">
+      Honest list. Reporting what we know is half the work. Surfacing what we still need to know is the other half, because those are the questions that shape the next monthly update.
+    </p>
+
+    <div class="open-q-list">
+
+      <div class="open-q-card priority">
+        <div class="open-q-title">Where are the 3 first bookings coming from?</div>
+        <div class="open-q-body">
+          US or CA? The 5× signup gap might or might not hold at the booking level. <strong>This is the single most important question</strong> to resolve before any budget reallocation. <em>Closes with: CRM cross-reference, Week 3 of the cleanup sequence.</em>
+        </div>
+      </div>
+
+      <div class="open-q-card priority">
+        <div class="open-q-title">Why is the "Compra" conversion misconfigured?</div>
+        <div class="open-q-body">
+          The account shows a "Compra" conversion action with status "configuration error" and 0 campaigns associated. Likely this should be the First Booking event, mapped to the right campaigns. Resolving this may surface bookings that aren't currently being attributed. <em>Closes with: Google Ads UI inspection this week.</em>
+        </div>
+      </div>
+
+      <div class="open-q-card">
+        <div class="open-q-title">What's the signup → first booking conversion rate by campaign?</div>
+        <div class="open-q-body">
+          Currently 18 signups produce 3 bookings (16.7% overall). We don't know if that rate is the same for US and CA, or if one geography has a meaningfully better signup quality. <em>Closes with: CRM data join, Week 2-3.</em>
+        </div>
+      </div>
+
+      <div class="open-q-card">
+        <div class="open-q-title">Is the Quality Score issue on "day and ross freight" and "abf freight" a landing page mismatch or an ad relevance issue?</div>
+        <div class="open-q-body">
+          Both keywords show "Eligible (limited)". The fix differs depending on whether the issue is the landing page (carrier name prominence) or the ad copy (carrier relevance). <em>Closes with: landing page audit, Week 1.</em>
+        </div>
+      </div>
+
+      <div class="open-q-card">
+        <div class="open-q-title">Are Search Partners contributing or just spending?</div>
+        <div class="open-q-body">
+          Search Partners is enabled in both campaigns but performance can't be segmented from Google Search itself in the current view. This is typical when Search Partners gets disabled by default during account audits, worth checking the conversion contribution. <em>Closes with: segmented report pull, Week 2.</em>
+        </div>
+      </div>
+
+      <div class="open-q-card">
+        <div class="open-q-title">Should the US campaign target be widened beyond carrier-named search?</div>
+        <div class="open-q-body">
+          US generic terms ("us freight shipping", "freight company usa") have clicks but zero signups, while CA generic terms convert. The hypothesis is landing page mismatch (the US homepage may not orient to a US-visiting prospect well). <em>Closes with: landing experience review + landing page test, Phase 02 (Week 4-6).</em>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- /09 RHYTHM -->
+<section class="dark">
+  <div class="section-inner">
+    <div class="section-label"><span class="num">/09</span>Tracking rhythm</div>
+    <h2 class="section-title">This page refreshes monthly. Same structure, new numbers.</h2>
+    <p class="section-intro">
+      The point of a recurring view is that the conversation is always grounded in <strong>this month's numbers</strong>, not in a one-off snapshot. Each refresh keeps the same structure (snapshot, what's optimizing, headline finding, breakdown, adjustments, open questions) so comparing month-to-month is straightforward. The full historical archive lives in the marketing hub.
+    </p>
+
+    <div class="callout">
+      <div class="callout-label">↳ How to use this page</div>
+      <div class="callout-text">
+        Skim Section /01 for the headline numbers. Read Section /03 for what's changing under the hood. Skip to Section /07 if you want to know what we're doing about it. Section /08 is where to look if you want to see what we still don't know. <strong>Each section is short by design.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span class="tag">// PAID PERFORMANCE v1.0 · MAY 2026 //</span><br>
+  Refresh cadence: monthly.<br>
+  Companion docs: Paid Media Plan · Paid Media Forecast Model · Strategy Base.
+</div>
+
+</body>
+</html>
